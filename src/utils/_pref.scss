@@ -1,0 +1,135 @@
+//
+// 通用、可嵌套的媒体查询 Mixin 框架
+// 作者: AI Assistant
+// 功能: 提供 Option(), NotOption(), OS(), Dark() 和 Any() mixin。
+//      允许 `and` (通过嵌套) 和 `or` (通过 Any() mixin) 的任意组合。
+//      - 更新: -moz-pref 的键名使用双引号包裹，并使用正确的逗号分隔符。
+//
+@use "sass:string";
+@use "sass:list";
+
+// --- 内部实现 ---
+
+// 1. 全局变量，用于追踪当前的媒体查询链。
+$current-media-query-chain: null !default;
+
+// 2. 私有的、通用的媒体查询处理器。这是整个系统的核心。
+@mixin _nestable-media-handler($new-query-part) {
+    $parent-query: $current-media-query-chain;
+    $full-query: "";
+
+    @if $parent-query {
+        $full-query: "#{$parent-query} and (#{$new-query-part})";
+    } @else {
+        $full-query: $new-query-part;
+    }
+
+    $current-media-query-chain: $full-query !global;
+
+    @media #{$full-query} {
+        @content;
+    }
+
+    $current-media-query-chain: $parent-query !global;
+}
+
+
+// --- 辅助函数 (用于 Any() Mixin) ---
+
+/// @name F-OS
+/// @description 返回一个用于 OS 查询的字符串。
+@function F-OS($os) {
+    $platform: null;
+    $os-lower: string.to-lower-case($os);
+
+    @if $os-lower == "windows" or $os-lower == "win" {
+        $platform: "windows";
+    } @else if $os-lower == "macos" or $os-lower == "mac" {
+        $platform: "macos";
+    } @else if $os-lower == "linux" {
+        $platform: "linux";
+    } @else {
+        @warn "未知的操作系统: '#{$os}'。将返回 null。";
+        @return null;
+    }
+    @return "(-moz-platform: #{$platform})";
+}
+
+/// @name F-Dark
+/// @description 返回深色模式的查询字符串。
+@function F-Dark() {
+    @return "(prefers-color-scheme: dark)";
+}
+
+/// @name F-Option
+/// @description 返回一个用于 -moz-pref 查询的字符串。键名会被双引号包裹。
+/// @param {String} $preference - The preference name.
+/// @param {Any} $value [null] - The optional preference value. 对于字符串值, 请手动包裹引号, e.g., `'""'` 或 `'"some-string"'`.
+/// @return {String} - 格式如 `(-moz-pref("pref", val))` 的查询字符串。
+@function F-Option($preference, $value: null) {
+    @if $value == null {
+        // e.g., -moz-pref("browser.theme.native-theme")
+        @return "(-moz-pref(\"#{$preference}\"))";
+    } @else {
+        // e.g., -moz-pref("browser.ml.chat.provider", "")
+        @return "(-moz-pref(\"#{$preference}\", #{$value}))";
+    }
+}
+
+/// @name F-NotOption
+/// @description 返回一个用于 not -moz-pref 查询的字符串。键名会被双引号包裹。
+/// @param {String} $preference - The preference name.
+/// @return {String} - 格式如 `(not -moz-pref("pref"))` 的查询字符串。
+@function F-NotOption($preference) {
+    @return "(not -moz-pref(\"#{$preference}\"))";
+}
+
+
+// --- 公共 API (Mixins) ---
+
+/// @name Any
+/// @description 生成一个用 `or` 连接的媒体查询。
+/// @param {ArgList} $queries... - 一个或多个由 F- 系列函数生成的查询字符串。
+@mixin Any($queries...) {
+    $full-query: list.join($queries, " or ");
+    @include _nestable-media-handler($full-query) {
+        @content;
+    }
+}
+
+/// @name OS
+/// @description 根据操作系统生成 @media (-moz-platform: ...) 查询。
+@mixin OS($os) {
+    $query-part: F-OS($os);
+    @if $query-part {
+        @include _nestable-media-handler("(#{$query-part})") {
+            @content;
+        }
+    }
+}
+
+/// @name Dark
+/// @description 生成 @media (prefers-color-scheme: dark) 查询。
+@mixin Dark() {
+    @include _nestable-media-handler(F-Dark()) {
+        @content;
+    }
+}
+
+/// @name Option
+/// @description 生成 @media -moz-pref(...) 查询。
+/// @param {String} $preference - The preference name.
+/// @param {Any} $value [null] - The optional preference value. 对于字符串值, 请手动包裹引号, e.g., `'""'` 或 `'"some-string"'`.
+@mixin Option($preference, $value: null) {
+    @include _nestable-media-handler(F-Option($preference, $value)) {
+        @content;
+    }
+}
+
+/// @name NotOption
+/// @description 生成 @media not -moz-pref(...) 查询。
+@mixin NotOption($preference) {
+    @include _nestable-media-handler(F-NotOption($preference)) {
+        @content;
+    }
+}
