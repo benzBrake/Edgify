@@ -5,19 +5,21 @@
 /* https://github.com/aris-t2/customcssforfx                                    */
 /********************************************************************************/
 :root {
-    menupopup, panel {
+
+    menupopup,
+    panel {
         --menuitem-padding-inline: 1em;
         --icon-pre-padding: var(--menuitem-padding-inline);
-        --icon-post-padding: 8px;
+        --icon-gap: 8px;
         --icon-size: 16px;
         /* 基础缩进值：用于对齐没有图标的菜单项 */
-        --panel-item-indent-base: calc(var(--icon-pre-padding) + var(--icon-size) + var(--icon-post-padding));
+        --panel-item-indent-base: calc(var(--icon-pre-padding) + var(--icon-size) + var(--icon-gap));
 
         /* 面板子视图缩进值 (如书签、历史记录面板) */
         --panel-item-indent-button: calc(var(--panel-item-indent-base) - 8px);
 
         /* 主菜单面板缩进值 (汉堡菜单) */
-        --panel-item-indent-app-menu: calc(var(--panel-item-indent-base) - 12px);
+        --panel-item-indent-app-menu: calc(var(--panel-item-indent-base) - 0px);
 
         /* 分隔符末端外边距：用于缩短特定分隔符的长度 */
         --panel-separator-end-margin: calc(var(--panel-item-indent-base) - 22px);
@@ -47,13 +49,16 @@
     }
 
     &[uidensity="compact"] {
-        menupopup, panel {
+
+        menupopup,
+        panel {
             --menuitem-padding-inline: 8px;
             --panel-item-indent-button: calc(var(--panel-item-indent-base) - 4px);
             --panel-border-radius: 4px;
             --panel-list-border-radius: 3px;
             --panel-margin-block: 2px;
             --panel-margin-inline: 2px;
+            --icon-gap: 6px;
         }
 
         menu,
@@ -94,21 +99,17 @@
     display: flex !important;
 }
 
+
+
 @media (-moz-platform: windows) {
-    :is(popup, menupopup) :is(menu, menuitem):not(:is([checked]), .bookmark-item, .openintabs-menuitem, .menu-iconic, .menuitem-iconic) {
-        padding-inline-start: var(--panel-item-indent-base) !important;
+    :not(#context-navigation)>:is(.menu-iconic, .menuitem-iconic)>.menu-icon {
+        width: var(--icon-size, 16px) !important;
+        height: var(--icon-size, 16px) !important;
+        margin-inline-end: var(--icon-gap) !important;
     }
 
-    .openintabs-menuitem {
-        padding-inline-start: calc(var(--panel-item-indent-base) - var(--arrowpanel-header-back-icon-padding)) !important;
-    }
-
-    :is(popup, menupopup) :is(menu, menuitem):not([data-usercontextid]):not(.bookmark-item, .menu-iconic, .menuitem-iconic) .menu-icon:not([src]) {
-        display: none !important;
-    }
-
-    :is(popup, menupopup) :is(menu, menuitem):not([data-usercontextid])[checked]:not(.bookmark-item, .menu-iconic, .menuitem-iconic) .menu-icon:not([src]) {
-        display: block !important;
+    :is(popup, menupopup) :is(menu, menuitem)>.menu-icon {
+        display: flex !important;
     }
 
     :is(popup, menupopup) :is(menuseparator, .bookmarks-actions-menuseparator) {
@@ -288,9 +289,9 @@ scrollbox[orient=vertical] {
     --scrollbutton-display: -moz-box !important;
 }
 
-menuitem-iconic,
+.menuitem-iconic:not([data-usercontextid]),
 .menu-iconic-icon,
-.menu-icon
+:not([data-usercontextid])>.menu-icon
 
 /* .menu-iconic-icons not necessarily within a .menuitem-iconic (don't ask me why...) */
     {
