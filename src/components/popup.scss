@@ -6,8 +6,12 @@
 /********************************************************************************/
 :root {
     menupopup, panel {
+        --menuitem-padding-inline: 1em;
+        --icon-pre-padding: var(--menuitem-padding-inline);
+        --icon-post-padding: 8px;
+        --icon-size: 16px;
         /* 基础缩进值：用于对齐没有图标的菜单项 */
-        --panel-item-indent-base: 36px;
+        --panel-item-indent-base: calc(var(--icon-pre-padding) + var(--icon-size) + var(--icon-post-padding));
 
         /* 面板子视图缩进值 (如书签、历史记录面板) */
         --panel-item-indent-button: calc(var(--panel-item-indent-base) - 8px);
@@ -38,11 +42,13 @@
 
     menu,
     menuitem {
+        --menuitem-padding: .5em var(--menuitem-padding-inline) !important;
         --menuitem-margin: 0 4px !important;
     }
 
     &[uidensity="compact"] {
         menupopup, panel {
+            --menuitem-padding-inline: 8px;
             --panel-item-indent-button: calc(var(--panel-item-indent-base) - 4px);
             --panel-border-radius: 4px;
             --panel-list-border-radius: 3px;
