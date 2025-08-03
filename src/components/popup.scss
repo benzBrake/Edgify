@@ -102,7 +102,7 @@
 
 
 @media (-moz-platform: windows) {
-    :not(#context-navigation)>:is(.menu-iconic, .menuitem-iconic)>.menu-icon {
+    :not(#context-navigation)>:is(menu, menuitem)>.menu-icon {
         width: var(--icon-size, 16px) !important;
         height: var(--icon-size, 16px) !important;
         margin-inline-end: var(--icon-gap) !important;
