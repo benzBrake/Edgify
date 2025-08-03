@@ -5,7 +5,7 @@
 /* https://github.com/aris-t2/customcssforfx                                    */
 /********************************************************************************/
 :root {
-    menupopup {
+    menupopup, panel {
         /* 基础缩进值：用于对齐没有图标的菜单项 */
         --panel-item-indent-base: 36px;
 
@@ -42,7 +42,7 @@
     }
 
     &[uidensity="compact"] {
-        menupopup {
+        menupopup, panel {
             --panel-item-indent-button: calc(var(--panel-item-indent-base) - 4px);
             --panel-border-radius: 4px;
             --panel-list-border-radius: 3px;
