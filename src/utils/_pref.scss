@@ -1,40 +1,14 @@
 //
-// 通用、可嵌套的媒体查询 Mixin 框架
+// 通用、可嵌套的媒体查询 Mixin 框架 (独立查询版)
 // 作者: AI Assistant
 // 功能: 提供 Option(), NotOption(), OS(), Dark() 和 Any() mixin。
-//      允许 `and` (通过嵌套) 和 `or` (通过 Any() mixin) 的任意组合。
-//      - 更新: -moz-pref 的键名使用双引号包裹，并使用正确的逗号分隔符。
+//      - 嵌套调用时保持独立媒体查询 (不合并条件)
+//      - 保留嵌套结构输出
 //
 @use "sass:string";
 @use "sass:list";
 
-// --- 内部实现 ---
-
-// 1. 全局变量，用于追踪当前的媒体查询链。
-$current-media-query-chain: null !default;
-
-// 2. 私有的、通用的媒体查询处理器。这是整个系统的核心。
-@mixin _nestable-media-handler($new-query-part) {
-    $parent-query: $current-media-query-chain;
-    $full-query: "";
-
-    @if $parent-query {
-        $full-query: "#{$parent-query} and (#{$new-query-part})";
-    } @else {
-        $full-query: $new-query-part;
-    }
-
-    $current-media-query-chain: $full-query !global;
-
-    @media #{$full-query} {
-        @content;
-    }
-
-    $current-media-query-chain: $parent-query !global;
-}
-
-
-// --- 辅助函数 (用于 Any() Mixin) ---
+// --- 辅助函数 (保持不变) ---
 
 /// @name F-OS
 /// @description 返回一个用于 OS 查询的字符串。
@@ -42,16 +16,23 @@ $current-media-query-chain: null !default;
     $platform: null;
     $os-lower: string.to-lower-case($os);
 
-    @if $os-lower == "windows" or $os-lower == "win" {
+    @if $os-lower =="windows" or $os-lower =="win" {
         $platform: "windows";
-    } @else if $os-lower == "macos" or $os-lower == "mac" {
+    }
+
+    @else if $os-lower =="macos" or $os-lower =="mac" {
         $platform: "macos";
-    } @else if $os-lower == "linux" {
+    }
+
+    @else if $os-lower =="linux" {
         $platform: "linux";
-    } @else {
+    }
+
+    @else {
         @warn "未知的操作系统: '#{$os}'。将返回 null。";
         @return null;
     }
+
     @return "(-moz-platform: #{$platform})";
 }
 
@@ -69,81 +50,124 @@ $current-media-query-chain: null !default;
 
 /// @name F-Option
 /// @description 返回一个用于 -moz-pref 查询的字符串。键名会被双引号包裹。
-/// @param {String} $preference - The preference name.
-/// @param {Any} $value [null] - The optional preference value. 对于字符串值, 请手动包裹引号, e.g., `'""'` 或 `'"some-string"'`.
-/// @return {String} - 格式如 `(-moz-pref("pref", val))` 的查询字符串。
 @function F-Option($preference, $value: null) {
-    @if $value == null {
-        // e.g., -moz-pref("browser.theme.native-theme")
+    @if $value ==null {
         @return "(-moz-pref(\"#{$preference}\"))";
-    } @else {
-        // e.g., -moz-pref("browser.ml.chat.provider", "")
+    }
+
+    @else {
         @return "(-moz-pref(\"#{$preference}\", #{$value}))";
     }
 }
 
 /// @name F-NotOption
-/// @description 返回一个用于 not -moz-pref 查询的字符串。键名会被双引号包裹。
-/// @param {String} $preference - The preference name.
-/// @return {String} - 格式如 `(not -moz-pref("pref"))` 的查询字符串。
+/// @description 返回一个用于 not -moz-pref 查询的字符串。
 @function F-NotOption($preference) {
     @return "(not -moz-pref(\"#{$preference}\"))";
 }
 
 
-// --- 公共 API (Mixins) ---
+// --- 公共 API (修改为独立查询) ---
 
-/// @name Any
-/// @description 生成一个用 `or` 连接的媒体查询。
-/// @param {ArgList} $queries... - 一个或多个由 F- 系列函数生成的查询字符串。
-@mixin Any($queries...) {
-    $full-query: list.join($queries, " or ");
-    @include _nestable-media-handler($full-query) {
+/// @mixin Option
+/// @description 为 -moz-pref 创建独立的媒体查询。
+/// @param {string} $preference - 偏好键名。
+/// @param {any} $value - 可选的值。如果为空，则只检查是否存在该偏好。
+/// @content 要嵌套的样式或其它媒体查询。
+/// @example
+///   @include Option("browser.pref1", true) {
+///     body { color: red; }
+///   }
+@mixin Option($preference, $value: null) {
+    @media #{F-Option($preference, $value)} {
         @content;
     }
 }
 
-/// @name OS
-/// @description 根据操作系统生成 @media (-moz-platform: ...) 查询。
+/// @mixin NotOption
+/// @description 为 not -moz-pref 创建独立的媒体查询。
+/// @param {string} $preference - 要排除的偏好键名。
+/// @content 要嵌套的样式或其它媒体查询。
+/// @example
+///   @include NotOption("browser.disabled-feature") {
+///     button { display: block; }
+///   }
+@mixin NotOption($preference) {
+    @media #{F-NotOption($preference)} {
+        @content;
+    }
+}
+
+/// @mixin OS
+/// @description 根据操作系统创建独立的媒体查询。
+/// @param {string} $os - 操作系统名称 (windows/mac/linux)。
+/// @content 要嵌套的样式或其它媒体查询。
+/// @example
+///   @include OS("mac") {
+///     .scrollbar { width: 12px; }
+///   }
 @mixin OS($os) {
-    $query-part: F-OS($os);
-    @if $query-part {
-        @include _nestable-media-handler("(#{$query-part})") {
+    $query: F-OS($os);
+
+    @if $query !=null {
+        @media #{$query} {
             @content;
         }
     }
+
+    @else {
+        // 如果返回 null，跳过输出，避免无效语法
+        @warn "OS 查询构建失败，未生成 CSS。";
+    }
 }
 
-/// @name Light
-/// @description 生成 @media (prefers-color-scheme: light) 查询。
+/// @mixin Light
+/// @content 要嵌套的样式或其它媒体查询。
+/// @example
+///   @include Light {
+///     background: #eee;
+///   }
 @mixin Light() {
-    @include _nestable-media-handler(F-Light()) {
+    @media #{F-Light()} {
         @content;
     }
 }
 
-/// @name Dark
-/// @description 生成 @media (prefers-color-scheme: dark) 查询。
+/// @mixin Dark
+/// @description 深色模式下的独立媒体查询。
+/// @content 要嵌套的样式或其它媒体查询。
+/// @example
+///   @include Dark {
+///     background: #111;
+///   }
 @mixin Dark() {
-    @include _nestable-media-handler(F-Dark()) {
+    @media #{F-Dark()} {
         @content;
     }
 }
 
-/// @name Option
-/// @description 生成 @media -moz-pref(...) 查询。
-/// @param {String} $preference - The preference name.
-/// @param {Any} $value [null] - The optional preference value. 对于字符串值, 请手动包裹引号, e.g., `'""'` 或 `'"some-string"'`.
-@mixin Option($preference, $value: null) {
-    @include _nestable-media-handler(F-Option($preference, $value)) {
-        @content;
-    }
-}
+/// @mixin Any
+/// @description 将多个媒体查询条件通过 `or` 合并成一个 @media 查询。
+/// @param {arglist} $queries - 一个或多个媒体查询条件字符串，如 F-Dark(), F-OS("mac") 等。
+/// @content 要应用的样式。
+/// @example
+///   @include Any(F-Dark(), F-Light()) {
+///     img { display: block; }
+///   }
+///
+///   @include Any(F-Option("foo"), F-OS("linux")) {
+///     .widget { visibility: hidden; }
+///   }
+@mixin Any($queries...) {
+    // 构造最终的媒体查询：条件之间用 " or " 分隔
+    $query: "";
 
-/// @name NotOption
-/// @description 生成 @media not -moz-pref(...) 查询。
-@mixin NotOption($preference) {
-    @include _nestable-media-handler(F-NotOption($preference)) {
+    @for $i from 1 through list.length($queries) {
+        $item: list.nth($queries, $i);
+        $query: $query + if($i > 1, " or ", "") + $item;
+    }
+
+    @media #{$query} {
         @content;
     }
 }
