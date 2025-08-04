@@ -55,6 +55,12 @@ $current-media-query-chain: null !default;
     @return "(-moz-platform: #{$platform})";
 }
 
+/// @name F-Light
+/// @description 返回浅色模式的查询字符串。
+@function F-Light() {
+    @return "(prefers-color-scheme: light)";
+}
+
 /// @name F-Dark
 /// @description 返回深色模式的查询字符串。
 @function F-Dark() {
@@ -105,6 +111,14 @@ $current-media-query-chain: null !default;
         @include _nestable-media-handler("(#{$query-part})") {
             @content;
         }
+    }
+}
+
+/// @name Light
+/// @description 生成 @media (prefers-color-scheme: light) 查询。
+@mixin Light() {
+    @include _nestable-media-handler(F-Light()) {
+        @content;
     }
 }
 
