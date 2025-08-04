@@ -4,12 +4,14 @@
   "description": "Firefox with Subtle Edge-inspired Flair",
   "main": "index.js",
   "scripts": {
-    "watch": "sass --watch src/userChrome.scss:userChrome.css src/userContent.scss:userContent.css --style compressed",
-    "build": "sass src/userChrome.scss:userChrome.css src/userContent.scss:userContent.css --style compressed"
+    "watch": "vite build --watch",
+    "build": "vite build",
+    "dev": "vite"
   },
   "author": "Ryan",
   "license": "MIT",
-  "dependencies": {
-    "sass": "^1.89.2"
+  "devDependencies": {
+    "sass": "^1.89.2",
+    "vite": "^7.0.6"
   }
 }
