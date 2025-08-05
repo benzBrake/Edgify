@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "watch": "vite build --watch",
-    "build": "vite build",
-    "dev": "vite"
+    "build": "vite build"
   },
   "author": "Ryan",
   "license": "MIT",

@@ -171,3 +171,26 @@
         @content;
     }
 }
+
+/// @mixin And
+/// @description 将多个媒体查询条件通过 `and` 合并成一个 @media 查询。
+/// @param {arglist} $queries - 一个或多个媒体查询条件字符串，如 F-Dark(), F-OS("mac") 等。
+/// @content 要应用的样式。
+/// @example
+///   // 仅在 macOS 的深色模式下应用样式
+///   @include And(F-Dark(), F-OS("mac")) {
+///     .title-bar { background-color: #333; }
+///   }
+@mixin And($queries...) {
+    // 构造最终的媒体查询：条件之间用 " and " 分隔
+    $query: "";
+
+    @for $i from 1 through list.length($queries) {
+        $item: list.nth($queries, $i);
+        $query: $query + if($i > 1, " and ", "") + $item;
+    }
+
+    @media #{$query} {
+        @content;
+    }
+}
