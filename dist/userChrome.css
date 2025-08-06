@@ -667,12 +667,6 @@ findbar[hidden] {
   padding-inline-start: var(--panel-item-indent-base) !important;
 }
 
-:is(popup, menupopup)[type=arrow] :is(menuseparator, .bookmarks-actions-menuseparator) {
-  appearance: none;
-  margin: 2px !important;
-  margin-inline-start: var(--panel-item-indent-base) !important;
-}
-
 .PanelUI-subView .subviewbutton:not(#appMenu-fxa-status2):not(.menuitem-iconic):not(.menu-iconic):not(.subviewbutton-iconic):not(.all-tabs-close-button) {
   padding-inline-start: var(--panel-item-indent-button) !important;
 }
@@ -702,27 +696,8 @@ findbar[hidden] {
   :is(popup, menupopup) :is(menu, menuitem) > .menu-icon {
     display: flex !important;
   }
-  :is(popup, menupopup) :is(menuseparator, .bookmarks-actions-menuseparator) {
-    appearance: none;
-    margin: 2px !important;
-    margin-inline-start: var(--panel-item-indent-button) !important;
-    padding-block: 4px !important;
-  }
-  :root[uidensity=compact] :is(popup, menupopup) :is(menuseparator, .bookmarks-actions-menuseparator) {
-    padding-block: 2px !important;
-  }
   #context-navigation {
     margin-inline: var(--panel-margin-inline) !important;
-  }
-  :is(popup, menupopup) menuseparator#context-sep-navigation {
-    appearance: none;
-    margin: 2px !important;
-    margin-inline-start: var(--panel-item-indent-base) !important;
-    margin-inline-end: var(--panel-separator-end-margin) !important;
-    padding-block: 4px !important;
-  }
-  :root[uidensity=compact] :is(popup, menupopup) menuseparator#context-sep-navigation {
-    padding-block: 2px !important;
   }
 }
 /* 颜色 */
