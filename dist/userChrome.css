@@ -758,6 +758,14 @@ findbar[hidden] {
   display: flex !important;
 }
 
+/** Tampermonkey 子菜单一般有 emoji 图标 */
+:is(menu, menuitem)[id^=firefoxbeta_tampermonkey_net]:not([id=firefoxbeta_tampermonkey_net-menuitem-_root]) > .menu-icon {
+  display: none !important;
+}
+:is(menu, menuitem)[id^=firefoxbeta_tampermonkey_net]:not([id=firefoxbeta_tampermonkey_net-menuitem-_root]) > .menu-text {
+  padding-inline-start: 0 !important;
+}
+
 /* 调整缩进 */
 :is(popup, menupopup)[type=arrow] :is(menu, menuitem):not(:is([checked], .menu-iconic, .menuitem-iconic)) {
   padding-inline-start: var(--panel-item-indent-base) !important;
@@ -785,7 +793,7 @@ findbar[hidden] {
 }
 
 #appMenu-zoom-controls > label {
-  padding-inline-start: var(--icon-gap) !important;
+  padding-inline-start: 0 !important;
 }
 
 #PanelUI-fxa-menu-syncnow-button > hbox > image {
@@ -799,7 +807,10 @@ findbar[hidden] {
   padding-inline-start: var(--icon-gap) !important;
 }
 
-#appMenu-zoom-controls::before {
+#appMenu-zoom-controls::before,
+#appMenu-fxa-status2:not([fxastatus=signedin], [fxastatus=unverified], [fxastatus=login-failed])::before,
+#appMenu-fxa-status2:is([fxastatus=signedin], [fxastatus=unverified], [fxastatus=login-failed]) > #appMenu-fxa-label2::before,
+#fxa-manage-account-button::before {
   content: "";
   display: flex;
   width: var(--icon-size) !important;
@@ -809,6 +820,7 @@ findbar[hidden] {
   mask-repeat: no-repeat !important;
   mask-position: center !important;
   fill: var(--menuitem-fill, currentColor) !important;
+  margin-inline-end: var(--icon-gap) !important;
 }
 
 @media (-moz-platform: windows) {

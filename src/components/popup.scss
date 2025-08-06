@@ -76,6 +76,17 @@
     display: flex !important;
 }
 
+/** Tampermonkey 子菜单一般有 emoji 图标 */
+:is(menu, menuitem)[id^="firefoxbeta_tampermonkey_net"]:not([id="firefoxbeta_tampermonkey_net-menuitem-_root"]) {
+    & > .menu-icon {
+        display: none !important;
+    }
+
+    & > .menu-text {
+        padding-inline-start: 0 !important;
+    }
+}
+
 /* 调整缩进 */
 :is(popup, menupopup)[type=arrow] :is(menu, menuitem):not(:is([checked], .menu-iconic, .menuitem-iconic)) {
     padding-inline-start: var(--panel-item-indent-base) !important;
@@ -108,7 +119,7 @@
 }
 
 #appMenu-zoom-controls>label {
-    padding-inline-start: var(--icon-gap) !important;
+    padding-inline-start: 0 !important;
 }
 
 #PanelUI-fxa-menu-syncnow-button>hbox {
@@ -125,7 +136,10 @@
     }
 }
 
-#appMenu-zoom-controls {
+#appMenu-zoom-controls,
+#appMenu-fxa-status2:not([fxastatus="signedin"], [fxastatus="unverified"], [fxastatus="login-failed"]),
+#appMenu-fxa-status2:is([fxastatus="signedin"], [fxastatus="unverified"], [fxastatus="login-failed"])>#appMenu-fxa-label2,
+#fxa-manage-account-button {
     &::before {
         content: "";
         display: flex;
@@ -136,6 +150,7 @@
         mask-repeat: no-repeat !important;
         mask-position: center !important;
         fill: var(--menuitem-fill, currentColor) !important;
+        margin-inline-end: var(--icon-gap) !important;
     }
 }
 
@@ -146,6 +161,7 @@
             height: var(--icon-size, 16px) !important;
             margin-inline-end: 0 !important;
         }
+
         &>.menu-text {
             padding-inline-start: var(--icon-gap, 8px) !important;
         }
