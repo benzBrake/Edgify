@@ -1,0 +1,13 @@
+@use "sass:list";
+
+@mixin moz-document($urlList...) {
+  $result: ();
+  @each $prefix, $urlPattern in $urlList {
+    // 将 append 更改为 list.append
+    $result: list.append($result, #{$prefix}(if($urlPattern, "#{$urlPattern}", null)), $separator: comma);
+  }
+
+  @#{-moz-document} #{$result} {
+    @content;
+  }
+}

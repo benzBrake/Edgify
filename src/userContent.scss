@@ -1,44 +1,5 @@
 // userContent.scss - 用于自定义网页内容的样式
 // 这个文件应该包含影响网页内容显示的 CSS 规则
 
-// 示例：自定义滚动条样式
-// 注意：这些样式可能需要特定的浏览器支持
-/*
-*::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
-}
-
-*::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-*::-webkit-scrollbar-thumb {
-  background: rgba(0, 0, 0, 0.2);
-  border-radius: 4px;
-}
-
-*::-webkit-scrollbar-thumb:hover {
-  background: rgba(0, 0, 0, 0.4);
-}
-*/
-
-// 示例：自定义选中文本的样式
-/*
-::selection {
-  background-color: #4285f4;
-  color: white;
-}
-*/
-
-// 示例：自定义链接样式
-/*
-a {
-  color: #4285f4;
-  text-decoration: none;
-}
-
-a:hover {
-  text-decoration: underline;
-}
-*/
+@use "content/common" as *;
+@use "content/newtab" as *;
