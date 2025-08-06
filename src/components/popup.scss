@@ -66,6 +66,16 @@
     }
 }
 
+/** 显示 addMenu 菜单图标 */
+:is(#contentAreaContextMenu, #tabContextMenu)[photoncompact="true"]:not([needsgutter])>.addMenu:is(menu, menuitem)> :is(.menu-iconic-left, .menu-icon),
+:is(#contentAreaContextMenu, #tabContextMenu)[photoncompact="true"]:not([needsgutter])>menugroup.addMenu>.addMenu.showText> :is(.menu-iconic-left, .menu-icon),
+:is(#contentAreaContextMenu, #tabContextMenu)[photoncompact="true"]:not([needsgutter])>menugroup.addMenu.showText>.addMenu> :is(.menu-iconic-left, .menu-icon),
+:is(#contentAreaContextMenu, #tabContextMenu)[photoncompact="true"]:not([needsgutter])>menugroup.addMenu.showFirstText>.menuitem-iconic:first-child> :is(.menu-iconic-left, .menu-icon),
+#tabContextMenu[photoncompact="true"] #OpenWithHelper-Tab-Menu> :is(.menu-iconic-left, .menu-icon) {
+    visibility: visible !important;
+    display: flex !important;
+}
+
 /* 调整缩进 */
 :is(popup, menupopup)[type=arrow] :is(menu, menuitem):not(:is([checked], .menu-iconic, .menuitem-iconic)) {
     padding-inline-start: var(--panel-item-indent-base) !important;
@@ -93,16 +103,6 @@
     & > label {
         padding-inline-start: var(--icon-gap) !important;
     }
-}
-
-/** 显示 addMenu 菜单图标 */
-:is(#contentAreaContextMenu, #tabContextMenu)[photoncompact="true"]:not([needsgutter])>.addMenu:is(menu, menuitem)> :is(.menu-iconic-left, .menu-icon),
-:is(#contentAreaContextMenu, #tabContextMenu)[photoncompact="true"]:not([needsgutter])>menugroup.addMenu>.addMenu.showText> :is(.menu-iconic-left, .menu-icon),
-:is(#contentAreaContextMenu, #tabContextMenu)[photoncompact="true"]:not([needsgutter])>menugroup.addMenu.showText>.addMenu> :is(.menu-iconic-left, .menu-icon),
-:is(#contentAreaContextMenu, #tabContextMenu)[photoncompact="true"]:not([needsgutter])>menugroup.addMenu.showFirstText>.menuitem-iconic:first-child> :is(.menu-iconic-left, .menu-icon),
-#tabContextMenu[photoncompact="true"] #OpenWithHelper-Tab-Menu> :is(.menu-iconic-left, .menu-icon) {
-    visibility: visible !important;
-    display: flex !important;
 }
 
 @media (-moz-platform: windows) {
