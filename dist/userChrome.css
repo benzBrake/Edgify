@@ -702,6 +702,7 @@ findbar[hidden] {
 :root menupopup,
 :root panel {
   --menuitem-padding-inline: 1em;
+  --arrowpanel-menuitem-padding-inline: 1em;
   --icon-pre-padding: var(--menuitem-padding-inline);
   --icon-gap: 8px;
   --icon-size: 16px;
@@ -752,14 +753,25 @@ findbar[hidden] {
   padding-inline-start: var(--panel-item-indent-base) !important;
 }
 
-.PanelUI-subView .subviewbutton:not(#appMenu-fxa-status2):not(.menuitem-iconic):not(.menu-iconic):not(.subviewbutton-iconic):not(.all-tabs-close-button) {
-  padding-inline-start: var(--panel-item-indent-button) !important;
+.subviewbutton > .toolbarbutton-icon {
+  width: var(--icon-size) !important;
+  height: var(--icon-size) !important;
+  margin-inline-end: 0 !important;
+}
+.subviewbutton > .toolbarbutton-text {
+  padding-inline-start: var(--icon-gap) !important;
 }
 
-#PanelUI-bookmarks .subviewbutton:not(#appMenu-fxa-status2):not(.menuitem-iconic):not(.menu-iconic):not(.subviewbutton-iconic),
-#PanelUI-history .subviewbutton:not(#appMenu-fxa-status2):not(.menuitem-iconic):not(.menu-iconic):not(.subviewbutton-iconic),
-#appMenu-popup .PanelUI-subView .subviewbutton:not(#appMenu-fxa-status2):not(.menuitem-iconic):not(.menu-iconic):not(.subviewbutton-iconic) {
-  padding-inline-start: var(--panel-item-indent-app-menu) !important;
+.subviewbutton:has(> image) {
+  /* 我他妈怎么知道有的 subviewbutton 有 .toolbarbutton-icon 和 .toolbarbutton-text, 有的没有 */
+}
+.subviewbutton:has(> image) > image {
+  width: var(--icon-size) !important;
+  height: var(--icon-size) !important;
+  margin-inline-end: 0 !important;
+}
+.subviewbutton:has(> image) > label {
+  padding-inline-start: var(--icon-gap) !important;
 }
 
 /** 显示 addMenu 菜单图标 */
