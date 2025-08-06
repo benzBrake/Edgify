@@ -1,11 +1,15 @@
 {
   "name": "edgify",
   "version": "1.0.0",
-  "description": "Firefox with Subtle Edge-inspired Flair",
+  "description": "A custom Firefox theme that aims to lightly imitate the appearance and user experience of Microsoft Edge",
   "main": "index.js",
   "scripts": {
     "watch": "vite build --watch",
     "build": "vite build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/benzbrake/edgify.git"
   },
   "author": "Ryan",
   "license": "MIT",
