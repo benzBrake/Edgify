@@ -711,8 +711,6 @@ findbar[hidden] {
   --panel-item-indent-button: calc(var(--panel-item-indent-base) - 8px);
   /* 主菜单面板缩进值 (汉堡菜单) */
   --panel-item-indent-app-menu: calc(var(--panel-item-indent-base) - 0px);
-  /* 分隔符末端外边距：用于缩短特定分隔符的长度 */
-  --panel-separator-end-margin: calc(var(--panel-item-indent-base) - 22px);
   --panel-background: Field !important;
   --panel-background: light-dark(#fff, #353d49) !important;
   --panel-color: light-dark(#1c1c1c, #fff) !important;
@@ -785,6 +783,12 @@ findbar[hidden] {
   }
   #context-navigation {
     margin-inline: var(--panel-margin-inline) !important;
+  }
+  menuseparator {
+    padding-inline: 0 !important;
+  }
+  toolbarseparator {
+    margin-inline: 0 !important;
   }
 }
 /* 颜色 */
