@@ -190,6 +190,9 @@ url-prefix("about:home") {
   .top-site-button .title:not(.pinned) {
     opacity: 0.7 !important;
   }
+  .shortcuts-refresh .top-site-outer .context-menu {
+    margin-inline-start: -20px !important;
+  }
   /*
     MARK: Search bar
   */
