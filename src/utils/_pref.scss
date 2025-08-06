@@ -1,39 +1,44 @@
 //
-// 通用、可嵌套的媒体查询 Mixin 框架 (独立查询版)
+// 通用、可嵌套的媒体查询 Mixin 框架 (独立/复合查询版)
 // 作者: AI Assistant
-// 功能: 提供 Option(), NotOption(), OS(), Dark() 和 Any() mixin。
-//      - 嵌套调用时保持独立媒体查询 (不合并条件)
-//      - 保留嵌套结构输出
+// 功能: 提供 Option(), NotOption(), OS(), Dark(), Media(), Any() 等 mixin。
+//      - 各 mixin 可独立使用，生成独立的 @media 规则。
+//      - Media() 和 Any() mixin 可将多个条件组合成单一的 @media 规则。
+//      - 保留嵌套结构输出。
 //
 @use "sass:string";
 @use "sass:list";
 
-// --- 辅助函数 (保持不变) ---
+// --- 辅助函数 ---
 
+// --- F-OS (已更新) ---
 /// @name F-OS
-/// @description 返回一个用于 OS 查询的字符串。
-@function F-OS($os) {
+/// @description 返回一个用于 OS 查询的字符串，可以选择性地否定它。
+/// @param {string} $os - 操作系统名称 (windows/mac/linux)。
+/// @param {boolean} $negate [false] - 如果为 true，则添加 'not' 关键字。
+/// @return {string | null} - 格式化的媒体查询条件，或在 OS 无效时返回 null。
+@function F-OS($os, $negate: false) {
     $platform: null;
     $os-lower: string.to-lower-case($os);
 
     @if $os-lower =="windows" or $os-lower =="win" {
         $platform: "windows";
-    }
-
-    @else if $os-lower =="macos" or $os-lower =="mac" {
+    } @else if $os-lower =="macos" or $os-lower =="mac" {
         $platform: "macos";
-    }
-
-    @else if $os-lower =="linux" {
+    } @else if $os-lower =="linux" {
         $platform: "linux";
-    }
-
-    @else {
+    } @else {
         @warn "未知的操作系统: '#{$os}'。将返回 null。";
         @return null;
     }
 
-    @return "(-moz-platform: #{$platform})";
+    $inner-query: "(-moz-platform: #{$platform})";
+
+    @if $negate {
+        @return "(not #{$inner-query})";
+    } @else {
+        @return $inner-query;
+    }
 }
 
 /// @name F-Light
@@ -53,9 +58,7 @@
 @function F-Option($preference, $value: null) {
     @if $value ==null {
         @return "(-moz-pref(\"#{$preference}\"))";
-    }
-
-    @else {
+    } @else {
         @return "(-moz-pref(\"#{$preference}\", #{$value}))";
     }
 }
@@ -66,18 +69,23 @@
     @return "(not -moz-pref(\"#{$preference}\"))";
 }
 
+/// @name F-Media
+/// @description 返回一个通用的媒体特性查询字符串，可以选择性地否定它。
+/// @param {string} $feature - 媒体特性。
+/// @param {boolean} $negate [false] - 如果为 true，则添加 'not' 关键字。
+@function F-Media($feature, $negate: false) {
+    $inner-query: "(#{$feature})";
+    @if $negate {
+        @return "(not #{$inner-query})";
+    } @else {
+        @return $inner-query;
+    }
+}
 
-// --- 公共 API (修改为独立查询) ---
+
+// --- 公共 API ---
 
 /// @mixin Option
-/// @description 为 -moz-pref 创建独立的媒体查询。
-/// @param {string} $preference - 偏好键名。
-/// @param {any} $value - 可选的值。如果为空，则只检查是否存在该偏好。
-/// @content 要嵌套的样式或其它媒体查询。
-/// @example
-///   @include Option("browser.pref1", true) {
-///     body { color: red; }
-///   }
 @mixin Option($preference, $value: null) {
     @media #{F-Option($preference, $value)} {
         @content;
@@ -85,13 +93,6 @@
 }
 
 /// @mixin NotOption
-/// @description 为 not -moz-pref 创建独立的媒体查询。
-/// @param {string} $preference - 要排除的偏好键名。
-/// @content 要嵌套的样式或其它媒体查询。
-/// @example
-///   @include NotOption("browser.disabled-feature") {
-///     button { display: block; }
-///   }
 @mixin NotOption($preference) {
     @media #{F-NotOption($preference)} {
         @content;
@@ -99,34 +100,18 @@
 }
 
 /// @mixin OS
-/// @description 根据操作系统创建独立的媒体查询。
-/// @param {string} $os - 操作系统名称 (windows/mac/linux)。
-/// @content 要嵌套的样式或其它媒体查询。
-/// @example
-///   @include OS("mac") {
-///     .scrollbar { width: 12px; }
-///   }
 @mixin OS($os) {
     $query: F-OS($os);
-
     @if $query !=null {
         @media #{$query} {
             @content;
         }
-    }
-
-    @else {
-        // 如果返回 null，跳过输出，避免无效语法
+    } @else {
         @warn "OS 查询构建失败，未生成 CSS。";
     }
 }
 
 /// @mixin Light
-/// @content 要嵌套的样式或其它媒体查询。
-/// @example
-///   @include Light {
-///     background: #eee;
-///   }
 @mixin Light() {
     @media #{F-Light()} {
         @content;
@@ -134,63 +119,35 @@
 }
 
 /// @mixin Dark
-/// @description 深色模式下的独立媒体查询。
-/// @content 要嵌套的样式或其它媒体查询。
-/// @example
-///   @include Dark {
-///     background: #111;
-///   }
 @mixin Dark() {
     @media #{F-Dark()} {
         @content;
     }
 }
 
+// --- 复合查询 Mixins ---
+
 /// @mixin Any
-/// @description 将多个媒体查询条件通过 `or` 合并成一个 @media 查询。
-/// @param {arglist} $queries - 一个或多个媒体查询条件字符串，如 F-Dark(), F-OS("mac") 等。
-/// @content 要应用的样式。
-/// @example
-///   @include Any(F-Dark(), F-Light()) {
-///     img { display: block; }
-///   }
-///
-///   @include Any(F-Option("foo"), F-OS("linux")) {
-///     .widget { visibility: hidden; }
-///   }
 @mixin Any($queries...) {
-    // 构造最终的媒体查询：条件之间用 " or " 分隔
-    $query: "";
-
+    $full-query: "";
     @for $i from 1 through list.length($queries) {
         $item: list.nth($queries, $i);
-        $query: $query + if($i > 1, " or ", "") + $item;
+        $full-query: $full-query + if($i > 1, " or ", "") + $item;
     }
-
-    @media #{$query} {
+    @media #{$full-query} {
         @content;
     }
 }
 
-/// @mixin And
-/// @description 将多个媒体查询条件通过 `and` 合并成一个 @media 查询。
-/// @param {arglist} $queries - 一个或多个媒体查询条件字符串，如 F-Dark(), F-OS("mac") 等。
-/// @content 要应用的样式。
-/// @example
-///   // 仅在 macOS 的深色模式下应用样式
-///   @include And(F-Dark(), F-OS("mac")) {
-///     .title-bar { background-color: #333; }
-///   }
+/// @mixin Media
 @mixin And($queries...) {
-    // 构造最终的媒体查询：条件之间用 " and " 分隔
-    $query: "";
-
+    $full-query: "";
     @for $i from 1 through list.length($queries) {
         $item: list.nth($queries, $i);
-        $query: $query + if($i > 1, " and ", "") + $item;
+        $full-query: $full-query + if($i > 1, " and ", "") + $item;
     }
-
-    @media #{$query} {
+    @media #{$full-query} {
         @content;
     }
 }
+

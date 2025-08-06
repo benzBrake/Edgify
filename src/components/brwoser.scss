@@ -1,0 +1,64 @@
+@use '../utils/pref' as *;
+
+/********************************************************************************/
+/* 参考:                                                                         */
+/* https://github.com/QNetITQ/WaveFox                                           */
+/********************************************************************************/
+/* Windows has 1px missing space on top of window, but not when accent colour is
+ * applied to the title bar. */
+@include And(F-OS('win'),
+    F-Media('-moz-windows-accent-color-in-titlebar', $negate: true),
+) {
+    :root[sizemode="normal"][customtitlebar]:not([inFullscreen]) #navigator-toolbox {
+        padding-top: 1px !important;
+    }
+}
+
+/* Add a shadow when the toolbars move over content, eg. in macOS hovering over
+ * the menu bar in fullscreen mode. */
+#navigator-toolbox[style*="transform"] {
+    box-shadow: 0 -3px 5px 3px light-dark(rgb(0 0 0 / .3), rgb(0 0 0 / .6)) !important;
+}
+
+/* Since Firefox 120, when the bookmarks bar is set to only open on new tabs,
+   * the bookmarks bar overlaps the #browser element. */
+
+/* Change the element that shifts the browser content to the correct position. */
+#main-window[BookmarksToolbarOverlapsBrowser] .newTabBrowserPanel,
+#main-window[BookmarksToolbarOverlapsBrowser] #sidebar-box {
+    padding-top: 0 !important;
+    margin-top: 0 !important;
+}
+
+#main-window[BookmarksToolbarOverlapsBrowser] #browser {
+    margin-top: var(--bookmarks-toolbar-overlapping-browser-height);
+}
+
+/* Make sure that the toolbars are not positioned in-front of the browser
+   * element. */
+#main-window[BookmarksToolbarOverlapsBrowser] #navigator-toolbox:not([style*="z-index"]) {
+    z-index: auto !important;
+}
+
+/* Move the browser element in-front of the toolbars when on the new tab page. */
+#main-window:not([BookmarksToolbarOverlapsBrowser]) #browser {
+    z-index: 1 !important;
+}
+
+/* 网页区域圆角 */
+@include Option('sidebar.revamp') {
+    #sidebar-box {
+        padding-bottom: 0 !important;
+    }
+
+    #tabbrowser-tabbox,
+    #tabbrowser-tabpanels,
+    #tabbrowser-tabpanels browser {
+        overflow: hidden !important;
+        border-radius: var(--border-radius-medium) 0 0 var(--border-radius-medium) !important;
+
+        @include NotOption('sidebar.position_start') {
+            border-radius: 0 var(--border-radius-medium) var(--border-radius-medium) 0 !important;
+        }
+    }
+}
