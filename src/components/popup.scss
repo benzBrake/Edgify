@@ -82,34 +82,73 @@
 }
 
 .subviewbutton {
-    & > .toolbarbutton-icon {
+    &>.toolbarbutton-icon {
         width: var(--icon-size) !important;
         height: var(--icon-size) !important;
         margin-inline-end: 0 !important;
     }
 
-    & > .toolbarbutton-text {
+    &>.toolbarbutton-text {
         padding-inline-start: var(--icon-gap) !important;
     }
 }
 
 .subviewbutton:has(>image) {
+
     /* 我他妈怎么知道有的 subviewbutton 有 .toolbarbutton-icon 和 .toolbarbutton-text, 有的没有 */
-    & > image {
+    &>image {
         width: var(--icon-size) !important;
         height: var(--icon-size) !important;
         margin-inline-end: 0 !important;
     }
-    & > label {
+
+    &>label {
         padding-inline-start: var(--icon-gap) !important;
     }
 }
 
+#appMenu-zoom-controls>label {
+    padding-inline-start: var(--icon-gap) !important;
+}
+
+#PanelUI-fxa-menu-syncnow-button>hbox {
+    >image {
+        order: 0 !important;
+        width: var(--icon-size) !important;
+        height: var(--icon-size) !important;
+        visibility: visible !important;
+    }
+
+    >label {
+        order: 1 !important;
+        padding-inline-start: var(--icon-gap) !important;
+    }
+}
+
+#appMenu-zoom-controls {
+    &::before {
+        content: "";
+        display: flex;
+        width: var(--icon-size) !important;
+        height: var(--icon-size) !important;
+        mask-image: var(--menuitem-image) !important;
+        mask-size: var(--icon-size) !important;
+        mask-repeat: no-repeat !important;
+        mask-position: center !important;
+        fill: var(--menuitem-fill, currentColor) !important;
+    }
+}
+
 @media (-moz-platform: windows) {
-    :not(#context-navigation)>:is(menu, menuitem)>.menu-icon {
-        width: var(--icon-size, 16px) !important;
-        height: var(--icon-size, 16px) !important;
-        margin-inline-end: var(--icon-gap) !important;
+    :not(#context-navigation)>:is(menu, menuitem) {
+        &>.menu-icon {
+            width: var(--icon-size, 16px) !important;
+            height: var(--icon-size, 16px) !important;
+            margin-inline-end: 0 !important;
+        }
+        &>.menu-text {
+            padding-inline-start: var(--icon-gap, 8px) !important;
+        }
     }
 
     :is(popup, menupopup) :is(menu, menuitem)>.menu-icon {

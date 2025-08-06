@@ -784,11 +784,41 @@ findbar[hidden] {
   padding-inline-start: var(--icon-gap) !important;
 }
 
+#appMenu-zoom-controls > label {
+  padding-inline-start: var(--icon-gap) !important;
+}
+
+#PanelUI-fxa-menu-syncnow-button > hbox > image {
+  order: 0 !important;
+  width: var(--icon-size) !important;
+  height: var(--icon-size) !important;
+  visibility: visible !important;
+}
+#PanelUI-fxa-menu-syncnow-button > hbox > label {
+  order: 1 !important;
+  padding-inline-start: var(--icon-gap) !important;
+}
+
+#appMenu-zoom-controls::before {
+  content: "";
+  display: flex;
+  width: var(--icon-size) !important;
+  height: var(--icon-size) !important;
+  mask-image: var(--menuitem-image) !important;
+  mask-size: var(--icon-size) !important;
+  mask-repeat: no-repeat !important;
+  mask-position: center !important;
+  fill: var(--menuitem-fill, currentColor) !important;
+}
+
 @media (-moz-platform: windows) {
   :not(#context-navigation) > :is(menu, menuitem) > .menu-icon {
     width: var(--icon-size, 16px) !important;
     height: var(--icon-size, 16px) !important;
-    margin-inline-end: var(--icon-gap) !important;
+    margin-inline-end: 0 !important;
+  }
+  :not(#context-navigation) > :is(menu, menuitem) > .menu-text {
+    padding-inline-start: var(--icon-gap, 8px) !important;
   }
   :is(popup, menupopup) :is(menu, menuitem) > .menu-icon {
     display: flex !important;
