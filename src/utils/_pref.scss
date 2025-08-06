@@ -65,8 +65,12 @@
 
 /// @name F-NotOption
 /// @description 返回一个用于 not -moz-pref 查询的字符串。
-@function F-NotOption($preference) {
-    @return "(not -moz-pref(\"#{$preference}\"))";
+@function F-NotOption($preference, $value: null) {
+    @if $value ==null {
+        @return "(not -moz-pref(\"#{$preference}\"))";
+    } @else {
+        @return "(not -moz-pref(\"#{$preference}\", #{$value}))";
+    }
 }
 
 /// @name F-Media
@@ -93,8 +97,8 @@
 }
 
 /// @mixin NotOption
-@mixin NotOption($preference) {
-    @media #{F-NotOption($preference)} {
+@mixin NotOption($preference, $value: null) {
+    @media #{F-NotOption($preference, $value)} {
         @content;
     }
 }

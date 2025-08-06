@@ -795,9 +795,6 @@ findbar[hidden] {
   --panel-item-indent-base: calc(var(--icon-pre-padding) + var(--icon-size) + var(--icon-gap));
   /* 面板子视图缩进值 (如书签、历史记录面板) */
   --panel-item-indent-button: calc(var(--panel-item-indent-base) - 8px);
-  --panel-background: Field !important;
-  --panel-background: light-dark(#fff, #353d49) !important;
-  --panel-color: light-dark(#1c1c1c, #fff) !important;
   --panel-dimmed: color-mix(in srgb, currentColor 17%, transparent) !important;
   --panel-dimmed-further: color-mix(in srgb, currentColor 30%, transparent) !important;
   --panel-border-radius: 6px;
@@ -805,11 +802,18 @@ findbar[hidden] {
   --panel-border: 1px solid var(--arrowpanel-border-color);
   --panel-margin-block: 4px;
   --panel-margin-inline: 4px;
-  --panel-shadow:
-      0 1px 2px 1px rgba(0, 0, 0, .1),
-      0 1px 5px -3px rgba(0, 0, 0, .1),
-      0 6px 10px 1px rgba(0, 0, 0, .1),
-      0 4px 12px 2px rgba(0, 0, 0, .1);
+  --panel-shadow: 0 1px 2px 1px rgba(0, 0, 0, .1),
+  0 1px 5px -3px rgba(0, 0, 0, .1),
+  0 6px 10px 1px rgba(0, 0, 0, .1),
+  0 4px 12px 2px rgba(0, 0, 0, .1);
+}
+@media not -moz-pref("widget.windows.mica.popups", 2) {
+  :root menupopup,
+  :root panel {
+    --panel-background: Field !important;
+    --panel-background: light-dark(#fff, #353d49) !important;
+    --panel-color: light-dark(#1c1c1c, #fff) !important;
+  }
 }
 :root menu,
 :root menuitem {
