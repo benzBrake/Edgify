@@ -78,8 +78,18 @@
     }
 }
 
-.unified-extensions-item .subviewbutton>.toolbarbutton-icon {
-    padding-inline-end: var(--arrowpanel-menuitem-padding-inline) !important;
+#unified-extensions-panel {
+
+
+    .unified-extensions-item .subviewbutton>.toolbarbutton-icon {
+        --arrowpanel-menuitem-padding-inline: 4px;
+        --arrowpanel-menuitem-padding-block: 4px;
+        padding-inline-end: var(--arrowpanel-menuitem-padding-inline) !important;
+    }
+
+    .unified-extensions-item-row-wrapper>[class^="unified-extensions-item"][data-extensionid] {
+        padding-inline: var(--arrowpanel-menuitem-padding-inline) !important;
+    }
 }
 
 :not(#appMenu-zoom-controls)>.subviewbutton:not(#appMenu-fxa-status2) {

@@ -453,23 +453,6 @@
         outline: none !important;
     }
 
-    /* -------------------- Extensions menu -------------------- */
-
-    #unified-extensions-panel {
-        --uei-icon-size: 24px !important;
-    }
-
-    #unified-extensions-panel .unified-extensions-item {
-        margin-block: 0px !important;
-    }
-
-    #unified-extensions-panel :is(.unified-extensions-item-name,
-        .unified-extensions-item-message-deck > *) {
-        overflow: hidden !important;
-        white-space: nowrap !important;
-        text-overflow: ellipsis !important;
-    }
-
     /* ---------------------------------------- Tab Bar ---------------------------------------- */
 
     #TabsToolbar {

@@ -396,19 +396,6 @@
     box-shadow: none !important;
     outline: none !important;
   }
-  /* -------------------- Extensions menu -------------------- */
-  #unified-extensions-panel {
-    --uei-icon-size: 24px !important;
-  }
-  #unified-extensions-panel .unified-extensions-item {
-    margin-block: 0px !important;
-  }
-  #unified-extensions-panel :is(.unified-extensions-item-name,
-  .unified-extensions-item-message-deck > *) {
-    overflow: hidden !important;
-    white-space: nowrap !important;
-    text-overflow: ellipsis !important;
-  }
   /* ---------------------------------------- Tab Bar ---------------------------------------- */
   #TabsToolbar {
     --toolbarbutton-inner-padding: inherit !important;
@@ -847,8 +834,13 @@ findbar[hidden] {
   padding-inline-start: var(--menuitem-text-padding-start) !important;
 }
 
-.unified-extensions-item .subviewbutton > .toolbarbutton-icon {
+#unified-extensions-panel .unified-extensions-item .subviewbutton > .toolbarbutton-icon {
+  --arrowpanel-menuitem-padding-inline: 4px;
+  --arrowpanel-menuitem-padding-block: 4px;
   padding-inline-end: var(--arrowpanel-menuitem-padding-inline) !important;
+}
+#unified-extensions-panel .unified-extensions-item-row-wrapper > [class^=unified-extensions-item][data-extensionid] {
+  padding-inline: var(--arrowpanel-menuitem-padding-inline) !important;
 }
 
 :not(#appMenu-zoom-controls) > .subviewbutton:not(#appMenu-fxa-status2) {
