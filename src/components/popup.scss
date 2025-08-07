@@ -10,7 +10,7 @@
     panel {
         --popup-padding: var(--popup-padding-block) var(--popup-padding-inline);
         --menuitem-padding-inline: 12px;
-        --menuitem-icon-gap: 0;
+        --menuitem-icon-gap: 0px;
         --menuitem-icon-size: 16px;
         --menuitem-text-padding-start: 8px;
         --menuitem-margin-inline: 4px;
@@ -87,7 +87,6 @@
 #PanelUI-remotetabs-syncnow>hbox>label,
 #appMenu-fxa-label2>vbox>label {
     padding-inline-start: var(--menuitem-text-padding-start) !important;
-
 }
 
 .syncNowBtn {
@@ -123,26 +122,49 @@
 }
 
 @media (-moz-platform: windows) {
+    @media (-moz-windows-non-native-menus) {
+        .menu-right {
+            margin-inline-end: 0 !important;
+            list-style-image: none !important;
+        }
+    }
 
     menu,
     menuitem {
         margin-inline: var(--menuitem-margin-inline) !important;
     }
 
-    :not(#context-navigation)> :is(menu, menuitem):has(>.menu-icon) {
-        padding-inline: var(--menuitem-padding-inline) !important;
+    :not(#context-navigation)> :is(menu, menuitem) {
+        &:has(>:is(.menu-icon, .menu-iconic-left)) {
+            padding-inline: var(--menuitem-padding-inline) !important;
+        }
+
+        &:not(:has(>:is(.menu-icon, .menu-iconic-left))) {
+            &:before {
+                content: "";
+                display: flex;
+                width: var(--menuitem-icon-size);
+                height: var(--menuitem-icon-size);
+                mask-image: var(--menuitem-image);
+                mask-size: var(--menuitem-icon-size);
+                mask-repeat: no-repeat;
+                mask-position: center;
+                fill: var(--menuitem-fill, currentColor);
+                margin-inline-end: var(--menuitem-icon-gap);
+            }
+        }
     }
 
     :not(#context-navigation)>:is(menu, menuitem):not([id^="firefoxbeta_tampermonkey_net"]),
     #firefoxbeta_tampermonkey_net-menuitem-_root {
-        &>.menu-icon {
+        &>:is(.menu-icon, .menu-iconic-left) {
             display: inline-flex !important;
             width: var(--menuitem-icon-size) !important;
             height: var(--menuitem-icon-size) !important;
             margin-inline-end: var(--menuitem-icon-gap) !important;
         }
 
-        &>.menu-text {
+        &>:is(.menu-text, .menu-iconic-text) {
             padding-inline-start: var(--menuitem-text-padding-start) !important;
         }
     }
