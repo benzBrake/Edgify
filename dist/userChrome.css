@@ -897,6 +897,10 @@ panelview {
   }
 }
 @media (-moz-platform: windows) {
+  menupopup[needsgutter] menu:not([icon], .menu-iconic),
+  menupopup[needsgutter] menuitem:not([checked=true], [icon], .menuitem-iconic) {
+    padding-inline-start: var(--menuitem-padding-inline) !important;
+  }
   menu,
   menuitem {
     margin-inline: var(--menuitem-margin-inline) !important;
