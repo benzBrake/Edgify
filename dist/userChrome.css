@@ -554,11 +554,13 @@
 }
 
 #urlbar-background,
+.urlbar-background,
 #searchbar {
   border-radius: calc(var(--urlbar-icon-border-radius) + 2px) !important;
   /* Appearance when the URL bar is expanded. */
 }
 #urlbar[open] #urlbar-background,
+#urlbar[open] .urlbar-background,
 #urlbar[open] #searchbar {
   border-radius: var(--uc-urlbar-open-border-radius) !important;
   border-color: transparent !important;
@@ -566,6 +568,7 @@
   outline: 0.5px solid var(--arrowpanel-border-color) !important;
 }
 :root:not([lwtheme]) #urlbar[open] #urlbar-background,
+:root:not([lwtheme]) #urlbar[open] .urlbar-background,
 :root:not([lwtheme]) #urlbar[open] #searchbar {
   outline-color: var(--panel-separator-color) !important;
 }
