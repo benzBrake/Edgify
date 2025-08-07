@@ -811,6 +811,10 @@ findbar[hidden] {
   display: flex !important;
 }
 
+panelview {
+  --panel-subview-body-padding: 4px;
+}
+
 /* 调整缩进 */
 .subviewbutton > .toolbarbutton-icon {
   width: var(--menuitem-icon-size) !important;
@@ -882,6 +886,10 @@ findbar[hidden] {
   margin-inline-end: var(--menuitem-icon-gap) !important;
 }
 
+#appMenu-fxa-status2:not([fxastatus=signedin], [fxastatus=unverified], [fxastatus=login-failed]) {
+  margin-inline: 0 !important;
+}
+
 @media (-moz-platform: windows) and (-moz-windows-non-native-menus) {
   .menu-right {
     margin-inline-end: 0 !important;
@@ -943,12 +951,6 @@ menulist > menupopup > menucaption {
   border: 0 !important;
 }
 
-.popup-internal-box,
-#PopupSearchAutoComplete > *,
-.menupopup-arrowscrollbox {
-  background: var(--panel-background) !important;
-}
-
 @media (prefers-color-scheme: dark) {
   /* 深色模式菜单背景颜色 */
   panel[type=autocomplete-richlistbox],
@@ -965,7 +967,7 @@ menupopup,
 /* themes a menupopup (or other root level / shadow dom popup) as a panel */
 /* Mozilla's use of shadow dom means we can't use a menupopup > .popup-internal-box */
 .popup-internal-box,
-#PopupAutoComplete > .autocomplete-richlistbox,
+#PopupAutoComplete > *,
 .menupopup-arrowscrollbox {
   background: var(--panel-background) !important;
   border-radius: var(--panel-border-radius) !important;
@@ -974,15 +976,10 @@ menupopup,
 }
 @media (-moz-pref("widget.windows.mica")) {
   .popup-internal-box,
-  #PopupAutoComplete > .autocomplete-richlistbox,
+  #PopupAutoComplete > *,
   .menupopup-arrowscrollbox {
     border: 0 !important;
   }
-}
-
-.popup-internal-box,
-.menupopup-arrowscrollbox {
-  border: var(--panel-border) !important;
 }
 
 #PopupSearchAutoComplete > * {
