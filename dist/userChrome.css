@@ -786,15 +786,13 @@ findbar[hidden] {
 /********************************************************************************/
 :root menupopup,
 :root panel {
-  --menuitem-padding-inline: 1em;
-  --arrowpanel-menuitem-padding-inline: 1em;
-  --icon-pre-padding: var(--menuitem-padding-inline);
-  --icon-gap: 8px;
-  --icon-size: 16px;
-  /* 基础缩进值：用于对齐没有图标的菜单项 */
-  --panel-item-indent-base: calc(var(--icon-pre-padding) + var(--icon-size) + var(--icon-gap));
-  /* 面板子视图缩进值 (如书签、历史记录面板) */
-  --panel-item-indent-button: calc(var(--panel-item-indent-base) - 8px);
+  --popup-padding: var(--popup-padding-block) var(--popup-padding-inline);
+  --menuitem-padding-inline: 12px;
+  --menuitem-icon-gap: 0;
+  --menuitem-icon-size: 16px;
+  --menuitem-text-padding-start: 8px;
+  --menuitem-margin-inline: 4px;
+  --menuitem-padding-start-without-icon: calc(var(--menuitem-padding-inline) + var(--menuitem-icon-size) + var(--menuitem-icon-gap) + var(--menuitem-text-padding-start));
   --panel-dimmed: color-mix(in srgb, currentColor 17%, transparent) !important;
   --panel-dimmed-further: color-mix(in srgb, currentColor 30%, transparent) !important;
   --panel-border-radius: 6px;
@@ -815,25 +813,6 @@ findbar[hidden] {
     --panel-color: light-dark(#1c1c1c, #fff) !important;
   }
 }
-:root menu,
-:root menuitem {
-  --menuitem-padding: .5em var(--menuitem-padding-inline) !important;
-  --menuitem-margin: 0 4px !important;
-}
-:root[uidensity=compact] menupopup,
-:root[uidensity=compact] panel {
-  --menuitem-padding-inline: 8px;
-  --panel-item-indent-button: calc(var(--panel-item-indent-base) - 4px);
-  --panel-border-radius: 4px;
-  --panel-list-border-radius: 3px;
-  --panel-margin-block: 2px;
-  --panel-margin-inline: 2px;
-  --icon-gap: 6px;
-}
-:root[uidensity=compact] menu,
-:root[uidensity=compact] menuitem {
-  --menuitem-margin: 0 2px !important;
-}
 
 /** 显示 addMenu 菜单图标 */
 :is(#contentAreaContextMenu, #tabContextMenu)[photoncompact=true]:not([needsgutter]) > .addMenu:is(menu, menuitem) > :is(.menu-iconic-left, .menu-icon),
@@ -845,53 +824,50 @@ findbar[hidden] {
   display: flex !important;
 }
 
-/** Tampermonkey 子菜单一般有 emoji 图标 */
-:is(menu, menuitem)[id^=firefoxbeta_tampermonkey_net]:not([id=firefoxbeta_tampermonkey_net-menuitem-_root]) > .menu-icon {
-  display: none !important;
-}
-:is(menu, menuitem)[id^=firefoxbeta_tampermonkey_net]:not([id=firefoxbeta_tampermonkey_net-menuitem-_root]) > .menu-text {
-  padding-inline-start: 0 !important;
-}
-
 /* 调整缩进 */
-:is(popup, menupopup)[type=arrow] :is(menu, menuitem):not(:is([checked], .menu-iconic, .menuitem-iconic)) {
-  padding-inline-start: var(--panel-item-indent-base) !important;
-}
-
 .subviewbutton > .toolbarbutton-icon {
-  width: var(--icon-size) !important;
-  height: var(--icon-size) !important;
-  margin-inline-end: 0 !important;
+  width: var(--menuitem-icon-size) !important;
+  height: var(--menuitem-icon-size) !important;
+  margin-inline-end: var(--menuitem-icon-gap) !important;
+  padding-inline-end: 0 !important;
 }
 .subviewbutton > .toolbarbutton-text {
-  padding-inline-start: var(--icon-gap) !important;
+  margin-inline-start: 0 !important;
+  padding-inline-start: var(--menuitem-text-padding-start) !important;
 }
-
 .subviewbutton:has(> image) {
   /* 我他妈怎么知道有的 subviewbutton 有 .toolbarbutton-icon 和 .toolbarbutton-text, 有的没有 */
 }
 .subviewbutton:has(> image) > image {
-  width: var(--icon-size) !important;
-  height: var(--icon-size) !important;
-  margin-inline-end: 0 !important;
+  width: var(--menuitem-icon-size) !important;
+  height: var(--menuitem-icon-size) !important;
+  margin-inline-end: var(--menuitem-icon-gap) !important;
 }
 .subviewbutton:has(> image) > label {
-  padding-inline-start: var(--icon-gap) !important;
+  padding-inline-start: var(--menuitem-text-padding-start) !important;
 }
 
-#appMenu-zoom-controls > label {
-  padding-inline-start: 0 !important;
+:not(#appMenu-zoom-controls) > .subviewbutton:not(#appMenu-fxa-status2) {
+  margin-inline: var(--menuitem-margin-inline) !important;
+}
+
+#fxa-manage-account-button > vbox > label,
+#PanelUI-fxa-menu-syncnow-button > hbox > label,
+#PanelUI-remotetabs-syncnow > hbox > label,
+#appMenu-fxa-label2 > vbox > label {
+  padding-inline-start: var(--menuitem-text-padding-start) !important;
+}
+
+.syncNowBtn {
+  visibility: visible !important;
 }
 
 #PanelUI-fxa-menu-syncnow-button > hbox > image {
   order: 0 !important;
-  width: var(--icon-size) !important;
-  height: var(--icon-size) !important;
-  visibility: visible !important;
-}
-#PanelUI-fxa-menu-syncnow-button > hbox > label {
-  order: 1 !important;
-  padding-inline-start: var(--icon-gap) !important;
+  width: var(--menuitem-icon-size) !important;
+  height: var(--menuitem-icon-size) !important;
+  margin-inline-end: var(--menuitem-icon-gap) !important;
+  padding-inline-end: 0 !important;
 }
 
 #appMenu-zoom-controls::before,
@@ -900,33 +876,34 @@ findbar[hidden] {
 #fxa-manage-account-button::before {
   content: "";
   display: flex;
-  width: var(--icon-size) !important;
-  height: var(--icon-size) !important;
+  width: var(--menuitem-icon-size) !important;
+  height: var(--menuitem-icon-size) !important;
   mask-image: var(--menuitem-image) !important;
-  mask-size: var(--icon-size) !important;
+  mask-size: var(--menuitem-icon-size) !important;
   mask-repeat: no-repeat !important;
   mask-position: center !important;
   fill: var(--menuitem-fill, currentColor) !important;
-  margin-inline-end: var(--icon-gap) !important;
+  margin-inline-end: var(--menuitem-icon-gap) !important;
 }
 
 @media (-moz-platform: windows) {
-  :not(#context-navigation) > :is(menu, menuitem) > .menu-icon {
-    width: var(--icon-size, 16px) !important;
-    height: var(--icon-size, 16px) !important;
-    margin-inline-end: 0 !important;
+  menu,
+  menuitem {
+    margin-inline: var(--menuitem-margin-inline) !important;
   }
-  :not(#context-navigation) > :is(menu, menuitem) > .menu-text {
-    padding-inline-start: var(--icon-gap, 8px) !important;
+  :not(#context-navigation) > :is(menu, menuitem):has(> .menu-icon) {
+    padding-inline: var(--menuitem-padding-inline) !important;
   }
-  :is(popup, menupopup) :is(menu, menuitem) > .menu-icon {
-    display: flex !important;
+  :not(#context-navigation) > :is(menu, menuitem):not([id^=firefoxbeta_tampermonkey_net]) > .menu-icon,
+  #firefoxbeta_tampermonkey_net-menuitem-_root > .menu-icon {
+    display: inline-flex !important;
+    width: var(--menuitem-icon-size) !important;
+    height: var(--menuitem-icon-size) !important;
+    margin-inline-end: var(--menuitem-icon-gap) !important;
   }
-  #context-navigation {
-    margin-inline: var(--panel-margin-inline) !important;
-  }
-  menuseparator {
-    padding-inline: 0 !important;
+  :not(#context-navigation) > :is(menu, menuitem):not([id^=firefoxbeta_tampermonkey_net]) > .menu-text,
+  #firefoxbeta_tampermonkey_net-menuitem-_root > .menu-text {
+    padding-inline-start: var(--menuitem-text-padding-start) !important;
   }
   toolbarseparator {
     margin-inline: 0 !important;

@@ -8,16 +8,13 @@
 
     menupopup,
     panel {
-        --menuitem-padding-inline: 1em;
-        --arrowpanel-menuitem-padding-inline: 1em;
-        --icon-pre-padding: var(--menuitem-padding-inline);
-        --icon-gap: 8px;
-        --icon-size: 16px;
-        /* 基础缩进值：用于对齐没有图标的菜单项 */
-        --panel-item-indent-base: calc(var(--icon-pre-padding) + var(--icon-size) + var(--icon-gap));
-
-        /* 面板子视图缩进值 (如书签、历史记录面板) */
-        --panel-item-indent-button: calc(var(--panel-item-indent-base) - 8px);
+        --popup-padding: var(--popup-padding-block) var(--popup-padding-inline);
+        --menuitem-padding-inline: 12px;
+        --menuitem-icon-gap: 0;
+        --menuitem-icon-size: 16px;
+        --menuitem-text-padding-start: 8px;
+        --menuitem-margin-inline: 4px;
+        --menuitem-padding-start-without-icon: calc(var(--menuitem-padding-inline) + var(--menuitem-icon-size) + var(--menuitem-icon-gap) + var(--menuitem-text-padding-start));
 
         @include NotOption("widget.windows.mica.popups", 2) {
             --panel-background: Field !important;
@@ -38,31 +35,6 @@
         0 6px 10px 1px rgba(0, 0, 0, .1),
         0 4px 12px 2px rgba(0, 0, 0, .1);
     }
-
-    menu,
-    menuitem {
-        --menuitem-padding: .5em var(--menuitem-padding-inline) !important;
-        --menuitem-margin: 0 4px !important;
-    }
-
-    &[uidensity="compact"] {
-
-        menupopup,
-        panel {
-            --menuitem-padding-inline: 8px;
-            --panel-item-indent-button: calc(var(--panel-item-indent-base) - 4px);
-            --panel-border-radius: 4px;
-            --panel-list-border-radius: 3px;
-            --panel-margin-block: 2px;
-            --panel-margin-inline: 2px;
-            --icon-gap: 6px;
-        }
-
-        menu,
-        menuitem {
-            --menuitem-margin: 0 2px !important;
-        }
-    }
 }
 
 /** 显示 addMenu 菜单图标 */
@@ -75,63 +47,60 @@
     display: flex !important;
 }
 
-/** Tampermonkey 子菜单一般有 emoji 图标 */
-:is(menu, menuitem)[id^="firefoxbeta_tampermonkey_net"]:not([id="firefoxbeta_tampermonkey_net-menuitem-_root"]) {
-    &>.menu-icon {
-        display: none !important;
-    }
-
-    &>.menu-text {
-        padding-inline-start: 0 !important;
-    }
-}
-
 /* 调整缩进 */
-:is(popup, menupopup)[type=arrow] :is(menu, menuitem):not(:is([checked], .menu-iconic, .menuitem-iconic)) {
-    padding-inline-start: var(--panel-item-indent-base) !important;
-}
 
 .subviewbutton {
+
     &>.toolbarbutton-icon {
-        width: var(--icon-size) !important;
-        height: var(--icon-size) !important;
-        margin-inline-end: 0 !important;
+        width: var(--menuitem-icon-size) !important;
+        height: var(--menuitem-icon-size) !important;
+        margin-inline-end: var(--menuitem-icon-gap) !important;
+        padding-inline-end: 0 !important;
     }
 
     &>.toolbarbutton-text {
-        padding-inline-start: var(--icon-gap) !important;
+        margin-inline-start: 0 !important;
+        padding-inline-start: var(--menuitem-text-padding-start) !important;
+    }
+
+    &:has(>image) {
+
+        /* 我他妈怎么知道有的 subviewbutton 有 .toolbarbutton-icon 和 .toolbarbutton-text, 有的没有 */
+        &>image {
+            width: var(--menuitem-icon-size) !important;
+            height: var(--menuitem-icon-size) !important;
+            margin-inline-end: var(--menuitem-icon-gap) !important;
+        }
+
+        &>label {
+            padding-inline-start: var(--menuitem-text-padding-start) !important;
+        }
     }
 }
 
-.subviewbutton:has(>image) {
-
-    /* 我他妈怎么知道有的 subviewbutton 有 .toolbarbutton-icon 和 .toolbarbutton-text, 有的没有 */
-    &>image {
-        width: var(--icon-size) !important;
-        height: var(--icon-size) !important;
-        margin-inline-end: 0 !important;
-    }
-
-    &>label {
-        padding-inline-start: var(--icon-gap) !important;
-    }
+:not(#appMenu-zoom-controls)>.subviewbutton:not(#appMenu-fxa-status2) {
+    margin-inline: var(--menuitem-margin-inline) !important;
 }
 
-#appMenu-zoom-controls>label {
-    padding-inline-start: 0 !important;
+#fxa-manage-account-button>vbox>label,
+#PanelUI-fxa-menu-syncnow-button>hbox>label,
+#PanelUI-remotetabs-syncnow>hbox>label,
+#appMenu-fxa-label2>vbox>label {
+    padding-inline-start: var(--menuitem-text-padding-start) !important;
+
+}
+
+.syncNowBtn {
+    visibility: visible !important;
 }
 
 #PanelUI-fxa-menu-syncnow-button>hbox {
     >image {
         order: 0 !important;
-        width: var(--icon-size) !important;
-        height: var(--icon-size) !important;
-        visibility: visible !important;
-    }
-
-    >label {
-        order: 1 !important;
-        padding-inline-start: var(--icon-gap) !important;
+        width: var(--menuitem-icon-size) !important;
+        height: var(--menuitem-icon-size) !important;
+        margin-inline-end: var(--menuitem-icon-gap) !important;
+        padding-inline-end: 0 !important;
     }
 }
 
@@ -142,40 +111,40 @@
     &::before {
         content: "";
         display: flex;
-        width: var(--icon-size) !important;
-        height: var(--icon-size) !important;
+        width: var(--menuitem-icon-size) !important;
+        height: var(--menuitem-icon-size) !important;
         mask-image: var(--menuitem-image) !important;
-        mask-size: var(--icon-size) !important;
+        mask-size: var(--menuitem-icon-size) !important;
         mask-repeat: no-repeat !important;
         mask-position: center !important;
         fill: var(--menuitem-fill, currentColor) !important;
-        margin-inline-end: var(--icon-gap) !important;
+        margin-inline-end: var(--menuitem-icon-gap) !important;
     }
 }
 
 @media (-moz-platform: windows) {
-    :not(#context-navigation)>:is(menu, menuitem) {
+
+    menu,
+    menuitem {
+        margin-inline: var(--menuitem-margin-inline) !important;
+    }
+
+    :not(#context-navigation)> :is(menu, menuitem):has(>.menu-icon) {
+        padding-inline: var(--menuitem-padding-inline) !important;
+    }
+
+    :not(#context-navigation)>:is(menu, menuitem):not([id^="firefoxbeta_tampermonkey_net"]),
+    #firefoxbeta_tampermonkey_net-menuitem-_root {
         &>.menu-icon {
-            width: var(--icon-size, 16px) !important;
-            height: var(--icon-size, 16px) !important;
-            margin-inline-end: 0 !important;
+            display: inline-flex !important;
+            width: var(--menuitem-icon-size) !important;
+            height: var(--menuitem-icon-size) !important;
+            margin-inline-end: var(--menuitem-icon-gap) !important;
         }
 
         &>.menu-text {
-            padding-inline-start: var(--icon-gap, 8px) !important;
+            padding-inline-start: var(--menuitem-text-padding-start) !important;
         }
-    }
-
-    :is(popup, menupopup) :is(menu, menuitem)>.menu-icon {
-        display: flex !important;
-    }
-
-    #context-navigation {
-        margin-inline: var(--panel-margin-inline) !important;
-    }
-
-    menuseparator {
-        padding-inline: 0 !important;
     }
 
     toolbarseparator {
