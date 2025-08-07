@@ -788,9 +788,9 @@ findbar[hidden] {
 :root panel {
   --popup-padding: var(--popup-padding-block) var(--popup-padding-inline);
   --menuitem-padding-inline: 12px;
-  --menuitem-icon-gap: 0px;
+  --menuitem-icon-gap: 8px;
   --menuitem-icon-size: 16px;
-  --menuitem-text-padding-start: 8px;
+  --menuitem-text-padding-start: 0px;
   --menuitem-margin-inline: 4px;
   --menuitem-padding-start-without-icon: calc(var(--menuitem-padding-inline) + var(--menuitem-icon-size) + var(--menuitem-icon-gap) + var(--menuitem-text-padding-start));
   --panel-dimmed: color-mix(in srgb, currentColor 17%, transparent) !important;
@@ -845,6 +845,10 @@ findbar[hidden] {
 }
 .subviewbutton:has(> image) > label {
   padding-inline-start: var(--menuitem-text-padding-start) !important;
+}
+
+.unified-extensions-item .subviewbutton > .toolbarbutton-icon {
+  padding-inline-end: var(--arrowpanel-menuitem-padding-inline) !important;
 }
 
 :not(#appMenu-zoom-controls) > .subviewbutton:not(#appMenu-fxa-status2) {
