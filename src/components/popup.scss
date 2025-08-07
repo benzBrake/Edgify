@@ -13,7 +13,7 @@
         --menuitem-icon-gap: 8px;
         --menuitem-icon-size: 16px;
         --menuitem-text-padding-start: 0px;
-        --menuitem-margin-inline: 4px;
+        --menuitem-margin-inline: 0px;
         --menuitem-padding-start-without-icon: calc(var(--menuitem-padding-inline) + var(--menuitem-icon-size) + var(--menuitem-icon-gap) + var(--menuitem-text-padding-start));
 
         @include NotOption("widget.windows.mica.popups", 2) {
@@ -78,7 +78,7 @@
     }
 }
 
-.unified-extensions-item .subviewbutton > .toolbarbutton-icon {
+.unified-extensions-item .subviewbutton>.toolbarbutton-icon {
     padding-inline-end: var(--arrowpanel-menuitem-padding-inline) !important;
 }
 
@@ -204,10 +204,6 @@ menulist>menupopup>menucaption {
     background: var(--panel-background) !important;
 }
 
-.menupopup-arrowscrollbox {
-    background: var(--panel-background) !important;
-}
-
 @include Dark {
 
     /* 深色模式菜单背景颜色 */
@@ -229,8 +225,14 @@ menupopup,
 #PopupAutoComplete>.autocomplete-richlistbox,
 .menupopup-arrowscrollbox {
     background: var(--panel-background) !important;
-    border: 1px solid var(--panel-border-color) !important;
-    padding: var(--panel-margin-block) 0 !important;
+    border-radius: var(--panel-border-radius) !important;
+    border: 1px solid transparent !important;
+
+    @include Option("widget.windows.mica") {
+        border: 0 !important;
+    }
+
+    padding: 0 !important;
 }
 
 .popup-internal-box,

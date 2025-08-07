@@ -791,7 +791,7 @@ findbar[hidden] {
   --menuitem-icon-gap: 8px;
   --menuitem-icon-size: 16px;
   --menuitem-text-padding-start: 0px;
-  --menuitem-margin-inline: 4px;
+  --menuitem-margin-inline: 0px;
   --menuitem-padding-start-without-icon: calc(var(--menuitem-padding-inline) + var(--menuitem-icon-size) + var(--menuitem-icon-gap) + var(--menuitem-text-padding-start));
   --panel-dimmed: color-mix(in srgb, currentColor 17%, transparent) !important;
   --panel-dimmed-further: color-mix(in srgb, currentColor 30%, transparent) !important;
@@ -957,10 +957,6 @@ menulist > menupopup > menucaption {
   background: var(--panel-background) !important;
 }
 
-.menupopup-arrowscrollbox {
-  background: var(--panel-background) !important;
-}
-
 @media (prefers-color-scheme: dark) {
   /* 深色模式菜单背景颜色 */
   panel[type=autocomplete-richlistbox],
@@ -980,8 +976,16 @@ menupopup,
 #PopupAutoComplete > .autocomplete-richlistbox,
 .menupopup-arrowscrollbox {
   background: var(--panel-background) !important;
-  border: 1px solid var(--panel-border-color) !important;
-  padding: var(--panel-margin-block) 0 !important;
+  border-radius: var(--panel-border-radius) !important;
+  border: 1px solid transparent !important;
+  padding: 0 !important;
+}
+@media (-moz-pref("widget.windows.mica")) {
+  .popup-internal-box,
+  #PopupAutoComplete > .autocomplete-richlistbox,
+  .menupopup-arrowscrollbox {
+    border: 0 !important;
+  }
 }
 
 .popup-internal-box,
