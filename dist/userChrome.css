@@ -576,8 +576,7 @@
 .urlbar-page-action,
 #urlbar-go-button,
 .search-go-button,
-#tracking-protection-icon-container,
-#identity-icon-box {
+#tracking-protection-icon-container {
   padding-inline: var(--uc-urlbar-icon-inline-padding) !important;
   width: calc(var(--uc-urlbar-icon-inline-padding) * 2 + 16px) !important;
 }
