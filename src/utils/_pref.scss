@@ -23,11 +23,17 @@
 
     @if $os-lower =="windows" or $os-lower =="win" {
         $platform: "windows";
-    } @else if $os-lower =="macos" or $os-lower =="mac" {
+    }
+
+    @else if $os-lower =="macos" or $os-lower =="mac" {
         $platform: "macos";
-    } @else if $os-lower =="linux" {
+    }
+
+    @else if $os-lower =="linux" {
         $platform: "linux";
-    } @else {
+    }
+
+    @else {
         @warn "未知的操作系统: '#{$os}'。将返回 null。";
         @return null;
     }
@@ -36,7 +42,9 @@
 
     @if $negate {
         @return "(not #{$inner-query})";
-    } @else {
+    }
+
+    @else {
         @return $inner-query;
     }
 }
@@ -58,8 +66,10 @@
 @function F-Option($preference, $value: null) {
     @if $value ==null {
         @return "(-moz-pref(\"#{$preference}\"))";
-    } @else {
-        @return "(-moz-pref(\"#{$preference}\", #{$value}))";
+    }
+
+    @else {
+        @return "(-moz-pref(\"#{$preference}\", #{inspect($value)}))";
     }
 }
 
@@ -68,8 +78,10 @@
 @function F-NotOption($preference, $value: null) {
     @if $value ==null {
         @return "(not -moz-pref(\"#{$preference}\"))";
-    } @else {
-        @return "(not -moz-pref(\"#{$preference}\", #{$value}))";
+    }
+
+    @else {
+        @return "(not -moz-pref(\"#{$preference}\", #{inspect($value)}))";
     }
 }
 
@@ -79,9 +91,12 @@
 /// @param {boolean} $negate [false] - 如果为 true，则添加 'not' 关键字。
 @function F-Media($feature, $negate: false) {
     $inner-query: "(#{$feature})";
+
     @if $negate {
         @return "(not #{$inner-query})";
-    } @else {
+    }
+
+    @else {
         @return $inner-query;
     }
 }
@@ -106,11 +121,14 @@
 /// @mixin OS
 @mixin OS($os) {
     $query: F-OS($os);
+
     @if $query !=null {
         @media #{$query} {
             @content;
         }
-    } @else {
+    }
+
+    @else {
         @warn "OS 查询构建失败，未生成 CSS。";
     }
 }
@@ -134,10 +152,12 @@
 /// @mixin Any
 @mixin Any($queries...) {
     $full-query: "";
+
     @for $i from 1 through list.length($queries) {
         $item: list.nth($queries, $i);
         $full-query: $full-query + if($i > 1, " or ", "") + $item;
     }
+
     @media #{$full-query} {
         @content;
     }
@@ -146,12 +166,13 @@
 /// @mixin Media
 @mixin And($queries...) {
     $full-query: "";
+
     @for $i from 1 through list.length($queries) {
         $item: list.nth($queries, $i);
         $full-query: $full-query + if($i > 1, " and ", "") + $item;
     }
+
     @media #{$full-query} {
         @content;
     }
 }
-

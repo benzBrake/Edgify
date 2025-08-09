@@ -59,12 +59,6 @@
     border-radius: 0 var(--border-radius-medium) var(--border-radius-medium) 0 !important;
   }
 }
-@media (-moz-pref("widget.windows.mica")) {
-  #navigator-toolbox {
-    --toolbar-color: light-dark(rgb(21, 20, 26), rgb(251, 251, 254));
-    --toolbar-bgcolor: light-dark(#f9f9fb, rgb(43, 42, 51));
-  }
-}
 /********************************************************************************/
 /* 参考:                                                                         */
 /* https://github.com/QNetITQ/WaveFox                                           */
@@ -87,7 +81,7 @@
     opacity: 1 !important;
   }
   /* ---------------------------------------- Tabs ---------------------------------------- */
-  @media (-moz-pref("extensions.activeThemeID", default-theme@mozilla.org)) or (-moz-pref("extensions.activeThemeID", firefox-compact-light@mozilla.org)) or (-moz-pref("extensions.activeThemeID", firefox-compact-dark@mozilla.org)) {
+  @media (-moz-pref("extensions.activeThemeID", "default-theme@mozilla.org")) or (-moz-pref("extensions.activeThemeID", "firefox-compact-light@mozilla.org")) or (-moz-pref("extensions.activeThemeID", "firefox-compact-dark@mozilla.org")) {
     .tabbrowser-tab[visuallyselected] .tab-background {
       background-color: var(--toolbar-bgcolor) !important;
     }
@@ -131,7 +125,7 @@
     border: none !important;
   }
   /* ---------------------------------------- Tabs ---------------------------------------- */
-  @media (-moz-pref("extensions.activeThemeID", default-theme@mozilla.org)) or (-moz-pref("extensions.activeThemeID", firefox-compact-light@mozilla.org)) or (-moz-pref("extensions.activeThemeID", firefox-compact-dark@mozilla.org)) {
+  @media (-moz-pref("extensions.activeThemeID", "default-theme@mozilla.org")) or (-moz-pref("extensions.activeThemeID", "firefox-compact-light@mozilla.org")) or (-moz-pref("extensions.activeThemeID", "firefox-compact-dark@mozilla.org")) {
     .tabbrowser-tab[visuallyselected] .tab-background {
       background-color: transparent !important;
       background-image: linear-gradient(to bottom, var(--tab-selected-bgcolor), var(--toolbar-bgcolor)) !important;
@@ -457,7 +451,7 @@
     --separators-color-saturation: 0.5;
   }
   /* ---------------------------------------- Shadows ---------------------------------------- */
-  @media (-moz-pref("extensions.activeThemeID", default-theme@mozilla.org)) or (-moz-pref("extensions.activeThemeID", firefox-compact-light@mozilla.org)) or (-moz-pref("extensions.activeThemeID", firefox-compact-dark@mozilla.org)) {
+  @media (-moz-pref("extensions.activeThemeID", "default-theme@mozilla.org")) or (-moz-pref("extensions.activeThemeID", "firefox-compact-light@mozilla.org")) or (-moz-pref("extensions.activeThemeID", "firefox-compact-dark@mozilla.org")) {
     :root {
       --wavefox-selected-tab-filter-offset-x: 0px;
       --wavefox-selected-tab-filter-offset-y: 0px;
@@ -515,12 +509,12 @@
   }
   /* ---------- Opaque toolbar ---------- */
 }
-@media (-moz-pref("sidebar.verticalTabs", false)) and (-moz-platform: windows) and (-moz-pref("widget.windows.mica")) and (-moz-pref("extensions.activeThemeID", default-theme@mozilla.org)) and (-moz-pref("browser.tabs.inTitlebar", 1)) {
+@media (-moz-pref("sidebar.verticalTabs", false)) and (-moz-platform: windows) and (-moz-pref("widget.windows.mica")) and (-moz-pref("extensions.activeThemeID", "default-theme@mozilla.org")) and (-moz-pref("browser.tabs.inTitlebar", 1)) {
   :root {
     --toolbar-bgcolor: light-dark(#f9f9fb, rgb(43, 42, 51)) !important;
   }
 }
-@media (-moz-pref("sidebar.verticalTabs", false)) and (-moz-pref("extensions.activeThemeID", default-theme@mozilla.org)) and (-moz-pref("browser.tabs.inTitlebar", 1)) {
+@media (-moz-pref("sidebar.verticalTabs", false)) and (-moz-pref("extensions.activeThemeID", "default-theme@mozilla.org")) and (-moz-pref("browser.tabs.inTitlebar", 1)) {
   :root {
     --wavefox-selected-tab-filter: none !important;
     --wavefox-selected-tab-shadow: none !important;
