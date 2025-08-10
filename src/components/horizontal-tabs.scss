@@ -25,7 +25,7 @@
         .browser-titlebar {
             will-change: auto !important;
             transition: none !important;
-            opacity: 1 !important;
+            // opacity: 1 !important;
         }
     }
 
@@ -108,7 +108,7 @@
         overflow-clip-margin: var(--tab-first-last-inline-margin) !important;
         padding-inline: 0px !important;
 
-        tab-group[collapsed]>& {
+        tab-group[collapsed]>&:not([visuallyselected]) {
             --tab-first-last-inline-margin: 0px;
         }
 
@@ -167,7 +167,7 @@
     }
 
     .tab-group-label-container {
-        margin-inline: var(--toolbar-start-end-padding) !important;
+        margin-inline: 0px !important;
         padding-inline: 0px !important;
 
         &::after {
@@ -221,8 +221,8 @@
 
     /* ---------------------------------------- Indents ---------------------------------------- */
 
-    #pinned-tabs-container:not([overflowing]):has(.tabbrowser-tab)~#tabbrowser-arrowscrollbox:not([overflowing]):has(.tabbrowser-tab:nth-child(1 of :not([hidden]))) {
-        margin-inline-start: calc(-2 * var(--tab-first-last-inline-margin)) !important;
+    #pinned-tabs-container {
+        margin-inline-end: 0px !important;
     }
 
     .tabbrowser-tab:nth-child(1 of .tabbrowser-tab:not([hidden], [dragtarget])) {
@@ -233,6 +233,33 @@
         margin-inline-end: var(--tab-first-last-inline-margin) !important;
     }
 
+    tab-group[collapsed]>.tabbrowser-tab[visuallyselected] {
+        margin-inline: var(--tab-first-last-inline-margin) !important;
+    }
+
+    tab-group[collapsed]+tab-group>.tab-group-label-container,
+    tab-group[collapsed]+.tabbrowser-tab[hidden]+tab-group>.tab-group-label-container {
+        margin-inline-start: 4px !important;
+    }
+
+    .tabbrowser-tab:not([hidden])+tab-group>.tab-group-label-container,
+    .tabbrowser-tab:not([hidden])+.tabbrowser-tab[hidden]+tab-group>.tab-group-label-container {
+        margin-inline-start: var(--tab-first-last-inline-margin) !important;
+    }
+
+    tab-group[collapsed]:not([hasactivetab]):has(+ .tabbrowser-tab:not([hidden]))>.tab-group-label-container,
+    tab-group[collapsed]:not([hasactivetab]):has(+ .tabbrowser-tab[hidden] + .tabbrowser-tab:not([hidden]))>.tab-group-label-container {
+        margin-inline-end: var(--tab-first-last-inline-margin) !important;
+    }
+
+    tab-group[collapsed]:has(+ .tabbrowser-tab:nth-child(1 of .tabbrowser-tab:not([hidden])))>.tab-group-label-container {
+        margin-inline-end: 0px !important;
+    }
+
+    .tabbrowser-tab:nth-last-child(1 of .tabbrowser-tab:not([hidden]))+tab-group>.tab-group-label-container {
+        margin-inline-start: 0px !important;
+    }
+
     /* ---------------------------------------- Tab Scroll Animation ---------------------------------------- */
 
     #tabbrowser-tabs[overflow]:not([movingtab]) .tabbrowser-tab {
@@ -241,6 +268,10 @@
         padding-inline: var(--tab-first-last-inline-margin) !important;
         margin-inline: calc(-1 * var(--tab-first-last-inline-margin)) !important;
         overflow-clip-margin: 0px !important;
+    }
+
+    #tabbrowser-tabs[overflow]:not([movingtab]) tab-group[collapsed]>.tabbrowser-tab[visuallyselected] {
+        margin-inline: 0px !important;
     }
 
     #tabbrowser-tabs[overflow]:not([movingtab]) .tabbrowser-tab>.tab-stack {
@@ -509,9 +540,7 @@
     .tabbrowser-tab:not([hidden]):is([selected], :hover, [multiselected], [dragover-createGroup]) .tab-stack::after,
     .tabbrowser-tab:not([hidden]):has(+ .tabbrowser-tab[dragover-createGroup]) .tab-stack::after,
     #tabbrowser-tabs:not([movingtab]) .tabbrowser-tab:not([hidden]):has(+ .tabbrowser-tab:is([selected], :hover, [multiselected]):not([hidden])) .tab-stack::after,
-    #tabbrowser-tabs:not([movingtab]) .tabbrowser-tab:not([hidden]):has(+ .tabbrowser-tab[hidden] + .tabbrowser-tab:is([selected], :hover, [multiselected]):not([hidden])) .tab-stack::after,
-    #pinned-tabs-container:not([overflowing]):has(.tabbrowser-tab)~#tabbrowser-arrowscrollbox:not([overflowing])>.tabbrowser-tab:nth-child(1 of :not([hidden]))>.tab-stack::before,
-    #pinned-tabs-container:not([overflowing]):has(~ #tabbrowser-arrowscrollbox:not([overflowing]) > .tabbrowser-tab:is([selected], :hover, [multiselected], [dragover-createGroup]):nth-child(1 of :not([hidden])))>.tabbrowser-tab:last-child>.tab-stack::after {
+    #tabbrowser-tabs:not([movingtab]) .tabbrowser-tab:not([hidden]):has(+ .tabbrowser-tab[hidden] + .tabbrowser-tab:is([selected], :hover, [multiselected]):not([hidden])) .tab-stack::after {
         opacity: 0 !important;
     }
 
@@ -614,7 +643,7 @@
         #nav-bar,
         #nav-bar::before,
         #PersonalToolbar {
-            background-color: color-mix(in srgb, var(--toolbar-bgcolor) var(--toolbar-transparency-level), transparent) !important;
+            // background-color: color-mix(in srgb, var(--toolbar-bgcolor) var(--toolbar-transparency-level), transparent) !important;
         }
     }
 }
