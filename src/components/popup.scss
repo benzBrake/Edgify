@@ -48,7 +48,12 @@
 }
 
 panelview {
-    --panel-subview-body-padding: 4px;
+    --panel-subview-body-padding: 0px;
+    padding: 4px !important;
+
+    & .panel-subview-footer-button {
+        margin-bottom: 0 !important;
+    }
 }
 
 /* 调整缩进 */
