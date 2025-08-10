@@ -3,11 +3,12 @@
     --uc-toolbarbutton-inner-inline-padding: 4px !important;
     --uc-urlbar-icon-inline-padding: var(--uc-toolbarbutton-inner-inline-padding);
     --uc-urlbar-open-border-radius: 8px !important;
+    --uc-urlbar-outline-offset: 1px;
 }
 
 #urlbar[focused]:not([suppress-focus-border])>#urlbar-background,
-#searchbar:focus-within P {
-    outline-offset: 1px !important;
+#searchbar:focus-within {
+    outline-offset: var(--uc-urlbar-outline-offset) !important;
 }
 
 #urlbar-background,
@@ -65,6 +66,65 @@
 #page-action-buttons {
     order: 99;
 }
+
 #location-bar {
     order: 98;
+}
+
+#urlbar[breakout][breakout-extend] {
+    margin-left: calc(-1 * var(--urlbar-margin-inline)) !important;
+
+    &[unifiedsearchbutton-available] {
+        /** 懒得研究为什么有 1px 的偏移，先用这个 hack 解决 */
+        transform: translateX(var(--uc-urlbar-outline-offset)) !important;
+
+        #searchmode-switcher-dropmarker {
+            transform: translateX(calc(-1 * var(--uc-urlbar-outline-offset))) !important;
+        }
+    }
+}
+
+.urlbarView-no-wrap {
+    min-width: 0 !important;
+}
+
+.urlbarView-no-wrap>span:not([title], [label]):empty,
+.urlbarView-url:not([title], [label]):empty {
+    display: none;
+}
+
+.urlbarView-tags:empty {
+    display: none !important;
+}
+
+/* show search query results that are only space/tab characters
+by underlining them (requires urlbarMods.uc.js) */
+.urlbarView-title[all-whitespace] {
+    text-decoration: underline !important;
+    color: var(--panel-shortcut-color);
+}
+
+:is(.urlbarView-row, .urlbarView-row-inner)[selected] .urlbarView-title[all-whitespace] {
+    color: var(--panel-shortcut-focus);
+}
+
+#urlbar {
+    /* fix weird bug with semitransparent background colors after bug 1948565.
+  without it, buttons in panels are too bright when the arrowcontainer's
+  max-width/max-height rule limits the panel's size */
+    backface-visibility: hidden !important;
+}
+
+.urlbarView {
+    /* temporarily give it a background to fix a bug from bug 1948565 */
+    /*   background: var(--urlbar-results-bgcolor) !important;
+  background-clip: content-box !important; */
+    border: none !important;
+    font-size: 1.04em !important;
+}
+
+.urlbarView .urlbarView-body-inner {
+    border-top: none !important;
+    margin: revert !important;
+    width: revert !important;
 }
