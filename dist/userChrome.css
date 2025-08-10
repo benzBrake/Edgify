@@ -1009,7 +1009,7 @@ menupopup,
   background: var(--panel-background) !important;
   border-radius: var(--panel-border-radius) !important;
   border: 1px solid transparent !important;
-  padding: 0 !important;
+  padding: 4px !important;
 }
 @media (-moz-pref("widget.windows.mica")) {
   .popup-internal-box,
