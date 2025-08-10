@@ -535,23 +535,27 @@
     --toolbar-bgcolor: light-dark(#f9f9fb, rgb(43, 42, 51)) !important;
   }
 }
-@media (-moz-pref("sidebar.verticalTabs", false)) and (-moz-pref("extensions.activeThemeID", "default-theme@mozilla.org")) and (-moz-pref("browser.tabs.inTitlebar", 1)) {
+@media (-moz-pref("sidebar.verticalTabs", false)) and (-moz-pref("extensions.activeThemeID", "default-theme@mozilla.org")) and (-moz-pref("browser.tabs.inTitlebar", 2)) {
   :root {
     --wavefox-selected-tab-filter: none !important;
     --wavefox-selected-tab-shadow: none !important;
     --wavefox-inner-tabbar-shadow: none !important;
-    --toolbar-transparency-level: 50%;
+    --toolbar-transparency-level: 100%;
+  }
+  .tabbrowser-tab[visuallyselected] .tab-background,
+  #nav-bar,
+  #nav-bar::before,
+  #PersonalToolbar {
+    --toolbar-bgcolor: light-dark(#f9f9fb, rgb(43, 42, 51));
   }
 }
 @media (-moz-pref("sidebar.verticalTabs")) and (-moz-pref("widget.windows.mica")) {
   /* Edge 开启了垂直标签标题栏就没有 Mica 效果了 */
-  :root {
-    --toolbar-color: light-dark(rgb(21, 20, 26), rgb(251, 251, 254));
-    --toolbar-bgcolor: light-dark(#f9f9fb, rgb(43, 42, 51));
-  }
   .browser-toolbox-background,
   #sidebar-main,
   #status-bar {
+    --toolbar-color: light-dark(rgb(21, 20, 26), rgb(251, 251, 254));
+    --toolbar-bgcolor: light-dark(#f9f9fb, rgb(43, 42, 51));
     color: var(--toolbar-color) !important;
     background-color: var(--toolbar-bgcolor) !important;
   }

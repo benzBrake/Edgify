@@ -629,21 +629,21 @@
     }
 
     @include And(F-Option("extensions.activeThemeID", 'default-theme@mozilla.org'),
-        F-Option("browser.tabs.inTitlebar", 1),
+        F-Option("browser.tabs.inTitlebar", 2),
     ) {
         :root {
             --wavefox-selected-tab-filter: none !important;
             --wavefox-selected-tab-shadow: none !important;
             --wavefox-inner-tabbar-shadow: none !important;
 
-            --toolbar-transparency-level: 50%;
+            --toolbar-transparency-level: 100%;
         }
 
         .tabbrowser-tab[visuallyselected] .tab-background,
         #nav-bar,
         #nav-bar::before,
         #PersonalToolbar {
-            // background-color: color-mix(in srgb, var(--toolbar-bgcolor) var(--toolbar-transparency-level), transparent) !important;
+            --toolbar-bgcolor: light-dark(#f9f9fb, rgb(43, 42, 51));
         }
     }
 }
