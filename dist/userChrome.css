@@ -529,6 +529,7 @@
     width: 12px !important;
   }
   /* ---------- Opaque toolbar ---------- */
+  /* ---------- DragSpace ---------- */
 }
 @media (-moz-pref("sidebar.verticalTabs", false)) and (-moz-platform: windows) and (-moz-pref("widget.windows.mica")) and (-moz-pref("extensions.activeThemeID", "default-theme@mozilla.org")) and (-moz-pref("browser.tabs.inTitlebar", 1)) {
   :root {
@@ -547,6 +548,17 @@
   #nav-bar::before,
   #PersonalToolbar {
     --toolbar-bgcolor: light-dark(#f9f9fb, rgb(43, 42, 51));
+  }
+}
+@media (-moz-pref("sidebar.verticalTabs", false)) {
+  :root[sizemode=normal] {
+    --drag-space: 8px;
+  }
+  :root[uidensity=compact][sizemode=normal] {
+    --drag-space: 4px;
+  }
+  #TabsToolbar :is(.tabbrowser-tab, .toolbarbutton-1, separator, #personal-bookmarks, #search-container, .tab-group-label-container, .tab-group-overflow-count-container) {
+    margin-top: var(--drag-space, 0px) !important;
   }
 }
 @media (-moz-pref("sidebar.verticalTabs")) and (-moz-pref("widget.windows.mica")) {

@@ -646,4 +646,17 @@
             --toolbar-bgcolor: light-dark(#f9f9fb, rgb(43, 42, 51));
         }
     }
+
+    /* ---------- DragSpace ---------- */
+    :root[sizemode="normal"] {
+        --drag-space: 8px;
+    }
+
+    :root[uidensity="compact"][sizemode="normal"] {
+        --drag-space: 4px;
+    }
+
+    #TabsToolbar :is(.tabbrowser-tab, .toolbarbutton-1, separator, #personal-bookmarks, #search-container, .tab-group-label-container, .tab-group-overflow-count-container) {
+        margin-top: var(--drag-space, 0px) !important;
+    }
 }
