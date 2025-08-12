@@ -1015,10 +1015,10 @@ panelview .panel-subview-footer-button {
   menuitem {
     margin-inline: var(--menuitem-margin-inline) !important;
   }
-  :not(#context-navigation) > :is(menu, menuitem):has(> :is(.menu-icon, .menu-iconic-left)) {
+  menupopup:not(.in-menulist) > :is(menu, menuitem):has(> :is(.menu-icon, .menu-iconic-left)) {
     padding-inline: var(--menuitem-padding-inline) !important;
   }
-  :not(#context-navigation) > :is(menu, menuitem):not(:has(> :is(.menu-icon, .menu-iconic-left))):before {
+  menupopup:not(.in-menulist) > :is(menu, menuitem):not(:has(> :is(.menu-icon, .menu-iconic-left))):before {
     content: "";
     display: flex;
     width: var(--menuitem-icon-size);
@@ -1030,14 +1030,14 @@ panelview .panel-subview-footer-button {
     fill: var(--menuitem-fill, currentColor);
     margin-inline-end: var(--menuitem-icon-gap);
   }
-  :not(#context-navigation) > :is(menu, menuitem):not([id^=firefoxbeta_tampermonkey_net]) > :is(.menu-icon, .menu-iconic-left),
+  menupopup:not(.in-menulist) > :is(menu, menuitem):not([id^=firefoxbeta_tampermonkey_net]) > :is(.menu-icon, .menu-iconic-left),
   #firefoxbeta_tampermonkey_net-menuitem-_root > :is(.menu-icon, .menu-iconic-left) {
     display: inline-flex !important;
     width: var(--menuitem-icon-size) !important;
     height: var(--menuitem-icon-size) !important;
     margin-inline-end: var(--menuitem-icon-gap) !important;
   }
-  :not(#context-navigation) > :is(menu, menuitem):not([id^=firefoxbeta_tampermonkey_net]) > :is(.menu-text, .menu-iconic-text),
+  menupopup:not(.in-menulist) > :is(menu, menuitem):not([id^=firefoxbeta_tampermonkey_net]) > :is(.menu-text, .menu-iconic-text),
   #firefoxbeta_tampermonkey_net-menuitem-_root > :is(.menu-text, .menu-iconic-text) {
     padding-inline-start: var(--menuitem-text-padding-start) !important;
   }

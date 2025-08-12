@@ -164,7 +164,7 @@ panelview {
         margin-inline: var(--menuitem-margin-inline) !important;
     }
 
-    :not(#context-navigation)> :is(menu, menuitem) {
+    menupopup:not(.in-menulist)> :is(menu, menuitem) {
         &:has(>:is(.menu-icon, .menu-iconic-left)) {
             padding-inline: var(--menuitem-padding-inline) !important;
         }
@@ -185,7 +185,7 @@ panelview {
         }
     }
 
-    :not(#context-navigation)>:is(menu, menuitem):not([id^="firefoxbeta_tampermonkey_net"]),
+    menupopup:not(.in-menulist)>:is(menu, menuitem):not([id^="firefoxbeta_tampermonkey_net"]),
     #firefoxbeta_tampermonkey_net-menuitem-_root {
         &>:is(.menu-icon, .menu-iconic-left) {
             display: inline-flex !important;
@@ -253,7 +253,7 @@ menupopup,
         border: 0 !important;
     }
 
-    
+
 }
 
 #PopupSearchAutoComplete>* {
