@@ -154,6 +154,14 @@ panelview {
         }
     }
 
+    #main-menubar > menu {
+        --menuitem-padding-inline: 12px;
+        --menuitem-border-radius: 3px;
+        :root[uidensity="compact"] & {
+            --menuitem-padding-inline: 8px;
+        }
+    }
+
     menupopup[needsgutter] menu:not([icon], .menu-iconic),
     menupopup[needsgutter] menuitem:not([checked="true"], [icon], .menuitem-iconic) {
         padding-inline-start: var(--menuitem-padding-inline) !important;
