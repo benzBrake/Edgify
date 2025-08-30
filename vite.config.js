@@ -14,7 +14,7 @@ export default defineConfig({
             // 对于 SCSS 文件编译后的 CSS，保持原文件名
             return '[name].css';
           } else if (/\.(png|jpe?g|gif|svg|ico|webp|avif)$/i.test(assetInfo.name)) {
-            return 'images/[name].[ext]'
+            return assetInfo.originalFileNames[0].replace(/^src\//, '')
           }
           return 'assets/[name].[ext]';
         }
@@ -62,18 +62,7 @@ export default defineConfig({
           writeFileSync(cssPath, cssContent, 'utf-8');
         }
 
-        // 复制生成的 CSS 文件到项目根目录
-        if (existsSync('dist/userContent.css')) {
-          copyFileSync('dist/userContent.css', 'userContent.css');
-        }
-        
-        // 复制源映射文件到项目根目录
-        if (existsSync('dist/userChrome.css.map')) {
-          copyFileSync('dist/userChrome.css.map', 'userChrome.css.map');
-        }
-        if (existsSync('dist/userContent.css.map')) {
-          copyFileSync('dist/userContent.css.map', 'userContent.css.map');
-        }
+        // 不再复制文件到项目根目录，所有文件保留在 dist 目录下
       }
     }
   ]

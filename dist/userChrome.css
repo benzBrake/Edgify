@@ -111,8 +111,8 @@
   }
   /* ---------------------------------------- Attached tabs ---------------------------------------- */
   :root {
-    --left-svg: url("images/left_corners.svg");
-    --right-svg: url("images/right_corners.svg");
+    --left-svg: url("images/tabs/left_corners.svg");
+    --right-svg: url("images/tabs/right_corners.svg");
     --tab-first-last-inline-margin: calc(var(--tab-min-height) / 4);
   }
   /* ---------------------------------------- Main Window ---------------------------------------- */
