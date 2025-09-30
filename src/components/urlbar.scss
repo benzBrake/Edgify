@@ -71,5 +71,22 @@
     padding-inline-start: 0 !important;
     margin-inline-end: 0 !important;
     padding-inline-end: 0 !important;
-    border-radius: var(--megabar_border_roundness) !important;
+    border-radius: 999px !important;
+}
+
+.urlbarView-row-inner,
+.urlbarView-no-wrap {
+    flex-wrap: nowrap !important;
+}
+
+.urlbarView-no-wrap {
+    flex-basis: 0 !important;
+}
+
+.urlbarView-row:not([type=search], [restyled-search]) .urlbarView-title-separator {
+    display: inline-flex !important;
+}
+
+.urlbarView-results[wrap]>.urlbarView-row[has-url] .urlbarView-url {
+    margin-inline-start: 0 !important;
 }
