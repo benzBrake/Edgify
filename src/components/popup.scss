@@ -14,7 +14,7 @@
         --menuitem-icon-size: 16px;
         --menuitem-text-padding-start: 0px;
         --menuitem-margin-inline: 0px;
-        --menuitem-padding-start-without-icon: calc(var(--menuitem-padding-inline) + var(--menuitem-icon-size) + var(--menuitem-icon-gap) + var(--menuitem-text-padding-start));
+        --menuitem-padding-start-without-icon: calc(var(--menuitem-padding-inline, 12px) + var(--menuitem-icon-size, 16px) + var(--menuitem-icon-gap, 8px) + var(--menuitem-text-padding-start, 0px));
 
         @include NotOption("widget.windows.mica.popups", 2) {
             --panel-background: Field !important;
@@ -27,7 +27,7 @@
 
         --panel-border-radius: 6px;
         --panel-list-border-radius: 4px;
-        --panel-border: 1px solid var(--arrowpanel-border-color);
+        --panel-border: 1px solid var(--arrowpanel-border-color, rgba(0, 0, 0, .2));
         --panel-margin-block: 4px;
         --panel-margin-inline: 4px;
         --panel-shadow: 0 1px 2px 1px rgba(0, 0, 0, .1),
@@ -169,26 +169,26 @@ panelview {
 
     menu,
     menuitem {
-        margin-inline: var(--menuitem-margin-inline) !important;
+        margin-inline: var(--menuitem-margin-inline, 0px) !important;
     }
 
     menupopup:not(.in-menulist)> :is(menu, menuitem) {
         &:has(>:is(.menu-icon, .menu-iconic-left)) {
-            padding-inline: var(--menuitem-padding-inline) !important;
+            padding-inline: var(--menuitem-padding-inline, 12px) !important;
         }
 
         &:not(:has(>:is(.menu-icon, .menu-iconic-left))) {
             &:before {
                 content: "";
                 display: flex;
-                width: var(--menuitem-icon-size);
-                height: var(--menuitem-icon-size);
+                width: var(--menuitem-icon-size, 16px);
+                height: var(--menuitem-icon-size, 16px);
                 mask-image: var(--menuitem-image);
-                mask-size: var(--menuitem-icon-size);
+                mask-size: var(--menuitem-icon-size, 16px);
                 mask-repeat: no-repeat;
                 mask-position: center;
                 fill: var(--menuitem-fill, currentColor);
-                margin-inline-end: var(--menuitem-icon-gap);
+                margin-inline-end: var(--menuitem-icon-gap, 8px);
             }
         }
     }
@@ -197,13 +197,13 @@ panelview {
     #firefoxbeta_tampermonkey_net-menuitem-_root {
         &>:is(.menu-icon, .menu-iconic-left) {
             display: inline-flex !important;
-            width: var(--menuitem-icon-size) !important;
-            height: var(--menuitem-icon-size) !important;
-            margin-inline-end: var(--menuitem-icon-gap) !important;
+            width: var(--menuitem-icon-size, 16px) !important;
+            height: var(--menuitem-icon-size, 16px) !important;
+            margin-inline-end: var(--menuitem-icon-gap, 8px) !important;
         }
 
         &>:is(.menu-text, .menu-iconic-text) {
-            padding-inline-start: var(--menuitem-text-padding-start) !important;
+            padding-inline-start: var(--menuitem-text-padding-start, 0px) !important;
         }
     }
 
@@ -338,7 +338,7 @@ menupopup menuitem[_moz-menuactive=true],
 menupopup menuitem:hover:not([disabled=true]),
 menupopup menu:hover:not([disabled=true]),
 .autocomplete-richlistitem:hover:not([disabled=true]):not([selected=true]) {
-    background-color: var(--panel-dimmed) !important;
+    background-color: var(--panel-dimmed, color-mix(in srgb, currentColor 17%, transparent)) !important;
 }
 
 /* disable vertical menu scroll buttons and use a good ol' scrollbar */
