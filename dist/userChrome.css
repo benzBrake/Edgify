@@ -612,6 +612,205 @@
     background-color: var(--toolbar-bgcolor) !important;
   }
 }
+@media (-moz-pref("sidebar.verticalTabs", true)) {
+  /* chrome/modules/vertical_tabs/wavefox_tabs.css */
+  /* Expand On Hover */
+  /* Tabs */
+  /* chrome/modules/vertical_tabs/wavefox_toolbar_buttons.css */
+  /* chrome/modules/vertical_tabs/wavefox_tab_media_icons_and_text.css */
+  /* -------------------- Media Icons -------------------- */
+  /* Collapsed tabs / Expanded pinned tabs */
+  /* Expanded tabs */
+  /* ---------- Picture-In-Picture ---------- */
+  /* -------------------- Tab Text -------------------- */
+}
+@media (-moz-pref("sidebar.verticalTabs", true)) and (-moz-pref("sidebar.visibility", "expand-on-hover")) {
+  :root[sidebar-expand-on-hover] .browser-toolbox-background:not(#navigator-toolbox) {
+    will-change: background-color, backdrop-filter !important;
+  }
+  :root[sidebar-expand-on-hover] .browser-toolbox-background:not(#navigator-toolbox) #sidebar-main[sidebar-launcher-expanded],
+  :root[sidebar-expand-on-hover] .browser-toolbox-background:not(#navigator-toolbox) #sidebar-main[sidebar-ongoing-animations]:not([sidebar-launcher-expanded]) {
+    background-color: color-mix(in srgb, var(--sidebar-background-color) 75%, transparent) !important;
+    background-image: none !important;
+    color: var(--sidebar-text-color) !important;
+    backdrop-filter: blur(8px) !important;
+    box-shadow: var(--content-area-shadow) !important;
+  }
+}
+@media (-moz-pref("sidebar.verticalTabs", true)) {
+  :root {
+    --space-xsmall: 2px !important;
+    --tab-min-height: 36px !important;
+    --tab-pinned-expanded-background-width: var(--tab-min-height) !important;
+    --tab-height-with-margin-padding: calc(var(--tab-min-height) + (2 * var(--tab-block-margin))) !important;
+    --tab-icon-end-margin: 8px !important;
+  }
+  :root[uidensity=compact] {
+    --tab-min-height: 32px !important;
+  }
+  :root[uidensity=touch] {
+    --tab-min-height: 40px !important;
+  }
+  :root #tabbrowser-tabs {
+    padding-block: calc(var(--space-small) - var(--tab-block-margin)) !important;
+    --tab-icon-end-margin: 8px !important;
+  }
+  .tabbrowser-tab {
+    --tab-icon-end-margin: 8px !important;
+    padding-block: var(--tab-block-margin) !important;
+  }
+  .tabbrowser-tab:not([visuallyselected], :hover, [multiselected]) .tab-background {
+    background-color: transparent !important;
+  }
+  .tabbrowser-tab .tab-background {
+    margin-block: 0px !important;
+  }
+  .tabbrowser-tab .tab-content {
+    background-position: 50% 100% !important;
+  }
+  .tabbrowser-tab .tab-content .tab-close-button {
+    width: 16px !important;
+    height: 16px !important;
+    padding: 2px !important;
+    margin: 0px !important;
+    border-radius: 50px !important;
+    top: -2px !important;
+    inset-inline-start: calc(var(--tab-inner-inline-margin) - 2px) !important;
+  }
+  :is(#tabs-newtab-button, #vertical-tabs-newtab-button) > .toolbarbutton-text {
+    display: none !important;
+  }
+  #tabbrowser-tabs:not([expanded]) .tabbrowser-tab:not([crashed]) .tab-icon-overlay,
+  #tabbrowser-tabs[expanded] .tabbrowser-tab[pinned]:not([crashed]) .tab-icon-overlay {
+    background-color: transparent !important;
+    background-image: none !important;
+    fill: currentColor !important;
+    border-radius: 50px !important;
+    top: -8px !important;
+    inset-inline-end: -8px !important;
+  }
+  #tabbrowser-tabs:not([expanded]) .tabbrowser-tab:not([crashed]) .tab-icon-overlay:hover,
+  #tabbrowser-tabs[expanded] .tabbrowser-tab[pinned]:not([crashed]) .tab-icon-overlay:hover {
+    background-color: color-mix(in srgb, currentColor 15%, transparent) !important;
+  }
+  #tabbrowser-tabs:not([expanded]) .tabbrowser-tab:not([crashed]) .tab-icon-overlay:hover:active,
+  #tabbrowser-tabs[expanded] .tabbrowser-tab[pinned]:not([crashed]) .tab-icon-overlay:hover:active {
+    background-color: color-mix(in srgb, currentColor 30%, transparent) !important;
+  }
+  #tabbrowser-tabs:not([expanded]) .tabbrowser-tab:not([crashed]):where([soundplaying], [muted], [activemedia-blocked]) .tab-icon-stack > :not(.tab-icon-overlay),
+  #tabbrowser-tabs[expanded] .tabbrowser-tab[pinned]:not([crashed]):where([soundplaying], [muted], [activemedia-blocked]) .tab-icon-stack > :not(.tab-icon-overlay) {
+    mask-image: linear-gradient(to bottom, black, black), radial-gradient(circle at right top, black 8px, transparent 9px) !important;
+    mask-size: 16px 16px !important;
+    mask-position: center center !important;
+    mask-repeat: no-repeat !important;
+    mask-composite: exclude !important;
+    mask-mode: alpha !important;
+  }
+  :root:-moz-locale-dir(rtl) #tabbrowser-tabs:not([expanded]) .tabbrowser-tab:not([crashed]):where([soundplaying], [muted], [activemedia-blocked]) .tab-icon-stack > :not(.tab-icon-overlay),
+  :root:-moz-locale-dir(rtl) #tabbrowser-tabs[expanded] .tabbrowser-tab[pinned]:not([crashed]):where([soundplaying], [muted], [activemedia-blocked]) .tab-icon-stack > :not(.tab-icon-overlay) {
+    mask-image: linear-gradient(to bottom, black, black), radial-gradient(circle at left top, black 8px, transparent 9px) !important;
+  }
+  #tabbrowser-tabs[expanded] .tabbrowser-tab:not([pinned], [crashed]) .tab-icon-overlay {
+    background-color: currentColor !important;
+    background-image: none !important;
+    border-radius: 50px !important;
+    top: 0px !important;
+    inset-inline-end: 0px !important;
+    mask-image: var(--mask-overlay-background, none), var(--mask-overlay-image, none) !important;
+    mask-size: 16px 16px, 12px 12px !important;
+    mask-position: center center !important;
+    mask-repeat: no-repeat !important;
+    mask-mode: alpha !important;
+  }
+  #tabbrowser-tabs[expanded] .tabbrowser-tab:not([pinned], [crashed]) .tab-icon-overlay:hover {
+    --mask-overlay-background: linear-gradient(to bottom, rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.15));
+  }
+  #tabbrowser-tabs[expanded] .tabbrowser-tab:not([pinned], [crashed]) .tab-icon-overlay:hover:active {
+    --mask-overlay-background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3));
+  }
+  #tabbrowser-tabs[expanded] .tabbrowser-tab:not([pinned], [crashed])[soundplaying] .tab-icon-overlay {
+    --mask-overlay-image: url("chrome://browser/skin/tabbrowser/tab-audio-playing-small.svg");
+  }
+  #tabbrowser-tabs[expanded] .tabbrowser-tab:not([pinned], [crashed])[muted] .tab-icon-overlay {
+    --mask-overlay-image: url("chrome://browser/skin/tabbrowser/tab-audio-muted-small.svg");
+  }
+  #tabbrowser-tabs[expanded] .tabbrowser-tab:not([pinned], [crashed])[activemedia-blocked] .tab-icon-overlay {
+    --mask-overlay-image: url("chrome://browser/skin/tabbrowser/tab-audio-blocked-small.svg");
+  }
+  #tabbrowser-tabs[expanded] .tabbrowser-tab:not([pinned], [crashed]) .tab-icon-overlay {
+    top: -8px !important;
+    inset-inline-end: -8px !important;
+  }
+  #tabbrowser-tabs[expanded] .tabbrowser-tab:not([pinned], [crashed]):where([soundplaying], [muted], [activemedia-blocked]) .tab-icon-stack > :not(.tab-icon-overlay) {
+    mask-image: linear-gradient(to bottom, black, black), radial-gradient(circle at right top, black 8px, transparent 9px) !important;
+    mask-size: 16px 16px !important;
+    mask-position: center center !important;
+    mask-repeat: no-repeat !important;
+    mask-composite: exclude !important;
+    mask-mode: alpha !important;
+  }
+  :root:-moz-locale-dir(rtl) #tabbrowser-tabs[expanded] .tabbrowser-tab:not([pinned], [crashed]):where([soundplaying], [muted], [activemedia-blocked]) .tab-icon-stack > :not(.tab-icon-overlay) {
+    mask-image: linear-gradient(to bottom, black, black), radial-gradient(circle at left top, black 8px, transparent 9px) !important;
+  }
+  #tabbrowser-tabs[expanded] .tabbrowser-tab:not([pinned], [crashed]):where([soundplaying], [muted], [activemedia-blocked]) .tab-icon-overlay {
+    display: revert !important;
+  }
+  #tabbrowser-tabs[expanded] .tabbrowser-tab .tab-audio-button {
+    display: none !important;
+  }
+  #tabbrowser-tabs:is([expanded], :not([expanded])) .tabbrowser-tab[pictureinpicture]:not([crashed], [busy]) .tab-icon-stack::before {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    background-color: currentColor;
+    mask-size: 16px 16px;
+    mask-position: center center;
+    mask-repeat: no-repeat;
+    mask-mode: alpha;
+  }
+  :root:-moz-locale-dir(rtl) #tabbrowser-tabs:is([expanded], :not([expanded])) .tabbrowser-tab[pictureinpicture]:not([crashed], [busy]) .tab-icon-stack::before {
+    transform: rotateY(180deg);
+  }
+  #tabbrowser-tabs:is([expanded], :not([expanded])) .tabbrowser-tab[pictureinpicture]:not([crashed], [busy]) .tab-icon-stack > :not(.tab-icon-overlay) {
+    position: relative !important;
+    padding: 2px !important;
+    inset-inline-start: 8px !important;
+    top: 8px !important;
+    mask-image: none !important;
+    box-sizing: border-box !important;
+    z-index: 1 !important;
+  }
+  #tabbrowser-tabs:is([expanded], :not([expanded])) .tabbrowser-tab[pictureinpicture]:not([crashed], [busy]):not([soundplaying], [muted], [activemedia-blocked]) .tab-icon-stack::before {
+    mask-image: linear-gradient(to bottom, black, black), linear-gradient(to bottom, black, black), url("chrome://global/skin/media/picture-in-picture-open.svg");
+    mask-size: 8px 8px, 8px 8px, 16px 16px;
+    mask-position: right bottom, right bottom, center center;
+    mask-repeat: no-repeat;
+    mask-composite: exclude, add;
+  }
+  #tabbrowser-tabs:is([expanded], :not([expanded])) .tabbrowser-tab[pictureinpicture]:not([crashed], [busy]):is([soundplaying], [muted], [activemedia-blocked]) .tab-icon-stack::before {
+    mask-image: linear-gradient(to bottom, black, black), linear-gradient(to bottom, black, black), url("chrome://global/skin/media/picture-in-picture-open.svg");
+    mask-size: 8px 16px, 8px 16px, 16px 16px;
+    mask-position: right bottom, right bottom, center center;
+    mask-repeat: no-repeat;
+    mask-composite: exclude, add;
+  }
+  .tab-label-container {
+    height: auto !important;
+    font-size: clamp(0px, 1em, 16px) !important;
+    mask-image: none !important;
+  }
+  .tab-label {
+    width: 100% !important;
+    height: auto !important;
+    line-height: normal !important;
+    overflow: hidden !important;
+    white-space: nowrap !important;
+    text-overflow: ellipsis !important;
+    margin-block: 0px !important;
+  }
+}
 /* Firefox userChrome.css tweaks ********************************************************/
 /* Github: https://github.com/aris-t2/customcssforfx ************************************/
 /****************************************************************************************/
