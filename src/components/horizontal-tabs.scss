@@ -5,6 +5,7 @@
 /* https://github.com/QNetITQ/WaveFox                                           */
 /********************************************************************************/
 @include Option("sidebar.verticalTabs", false) {
+    /* chrome/modules/horizontal_tabs/wavefox_tabs.css */
 
     /* ---------------------------------------- Density ---------------------------------------- */
     :root {
@@ -66,12 +67,6 @@
             padding: 2px !important;
             margin: 0px !important;
         }
-    }
-
-    /* ---------------------------------------- Indents ---------------------------------------- */
-
-    #pinned-tabs-container {
-        margin-inline-end: 0px !important;
     }
 
     /* ---------------------------------------- Attached tabs ---------------------------------------- */
@@ -173,37 +168,19 @@
         &::after {
             inset-block: auto 0px !important;
         }
-
-        tab-group:not([collapsed])>& {
-            margin-inline-end: 0px !important;
-        }
-
-        tab-group+tab-group>&,
-        tab-group+.tabbrowser-tab[hidden]+tab-group>& {
-            margin-inline-start: 0px !important;
-        }
-
-        .tabbrowser-tab:not([hidden])+tab-group>&,
-        .tabbrowser-tab:not([hidden])+.tabbrowser-tab[hidden]+tab-group>& {
-            margin-inline-start: var(--tab-first-last-inline-margin) !important;
-        }
-
-        tab-group[collapsed]:has(+ .tabbrowser-tab:not([hidden]))>&,
-        tab-group[collapsed]:has(+ .tabbrowser-tab[hidden] + .tabbrowser-tab:not([hidden]))>& {
-            margin-inline-end: var(--tab-first-last-inline-margin) !important;
-        }
-
-        tab-group[collapsed]:has(+ .tabbrowser-tab:nth-child(1 of .tabbrowser-tab:not([hidden])))>& {
-            margin-inline-end: 0px !important;
-        }
-
-        .tabbrowser-tab:nth-last-child(1 of .tabbrowser-tab:not([hidden]))+tab-group>& {
-            margin-inline-start: 0px !important;
-        }
     }
 
-    #tabbrowser-tabs[overflow] .tab-drop-indicator {
-        inset-inline-start: var(--tab-first-last-inline-margin) !important;
+    .tab-group-overflow-count-container {
+        margin-inline: 0px var(--tab-first-last-inline-margin) !important;
+        padding-inline: 0px !important;
+
+        &::after {
+            inset-block-end: 0px !important;
+        }
+
+        .tab-group-overflow-count {
+            padding: 0px !important;
+        }
     }
 
     /* -------------------- Tab Icon Indicators -------------------- */
@@ -220,10 +197,6 @@
     }
 
     /* ---------------------------------------- Indents ---------------------------------------- */
-
-    #pinned-tabs-container {
-        margin-inline-end: 0px !important;
-    }
 
     .tabbrowser-tab:nth-child(1 of .tabbrowser-tab:not([hidden], [dragtarget])) {
         margin-inline-start: var(--tab-first-last-inline-margin) !important;
@@ -262,35 +235,71 @@
 
     /* ---------------------------------------- Tab Scroll Animation ---------------------------------------- */
 
-    #tabbrowser-tabs[overflow]:not([movingtab]) .tabbrowser-tab {
-        pointer-events: none !important;
-        box-sizing: content-box !important;
-        padding-inline: var(--tab-first-last-inline-margin) !important;
-        margin-inline: calc(-1 * var(--tab-first-last-inline-margin)) !important;
-        overflow-clip-margin: 0px !important;
+    #tabbrowser-tabs:not([movingtab]) {
+
+        #pinned-tabs-container[overflowing],
+        #tabbrowser-arrowscrollbox[overflowing] {
+            .tabbrowser-tab {
+                pointer-events: none !important;
+                box-sizing: content-box !important;
+                padding-inline: var(--tab-first-last-inline-margin) !important;
+                margin-inline: calc(-1 * var(--tab-first-last-inline-margin)) !important;
+                overflow-clip-margin: 0px !important;
+
+                &:nth-child(1 of .tabbrowser-tab:not([hidden])) {
+                    margin-inline-start: 0px !important;
+                }
+
+                &:nth-last-child(1 of .tabbrowser-tab:not([hidden])) {
+                    margin-inline-end: 0px !important;
+                }
+
+                .tab-stack {
+                    pointer-events: auto !important;
+                }
+
+                tab-group[collapsed]>&[visuallyselected] {
+                    margin-inline: 0px !important;
+                }
+            }
+        }
     }
 
-    #tabbrowser-tabs[overflow]:not([movingtab]) tab-group[collapsed]>.tabbrowser-tab[visuallyselected] {
-        margin-inline: 0px !important;
+    /*
+    .tabbrowser-tab[dragtarget][pinned]
+    {
+        max-width: min-content !important;
+        
+        ~ .tabbrowser-tab[pinned]
+        {
+            inset-inline: 40px 0px !important;
+            
+        }
+    }
+    
+    .tabbrowser-tab[dragtarget]:not([pinned])
+    {
+        max-width: min-content !important;
+        
+        ~ .tabbrowser-tab:not([pinned])
+        {
+            inset-inline: 76px 0px !important;
+            
+        }
+    }
+    */
+
+    #tabbrowser-tabs[overflow] .tab-drop-indicator {
+        inset-inline-start: var(--tab-first-last-inline-margin) !important;
     }
 
-    #tabbrowser-tabs[overflow]:not([movingtab]) .tabbrowser-tab>.tab-stack {
-        pointer-events: auto !important;
-    }
-
-    #tabbrowser-tabs[overflow]:not([movingtab]) .tabbrowser-tab:nth-child(1 of .tabbrowser-tab:not([hidden])) {
-        margin-inline-start: 0px !important;
-    }
-
-    #tabbrowser-tabs[overflow]:not([movingtab]) .tabbrowser-tab:nth-last-child(1 of .tabbrowser-tab:not([hidden])) {
-        margin-inline-end: 0px !important;
-    }
-
+    /* chrome/modules/vertical_tabs/wavefox_tab_media_icons_and_text.css */
     /* -------------------- Media Icons -------------------- */
 
-    /* Pinned Tabs */
+    /* Collapsed tabs / Expanded pinned tabs */
 
-    .tabbrowser-tab[pinned]:not([crashed]) {
+    #tabbrowser-tabs:not([expanded]) .tabbrowser-tab:not([crashed]),
+    #tabbrowser-tabs[expanded] .tabbrowser-tab[pinned]:not([crashed]) {
         .tab-icon-overlay {
             background-color: transparent !important;
             background-image: none !important;
@@ -322,11 +331,12 @@
         }
     }
 
-    /* Regular Tabs */
+    /* Expanded tabs */
 
-    .tabbrowser-tab:not([pinned], [crashed]) {
+    #tabbrowser-tabs[expanded] .tabbrowser-tab:not([pinned], [crashed]) {
         .tab-icon-overlay {
             background-color: currentColor !important;
+            background-image: none !important;
             border-radius: 50px !important;
             top: 0px !important;
             inset-inline-end: 0px !important;
@@ -357,7 +367,7 @@
             --mask-overlay-image: url("chrome://browser/skin/tabbrowser/tab-audio-blocked-small.svg");
         }
 
-        &:where([busy], [image], [sharing], [pictureinpicture]) .tab-icon-overlay {
+        .tab-icon-overlay {
             top: -8px !important;
             inset-inline-end: -8px !important;
         }
@@ -382,19 +392,7 @@
         }
     }
 
-    .tabbrowser-tab:not([pinned]) {
-        &[fadein] {
-            min-width: var(--tab-min-width-pref) !important;
-
-            tab-group[collapsed]>& {
-                min-width: 0px !important;
-            }
-        }
-
-        .tab-icon-stack>* {
-            margin-inline-end: 8px !important;
-        }
-
+    #tabbrowser-tabs[expanded] .tabbrowser-tab {
         .tab-audio-button {
             display: none !important;
         }
@@ -402,7 +400,7 @@
 
     /* ---------- Picture-In-Picture ---------- */
 
-    .tabbrowser-tab[pictureinpicture]:not([crashed], [busy]) {
+    #tabbrowser-tabs:is([expanded], :not([expanded])) .tabbrowser-tab[pictureinpicture]:not([crashed], [busy]) {
         .tab-icon-stack::before {
             content: "";
             display: block;
@@ -465,10 +463,7 @@
         margin-block: 0px !important;
     }
 
-    .tab-secondary-label {
-        display: none !important;
-    }
-
+    /* chrome/modules/horizontal_tabs/wavefox_toolbar_buttons.css */
     /* ---------------------------------------- Firefox View ---------------------------------------- */
 
     :where(toolbarbutton, toolbarpaletteitem)+#tabbrowser-tabs {
@@ -482,6 +477,25 @@
         color: inherit !important;
         box-shadow: none !important;
         outline: none !important;
+    }
+
+    /* -------------------- Tab Counter -------------------- */
+
+    #tabbrowser-tabs {
+        counter-reset: TabCounter;
+    }
+
+    .tabbrowser-tab {
+        counter-increment: TabCounter;
+    }
+
+    #tabbrowser-tabs~#alltabs-button>.toolbarbutton-badge-stack>.toolbarbutton-icon {
+        opacity: 0 !important;
+    }
+
+    #tabbrowser-tabs~#alltabs-button::after {
+        content: counter(TabCounter);
+        position: absolute;
     }
 
     /* ---------------------------------------- Tab Bar ---------------------------------------- */
@@ -650,6 +664,7 @@
 
         #navigator-toolbox {
             position: relative;
+
             &::after {
                 content: "";
                 display: block;
