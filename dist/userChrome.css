@@ -873,6 +873,10 @@
   border-radius: calc(var(--megabar_border_roundness) / 1.5) !important;
 }
 
+.urlbar .searchmode-switcher {
+  --button-border-radius: calc(var(--megabar_border_roundness) / 1.5);
+}
+
 #urlbar[breakout] #urlbar-results .urlbarView-body-outer,
 #urlbar[breakout] #urlbar-results .urlbarView-row,
 #urlbar[breakout] #urlbar-results .urlbarView-row-inner {
