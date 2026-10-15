@@ -37,11 +37,11 @@
         F-Option("extensions.activeThemeID", "firefox-compact-dark@mozilla.org")) {
         .tabbrowser-tab[visuallyselected] {
             .tab-background {
-                background-color: var(--toolbar-bgcolor) !important;
+                background-color: var(--toolbar-background-color) !important;
             }
 
             .tab-content {
-                color: var(--toolbar-color) !important;
+                color: var(--toolbar-text-color) !important;
             }
         }
     }
@@ -95,7 +95,7 @@
         F-Option("extensions.activeThemeID", "firefox-compact-dark@mozilla.org")) {
         .tabbrowser-tab[visuallyselected] .tab-background {
             background-color: transparent !important;
-            background-image: linear-gradient(to bottom, var(--tab-selected-bgcolor), var(--toolbar-bgcolor)) !important;
+            background-image: linear-gradient(to bottom, var(--tab-background-color-selected), var(--toolbar-background-color)) !important;
         }
     }
 
@@ -638,7 +638,7 @@
         F-Option("browser.tabs.inTitlebar", 1),
     ) {
         :root {
-            --toolbar-bgcolor: light-dark(#f9f9fb, rgb(43, 42, 51)) !important;
+            --toolbar-background-color: light-dark(#f9f9fb, rgb(43, 42, 51)) !important;
         }
     }
 
@@ -658,8 +658,8 @@
         #notifications-toolbar,
         #sidebar-main,
         #status-bar {
-            --toolbar-bgcolor: light-dark(#f9f9fb, rgb(43, 42, 51));
-            background-color: var(--toolbar-bgcolor) !important;
+            --toolbar-background-color: light-dark(#f9f9fb, rgb(43, 42, 51));
+            background-color: var(--toolbar-background-color) !important;
         }
 
         #navigator-toolbox {
@@ -672,7 +672,7 @@
                 bottom: -2px;
                 width: 100%;
                 height: 2px;
-                background-color: var(--toolbar-bgcolor);
+                background-color: var(--toolbar-background-color);
                 z-index: 1;
             }
         }

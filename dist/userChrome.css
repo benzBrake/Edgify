@@ -83,10 +83,10 @@
   /* ---------------------------------------- Tabs ---------------------------------------- */
   @media (-moz-pref("extensions.activeThemeID", "default-theme@mozilla.org")) or (-moz-pref("extensions.activeThemeID", "firefox-compact-light@mozilla.org")) or (-moz-pref("extensions.activeThemeID", "firefox-compact-dark@mozilla.org")) {
     .tabbrowser-tab[visuallyselected] .tab-background {
-      background-color: var(--toolbar-bgcolor) !important;
+      background-color: var(--toolbar-background-color) !important;
     }
     .tabbrowser-tab[visuallyselected] .tab-content {
-      color: var(--toolbar-color) !important;
+      color: var(--toolbar-text-color) !important;
     }
   }
   .tabbrowser-tab[pinned] .tab-content {
@@ -124,7 +124,7 @@
   @media (-moz-pref("extensions.activeThemeID", "default-theme@mozilla.org")) or (-moz-pref("extensions.activeThemeID", "firefox-compact-light@mozilla.org")) or (-moz-pref("extensions.activeThemeID", "firefox-compact-dark@mozilla.org")) {
     .tabbrowser-tab[visuallyselected] .tab-background {
       background-color: transparent !important;
-      background-image: linear-gradient(to bottom, var(--tab-selected-bgcolor), var(--toolbar-bgcolor)) !important;
+      background-image: linear-gradient(to bottom, var(--tab-background-color-selected), var(--toolbar-background-color)) !important;
     }
   }
   .tabbrowser-tab {
@@ -557,7 +557,7 @@
 }
 @media (-moz-pref("sidebar.verticalTabs", false)) and (-moz-platform: windows) and (-moz-pref("widget.windows.mica")) and (-moz-pref("extensions.activeThemeID", "default-theme@mozilla.org")) and (-moz-pref("browser.tabs.inTitlebar", 1)) {
   :root {
-    --toolbar-bgcolor: light-dark(#f9f9fb, rgb(43, 42, 51)) !important;
+    --toolbar-background-color: light-dark(#f9f9fb, rgb(43, 42, 51)) !important;
   }
 }
 @media (-moz-pref("sidebar.verticalTabs", false)) and (-moz-pref("extensions.activeThemeID", "default-theme@mozilla.org")) and (-moz-pref("browser.tabs.inTitlebar", 2)) {
@@ -573,8 +573,8 @@
   #notifications-toolbar,
   #sidebar-main,
   #status-bar {
-    --toolbar-bgcolor: light-dark(#f9f9fb, rgb(43, 42, 51));
-    background-color: var(--toolbar-bgcolor) !important;
+    --toolbar-background-color: light-dark(#f9f9fb, rgb(43, 42, 51));
+    background-color: var(--toolbar-background-color) !important;
   }
   #navigator-toolbox {
     position: relative;
@@ -586,7 +586,7 @@
     bottom: -2px;
     width: 100%;
     height: 2px;
-    background-color: var(--toolbar-bgcolor);
+    background-color: var(--toolbar-background-color);
     z-index: 1;
   }
 }
@@ -606,10 +606,10 @@
   .browser-toolbox-background,
   #sidebar-main,
   #status-bar {
-    --toolbar-color: light-dark(rgb(21, 20, 26), rgb(251, 251, 254));
-    --toolbar-bgcolor: light-dark(#f9f9fb, rgb(43, 42, 51));
-    color: var(--toolbar-color) !important;
-    background-color: var(--toolbar-bgcolor) !important;
+    --toolbar-text-color: light-dark(rgb(21, 20, 26), rgb(251, 251, 254));
+    --toolbar-background-color: light-dark(#f9f9fb, rgb(43, 42, 51));
+    color: var(--toolbar-text-color) !important;
+    background-color: var(--toolbar-background-color) !important;
   }
 }
 @media (-moz-pref("sidebar.verticalTabs", true)) {

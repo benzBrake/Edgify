@@ -7,10 +7,10 @@
     .browser-toolbox-background,
     #sidebar-main,
     #status-bar {
-        --toolbar-color: light-dark(rgb(21, 20, 26), rgb(251, 251, 254));
-        --toolbar-bgcolor: light-dark(#f9f9fb, rgb(43, 42, 51));
-        color: var(--toolbar-color) !important;
-        background-color: var(--toolbar-bgcolor) !important;
+        --toolbar-text-color: light-dark(rgb(21, 20, 26), rgb(251, 251, 254));
+        --toolbar-background-color: light-dark(#f9f9fb, rgb(43, 42, 51));
+        color: var(--toolbar-text-color) !important;
+        background-color: var(--toolbar-background-color) !important;
     }
 }
 
