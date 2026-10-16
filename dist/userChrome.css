@@ -887,6 +887,33 @@
   border-radius: calc(var(--megabar_border_roundness) / 1.5) !important;
 }
 
+/* Keep the remote-control status in a compact, Edge-style address-bar badge. */
+:root[remotecontrol] #urlbar .urlbar-background {
+  background-image: none !important;
+}
+:root[remotecontrol] #remote-control-box {
+  align-self: center;
+  width: var(--urlbar-basic-component-size) !important;
+  height: var(--urlbar-basic-component-size) !important;
+  margin-inline: 2px;
+  border-radius: var(--megabar_border_roundness);
+  color: light-dark(#006cbe, #75b6ff);
+  background-color: color-mix(in srgb, currentColor 12%, transparent);
+}
+:root[remotecontrol] #remote-control-icon {
+  list-style-image: url("images/remote-control.svg") !important;
+  -moz-context-properties: fill;
+  fill: currentColor;
+}
+@media (forced-colors: active) {
+  :root[remotecontrol] #remote-control-box {
+    color: CanvasText;
+    background-color: Canvas;
+    outline: 1px solid currentColor;
+    outline-offset: -1px;
+  }
+}
+
 .urlbar .searchmode-switcher {
   --button-border-radius: calc(var(--megabar_border_roundness) / 1.5);
 }
