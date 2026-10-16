@@ -40,6 +40,20 @@
   z-index: 1 !important;
 }
 
+/* Keep the zoom percentage optically centered across Firefox's three densities. */
+:root[uidensity=compact] #zoom-reset-button > .toolbarbutton-text {
+  transform: translateY(1.5px) !important;
+}
+
+:root:not([uidensity]) #zoom-reset-button > .toolbarbutton-text,
+:root[uidensity=normal] #zoom-reset-button > .toolbarbutton-text {
+  transform: translateY(1px) !important;
+}
+
+:root[uidensity=touch] #zoom-reset-button > .toolbarbutton-text {
+  transform: translateY(1px) !important;
+}
+
 /* 网页区域圆角 */
 @media (-moz-pref("sidebar.revamp")) {
   #sidebar-box {
