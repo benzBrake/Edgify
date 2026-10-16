@@ -3,6 +3,8 @@
 /****************************************************************************************/
 
 
+@use '../utils/pref' as *;
+
 :root {
     --megabar_border_roundness: 20px;
 
@@ -14,6 +16,18 @@
 [focused]:not([suppress-focus-border])>.urlbar-background,
 #searchbar:focus-within {
     outline: unset !important;
+}
+
+/* Keep the address bar and its buttons horizontally stable when expanded. */
+@include NotOption('browser.nova.enabled') {
+    .urlbar[breakout][breakout-extend] {
+        margin-left: 0 !important;
+        width: var(--urlbar-width) !important;
+
+        > .urlbar-input-container {
+            padding-inline: var(--urlbar-input-container-padding) !important;
+        }
+    }
 }
 
 .urlbar .urlbar-background,

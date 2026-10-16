@@ -840,6 +840,16 @@
   outline: unset !important;
 }
 
+/* Keep the address bar and its buttons horizontally stable when expanded. */
+@media not -moz-pref("browser.nova.enabled") {
+  .urlbar[breakout][breakout-extend] {
+    margin-left: 0 !important;
+    width: var(--urlbar-width) !important;
+  }
+  .urlbar[breakout][breakout-extend] > .urlbar-input-container {
+    padding-inline: var(--urlbar-input-container-padding) !important;
+  }
+}
 .urlbar .urlbar-background,
 .urlbar,
 :is(.urlbar-input-container, .urlbar-input-container),
