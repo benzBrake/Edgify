@@ -124,7 +124,7 @@
   :root {
     --left-svg: url("images/tabs/left_corners.svg");
     --right-svg: url("images/tabs/right_corners.svg");
-    --tab-first-last-inline-margin: calc(var(--tab-min-height) / 4);
+    --tab-first-last-inline-margin: calc(var(--tab-min-height) / 6);
   }
   /* ---------------------------------------- Main Window ---------------------------------------- */
   :root {
