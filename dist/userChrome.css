@@ -849,6 +849,19 @@
   .urlbar[breakout][breakout-extend] > .urlbar-input-container {
     padding-inline: var(--urlbar-input-container-padding) !important;
   }
+  /* Match result spacing to the toolbar density without fixing row heights. */
+  :root {
+    --edgify-urlbar-result-padding: 4px;
+  }
+  :root[uidensity=compact] {
+    --edgify-urlbar-result-padding: 2px;
+  }
+  :root[uidensity=touch] {
+    --edgify-urlbar-result-padding: 8px;
+  }
+  #urlbar .urlbarView-row:not([type=dynamic]) .urlbarView-row-inner {
+    padding-block: var(--edgify-urlbar-result-padding) !important;
+  }
 }
 .urlbar .urlbar-background,
 .urlbar,

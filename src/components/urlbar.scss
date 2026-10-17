@@ -28,6 +28,23 @@
             padding-inline: var(--urlbar-input-container-padding) !important;
         }
     }
+
+    /* Match result spacing to the toolbar density without fixing row heights. */
+    :root {
+        --edgify-urlbar-result-padding: 4px;
+
+        &[uidensity="compact"] {
+            --edgify-urlbar-result-padding: 2px;
+        }
+
+        &[uidensity="touch"] {
+            --edgify-urlbar-result-padding: 8px;
+        }
+    }
+
+    #urlbar .urlbarView-row:not([type="dynamic"]) .urlbarView-row-inner {
+        padding-block: var(--edgify-urlbar-result-padding) !important;
+    }
 }
 
 .urlbar .urlbar-background,
