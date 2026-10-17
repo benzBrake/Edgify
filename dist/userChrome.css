@@ -451,11 +451,11 @@
     order: -1 !important;
   }
   #alltabs-button > .toolbarbutton-badge-stack {
-    background-color: color-mix(in srgb, currentColor 12%, transparent) !important;
+    background-color: light-dark(#f3f3f3, color-mix(in srgb, currentColor 12%, transparent)) !important;
     border-radius: 8px !important;
   }
   #alltabs-button:hover > .toolbarbutton-badge-stack {
-    background-color: color-mix(in srgb, currentColor 20%, transparent) !important;
+    background-color: var(--toolbarbutton-background-color-hover) !important;
   }
   #alltabs-button:is([open], [checked], :active) > .toolbarbutton-badge-stack {
     background-color: color-mix(in srgb, currentColor 28%, transparent) !important;
@@ -465,6 +465,18 @@
     list-style-image: url("chrome://global/skin/icons/arrow-down.svg") !important;
   }
   /* ---------------------------------------- Tab Bar ---------------------------------------- */
+  /* ---------------------------------------- Indents ---------------------------------------- */
+  /* ---------------------------------------- Separators ---------------------------------------- */
+  /* ---------------------------------------- Shadows ---------------------------------------- */
+  /* ---------- Opaque toolbar ---------- */
+  /* ---------- DragSpace ---------- */
+}
+@media (-moz-pref("sidebar.verticalTabs", false)) and (prefers-color-scheme: light) {
+  #TabsToolbar {
+    background-color: #e3e3e3 !important;
+  }
+}
+@media (-moz-pref("sidebar.verticalTabs", false)) {
   #TabsToolbar {
     --toolbarbutton-inner-padding: inherit !important;
   }
@@ -478,7 +490,6 @@
     min-height: 0 !important;
     padding: 6px !important;
   }
-  /* ---------------------------------------- Indents ---------------------------------------- */
   #TabsToolbar-customization-target > :is(toolbarbutton, toolbaritem):first-child,
   #TabsToolbar-customization-target > toolbarpaletteitem:first-child > :is(toolbarbutton, toolbaritem) {
     margin-inline-start: calc(var(--toolbar-start-end-padding) - var(--toolbarbutton-outer-padding)) !important;
@@ -491,7 +502,6 @@
   .tabbrowser-tab:not([hidden]) + .tabbrowser-tab[hidden] + #tabbrowser-arrowscrollbox-periphery > #tabs-newtab-button {
     margin-inline-start: calc(-1 * var(--tab-first-last-inline-margin, 0px) / 2) !important;
   }
-  /* ---------------------------------------- Separators ---------------------------------------- */
   .tab-stack {
     margin-inline-end: 1px !important;
   }
@@ -526,7 +536,6 @@
   :root {
     --separators-color-saturation: 0.5;
   }
-  /* ---------------------------------------- Shadows ---------------------------------------- */
   @media (-moz-pref("extensions.activeThemeID", "default-theme@mozilla.org")) or (-moz-pref("extensions.activeThemeID", "firefox-compact-light@mozilla.org")) or (-moz-pref("extensions.activeThemeID", "firefox-compact-dark@mozilla.org")) {
     :root {
       --wavefox-selected-tab-filter-offset-x: 0px;
@@ -583,8 +592,6 @@
   .titlebar-spacer[type=post-tabs] {
     width: 12px !important;
   }
-  /* ---------- Opaque toolbar ---------- */
-  /* ---------- DragSpace ---------- */
 }
 @media (-moz-pref("sidebar.verticalTabs", false)) and (-moz-platform: windows) and (-moz-pref("widget.windows.mica")) and (-moz-pref("extensions.activeThemeID", "default-theme@mozilla.org")) and (-moz-pref("browser.tabs.inTitlebar", 1)) {
   :root {

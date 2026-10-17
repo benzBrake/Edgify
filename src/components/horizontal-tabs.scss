@@ -489,12 +489,12 @@
         order: -1 !important;
 
         > .toolbarbutton-badge-stack {
-            background-color: color-mix(in srgb, currentColor 12%, transparent) !important;
+            background-color: light-dark(#f3f3f3, color-mix(in srgb, currentColor 12%, transparent)) !important;
             border-radius: 8px !important;
         }
 
         &:hover > .toolbarbutton-badge-stack {
-            background-color: color-mix(in srgb, currentColor 20%, transparent) !important;
+            background-color: var(--toolbarbutton-background-color-hover) !important;
         }
 
         &:is([open], [checked], :active) > .toolbarbutton-badge-stack {
@@ -508,6 +508,12 @@
     }
 
     /* ---------------------------------------- Tab Bar ---------------------------------------- */
+
+    @include Light {
+        #TabsToolbar {
+            background-color: #e3e3e3 !important;
+        }
+    }
 
     #TabsToolbar {
         --toolbarbutton-inner-padding: inherit !important;
