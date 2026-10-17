@@ -447,18 +447,22 @@
     outline: none !important;
   }
   /* -------------------- Tab Counter -------------------- */
-  #tabbrowser-tabs {
-    counter-reset: TabCounter;
+  #alltabs-button {
+    order: -1 !important;
   }
-  .tabbrowser-tab {
-    counter-increment: TabCounter;
+  #alltabs-button > .toolbarbutton-badge-stack {
+    background-color: color-mix(in srgb, currentColor 12%, transparent) !important;
+    border-radius: 8px !important;
   }
-  #tabbrowser-tabs ~ #alltabs-button > .toolbarbutton-badge-stack > .toolbarbutton-icon {
-    opacity: 0 !important;
+  #alltabs-button:hover > .toolbarbutton-badge-stack {
+    background-color: color-mix(in srgb, currentColor 20%, transparent) !important;
   }
-  #tabbrowser-tabs ~ #alltabs-button::after {
-    content: counter(TabCounter);
-    position: absolute;
+  #alltabs-button:is([open], [checked], :active) > .toolbarbutton-badge-stack {
+    background-color: color-mix(in srgb, currentColor 28%, transparent) !important;
+  }
+  #alltabs-button > .toolbarbutton-badge-stack > .toolbarbutton-icon {
+    opacity: 1 !important;
+    list-style-image: url("chrome://global/skin/icons/arrow-down.svg") !important;
   }
   /* ---------------------------------------- Tab Bar ---------------------------------------- */
   #TabsToolbar {
