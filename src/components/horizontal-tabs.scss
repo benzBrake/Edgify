@@ -466,6 +466,10 @@
     /* chrome/modules/horizontal_tabs/wavefox_toolbar_buttons.css */
     /* ---------------------------------------- Firefox View ---------------------------------------- */
 
+    #tabbrowser-tabs[orient="horizontal"]::before {
+        display: none !important;
+    }
+
     :where(toolbarbutton, toolbarpaletteitem)+#tabbrowser-tabs {
         border-inline-start: none !important;
         padding-inline-start: var(--tab-overflow-pinned-tabs-width) !important;
