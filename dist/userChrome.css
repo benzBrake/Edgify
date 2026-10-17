@@ -832,7 +832,38 @@
   --megabar_border_roundness: 20px;
 }
 :root[lwtheme] {
-  --urlbar_border_color: rgba(0, 0, 0, .3);
+  --urlbar_border_color: rgba(0, 0, 0, 0.3);
+}
+
+#nav-bar {
+  --toolbarbutton-border-radius: var(--megabar_border_roundness);
+}
+
+#urlbar-container :is(#identity-box,
+#trust-icon-container,
+#tracking-protection-icon-container,
+.urlbar-page-action,
+#star-button-box) {
+  border-radius: var(--megabar_border_roundness) !important;
+}
+
+#urlbar-container #identity-box {
+  margin-inline-end: 3px !important;
+}
+
+#urlbar-container #trust-icon-container {
+  min-width: 24px !important;
+  min-height: 24px !important;
+  padding: 3px !important;
+  justify-content: center !important;
+  flex-shrink: 0 !important;
+}
+
+.urlbar-page-action {
+  padding: 3px !important;
+  min-width: 24px !important;
+  min-height: 24px !important;
+  flex-shrink: 0 !important;
 }
 
 [focused]:not([suppress-focus-border]) > .urlbar-background,
@@ -906,10 +937,6 @@
   border-bottom-right-radius: calc(var(--megabar_border_roundness) / 1.5) !important;
 }
 
-#urlbar-searchmode-switcher {
-  border-radius: calc(var(--megabar_border_roundness) / 1.5) !important;
-}
-
 /* Keep the remote-control status in a compact, Edge-style address-bar badge. */
 :root[remotecontrol] #urlbar .urlbar-background {
   background-image: none !important;
@@ -918,7 +945,13 @@
   align-self: center;
   width: var(--urlbar-basic-component-size) !important;
   height: var(--urlbar-basic-component-size) !important;
-  margin-inline: 2px;
+  min-width: 24px !important;
+  min-height: 24px !important;
+  margin-inline: 1px;
+  flex-shrink: 0 !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   border-radius: var(--megabar_border_roundness);
   color: light-dark(#006cbe, #75b6ff);
   background-color: color-mix(in srgb, currentColor 12%, transparent);
@@ -938,6 +971,8 @@
 }
 
 .urlbar .searchmode-switcher {
+  min-height: 24px !important;
+  flex-shrink: 0 !important;
   --button-border-radius: calc(var(--megabar_border_roundness) / 1.5);
 }
 
