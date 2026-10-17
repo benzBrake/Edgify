@@ -461,6 +461,16 @@
   #TabsToolbar {
     --toolbarbutton-inner-padding: inherit !important;
   }
+  #TabsToolbar .toolbarbutton-1 {
+    margin-block-end: 4px !important;
+  }
+  #TabsToolbar .toolbarbutton-1 > :is(.toolbarbutton-icon, .toolbarbutton-badge-stack) {
+    width: calc(var(--tab-min-height) - 4px) !important;
+    height: calc(var(--tab-min-height) - 4px) !important;
+    min-width: 0 !important;
+    min-height: 0 !important;
+    padding: 6px !important;
+  }
   /* ---------------------------------------- Indents ---------------------------------------- */
   #TabsToolbar-customization-target > :is(toolbarbutton, toolbaritem):first-child,
   #TabsToolbar-customization-target > toolbarpaletteitem:first-child > :is(toolbarbutton, toolbaritem) {

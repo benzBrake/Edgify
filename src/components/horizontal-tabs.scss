@@ -502,6 +502,18 @@
 
     #TabsToolbar {
         --toolbarbutton-inner-padding: inherit !important;
+
+        .toolbarbutton-1 {
+            margin-block-end: 4px !important;
+
+            > :is(.toolbarbutton-icon, .toolbarbutton-badge-stack) {
+                width: calc(var(--tab-min-height) - 4px) !important;
+                height: calc(var(--tab-min-height) - 4px) !important;
+                min-width: 0 !important;
+                min-height: 0 !important;
+                padding: 6px !important;
+            }
+        }
     }
 
     /* ---------------------------------------- Indents ---------------------------------------- */
