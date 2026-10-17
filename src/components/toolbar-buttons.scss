@@ -1,0 +1,13 @@
+/* Keep toolbar buttons circular, while preserving the Edge-style tab bar. */
+#main-window toolbar:not(#TabsToolbar):not(#PersonalToolbar) {
+    --toolbarbutton-border-radius: 50% !important;
+}
+
+#main-window toolbar:not(#TabsToolbar):not(#PersonalToolbar) toolbarbutton.toolbarbutton-1 > :is(.toolbarbutton-icon, .toolbarbutton-badge-stack) {
+    border-radius: 50% !important;
+}
+
+/* Inherited through sidebar-main and moz-button shadow roots. */
+#sidebar-container {
+    --button-border-radius: 50% !important;
+}
