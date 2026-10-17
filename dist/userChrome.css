@@ -153,6 +153,19 @@
   #nav-bar {
     border: none !important;
   }
+  #main-window[uidensity=compact] #nav-bar, #main-window[uidensity=compact] #PlacesToolbar {
+    --toolbar-padding-inline: 4px;
+  }
+  #nav-bar-customization-target > :is(toolbarbutton, toolbaritem):first-child,
+  #nav-bar-customization-target > toolbarpaletteitem:first-child > :is(toolbarbutton, toolbaritem) {
+    padding-inline-start: var(--toolbar-padding-inline);
+  }
+  #PanelUI-menu-button {
+    padding-inline-end: var(--toolbar-padding-inline);
+  }
+  #PlacesToolbar {
+    padding-inline: var(--toolbar-padding-inline);
+  }
   /* ---------------------------------------- Tabs ---------------------------------------- */
   @media (-moz-pref("extensions.activeThemeID", "default-theme@mozilla.org")) or (-moz-pref("extensions.activeThemeID", "firefox-compact-light@mozilla.org")) or (-moz-pref("extensions.activeThemeID", "firefox-compact-dark@mozilla.org")) {
     .tabbrowser-tab[visuallyselected] .tab-background {
@@ -288,28 +301,28 @@
     margin-inline: 0px !important;
   }
   /*
-  .tabbrowser-tab[dragtarget][pinned]
-  {
-      max-width: min-content !important;
+    .tabbrowser-tab[dragtarget][pinned]
+    {
+        max-width: min-content !important;
 
-      ~ .tabbrowser-tab[pinned]
-      {
-          inset-inline: 40px 0px !important;
+        ~ .tabbrowser-tab[pinned]
+        {
+            inset-inline: 40px 0px !important;
 
-      }
-  }
+        }
+    }
 
-  .tabbrowser-tab[dragtarget]:not([pinned])
-  {
-      max-width: min-content !important;
+    .tabbrowser-tab[dragtarget]:not([pinned])
+    {
+        max-width: min-content !important;
 
-      ~ .tabbrowser-tab:not([pinned])
-      {
-          inset-inline: 76px 0px !important;
+        ~ .tabbrowser-tab:not([pinned])
+        {
+            inset-inline: 76px 0px !important;
 
-      }
-  }
-  */
+        }
+    }
+    */
   #tabbrowser-tabs[overflow] .tab-drop-indicator {
     inset-inline-start: var(--tab-first-last-inline-margin) !important;
   }
@@ -360,10 +373,18 @@
     mask-mode: alpha !important;
   }
   #tabbrowser-tabs[expanded] .tabbrowser-tab:not([pinned], [crashed]) .tab-icon-overlay:hover {
-    --mask-overlay-background: linear-gradient(to bottom, rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.15));
+    --mask-overlay-background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.15),
+      rgba(0, 0, 0, 0.15)
+    );
   }
   #tabbrowser-tabs[expanded] .tabbrowser-tab:not([pinned], [crashed]) .tab-icon-overlay:hover:active {
-    --mask-overlay-background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3));
+    --mask-overlay-background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.3),
+      rgba(0, 0, 0, 0.3)
+    );
   }
   #tabbrowser-tabs[expanded] .tabbrowser-tab:not([pinned], [crashed])[soundplaying] .tab-icon-overlay {
     --mask-overlay-image: url("chrome://browser/skin/tabbrowser/tab-audio-playing-small.svg");
@@ -545,8 +566,14 @@
   .tab-stack::after {
     inset-inline-start: calc(100% + var(--tab-overflow-clip-margin));
   }
-  .tabbrowser-tab:not([hidden]):is([selected], :hover, [multiselected], [dragover-createGroup]) .tab-stack::before,
-  .tabbrowser-tab:not([hidden]):is([selected], :hover, [multiselected], [dragover-createGroup]) .tab-stack::after,
+  .tabbrowser-tab:not([hidden]):is([selected],
+  :hover,
+  [multiselected],
+  [dragover-createGroup]) .tab-stack::before,
+  .tabbrowser-tab:not([hidden]):is([selected],
+  :hover,
+  [multiselected],
+  [dragover-createGroup]) .tab-stack::after,
   .tabbrowser-tab:not([hidden]):has(+ .tabbrowser-tab[dragover-createGroup]) .tab-stack::after,
   #tabbrowser-tabs:not([movingtab]) .tabbrowser-tab:not([hidden]):has(+ .tabbrowser-tab:is([selected], :hover, [multiselected]):not([hidden])) .tab-stack::after,
   #tabbrowser-tabs:not([movingtab]) .tabbrowser-tab:not([hidden]):has(+ .tabbrowser-tab[hidden] + .tabbrowser-tab:is([selected], :hover, [multiselected]):not([hidden])) .tab-stack::after {
@@ -571,9 +598,38 @@
       --wavefox-inner-tabbar-shadow-blur: 4px;
       --wavefox-inner-tabbar-shadow-spread: -4px;
       --wavefox-inner-tabbar-shadow-color: rgb(0, 0, 0);
-      --wavefox-selected-tab-filter: drop-shadow(var(--wavefox-selected-tab-filter-offset-x) var(--wavefox-selected-tab-filter-offset-y) var(--wavefox-selected-tab-filter-blur) color-mix(in srgb, var(--wavefox-selected-tab-filter-color) var(--wavefox-filter-shadow-saturation, 0%), transparent));
-      --wavefox-selected-tab-shadow: var(--wavefox-selected-tab-shadow-offset-x) var(--wavefox-selected-tab-shadow-offset-y) var(--wavefox-selected-tab-shadow-blur) var(--wavefox-selected-tab-shadow-spread) color-mix(in srgb, var(--wavefox-selected-tab-shadow-color) var(--wavefox-filter-shadow-saturation, 0%), transparent);
-      --wavefox-inner-tabbar-shadow: inset var(--wavefox-inner-tabbar-shadow-offset-x) var(--wavefox-inner-tabbar-shadow-offset-y) var(--wavefox-inner-tabbar-shadow-blur) var(--wavefox-inner-tabbar-shadow-spread) color-mix(in srgb, var(--wavefox-inner-tabbar-shadow-color) var(--wavefox-filter-shadow-saturation, 0%), transparent);
+      --wavefox-selected-tab-filter: drop-shadow(
+        var(--wavefox-selected-tab-filter-offset-x)
+          var(--wavefox-selected-tab-filter-offset-y)
+          var(--wavefox-selected-tab-filter-blur)
+          color-mix(
+            in srgb,
+            var(--wavefox-selected-tab-filter-color)
+              var(--wavefox-filter-shadow-saturation, 0%),
+            transparent
+          )
+      );
+      --wavefox-selected-tab-shadow: var(--wavefox-selected-tab-shadow-offset-x)
+        var(--wavefox-selected-tab-shadow-offset-y)
+        var(--wavefox-selected-tab-shadow-blur)
+        var(--wavefox-selected-tab-shadow-spread)
+        color-mix(
+          in srgb,
+          var(--wavefox-selected-tab-shadow-color)
+            var(--wavefox-filter-shadow-saturation, 0%),
+          transparent
+        );
+      --wavefox-inner-tabbar-shadow: inset
+        var(--wavefox-inner-tabbar-shadow-offset-x)
+        var(--wavefox-inner-tabbar-shadow-offset-y)
+        var(--wavefox-inner-tabbar-shadow-blur)
+        var(--wavefox-inner-tabbar-shadow-spread)
+        color-mix(
+          in srgb,
+          var(--wavefox-inner-tabbar-shadow-color)
+            var(--wavefox-filter-shadow-saturation, 0%),
+          transparent
+        );
     }
     @media (prefers-color-scheme: light) {
       :root {
@@ -614,7 +670,10 @@
 }
 @media (-moz-pref("sidebar.verticalTabs", false)) and (-moz-platform: windows) and (-moz-pref("widget.windows.mica")) and (-moz-pref("extensions.activeThemeID", "default-theme@mozilla.org")) and (-moz-pref("browser.tabs.inTitlebar", 1)) {
   :root {
-    --toolbar-background-color: light-dark(#f9f9fb, rgb(43, 42, 51)) !important;
+    --toolbar-background-color: light-dark(
+      #f9f9fb,
+      rgb(43, 42, 51)
+    ) !important;
   }
 }
 @media (-moz-pref("sidebar.verticalTabs", false)) and (-moz-pref("extensions.activeThemeID", "default-theme@mozilla.org")) and (-moz-pref("browser.tabs.inTitlebar", 2)) {
@@ -654,7 +713,13 @@
   :root[uidensity=compact][sizemode=normal] {
     --drag-space: 4px;
   }
-  #TabsToolbar :is(.tabbrowser-tab, .toolbarbutton-1, separator, #personal-bookmarks, #search-container, .tab-group-label-container, .tab-group-overflow-count-container) {
+  #TabsToolbar :is(.tabbrowser-tab,
+  .toolbarbutton-1,
+  separator,
+  #personal-bookmarks,
+  #search-container,
+  .tab-group-label-container,
+  .tab-group-overflow-count-container) {
     margin-top: var(--drag-space, 0px) !important;
   }
 }
