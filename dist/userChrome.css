@@ -87,6 +87,11 @@
   --button-border-radius: 50% !important;
 }
 
+:root[uidensity=compact] #sidebar-container {
+  --space-medium: var(--space-small);
+  --space-small: var(--space-xsmall);
+}
+
 /********************************************************************************/
 /* 参考:                                                                         */
 /* https://github.com/QNetITQ/WaveFox                                           */
