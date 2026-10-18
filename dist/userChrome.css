@@ -156,8 +156,9 @@
   #nav-bar {
     border: none !important;
   }
-  #main-window[uidensity=compact] #nav-bar, #main-window[uidensity=compact] #PlacesToolbar {
-    --toolbar-padding-inline: .25em;
+  #main-window[uidensity=compact] #nav-bar,
+  #main-window[uidensity=compact] #PlacesToolbar {
+    --toolbar-padding-inline: 0.25em;
   }
   #nav-bar-customization-target > :is(toolbarbutton, toolbaritem):first-child,
   #nav-bar-customization-target > toolbarpaletteitem:first-child > :is(toolbarbutton, toolbaritem) {
@@ -498,8 +499,9 @@
   /* ---------- DragSpace ---------- */
 }
 @media (-moz-pref("sidebar.verticalTabs", false)) and (-moz-pref("userChrome.edgify.alltabs-button.order-first", true)) {
-  #alltabs-button {
+  #TabsToolbar-customization-target > #alltabs-button {
     order: -1 !important;
+    margin-inline-end: 0 !important;
   }
 }
 @media (-moz-pref("sidebar.verticalTabs", false)) {
@@ -537,13 +539,22 @@
     min-height: 0 !important;
     padding: 6px !important;
   }
+}
+@media (-moz-pref("sidebar.verticalTabs", false)) and (not -moz-pref("userChrome.edgify.alltabs-button.order-first", true)) {
   #TabsToolbar-customization-target > :is(toolbarbutton, toolbaritem):first-child,
   #TabsToolbar-customization-target > toolbarpaletteitem:first-child > :is(toolbarbutton, toolbaritem) {
-    margin-inline-start: calc(var(--toolbar-start-end-padding) - var(--toolbarbutton-outer-padding)) !important;
+    margin-inline-start: calc(var(--toolbar-padding-inline) - var(--toolbarbutton-padding-outer)) !important;
   }
+}
+@media (-moz-pref("sidebar.verticalTabs", false)) and (-moz-pref("userChrome.edgify.alltabs-button.order-first", true)) {
+  #alltabs-button {
+    margin-inline-start: calc((var(--toolbar-padding-inline) - var(--toolbarbutton-padding-outer)) / 2) !important;
+  }
+}
+@media (-moz-pref("sidebar.verticalTabs", false)) {
   #TabsToolbar-customization-target > :is(toolbarbutton, toolbaritem):last-child,
   #TabsToolbar-customization-target > toolbarpaletteitem:last-child > :is(toolbarbutton, toolbaritem) {
-    margin-inline-end: calc(var(--toolbar-start-end-padding) - var(--toolbarbutton-outer-padding)) !important;
+    margin-inline-end: calc(var(--toolbar-padding-inline) - var(--toolbarbutton-padding-outer)) !important;
   }
   .tabbrowser-tab:not([hidden]) + #tabbrowser-arrowscrollbox-periphery > #tabs-newtab-button,
   .tabbrowser-tab:not([hidden]) + .tabbrowser-tab[hidden] + #tabbrowser-arrowscrollbox-periphery > #tabs-newtab-button {
@@ -1202,7 +1213,7 @@ toolbarbutton.bookmark-item:not(.subviewbutton) {
 
 /* Left and Right padding of bookmarks bar */
 #PersonalToolbar {
-  padding-inline: calc(var(--toolbar-start-end-padding) - 2px) calc(var(--toolbar-start-end-padding) + 4px) !important;
+  padding-inline: calc(var(--toolbar-padding-inline) - 2px) calc(var(--toolbar-padding-inline) + 4px) !important;
 }
 
 /********************************************************************************/

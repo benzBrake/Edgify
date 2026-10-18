@@ -92,8 +92,9 @@
   }
 
   #main-window[uidensity="compact"] {
-    #nav-bar,#PlacesToolbar {
-      --toolbar-padding-inline: .25em;
+    #nav-bar,
+    #PlacesToolbar {
+      --toolbar-padding-inline: 0.25em;
     }
   }
 
@@ -594,8 +595,9 @@
   /* -------------------- Tab Counter -------------------- */
 
   @include Option("userChrome.edgify.alltabs-button.order-first", true) {
-    #alltabs-button {
+    #TabsToolbar-customization-target > #alltabs-button {
       order: -1 !important;
+      margin-inline-end: 0 !important;
     }
   }
 
@@ -651,15 +653,24 @@
   }
 
   /* ---------------------------------------- Indents ---------------------------------------- */
+  @include NotOption("userChrome.edgify.alltabs-button.order-first", true) {
+    #TabsToolbar-customization-target
+      > :is(toolbarbutton, toolbaritem):first-child,
+    #TabsToolbar-customization-target
+      > toolbarpaletteitem:first-child
+      > :is(toolbarbutton, toolbaritem) {
+      margin-inline-start: calc(
+        (var(--toolbar-padding-inline) - var(--toolbarbutton-padding-outer)) / 2
+      ) !important;
+    }
+  }
 
-  #TabsToolbar-customization-target
-    > :is(toolbarbutton, toolbaritem):first-child,
-  #TabsToolbar-customization-target
-    > toolbarpaletteitem:first-child
-    > :is(toolbarbutton, toolbaritem) {
-    margin-inline-start: calc(
-      var(--toolbar-start-end-padding) - var(--toolbarbutton-outer-padding)
-    ) !important;
+  @include Option("userChrome.edgify.alltabs-button.order-first", true) {
+    #alltabs-button {
+      margin-inline-start: calc(
+        (var(--toolbar-padding-inline) - var(--toolbarbutton-padding-outer)) / 2
+      ) !important;
+    }
   }
 
   #TabsToolbar-customization-target
@@ -668,7 +679,7 @@
     > toolbarpaletteitem:last-child
     > :is(toolbarbutton, toolbaritem) {
     margin-inline-end: calc(
-      var(--toolbar-start-end-padding) - var(--toolbarbutton-outer-padding)
+      var(--toolbar-padding-inline) - var(--toolbarbutton-padding-outer)
     ) !important;
   }
 
