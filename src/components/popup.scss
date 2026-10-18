@@ -157,7 +157,10 @@ panelview {
     #main-menubar > menu {
         --menuitem-padding-inline: 12px;
         --menuitem-border-radius: 3px;
-        :root[uidensity="compact"] & {
+    }
+
+    @include Compact {
+        #main-menubar > menu {
             --menuitem-padding-inline: 8px;
         }
     }
@@ -314,16 +317,15 @@ panel[type="autocomplete-richlistbox"]>.autocomplete-richlistbox {
     border: 0 !important;
     color: inherit !important;
     fill-opacity: initial !important;
-
-    :root[uidensity="compact"] & {
-        height: 26px !important;
-    }
 }
 
 menupopup :is(menu, menuitem) {
     height: 30px !important;
+}
 
-    :root[uidensity="compact"] & {
+@include Compact {
+    .autocomplete-richlistitem,
+    menupopup :is(menu, menuitem) {
         height: 26px !important;
     }
 }

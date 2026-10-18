@@ -1,3 +1,5 @@
+@use '../utils/pref' as *;
+
 /* Keep toolbar buttons circular, while preserving the Edge-style tab bar. */
 #main-window toolbar:not(#TabsToolbar):not(#PersonalToolbar) {
     --toolbarbutton-border-radius: 50% !important;
@@ -15,7 +17,9 @@
     --button-min-height: var(--button-size-icon);
 }
 
-:root[uidensity="compact"] #sidebar-container {
-    --space-medium: var(--space-small);
-    --space-small: var(--space-xsmall);
+@include Compact {
+    #sidebar-container {
+        --space-medium: var(--space-small);
+        --space-small: var(--space-xsmall);
+    }
 }

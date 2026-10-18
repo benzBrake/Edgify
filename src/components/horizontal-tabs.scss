@@ -10,13 +10,17 @@
   /* ---------------------------------------- Density ---------------------------------------- */
   :root {
     --tab-min-height: 36px !important;
+  }
 
-    &[uidensity="compact"] {
-      --tab-min-height: 32px !important;
-    }
-
-    &[uidensity="touch"] {
+  @include Touch {
+    :root {
       --tab-min-height: 40px !important;
+    }
+  }
+
+  @include Compact {
+    :root {
+      --tab-min-height: 32px !important;
     }
   }
 
@@ -91,10 +95,12 @@
     border: none !important;
   }
 
-  #main-window[uidensity="compact"] {
-    #nav-bar,
-    #PlacesToolbar {
-      --toolbar-padding-inline: 0.25em;
+  @include Compact {
+    #main-window {
+      #nav-bar,
+      #PlacesToolbar {
+        --toolbar-padding-inline: 0.25em;
+      }
     }
   }
 
@@ -916,8 +922,10 @@
     --drag-space: 8px;
   }
 
-  :root[uidensity="compact"][sizemode="normal"] {
-    --drag-space: 4px;
+  @include Compact {
+    :root[sizemode="normal"] {
+      --drag-space: 4px;
+    }
   }
 
   #TabsToolbar

@@ -124,6 +124,22 @@
     }
 }
 
+/// @mixin Compact
+/// @description 匹配 Firefox 的紧凑密度偏好，不依赖当前窗口的根节点属性。
+@mixin Compact() {
+    @include Option("browser.uidensity", 1) {
+        @content;
+    }
+}
+
+/// @mixin Touch
+/// @description 匹配 Firefox 的触控密度偏好，不依赖当前窗口的根节点属性。
+@mixin Touch() {
+    @include Option("browser.uidensity", 2) {
+        @content;
+    }
+}
+
 /// @mixin OS
 @mixin OS($os) {
     $query: F-OS($os);

@@ -1,3 +1,5 @@
+@use '../utils/pref' as *;
+
 /* Edge-Frfox - personalbar.css
  * https://github.com/bmFtZQ/edge-frfox */
 
@@ -11,8 +13,10 @@
     --bookmark-inline-margin: 2px !important;
     --uc-bookmark-toolbar-padding-bottom: 2px;
     --bookmarks-toolbar-overlapping-browser-height: calc(var(--uc-bookmark-toolbar-padding-bottom) + 16px + (var(--bookmark-block-margin) + var(--bookmark-block-padding)) * 2) !important;
+}
 
-    &[uidensity="compact"] {
+@include Compact {
+    :root {
         --bookmark-block-padding: 3px !important;
         --bookmark-inline-padding: 3px !important;
     }

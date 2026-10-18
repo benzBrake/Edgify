@@ -40,15 +40,21 @@
     :root {
         --space-xsmall: 2px !important;
         --tab-min-height: 36px !important;
+    }
 
-        &[uidensity="compact"] {
-            --tab-min-height: 32px !important;
-        }
-
-        &[uidensity="touch"] {
+    @include Touch {
+        :root {
             --tab-min-height: 40px !important;
         }
+    }
 
+    @include Compact {
+        :root {
+            --tab-min-height: 32px !important;
+        }
+    }
+
+    :root {
         --tab-pinned-expanded-background-width: var(--tab-min-height) !important;
         --tab-height-with-margin-padding: calc(var(--tab-min-height) + (2 * var(--tab-block-margin))) !important;
         --tab-icon-end-margin: 8px !important;

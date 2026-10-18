@@ -41,19 +41,21 @@
 }
 
 /* Keep the zoom percentage optically centered across Firefox's three densities. */
-:root[uidensity=compact] #zoom-reset-button > .toolbarbutton-text {
-  transform: translateY(1.5px) !important;
+@media (-moz-pref("browser.uidensity", 1)) {
+  #zoom-reset-button > .toolbarbutton-text {
+    transform: translateY(1.5px) !important;
+  }
 }
-
 :root:not([uidensity]) #zoom-reset-button > .toolbarbutton-text,
 :root[uidensity=normal] #zoom-reset-button > .toolbarbutton-text {
   transform: translateY(1px) !important;
 }
 
-:root[uidensity=touch] #zoom-reset-button > .toolbarbutton-text {
-  transform: translateY(1px) !important;
+@media (-moz-pref("browser.uidensity", 2)) {
+  #zoom-reset-button > .toolbarbutton-text {
+    transform: translateY(1px) !important;
+  }
 }
-
 /* 网页区域圆角 */
 @media (-moz-pref("sidebar.revamp")) {
   #sidebar-box {
@@ -90,11 +92,12 @@
   --button-min-height: var(--button-size-icon);
 }
 
-:root[uidensity=compact] #sidebar-container {
-  --space-medium: var(--space-small);
-  --space-small: var(--space-xsmall);
+@media (-moz-pref("browser.uidensity", 1)) {
+  #sidebar-container {
+    --space-medium: var(--space-small);
+    --space-small: var(--space-xsmall);
+  }
 }
-
 /********************************************************************************/
 /* 参考:                                                                         */
 /* https://github.com/QNetITQ/WaveFox                                           */
@@ -105,18 +108,70 @@
   :root {
     --tab-min-height: 36px !important;
   }
-  :root[uidensity=compact] {
-    --tab-min-height: 32px !important;
-  }
-  :root[uidensity=touch] {
+  /* ---------------------------------------- Titlebar ---------------------------------------- */
+  /* ---------------------------------------- Tabs ---------------------------------------- */
+  /* ---------------------------------------- Attached tabs ---------------------------------------- */
+  /* ---------------------------------------- Main Window ---------------------------------------- */
+  /* ---------------------------------------- Nav Bar ---------------------------------------- */
+  /* ---------------------------------------- Tabs ---------------------------------------- */
+  /* -------------------- Tab Icon Indicators -------------------- */
+  /* ---------------------------------------- Tab Bar ---------------------------------------- */
+  /* ---------------------------------------- Indents ---------------------------------------- */
+  /* ---------------------------------------- Tab Scroll Animation ---------------------------------------- */
+  /*
+    .tabbrowser-tab[dragtarget][pinned]
+    {
+        max-width: min-content !important;
+
+        ~ .tabbrowser-tab[pinned]
+        {
+            inset-inline: 40px 0px !important;
+
+        }
+    }
+
+    .tabbrowser-tab[dragtarget]:not([pinned])
+    {
+        max-width: min-content !important;
+
+        ~ .tabbrowser-tab:not([pinned])
+        {
+            inset-inline: 76px 0px !important;
+
+        }
+    }
+    */
+  /* chrome/modules/vertical_tabs/wavefox_tab_media_icons_and_text.css */
+  /* -------------------- Media Icons -------------------- */
+  /* Collapsed tabs / Expanded pinned tabs */
+  /* Expanded tabs */
+  /* ---------- Picture-In-Picture ---------- */
+  /* -------------------- Tab Text -------------------- */
+  /* chrome/modules/horizontal_tabs/wavefox_toolbar_buttons.css */
+  /* ---------------------------------------- Firefox View ---------------------------------------- */
+  /* -------------------- Tab Counter -------------------- */
+  /* ---------------------------------------- Tab Bar ---------------------------------------- */
+  /* ---------------------------------------- Indents ---------------------------------------- */
+  /* ---------------------------------------- Separators ---------------------------------------- */
+  /* ---------------------------------------- Shadows ---------------------------------------- */
+  /* ---------- Opaque toolbar ---------- */
+  /* ---------- DragSpace ---------- */
+}
+@media (-moz-pref("sidebar.verticalTabs", false)) and (-moz-pref("browser.uidensity", 2)) {
+  :root {
     --tab-min-height: 40px !important;
   }
-  /* ---------------------------------------- Titlebar ---------------------------------------- */
+}
+@media (-moz-pref("sidebar.verticalTabs", false)) and (-moz-pref("browser.uidensity", 1)) {
+  :root {
+    --tab-min-height: 32px !important;
+  }
+}
+@media (-moz-pref("sidebar.verticalTabs", false)) {
   :root[customtitlebar] .browser-titlebar {
     will-change: auto !important;
     transition: none !important;
   }
-  /* ---------------------------------------- Tabs ---------------------------------------- */
   @media (-moz-pref("extensions.activeThemeID", "default-theme@mozilla.org")) or (-moz-pref("extensions.activeThemeID", "firefox-compact-light@mozilla.org")) or (-moz-pref("extensions.activeThemeID", "firefox-compact-dark@mozilla.org")) {
     .tabbrowser-tab[visuallyselected] .tab-background {
       background-color: var(--toolbar-background-color) !important;
@@ -142,24 +197,25 @@
     padding: 2px !important;
     margin: 0px !important;
   }
-  /* ---------------------------------------- Attached tabs ---------------------------------------- */
   :root {
     --left-svg: url("images/tabs/left_corners.svg");
     --right-svg: url("images/tabs/right_corners.svg");
     --tab-first-last-inline-margin: calc(var(--tab-min-height) / 6);
   }
-  /* ---------------------------------------- Main Window ---------------------------------------- */
   :root {
     --tabstrip-min-height: auto !important;
   }
-  /* ---------------------------------------- Nav Bar ---------------------------------------- */
   #nav-bar {
     border: none !important;
   }
-  #main-window[uidensity=compact] #nav-bar,
-  #main-window[uidensity=compact] #PlacesToolbar {
+}
+@media (-moz-pref("sidebar.verticalTabs", false)) and (-moz-pref("browser.uidensity", 1)) {
+  #main-window #nav-bar,
+  #main-window #PlacesToolbar {
     --toolbar-padding-inline: 0.25em;
   }
+}
+@media (-moz-pref("sidebar.verticalTabs", false)) {
   #nav-bar-customization-target > :is(toolbarbutton, toolbaritem):first-child,
   #nav-bar-customization-target > toolbarpaletteitem:first-child > :is(toolbarbutton, toolbaritem) {
     padding-inline-start: var(--toolbar-padding-inline);
@@ -170,7 +226,6 @@
   #PlacesToolbar {
     padding-inline: var(--toolbar-padding-inline);
   }
-  /* ---------------------------------------- Tabs ---------------------------------------- */
   @media (-moz-pref("extensions.activeThemeID", "default-theme@mozilla.org")) or (-moz-pref("extensions.activeThemeID", "firefox-compact-light@mozilla.org")) or (-moz-pref("extensions.activeThemeID", "firefox-compact-dark@mozilla.org")) {
     .tabbrowser-tab[visuallyselected] .tab-background {
       background-color: transparent !important;
@@ -242,16 +297,13 @@
   .tab-group-overflow-count-container .tab-group-overflow-count {
     padding: 0px !important;
   }
-  /* -------------------- Tab Icon Indicators -------------------- */
   .tabbrowser-tab:is([image], [pinned]) .tab-content[attention]:not([selected]),
   .tab-content[pinned][titlechanged]:not([selected]) {
     background-position: 50% calc(50% + 12px) !important;
   }
-  /* ---------------------------------------- Tab Bar ---------------------------------------- */
   #TabsToolbar #search-container {
     padding-block: 0 !important;
   }
-  /* ---------------------------------------- Indents ---------------------------------------- */
   .tabbrowser-tab:nth-child(1 of .tabbrowser-tab:not([hidden], [dragtarget])) {
     margin-inline-start: var(--tab-first-last-inline-margin) !important;
   }
@@ -279,7 +331,6 @@
   .tabbrowser-tab:nth-last-child(1 of .tabbrowser-tab:not([hidden])) + tab-group > .tab-group-label-container {
     margin-inline-start: 0px !important;
   }
-  /* ---------------------------------------- Tab Scroll Animation ---------------------------------------- */
   #tabbrowser-tabs:not([movingtab]) #pinned-tabs-container[overflowing] .tabbrowser-tab,
   #tabbrowser-tabs:not([movingtab]) #tabbrowser-arrowscrollbox[overflowing] .tabbrowser-tab {
     pointer-events: none !important;
@@ -304,35 +355,9 @@
   tab-group[collapsed] > #tabbrowser-tabs:not([movingtab]) #tabbrowser-arrowscrollbox[overflowing] .tabbrowser-tab[visuallyselected] {
     margin-inline: 0px !important;
   }
-  /*
-    .tabbrowser-tab[dragtarget][pinned]
-    {
-        max-width: min-content !important;
-
-        ~ .tabbrowser-tab[pinned]
-        {
-            inset-inline: 40px 0px !important;
-
-        }
-    }
-
-    .tabbrowser-tab[dragtarget]:not([pinned])
-    {
-        max-width: min-content !important;
-
-        ~ .tabbrowser-tab:not([pinned])
-        {
-            inset-inline: 76px 0px !important;
-
-        }
-    }
-    */
   #tabbrowser-tabs[overflow] .tab-drop-indicator {
     inset-inline-start: var(--tab-first-last-inline-margin) !important;
   }
-  /* chrome/modules/vertical_tabs/wavefox_tab_media_icons_and_text.css */
-  /* -------------------- Media Icons -------------------- */
-  /* Collapsed tabs / Expanded pinned tabs */
   #tabbrowser-tabs:not([expanded]) .tabbrowser-tab:not([crashed]) .tab-icon-overlay,
   #tabbrowser-tabs[expanded] .tabbrowser-tab[pinned]:not([crashed]) .tab-icon-overlay {
     background-color: transparent !important;
@@ -363,7 +388,6 @@
   :root:-moz-locale-dir(rtl) #tabbrowser-tabs[expanded] .tabbrowser-tab[pinned]:not([crashed]):where([soundplaying], [muted], [activemedia-blocked]) .tab-icon-stack > :not(.tab-icon-overlay) {
     mask-image: linear-gradient(to bottom, black, black), radial-gradient(circle at left top, black 8px, transparent 9px) !important;
   }
-  /* Expanded tabs */
   #tabbrowser-tabs[expanded] .tabbrowser-tab:not([pinned], [crashed]) .tab-icon-overlay {
     background-color: currentColor !important;
     background-image: none !important;
@@ -420,7 +444,6 @@
   #tabbrowser-tabs[expanded] .tabbrowser-tab .tab-audio-button {
     display: none !important;
   }
-  /* ---------- Picture-In-Picture ---------- */
   #tabbrowser-tabs:is([expanded], :not([expanded])) .tabbrowser-tab[pictureinpicture]:not([crashed], [busy]) .tab-icon-stack::before {
     content: "";
     display: block;
@@ -459,7 +482,6 @@
     mask-repeat: no-repeat;
     mask-composite: exclude, add;
   }
-  /* -------------------- Tab Text -------------------- */
   .tab-label-container {
     height: auto !important;
     font-size: clamp(0px, 1em, 16px) !important;
@@ -474,8 +496,6 @@
     text-overflow: ellipsis !important;
     margin-block: 0px !important;
   }
-  /* chrome/modules/horizontal_tabs/wavefox_toolbar_buttons.css */
-  /* ---------------------------------------- Firefox View ---------------------------------------- */
   #tabbrowser-tabs[orient=horizontal]::before {
     display: none !important;
   }
@@ -490,13 +510,6 @@
     box-shadow: none !important;
     outline: none !important;
   }
-  /* -------------------- Tab Counter -------------------- */
-  /* ---------------------------------------- Tab Bar ---------------------------------------- */
-  /* ---------------------------------------- Indents ---------------------------------------- */
-  /* ---------------------------------------- Separators ---------------------------------------- */
-  /* ---------------------------------------- Shadows ---------------------------------------- */
-  /* ---------- Opaque toolbar ---------- */
-  /* ---------- DragSpace ---------- */
 }
 @media (-moz-pref("sidebar.verticalTabs", false)) and (-moz-pref("userChrome.edgify.alltabs-button.order-first", true)) {
   #TabsToolbar-customization-target > #alltabs-button {
@@ -728,9 +741,13 @@
   :root[sizemode=normal] {
     --drag-space: 8px;
   }
-  :root[uidensity=compact][sizemode=normal] {
+}
+@media (-moz-pref("sidebar.verticalTabs", false)) and (-moz-pref("browser.uidensity", 1)) {
+  :root[sizemode=normal] {
     --drag-space: 4px;
   }
+}
+@media (-moz-pref("sidebar.verticalTabs", false)) {
   #TabsToolbar :is(.tabbrowser-tab,
   .toolbarbutton-1,
   separator,
@@ -781,15 +798,23 @@
   :root {
     --space-xsmall: 2px !important;
     --tab-min-height: 36px !important;
+  }
+}
+@media (-moz-pref("sidebar.verticalTabs", true)) and (-moz-pref("browser.uidensity", 2)) {
+  :root {
+    --tab-min-height: 40px !important;
+  }
+}
+@media (-moz-pref("sidebar.verticalTabs", true)) and (-moz-pref("browser.uidensity", 1)) {
+  :root {
+    --tab-min-height: 32px !important;
+  }
+}
+@media (-moz-pref("sidebar.verticalTabs", true)) {
+  :root {
     --tab-pinned-expanded-background-width: var(--tab-min-height) !important;
     --tab-height-with-margin-padding: calc(var(--tab-min-height) + (2 * var(--tab-block-margin))) !important;
     --tab-icon-end-margin: 8px !important;
-  }
-  :root[uidensity=compact] {
-    --tab-min-height: 32px !important;
-  }
-  :root[uidensity=touch] {
-    --tab-min-height: 40px !important;
   }
   :root #tabbrowser-tabs {
     padding-block: calc(var(--space-small) - var(--tab-block-margin)) !important;
@@ -1012,12 +1037,18 @@
   :root {
     --edgify-urlbar-result-padding: 4px;
   }
-  :root[uidensity=compact] {
-    --edgify-urlbar-result-padding: 2px;
-  }
-  :root[uidensity=touch] {
+}
+@media (not -moz-pref("browser.nova.enabled")) and (-moz-pref("browser.uidensity", 2)) {
+  :root {
     --edgify-urlbar-result-padding: 8px;
   }
+}
+@media (not -moz-pref("browser.nova.enabled")) and (-moz-pref("browser.uidensity", 1)) {
+  :root {
+    --edgify-urlbar-result-padding: 2px;
+  }
+}
+@media not -moz-pref("browser.nova.enabled") {
   #urlbar .urlbarView-row:not([type=dynamic]) .urlbarView-row-inner {
     padding-block: var(--edgify-urlbar-result-padding) !important;
   }
@@ -1141,11 +1172,13 @@
   --uc-bookmark-toolbar-padding-bottom: 2px;
   --bookmarks-toolbar-overlapping-browser-height: calc(var(--uc-bookmark-toolbar-padding-bottom) + 16px + (var(--bookmark-block-margin) + var(--bookmark-block-padding)) * 2) !important;
 }
-:root[uidensity=compact] {
-  --bookmark-block-padding: 3px !important;
-  --bookmark-inline-padding: 3px !important;
-}
 
+@media (-moz-pref("browser.uidensity", 1)) {
+  :root {
+    --bookmark-block-padding: 3px !important;
+    --bookmark-inline-padding: 3px !important;
+  }
+}
 #PersonalToolbar {
   padding-bottom: var(--uc-bookmark-toolbar-padding-bottom) !important;
 }
@@ -1420,9 +1453,13 @@ panelview .panel-subview-footer-button {
     --menuitem-padding-inline: 12px;
     --menuitem-border-radius: 3px;
   }
-  :root[uidensity=compact] #main-menubar > menu {
+}
+@media (-moz-platform: windows) and (-moz-pref("browser.uidensity", 1)) {
+  #main-menubar > menu {
     --menuitem-padding-inline: 8px;
   }
+}
+@media (-moz-platform: windows) {
   menupopup[needsgutter] menu:not([icon], .menu-iconic),
   menupopup[needsgutter] menuitem:not([checked=true], [icon], .menuitem-iconic) {
     padding-inline-start: var(--menuitem-padding-inline) !important;
@@ -1562,17 +1599,17 @@ panel[type=autocomplete-richlistbox] > .autocomplete-richlistbox {
   color: inherit !important;
   fill-opacity: initial !important;
 }
-:root[uidensity=compact] .autocomplete-richlistitem {
-  height: 26px !important;
-}
 
 menupopup :is(menu, menuitem) {
   height: 30px !important;
 }
-:root[uidensity=compact] menupopup :is(menu, menuitem) {
-  height: 26px !important;
-}
 
+@media (-moz-pref("browser.uidensity", 1)) {
+  .autocomplete-richlistitem,
+  menupopup :is(menu, menuitem) {
+    height: 26px !important;
+  }
+}
 /* 修复输入框下拉菜单选中样式 */
 .autocomplete-richlistitem[selected] {
   color: #ffffff !important;

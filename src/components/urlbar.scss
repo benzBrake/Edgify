@@ -71,13 +71,17 @@
   /* Match result spacing to the toolbar density without fixing row heights. */
   :root {
     --edgify-urlbar-result-padding: 4px;
+  }
 
-    &[uidensity="compact"] {
-      --edgify-urlbar-result-padding: 2px;
-    }
-
-    &[uidensity="touch"] {
+  @include Touch {
+    :root {
       --edgify-urlbar-result-padding: 8px;
+    }
+  }
+
+  @include Compact {
+    :root {
+      --edgify-urlbar-result-padding: 2px;
     }
   }
 
