@@ -520,7 +520,7 @@
     list-style-image: url("chrome://global/skin/icons/arrow-down.svg") !important;
   }
 }
-@media (-moz-pref("sidebar.verticalTabs", false)) and (prefers-color-scheme: light) {
+@media (-moz-pref("sidebar.verticalTabs", false)) and (-moz-pref("extensions.activeThemeID", "firefox-compact-light@mozilla.org")) {
   #TabsToolbar {
     background-color: #e3e3e3 !important;
   }
@@ -543,7 +543,7 @@
 @media (-moz-pref("sidebar.verticalTabs", false)) and (not -moz-pref("userChrome.edgify.alltabs-button.order-first", true)) {
   #TabsToolbar-customization-target > :is(toolbarbutton, toolbaritem):first-child,
   #TabsToolbar-customization-target > toolbarpaletteitem:first-child > :is(toolbarbutton, toolbaritem) {
-    margin-inline-start: calc(var(--toolbar-padding-inline) - var(--toolbarbutton-padding-outer)) !important;
+    margin-inline-start: calc((var(--toolbar-padding-inline) - var(--toolbarbutton-padding-outer)) / 2) !important;
   }
 }
 @media (-moz-pref("sidebar.verticalTabs", false)) and (-moz-pref("userChrome.edgify.alltabs-button.order-first", true)) {

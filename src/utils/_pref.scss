@@ -55,6 +55,12 @@
     @return "(prefers-color-scheme: light)";
 }
 
+/// @name F-LightTheme
+/// @description 仅匹配 Firefox 内置的明亮主题。
+@function F-LightTheme() {
+    @return F-Option("extensions.activeThemeID", "firefox-compact-light@mozilla.org");
+}
+
 /// @name F-Dark
 /// @description 返回深色模式的查询字符串。
 @function F-Dark() {
@@ -136,6 +142,13 @@
 /// @mixin Light
 @mixin Light() {
     @media #{F-Light()} {
+        @content;
+    }
+}
+
+/// @mixin LightTheme 仅用于 Firefox 内置的明亮主题。
+@mixin LightTheme() {
+    @media #{F-LightTheme()} {
         @content;
     }
 }
