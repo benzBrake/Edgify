@@ -85,6 +85,9 @@
 /* Inherited through sidebar-main and moz-button shadow roots. */
 #sidebar-container {
   --button-border-radius: 50% !important;
+  /* Match navbar icon backgrounds across toolbar densities. */
+  --button-size-icon: calc(16px + 2 * var(--toolbarbutton-padding-inner));
+  --button-min-height: var(--button-size-icon);
 }
 
 :root[uidensity=compact] #sidebar-container {
