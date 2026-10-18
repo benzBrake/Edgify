@@ -138,10 +138,6 @@
 
 /* Keep the remote-control status in a compact, Edge-style address-bar badge. */
 :root[remotecontrol] {
-  #urlbar .urlbar-background {
-    background-image: none !important;
-  }
-
   #remote-control-box {
     align-self: center;
     width: var(--urlbar-basic-component-size) !important;
@@ -154,7 +150,7 @@
     align-items: center;
     justify-content: center;
     border-radius: var(--megabar_border_roundness);
-    color: light-dark(#006cbe, #75b6ff);
+    color: light-dark(#c5221f, #ff8a80);
     background-color: color-mix(in srgb, currentColor 12%, transparent);
   }
 
