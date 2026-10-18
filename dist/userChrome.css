@@ -157,7 +157,7 @@
     border: none !important;
   }
   #main-window[uidensity=compact] #nav-bar, #main-window[uidensity=compact] #PlacesToolbar {
-    --toolbar-padding-inline: 4px;
+    --toolbar-padding-inline: .25em;
   }
   #nav-bar-customization-target > :is(toolbarbutton, toolbaritem):first-child,
   #nav-bar-customization-target > toolbarpaletteitem:first-child > :is(toolbarbutton, toolbaritem) {
