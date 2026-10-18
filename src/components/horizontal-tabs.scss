@@ -593,9 +593,13 @@
 
   /* -------------------- Tab Counter -------------------- */
 
-  #alltabs-button {
-    order: -1 !important;
+  @include Option("userChrome.edgify.alltabs-button.order-first", true) {
+    #alltabs-button {
+      order: -1 !important;
+    }
+  }
 
+  #alltabs-button {
     > .toolbarbutton-badge-stack {
       background-color: light-dark(
         #f3f3f3,

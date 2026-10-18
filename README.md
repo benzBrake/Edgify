@@ -10,6 +10,15 @@
 4.  将 `dist` 文件夹下的所有文件和文件夹复制到 `chrome` 文件夹（没有就创建）中。
 5.  重启 Firefox。
 
+## 配置
+
+可以在 `about:config` 中创建布尔值参数 `userChrome.edgify.alltabs-button.order-first`，控制标签栏右侧的“列出所有标签页”按钮是否移动到最前面：
+
+- `true`：移动到最前面。
+- `false`：保持默认位置。
+
+参数不存在时按 `false` 处理。修改后需重新加载主题样式或重启 Firefox。
+
 ## 开发
 
 本项目使用 Sass 和 Vite 进行开发。

@@ -490,9 +490,19 @@
     outline: none !important;
   }
   /* -------------------- Tab Counter -------------------- */
+  /* ---------------------------------------- Tab Bar ---------------------------------------- */
+  /* ---------------------------------------- Indents ---------------------------------------- */
+  /* ---------------------------------------- Separators ---------------------------------------- */
+  /* ---------------------------------------- Shadows ---------------------------------------- */
+  /* ---------- Opaque toolbar ---------- */
+  /* ---------- DragSpace ---------- */
+}
+@media (-moz-pref("sidebar.verticalTabs", false)) and (-moz-pref("userChrome.edgify.alltabs-button.order-first", true)) {
   #alltabs-button {
     order: -1 !important;
   }
+}
+@media (-moz-pref("sidebar.verticalTabs", false)) {
   #alltabs-button > .toolbarbutton-badge-stack {
     background-color: light-dark(#f3f3f3, color-mix(in srgb, currentColor 12%, transparent)) !important;
     border-radius: 8px !important;
@@ -507,12 +517,6 @@
     opacity: 1 !important;
     list-style-image: url("chrome://global/skin/icons/arrow-down.svg") !important;
   }
-  /* ---------------------------------------- Tab Bar ---------------------------------------- */
-  /* ---------------------------------------- Indents ---------------------------------------- */
-  /* ---------------------------------------- Separators ---------------------------------------- */
-  /* ---------------------------------------- Shadows ---------------------------------------- */
-  /* ---------- Opaque toolbar ---------- */
-  /* ---------- DragSpace ---------- */
 }
 @media (-moz-pref("sidebar.verticalTabs", false)) and (prefers-color-scheme: light) {
   #TabsToolbar {
