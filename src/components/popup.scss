@@ -1,5 +1,9 @@
 @use '../utils/pref' as *;
 
+@function FluentIcon($glyph) {
+    @return url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' xmlns='http://www.w3.org/2000/svg'%3E%3Ctext x='8' y='12.5' text-anchor='middle' font-family='Segoe%20Fluent%20Icons' font-size='14' fill='context-fill'%3E%26%23x#{$glyph};%3C/text%3E%3C/svg%3E");
+}
+
 /********************************************************************************/
 /* 参考:                                                                         */
 /* https://github.com/aris-t2/customcssforfx                                    */
@@ -363,4 +367,277 @@ scrollbox[orient=vertical] {
     {
     fill: currentColor !important;
     -moz-context-properties: fill, fill-opacity, stroke, stroke-opacity !important;
+}
+
+@media (-moz-platform: windows) {
+    #appMenu-new-tab-button2,
+    #context_openANewTab,
+    #context_openlinkintab,
+    #placesContext_open\:newtab,
+    #placesContext_new\:bookmark,
+    #toolbar-context-openANewTab {
+        --menuitem-icon: #{FluentIcon(E710)};
+    }
+
+    #appMenu-new-window-button2,
+    #placesContext_open\:newwindow {
+        --menuitem-icon: #{FluentIcon(E78B)};
+    }
+
+    #appMenu-new-private-window-button2,
+    #context-openlinkprivate,
+    #openPrivate,
+    #openAllPrivate,
+    #openAllLinksPrivate,
+    #placesContext_open\:newprivatewindow {
+        --menuitem-icon: #{FluentIcon(E727)};
+    }
+
+    #appMenu-bookmarks-button,
+    #context-bookmarklink,
+    #context-bookmarkTab,
+    #context_bookmarkSelectedTabs,
+    #toolbar-context-bookmarkSelectedTab,
+    #toolbar-context-bookmarkSelectedTabs,
+    #placesContext_add\:bookmark,
+    #menu_bookmarkThisPage,
+    #menu_bookmarkAllTabs {
+        --menuitem-icon: #{FluentIcon(E8A4)};
+    }
+
+    #appMenu-history-button,
+    #menu_showAllHistory,
+    #historyUndoMenu,
+    #historyUndoWindowMenu,
+    #context_undoCloseTab,
+    #toolbar-context-undoCloseTab {
+        --menuitem-icon: #{FluentIcon(E81C)};
+    }
+
+    #appMenu-downloads-button {
+        --menuitem-icon: #{FluentIcon(E896)};
+    }
+
+    #appMenu-passwords-button,
+    #manage-saved-logins,
+    #fill-login,
+    #fill-login-generated-password,
+    #context-reveal-password {
+        --menuitem-icon: #{FluentIcon(E72E)};
+    }
+
+    #appMenu-extensions-themes-button,
+    #toolbar-context-manage-extension,
+    #pageActionContextMenuManageExtension {
+        --menuitem-icon: #{FluentIcon(EA86)};
+    }
+
+    #appMenu-print-button2,
+    #context-print-selection,
+    #context-printframe {
+        --menuitem-icon: #{FluentIcon(E749)};
+    }
+
+    #appMenu-save-file-button2,
+    #context-savelink,
+    #context-saveimage,
+    #context-savevideo,
+    #context-saveaudio,
+    #context-savepage,
+    #context-saveframe,
+    #context-pdfjs-save-page {
+        --menuitem-icon: #{FluentIcon(E74E)};
+    }
+
+    #appMenu-find-button2,
+    #context-searchselect,
+    #context-searchselect-private,
+    #menu_searchBookmarks,
+    #menu_searchHistory {
+        --menuitem-icon: #{FluentIcon(E721)};
+    }
+
+    #appMenu-translate-button,
+    #context-translate-selection {
+        --menuitem-icon: #{FluentIcon(E774)};
+    }
+
+    #context-zoom-out {
+        --menuitem-icon: #{FluentIcon(E921)};
+    }
+
+    #context-zoom-in {
+        --menuitem-icon: #{FluentIcon(E8A3)};
+    }
+
+    #context-video-fullscreen,
+    #context-leave-dom-fullscreen,
+    #context_fullscreenAutohide,
+    #context_fullscreenExit {
+        --menuitem-icon: #{FluentIcon(E740)};
+    }
+
+    #appMenu-settings-button,
+    #toolbar-context-customize {
+        --menuitem-icon: #{FluentIcon(E713)};
+    }
+
+    #appMenu-more-button2 {
+        --menuitem-icon: #{FluentIcon(E712)};
+    }
+
+    #appMenu-help-button2 {
+        --menuitem-icon: #{FluentIcon(E897)};
+    }
+
+    #context_reloadTab,
+    #context_reloadSelectedTabs,
+    #toolbar-context-reloadSelectedTab,
+    #toolbar-context-reloadSelectedTabs,
+    #context-reloadimage,
+    #context-reloadframe {
+        --menuitem-icon: #{FluentIcon(E72C)};
+    }
+
+    #appMenu-quit-button2 {
+        --menuitem-icon: #{FluentIcon(E7E8)};
+    }
+
+    #context-openlinkincurrent,
+    #context-openlink,
+    #context-openframe,
+    #context-openframeintab {
+        --menuitem-icon: #{FluentIcon(E8A7)};
+    }
+
+    #context-previewlink,
+    #context-viewvideo,
+    #context-viewimage,
+    #context-viewimageinfo,
+    #context-viewimagedesc,
+    #context-viewframesource,
+    #context-viewframeinfo,
+    #context-viewsource,
+    #context-showonlythisframe {
+        --menuitem-icon: #{FluentIcon(E890)};
+    }
+
+    #context-media-mute,
+    #context-media-unmute {
+        --menuitem-icon: #{FluentIcon(E74F)};
+    }
+
+    #context-media-loop {
+        --menuitem-icon: #{FluentIcon(E8EE)};
+    }
+
+    #context-copy,
+    #context-copylink,
+    #context-copyemail,
+    #context-copyphone,
+    #context-copyimage,
+    #context-copyvideourl,
+    #context-copyaudiourl,
+    #context-pdfjs-copy,
+    #placesContext_copy,
+    #placesContext_copyTitle,
+    #placesContext_copyLink {
+        --menuitem-icon: #{FluentIcon(E8C8)};
+    }
+
+    #context-cut,
+    #context-pdfjs-cut,
+    #placesContext_cut {
+        --menuitem-icon: #{FluentIcon(E8C6)};
+    }
+
+    #context-paste,
+    #context-paste-no-formatting,
+    #context-pdfjs-paste,
+    #placesContext_paste {
+        --menuitem-icon: #{FluentIcon(E77F)};
+    }
+
+    #context-delete,
+    #context-pdfjs-delete,
+    #placesContext_delete,
+    #placesContext_deleteBookmark,
+    #placesContext_deleteFolder,
+    #placesContext_delete_history,
+    #toolbar-context-remove-extension,
+    #pageActionContextMenuRemoveExtension {
+        --menuitem-icon: #{FluentIcon(E74D)};
+    }
+
+    #context-selectall,
+    #context-pdfjs-select-all,
+    #context_selectAllTabs {
+        --menuitem-icon: #{FluentIcon(E8B3)};
+    }
+
+    #context-media-play,
+    #context_playTab,
+    #context_playSelectedTabs {
+        --menuitem-icon: #{FluentIcon(E768)};
+    }
+
+    #context-media-pause {
+        --menuitem-icon: #{FluentIcon(E769)};
+    }
+
+    #context-sendpagetodevice,
+    #context-sendlinktodevice,
+    #context-sendimage,
+    #context-sendvideo,
+    #context-sendaudio,
+    #context_shareSelectedTabs,
+    #context_sendTabToDevice {
+        --menuitem-icon: #{FluentIcon(E72D)};
+    }
+
+    #context_pinTab,
+    #context_pinSelectedTabs,
+    #context_unpinTab,
+    #context_unpinSelectedTabs {
+        --menuitem-icon: #{FluentIcon(E718)};
+    }
+
+    #context_moveTabToGroup,
+    #context_moveTabToGroupNewGroup,
+    #context_moveTabToSavedGroup,
+    #context_moveTabToNewGroup,
+    #context_moveTabToSplitView,
+    #context_separateSplitView {
+        --menuitem-icon: #{FluentIcon(E8D2)};
+    }
+
+    #context_duplicateTab,
+    #context_duplicateTabs {
+        --menuitem-icon: #{FluentIcon(E89A)};
+    }
+
+    #context_closeTab,
+    #context_closeDuplicateTabs,
+    #context_closeTabsToTheStart,
+    #context_closeTabsToTheEnd,
+    #context_closeOtherTabs,
+    #context_closeTabOptions {
+        --menuitem-icon: #{FluentIcon(E711)};
+    }
+
+    #context-take-screenshot,
+    #context-inspect,
+    #context-inspect-a11y,
+    #addMenu-inspect-page,
+    #addMenu-viewinfo {
+        --menuitem-icon: #{FluentIcon(E7B3)};
+    }
+
+    #appMenu-mainView .subviewbutton:not(.addMenu) > .toolbarbutton-icon {
+        list-style-image: var(--menuitem-icon) !important;
+    }
+
+    menupopup:not(.in-menulist) > :is(menu, menuitem)[id]:not(.menuitem-iconic):not([class*="addMenu"]) > .menu-icon {
+        content: var(--menuitem-icon) !important;
+    }
 }

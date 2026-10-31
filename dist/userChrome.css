@@ -1670,3 +1670,238 @@ scrollbox[orient=vertical] {
   fill: currentColor !important;
   -moz-context-properties: fill, fill-opacity, stroke, stroke-opacity !important;
 }
+
+@media (-moz-platform: windows) {
+  #appMenu-new-tab-button2,
+  #context_openANewTab,
+  #context_openlinkintab,
+  #placesContext_open\:newtab,
+  #placesContext_new\:bookmark,
+  #toolbar-context-openANewTab {
+    --menuitem-icon: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' xmlns='http://www.w3.org/2000/svg'%3E%3Ctext x='8' y='12.5' text-anchor='middle' font-family='Segoe%20Fluent%20Icons' font-size='14' fill='context-fill'%3E%26%23xE710;%3C/text%3E%3C/svg%3E");
+  }
+  #appMenu-new-window-button2,
+  #placesContext_open\:newwindow {
+    --menuitem-icon: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' xmlns='http://www.w3.org/2000/svg'%3E%3Ctext x='8' y='12.5' text-anchor='middle' font-family='Segoe%20Fluent%20Icons' font-size='14' fill='context-fill'%3E%26%23xE78B;%3C/text%3E%3C/svg%3E");
+  }
+  #appMenu-new-private-window-button2,
+  #context-openlinkprivate,
+  #openPrivate,
+  #openAllPrivate,
+  #openAllLinksPrivate,
+  #placesContext_open\:newprivatewindow {
+    --menuitem-icon: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' xmlns='http://www.w3.org/2000/svg'%3E%3Ctext x='8' y='12.5' text-anchor='middle' font-family='Segoe%20Fluent%20Icons' font-size='14' fill='context-fill'%3E%26%23xE727;%3C/text%3E%3C/svg%3E");
+  }
+  #appMenu-bookmarks-button,
+  #context-bookmarklink,
+  #context-bookmarkTab,
+  #context_bookmarkSelectedTabs,
+  #toolbar-context-bookmarkSelectedTab,
+  #toolbar-context-bookmarkSelectedTabs,
+  #placesContext_add\:bookmark,
+  #menu_bookmarkThisPage,
+  #menu_bookmarkAllTabs {
+    --menuitem-icon: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' xmlns='http://www.w3.org/2000/svg'%3E%3Ctext x='8' y='12.5' text-anchor='middle' font-family='Segoe%20Fluent%20Icons' font-size='14' fill='context-fill'%3E%26%23xE8A4;%3C/text%3E%3C/svg%3E");
+  }
+  #appMenu-history-button,
+  #menu_showAllHistory,
+  #historyUndoMenu,
+  #historyUndoWindowMenu,
+  #context_undoCloseTab,
+  #toolbar-context-undoCloseTab {
+    --menuitem-icon: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' xmlns='http://www.w3.org/2000/svg'%3E%3Ctext x='8' y='12.5' text-anchor='middle' font-family='Segoe%20Fluent%20Icons' font-size='14' fill='context-fill'%3E%26%23xE81C;%3C/text%3E%3C/svg%3E");
+  }
+  #appMenu-downloads-button {
+    --menuitem-icon: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' xmlns='http://www.w3.org/2000/svg'%3E%3Ctext x='8' y='12.5' text-anchor='middle' font-family='Segoe%20Fluent%20Icons' font-size='14' fill='context-fill'%3E%26%23xE896;%3C/text%3E%3C/svg%3E");
+  }
+  #appMenu-passwords-button,
+  #manage-saved-logins,
+  #fill-login,
+  #fill-login-generated-password,
+  #context-reveal-password {
+    --menuitem-icon: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' xmlns='http://www.w3.org/2000/svg'%3E%3Ctext x='8' y='12.5' text-anchor='middle' font-family='Segoe%20Fluent%20Icons' font-size='14' fill='context-fill'%3E%26%23xE72E;%3C/text%3E%3C/svg%3E");
+  }
+  #appMenu-extensions-themes-button,
+  #toolbar-context-manage-extension,
+  #pageActionContextMenuManageExtension {
+    --menuitem-icon: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' xmlns='http://www.w3.org/2000/svg'%3E%3Ctext x='8' y='12.5' text-anchor='middle' font-family='Segoe%20Fluent%20Icons' font-size='14' fill='context-fill'%3E%26%23xEA86;%3C/text%3E%3C/svg%3E");
+  }
+  #appMenu-print-button2,
+  #context-print-selection,
+  #context-printframe {
+    --menuitem-icon: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' xmlns='http://www.w3.org/2000/svg'%3E%3Ctext x='8' y='12.5' text-anchor='middle' font-family='Segoe%20Fluent%20Icons' font-size='14' fill='context-fill'%3E%26%23xE749;%3C/text%3E%3C/svg%3E");
+  }
+  #appMenu-save-file-button2,
+  #context-savelink,
+  #context-saveimage,
+  #context-savevideo,
+  #context-saveaudio,
+  #context-savepage,
+  #context-saveframe,
+  #context-pdfjs-save-page {
+    --menuitem-icon: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' xmlns='http://www.w3.org/2000/svg'%3E%3Ctext x='8' y='12.5' text-anchor='middle' font-family='Segoe%20Fluent%20Icons' font-size='14' fill='context-fill'%3E%26%23xE74E;%3C/text%3E%3C/svg%3E");
+  }
+  #appMenu-find-button2,
+  #context-searchselect,
+  #context-searchselect-private,
+  #menu_searchBookmarks,
+  #menu_searchHistory {
+    --menuitem-icon: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' xmlns='http://www.w3.org/2000/svg'%3E%3Ctext x='8' y='12.5' text-anchor='middle' font-family='Segoe%20Fluent%20Icons' font-size='14' fill='context-fill'%3E%26%23xE721;%3C/text%3E%3C/svg%3E");
+  }
+  #appMenu-translate-button,
+  #context-translate-selection {
+    --menuitem-icon: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' xmlns='http://www.w3.org/2000/svg'%3E%3Ctext x='8' y='12.5' text-anchor='middle' font-family='Segoe%20Fluent%20Icons' font-size='14' fill='context-fill'%3E%26%23xE774;%3C/text%3E%3C/svg%3E");
+  }
+  #context-zoom-out {
+    --menuitem-icon: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' xmlns='http://www.w3.org/2000/svg'%3E%3Ctext x='8' y='12.5' text-anchor='middle' font-family='Segoe%20Fluent%20Icons' font-size='14' fill='context-fill'%3E%26%23xE921;%3C/text%3E%3C/svg%3E");
+  }
+  #context-zoom-in {
+    --menuitem-icon: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' xmlns='http://www.w3.org/2000/svg'%3E%3Ctext x='8' y='12.5' text-anchor='middle' font-family='Segoe%20Fluent%20Icons' font-size='14' fill='context-fill'%3E%26%23xE8A3;%3C/text%3E%3C/svg%3E");
+  }
+  #context-video-fullscreen,
+  #context-leave-dom-fullscreen,
+  #context_fullscreenAutohide,
+  #context_fullscreenExit {
+    --menuitem-icon: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' xmlns='http://www.w3.org/2000/svg'%3E%3Ctext x='8' y='12.5' text-anchor='middle' font-family='Segoe%20Fluent%20Icons' font-size='14' fill='context-fill'%3E%26%23xE740;%3C/text%3E%3C/svg%3E");
+  }
+  #appMenu-settings-button,
+  #toolbar-context-customize {
+    --menuitem-icon: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' xmlns='http://www.w3.org/2000/svg'%3E%3Ctext x='8' y='12.5' text-anchor='middle' font-family='Segoe%20Fluent%20Icons' font-size='14' fill='context-fill'%3E%26%23xE713;%3C/text%3E%3C/svg%3E");
+  }
+  #appMenu-more-button2 {
+    --menuitem-icon: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' xmlns='http://www.w3.org/2000/svg'%3E%3Ctext x='8' y='12.5' text-anchor='middle' font-family='Segoe%20Fluent%20Icons' font-size='14' fill='context-fill'%3E%26%23xE712;%3C/text%3E%3C/svg%3E");
+  }
+  #appMenu-help-button2 {
+    --menuitem-icon: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' xmlns='http://www.w3.org/2000/svg'%3E%3Ctext x='8' y='12.5' text-anchor='middle' font-family='Segoe%20Fluent%20Icons' font-size='14' fill='context-fill'%3E%26%23xE897;%3C/text%3E%3C/svg%3E");
+  }
+  #context_reloadTab,
+  #context_reloadSelectedTabs,
+  #toolbar-context-reloadSelectedTab,
+  #toolbar-context-reloadSelectedTabs,
+  #context-reloadimage,
+  #context-reloadframe {
+    --menuitem-icon: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' xmlns='http://www.w3.org/2000/svg'%3E%3Ctext x='8' y='12.5' text-anchor='middle' font-family='Segoe%20Fluent%20Icons' font-size='14' fill='context-fill'%3E%26%23xE72C;%3C/text%3E%3C/svg%3E");
+  }
+  #appMenu-quit-button2 {
+    --menuitem-icon: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' xmlns='http://www.w3.org/2000/svg'%3E%3Ctext x='8' y='12.5' text-anchor='middle' font-family='Segoe%20Fluent%20Icons' font-size='14' fill='context-fill'%3E%26%23xE7E8;%3C/text%3E%3C/svg%3E");
+  }
+  #context-openlinkincurrent,
+  #context-openlink,
+  #context-openframe,
+  #context-openframeintab {
+    --menuitem-icon: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' xmlns='http://www.w3.org/2000/svg'%3E%3Ctext x='8' y='12.5' text-anchor='middle' font-family='Segoe%20Fluent%20Icons' font-size='14' fill='context-fill'%3E%26%23xE8A7;%3C/text%3E%3C/svg%3E");
+  }
+  #context-previewlink,
+  #context-viewvideo,
+  #context-viewimage,
+  #context-viewimageinfo,
+  #context-viewimagedesc,
+  #context-viewframesource,
+  #context-viewframeinfo,
+  #context-viewsource,
+  #context-showonlythisframe {
+    --menuitem-icon: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' xmlns='http://www.w3.org/2000/svg'%3E%3Ctext x='8' y='12.5' text-anchor='middle' font-family='Segoe%20Fluent%20Icons' font-size='14' fill='context-fill'%3E%26%23xE890;%3C/text%3E%3C/svg%3E");
+  }
+  #context-media-mute,
+  #context-media-unmute {
+    --menuitem-icon: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' xmlns='http://www.w3.org/2000/svg'%3E%3Ctext x='8' y='12.5' text-anchor='middle' font-family='Segoe%20Fluent%20Icons' font-size='14' fill='context-fill'%3E%26%23xE74F;%3C/text%3E%3C/svg%3E");
+  }
+  #context-media-loop {
+    --menuitem-icon: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' xmlns='http://www.w3.org/2000/svg'%3E%3Ctext x='8' y='12.5' text-anchor='middle' font-family='Segoe%20Fluent%20Icons' font-size='14' fill='context-fill'%3E%26%23xE8EE;%3C/text%3E%3C/svg%3E");
+  }
+  #context-copy,
+  #context-copylink,
+  #context-copyemail,
+  #context-copyphone,
+  #context-copyimage,
+  #context-copyvideourl,
+  #context-copyaudiourl,
+  #context-pdfjs-copy,
+  #placesContext_copy,
+  #placesContext_copyTitle,
+  #placesContext_copyLink {
+    --menuitem-icon: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' xmlns='http://www.w3.org/2000/svg'%3E%3Ctext x='8' y='12.5' text-anchor='middle' font-family='Segoe%20Fluent%20Icons' font-size='14' fill='context-fill'%3E%26%23xE8C8;%3C/text%3E%3C/svg%3E");
+  }
+  #context-cut,
+  #context-pdfjs-cut,
+  #placesContext_cut {
+    --menuitem-icon: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' xmlns='http://www.w3.org/2000/svg'%3E%3Ctext x='8' y='12.5' text-anchor='middle' font-family='Segoe%20Fluent%20Icons' font-size='14' fill='context-fill'%3E%26%23xE8C6;%3C/text%3E%3C/svg%3E");
+  }
+  #context-paste,
+  #context-paste-no-formatting,
+  #context-pdfjs-paste,
+  #placesContext_paste {
+    --menuitem-icon: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' xmlns='http://www.w3.org/2000/svg'%3E%3Ctext x='8' y='12.5' text-anchor='middle' font-family='Segoe%20Fluent%20Icons' font-size='14' fill='context-fill'%3E%26%23xE77F;%3C/text%3E%3C/svg%3E");
+  }
+  #context-delete,
+  #context-pdfjs-delete,
+  #placesContext_delete,
+  #placesContext_deleteBookmark,
+  #placesContext_deleteFolder,
+  #placesContext_delete_history,
+  #toolbar-context-remove-extension,
+  #pageActionContextMenuRemoveExtension {
+    --menuitem-icon: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' xmlns='http://www.w3.org/2000/svg'%3E%3Ctext x='8' y='12.5' text-anchor='middle' font-family='Segoe%20Fluent%20Icons' font-size='14' fill='context-fill'%3E%26%23xE74D;%3C/text%3E%3C/svg%3E");
+  }
+  #context-selectall,
+  #context-pdfjs-select-all,
+  #context_selectAllTabs {
+    --menuitem-icon: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' xmlns='http://www.w3.org/2000/svg'%3E%3Ctext x='8' y='12.5' text-anchor='middle' font-family='Segoe%20Fluent%20Icons' font-size='14' fill='context-fill'%3E%26%23xE8B3;%3C/text%3E%3C/svg%3E");
+  }
+  #context-media-play,
+  #context_playTab,
+  #context_playSelectedTabs {
+    --menuitem-icon: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' xmlns='http://www.w3.org/2000/svg'%3E%3Ctext x='8' y='12.5' text-anchor='middle' font-family='Segoe%20Fluent%20Icons' font-size='14' fill='context-fill'%3E%26%23xE768;%3C/text%3E%3C/svg%3E");
+  }
+  #context-media-pause {
+    --menuitem-icon: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' xmlns='http://www.w3.org/2000/svg'%3E%3Ctext x='8' y='12.5' text-anchor='middle' font-family='Segoe%20Fluent%20Icons' font-size='14' fill='context-fill'%3E%26%23xE769;%3C/text%3E%3C/svg%3E");
+  }
+  #context-sendpagetodevice,
+  #context-sendlinktodevice,
+  #context-sendimage,
+  #context-sendvideo,
+  #context-sendaudio,
+  #context_shareSelectedTabs,
+  #context_sendTabToDevice {
+    --menuitem-icon: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' xmlns='http://www.w3.org/2000/svg'%3E%3Ctext x='8' y='12.5' text-anchor='middle' font-family='Segoe%20Fluent%20Icons' font-size='14' fill='context-fill'%3E%26%23xE72D;%3C/text%3E%3C/svg%3E");
+  }
+  #context_pinTab,
+  #context_pinSelectedTabs,
+  #context_unpinTab,
+  #context_unpinSelectedTabs {
+    --menuitem-icon: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' xmlns='http://www.w3.org/2000/svg'%3E%3Ctext x='8' y='12.5' text-anchor='middle' font-family='Segoe%20Fluent%20Icons' font-size='14' fill='context-fill'%3E%26%23xE718;%3C/text%3E%3C/svg%3E");
+  }
+  #context_moveTabToGroup,
+  #context_moveTabToGroupNewGroup,
+  #context_moveTabToSavedGroup,
+  #context_moveTabToNewGroup,
+  #context_moveTabToSplitView,
+  #context_separateSplitView {
+    --menuitem-icon: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' xmlns='http://www.w3.org/2000/svg'%3E%3Ctext x='8' y='12.5' text-anchor='middle' font-family='Segoe%20Fluent%20Icons' font-size='14' fill='context-fill'%3E%26%23xE8D2;%3C/text%3E%3C/svg%3E");
+  }
+  #context_duplicateTab,
+  #context_duplicateTabs {
+    --menuitem-icon: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' xmlns='http://www.w3.org/2000/svg'%3E%3Ctext x='8' y='12.5' text-anchor='middle' font-family='Segoe%20Fluent%20Icons' font-size='14' fill='context-fill'%3E%26%23xE89A;%3C/text%3E%3C/svg%3E");
+  }
+  #context_closeTab,
+  #context_closeDuplicateTabs,
+  #context_closeTabsToTheStart,
+  #context_closeTabsToTheEnd,
+  #context_closeOtherTabs,
+  #context_closeTabOptions {
+    --menuitem-icon: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' xmlns='http://www.w3.org/2000/svg'%3E%3Ctext x='8' y='12.5' text-anchor='middle' font-family='Segoe%20Fluent%20Icons' font-size='14' fill='context-fill'%3E%26%23xE711;%3C/text%3E%3C/svg%3E");
+  }
+  #context-take-screenshot,
+  #context-inspect,
+  #context-inspect-a11y,
+  #addMenu-inspect-page,
+  #addMenu-viewinfo {
+    --menuitem-icon: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' xmlns='http://www.w3.org/2000/svg'%3E%3Ctext x='8' y='12.5' text-anchor='middle' font-family='Segoe%20Fluent%20Icons' font-size='14' fill='context-fill'%3E%26%23xE7B3;%3C/text%3E%3C/svg%3E");
+  }
+  #appMenu-mainView .subviewbutton:not(.addMenu) > .toolbarbutton-icon {
+    list-style-image: var(--menuitem-icon) !important;
+  }
+  menupopup:not(.in-menulist) > :is(menu, menuitem)[id]:not(.menuitem-iconic):not([class*=addMenu]) > .menu-icon {
+    content: var(--menuitem-icon) !important;
+  }
+}
