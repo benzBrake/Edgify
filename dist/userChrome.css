@@ -75,6 +75,35 @@
     border-radius: 0 var(--border-radius-medium) var(--border-radius-medium) 0 !important;
   }
 }
+/* 网页区域外框 */
+:root:not([inFullscreen]) #tabbrowser-tabbox {
+  margin: 0 4px 4px 0 !important;
+  border: 1px solid var(--chrome-content-separator-color) !important;
+  border-radius: 8px !important;
+  overflow: hidden !important;
+}
+@media not -moz-pref("sidebar.position_start") {
+  :root:not([inFullscreen]) #tabbrowser-tabbox {
+    margin: 0 0 4px 4px !important;
+  }
+}
+
+/* 侧边栏面板外框和底部留白 */
+:root:not([inFullscreen]) #sidebar-box {
+  margin-bottom: 4px !important;
+}
+:root:not([inFullscreen]) #sidebar-box > .sidebar-browser-stack > #sidebar {
+  box-sizing: border-box !important;
+  border: 1px solid var(--chrome-content-separator-color) !important;
+  border-radius: 8px !important;
+  overflow: hidden !important;
+}
+
+/* 移除状态栏上方的分隔线 */
+#status-bar {
+  border-top: 0 !important;
+}
+
 /* Keep toolbar buttons circular, while preserving the Edge-style tab bar. */
 #main-window toolbar:not(#TabsToolbar):not(#PersonalToolbar) {
   --toolbarbutton-border-radius: 50% !important;
