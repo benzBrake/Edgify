@@ -1,5 +1,131 @@
 @use '../utils/pref' as *;
 
+/*!
+ * toolbar-icons SVGs derived from Edge-Frfox, MIT License.
+ * Copyright (c) 2021 bmFtZQ
+ * https://github.com/bmFtZQ/edge-frfox
+ * Full permission notice: src/images/toolbar-icons/LICENSE.edge-frfox.txt
+ * (also retained in the compiled CSS by components/popup.scss).
+ */
+
+/* Only style each button's own image, without changing nested menu items. */
+$toolbar-icons: (
+    'back-button': 'toolbar-icons/back',
+    'forward-button': 'toolbar-icons/forward',
+    'reload-button': 'toolbar-icons/reload',
+    'stop-button': 'toolbar-icons/close',
+    'home-button': 'toolbar-icons/home',
+    'bookmarks-menu-button': 'toolbar-icons/bookmark-star-on-tray',
+    'history-panelmenu': 'toolbar-icons/history',
+    'save-page-button': 'toolbar-icons/save',
+    'open-file-button': 'toolbar-icons/open',
+    'find-button': 'menu-icons/search-page',
+    'print-button': 'toolbar-icons/print',
+    'share-tab-button': 'toolbar-icons/share',
+    'characterencoding-button': 'toolbar-icons/text-encoding',
+    'cut-button': 'toolbar-icons/edit-cut',
+    'copy-button': 'toolbar-icons/edit-copy',
+    'paste-button': 'toolbar-icons/edit-paste',
+    'email-link-button': 'toolbar-icons/mail',
+    'sync-button': 'toolbar-icons/tab',
+    'send-tab-button': 'toolbar-icons/send-to-device',
+    'logins-button': 'toolbar-icons/passwords',
+    'preferences-button': 'toolbar-icons/settings',
+    'panic-button': 'toolbar-icons/forget',
+    'privatebrowsing-button': 'menu-icons/new-private-window',
+    'developer-button': 'toolbar-icons/developer',
+    'new-window-button': 'menu-icons/new-window',
+    'library-button': 'toolbar-icons/library',
+    'firefox-view-button': 'toolbar-icons/firefox-view',
+    'screenshot-button': 'toolbar-icons/screenshot',
+    'downloads-button': 'toolbar-icons/downloads',
+    'unified-extensions-button': 'toolbar-icons/extension',
+    'add-ons-button': 'toolbar-icons/extension',
+    'sidebar-button': 'toolbar-icons/sidebars',
+    'nav-bar-overflow-button': 'toolbar-icons/chevron',
+    'PanelUI-menu-button': 'toolbar-icons/menu'
+);
+
+@each $button, $icon in $toolbar-icons {
+    :is(#nav-bar, #widget-overflow-fixed-list) ##{$button} {
+        --edgify-toolbar-icon: url("../images/#{$icon}.svg?inline");
+        list-style-image: var(--edgify-toolbar-icon) !important;
+
+        > .toolbarbutton-icon,
+        > .toolbarbutton-badge-stack > .toolbarbutton-icon {
+            list-style-image: var(--edgify-toolbar-icon) !important;
+            -moz-context-properties: fill, fill-opacity, stroke, stroke-opacity;
+            fill: currentColor;
+        }
+    }
+}
+
+/* Mirror only the icon when Firefox places the sidebar at the end. */
+:is(#nav-bar, #widget-overflow-fixed-list) #sidebar-button {
+    > .toolbarbutton-icon,
+    > .toolbarbutton-badge-stack > .toolbarbutton-icon {
+        transform: scaleX(1) !important;
+    }
+
+    &[sidebar-positionend] {
+        > .toolbarbutton-icon,
+        > .toolbarbutton-badge-stack > .toolbarbutton-icon {
+            transform: scaleX(-1) !important;
+        }
+    }
+}
+
+/* Native progress and notification layers still handle active downloads. */
+#nav-bar #downloads-button:not([progress]) #downloads-indicator-icon {
+    list-style-image: url("../images/toolbar-icons/downloads.svg?inline") !important;
+}
+
+/* The fullscreen widget may also be placed in a custom status toolbar. */
+#fullscreen-button {
+    --edgify-toolbar-icon: url("../images/menu-icons/fullscreen.svg?inline");
+    list-style-image: var(--edgify-toolbar-icon) !important;
+
+    > .toolbarbutton-icon {
+        list-style-image: var(--edgify-toolbar-icon) !important;
+        -moz-context-properties: fill, fill-opacity;
+        fill: currentColor;
+    }
+}
+
+:root[inFullscreen] #fullscreen-button,
+#fullscreen-button[checked="true"] {
+    --edgify-toolbar-icon: url("../images/menu-icons/fullscreen-exit.svg?inline");
+}
+
+/* Firefox uses this variable for the default avatar in every account state.
+ * A custom profile image set inline by Firefox takes precedence naturally.
+ */
+:root {
+    --avatar-image-url: url("../images/toolbar-icons/account.svg?inline");
+}
+
+:is(#nav-bar, #widget-overflow-fixed-list) #fxa-avatar-image {
+    -moz-context-properties: fill, fill-opacity, stroke, stroke-opacity;
+    fill: currentColor;
+}
+
+/* Address-bar action buttons share the same line style. */
+#star-button {
+    list-style-image: url("../images/toolbar-icons/bookmark-hollow.svg?inline") !important;
+}
+
+#star-button[starred] {
+    list-style-image: url("../images/toolbar-icons/bookmark.svg?inline") !important;
+}
+
+#translations-button-icon {
+    list-style-image: url("../images/toolbar-icons/translate.svg?inline") !important;
+}
+
+.searchbar-search-icon {
+    list-style-image: url("../images/toolbar-icons/search-glass.svg?inline") !important;
+}
+
 /* Keep toolbar buttons circular, while preserving the Edge-style tab bar. */
 #main-window toolbar:not(#TabsToolbar):not(#PersonalToolbar) {
     --toolbarbutton-border-radius: 50% !important;

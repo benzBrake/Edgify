@@ -1,0 +1,22 @@
+/* User-origin rules reach the sidebar's shadow tree. Ancestor selectors such
+ * as #sidebar-container moz-button do not cross that boundary.
+ */
+@-moz-document url("chrome://browser/content/browser.xhtml") {
+    $sidebar-icons: (
+        'viewGenaiChatSidebar': 'toolbar-icons/chat',
+        'viewTabsSidebar': 'toolbar-icons/send-to-device',
+        'viewHistorySidebar': 'toolbar-icons/history',
+        'viewBookmarksSidebar': 'toolbar-icons/bookmark-hollow',
+        'viewCustomizeSidebar': 'toolbar-icons/settings'
+    );
+
+    @each $view, $icon in $sidebar-icons {
+        moz-button[view="#{$view}"]:not([extension]) {
+            --button-icon-content: url("../images/#{$icon}.svg?inline") !important;
+        }
+    }
+
+    moz-button.more-tools-button {
+        --button-icon-content: url("../images/toolbar-icons/chevron.svg?inline") !important;
+    }
+}

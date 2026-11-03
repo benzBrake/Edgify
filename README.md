@@ -28,6 +28,9 @@
 3.  运行 `npm run watch` 来监听文件变化并构建 CSS 文件。
 4.  运行 `npm run build` 来构建 CSS 文件。
 
+菜单图标的来源、字体轮廓坐标转换及与 Edge 的差异见[菜单图标校对](docs/menu-icons.md)。
+工具栏图标覆盖范围、状态规则与资源来源见[工具栏图标](docs/toolbar-icons.md)。
+
 ## 感谢
  - [edge-frfox](https://github.com/bmFtZQ/edge-frfox)
  - [WaveFox](https://github.com/QNetITQ/WaveFox)
