@@ -6,11 +6,13 @@
 
 字体轮廓的 Y 轴向上，SVG 的 Y 轴向下。现有资源使用 `viewBox="0 0 2048 2048"`，导出路径必须添加 `transform="translate(0 2048) scale(1 -1)"`，才能将字体基线坐标转换为 SVG 坐标。直接写入未经转换的轮廓会使所有图标上下镜像，尤其表现为下载箭头朝上、历史时钟和保存图标颠倒。
 
-`popup.scss` 通过 `?inline` 将 SVG 嵌入构建后的 CSS。修改资源后运行 `npm run build`，再重新加载主题样式即可生效。
+`popup.scss` 直接引用 SVG，Vite 将资源输出到 `dist/images`；`#addMenu-inspect-page` 和 `#addMenu-viewinfo` 按现有配置保留内嵌图标。修改资源后运行 `npm run build`，再重新加载主题样式即可生效。
 
 `new-tab.svg`、`new-window.svg` 和 `new-private-window.svg` 来自 [edge-frfox 的 SVG 资源](https://github.com/bmFtZQ/edge-frfox/tree/main/chrome/icons)，分别对应 `new-tab-image.svg`、`window.svg`、`private-window.svg`，补充了显式的 `viewBox`。它们直接使用 SVG 坐标，不进行字体纵轴翻转。授权文本保存在 `src/images/menu-icons/LICENSE.edge-frfox.txt`，并通过 `popup.scss` 的保留注释随构建后的 CSS 分发。
 
 `help.svg`、`search-page.svg`、`zoom-out.svg`、`plus.svg`、`fullscreen.svg`、`fullscreen-exit.svg` 同样取自 edge-frfox，补充显式 `viewBox` 并沿用上述授权。`zoom-in.svg` 为按截图绘制的放大镜与加号，专用于缩放行。`#appMenu-zoom-controls::before` 使用 `background-image` 显示该 SVG，并关闭原有遮罩；通过 `-moz-context-properties: fill, fill-opacity` 将菜单文字颜色传入 SVG，适配深浅主题。减号、加号和全屏按钮分别设置图标变量，并移除图像节点的静态圆形底色，保留按钮的悬停、禁用及点击行为。
+
+`image.svg` 为主题绘制的图片轮廓图标，用于“新建标签页打开图像”；“截图”菜单项复用 `toolbar-icons/screenshot.svg`。
 
 ## 字体图标命名对照
 

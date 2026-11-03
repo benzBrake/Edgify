@@ -48,7 +48,7 @@ $toolbar-icons: (
 
 @each $button, $icon in $toolbar-icons {
     :is(#nav-bar, #widget-overflow-fixed-list) ##{$button} {
-        --edgify-toolbar-icon: url("../images/#{$icon}.svg?inline");
+        --edgify-toolbar-icon: url("../images/#{$icon}.svg");
         list-style-image: var(--edgify-toolbar-icon) !important;
 
         > .toolbarbutton-icon,
@@ -77,12 +77,12 @@ $toolbar-icons: (
 
 /* Native progress and notification layers still handle active downloads. */
 #nav-bar #downloads-button:not([progress]) #downloads-indicator-icon {
-    list-style-image: url("../images/toolbar-icons/downloads.svg?inline") !important;
+    list-style-image: url("../images/toolbar-icons/downloads.svg") !important;
 }
 
 /* The fullscreen widget may also be placed in a custom status toolbar. */
 #fullscreen-button {
-    --edgify-toolbar-icon: url("../images/menu-icons/fullscreen.svg?inline");
+    --edgify-toolbar-icon: url("../images/menu-icons/fullscreen.svg");
     list-style-image: var(--edgify-toolbar-icon) !important;
 
     > .toolbarbutton-icon {
@@ -94,14 +94,14 @@ $toolbar-icons: (
 
 :root[inFullscreen] #fullscreen-button,
 #fullscreen-button[checked="true"] {
-    --edgify-toolbar-icon: url("../images/menu-icons/fullscreen-exit.svg?inline");
+    --edgify-toolbar-icon: url("../images/menu-icons/fullscreen-exit.svg");
 }
 
 /* Firefox uses this variable for the default avatar in every account state.
  * A custom profile image set inline by Firefox takes precedence naturally.
  */
 :root {
-    --avatar-image-url: url("../images/toolbar-icons/account.svg?inline");
+    --avatar-image-url: url("../images/toolbar-icons/account.svg");
 }
 
 :is(#nav-bar, #widget-overflow-fixed-list) #fxa-avatar-image {
@@ -111,19 +111,19 @@ $toolbar-icons: (
 
 /* Address-bar action buttons share the same line style. */
 #star-button {
-    list-style-image: url("../images/toolbar-icons/bookmark-hollow.svg?inline") !important;
+    list-style-image: url("../images/toolbar-icons/bookmark-hollow.svg") !important;
 }
 
 #star-button[starred] {
-    list-style-image: url("../images/toolbar-icons/bookmark.svg?inline") !important;
+    list-style-image: url("../images/toolbar-icons/bookmark.svg") !important;
 }
 
 #translations-button-icon {
-    list-style-image: url("../images/toolbar-icons/translate.svg?inline") !important;
+    list-style-image: url("../images/toolbar-icons/translate.svg") !important;
 }
 
 .searchbar-search-icon {
-    list-style-image: url("../images/toolbar-icons/search-glass.svg?inline") !important;
+    list-style-image: url("../images/toolbar-icons/search-glass.svg") !important;
 }
 
 /* Keep toolbar buttons circular, while preserving the Edge-style tab bar. */

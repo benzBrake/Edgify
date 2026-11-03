@@ -1,7 +1,28 @@
 @use '../utils/pref' as *;
 
 @function FluentIcon($name) {
-    @return url("../images/menu-icons/#{$name}.svg?inline");
+    @return url("../images/menu-icons/#{$name}.svg");
+}
+
+@mixin BackgroundIcon($image) {
+    > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon) {
+        display: none !important;
+    }
+
+    &::before {
+        content: "" !important;
+        display: flex !important;
+        width: var(--menuitem-icon-size, 16px) !important;
+        height: var(--menuitem-icon-size, 16px) !important;
+        margin-inline-end: var(--menuitem-icon-gap, 8px) !important;
+        background-image: $image !important;
+        background-size: contain !important;
+        background-repeat: no-repeat !important;
+        background-position: center !important;
+        mask-image: none !important;
+        -moz-context-properties: fill, fill-opacity !important;
+        fill: currentColor !important;
+    }
 }
 
 /*!
@@ -215,7 +236,7 @@ panelview {
                 display: flex;
                 width: var(--menuitem-icon-size, 16px);
                 height: var(--menuitem-icon-size, 16px);
-                mask-image: var(--menuitem-icon, var(--menuitem-image));
+                mask-image: var(--menuitem-image);
                 mask-size: var(--menuitem-icon-size, 16px);
                 mask-repeat: no-repeat;
                 mask-position: center;
@@ -400,16 +421,16 @@ scrollbox[orient=vertical] {
     #context_openlinkintab,
     #placesContext_open\:newtab,
     #toolbar-context-openANewTab {
-        --menuitem-icon: url("../images/menu-icons/new-tab.svg?inline") !important;
+        @include BackgroundIcon(url("../images/menu-icons/new-tab.svg"));
     }
 
     #placesContext_new\:bookmark {
-        --menuitem-icon: #{FluentIcon('add')} !important;
+        @include BackgroundIcon(FluentIcon('add'));
     }
 
     #appMenu-new-window-button2,
     #placesContext_open\:newwindow {
-        --menuitem-icon: url("../images/menu-icons/new-window.svg?inline") !important;
+        @include BackgroundIcon(url("../images/menu-icons/new-window.svg"));
     }
 
     #appMenu-new-private-window-button2,
@@ -418,11 +439,11 @@ scrollbox[orient=vertical] {
     #openAllPrivate,
     #openAllLinksPrivate,
     #placesContext_open\:newprivatewindow {
-        --menuitem-icon: url("../images/menu-icons/new-private-window.svg?inline") !important;
+        @include BackgroundIcon(url("../images/menu-icons/new-private-window.svg"));
     }
 
     #appMenu-bookmarks-button {
-        --menuitem-icon: #{FluentIcon('favorites-list')} !important;
+        @include BackgroundIcon(FluentIcon('favorites-list'));
     }
 
     #context-bookmarklink,
@@ -434,15 +455,15 @@ scrollbox[orient=vertical] {
     #placesContext_add\:bookmark,
     #menu_bookmarkThisPage,
     #menu_bookmarkAllTabs {
-        --menuitem-icon: #{FluentIcon('list')} !important;
+        @include BackgroundIcon(FluentIcon('list'));
     }
 
     #contentAreaContextMenu #context-bookmarkpage {
-        --menuitem-icon: url("../images/toolbar-icons/bookmark-hollow.svg?inline") !important;
+        @include BackgroundIcon(url("../images/toolbar-icons/bookmark-hollow.svg"));
     }
 
     #contentAreaContextMenu #context-bookmarkpage[starred] {
-        --menuitem-icon: url("../images/toolbar-icons/bookmark.svg?inline") !important;
+        @include BackgroundIcon(url("../images/toolbar-icons/bookmark.svg"));
     }
 
     #appMenu-history-button,
@@ -451,11 +472,11 @@ scrollbox[orient=vertical] {
     #historyUndoWindowMenu,
     #context_undoCloseTab,
     #toolbar-context-undoCloseTab {
-        --menuitem-icon: #{FluentIcon('history')} !important;
+        @include BackgroundIcon(FluentIcon('history'));
     }
 
     #appMenu-downloads-button {
-        --menuitem-icon: #{FluentIcon('download')} !important;
+        @include BackgroundIcon(FluentIcon('download'));
     }
 
     #appMenu-passwords-button,
@@ -463,19 +484,19 @@ scrollbox[orient=vertical] {
     #fill-login,
     #fill-login-generated-password,
     #context-reveal-password {
-        --menuitem-icon: #{FluentIcon('key')} !important;
+        @include BackgroundIcon(FluentIcon('key'));
     }
 
     #appMenu-extensions-themes-button,
     #toolbar-context-manage-extension,
     #pageActionContextMenuManageExtension {
-        --menuitem-icon: #{FluentIcon('extensions')} !important;
+        @include BackgroundIcon(FluentIcon('extensions'));
     }
 
     #appMenu-print-button2,
     #context-print-selection,
     #context-printframe {
-        --menuitem-icon: #{FluentIcon('print')} !important;
+        @include BackgroundIcon(FluentIcon('print'));
     }
 
     #appMenu-save-file-button2,
@@ -486,37 +507,37 @@ scrollbox[orient=vertical] {
     #context-savepage,
     #context-saveframe,
     #context-pdfjs-save-page {
-        --menuitem-icon: #{FluentIcon('save')} !important;
+        @include BackgroundIcon(FluentIcon('save'));
     }
 
     #appMenu-find-button2 {
-        --menuitem-icon: url("../images/menu-icons/search-page.svg?inline") !important;
+        @include BackgroundIcon(url("../images/menu-icons/search-page.svg"));
     }
 
     #context-searchselect,
     #context-searchselect-private,
     #menu_searchBookmarks,
     #menu_searchHistory {
-        --menuitem-icon: #{FluentIcon('search')} !important;
+        @include BackgroundIcon(FluentIcon('search'));
     }
 
     #appMenu-translate-button,
     #context-translate-selection {
-        --menuitem-icon: #{FluentIcon('translate')} !important;
+        @include BackgroundIcon(FluentIcon('translate'));
     }
 
     #context-zoom-out {
-        --menuitem-icon: #{FluentIcon('minus')} !important;
+        @include BackgroundIcon(FluentIcon('minus'));
     }
 
     #context-zoom-in {
-        --menuitem-icon: #{FluentIcon('zoom-in-font')} !important;
+        @include BackgroundIcon(FluentIcon('zoom-in-font'));
     }
 
     #appMenu-zoom-controls {
         &::before {
             mask-image: none !important;
-            background-image: url("../images/menu-icons/zoom-in.svg?inline");
+            background-image: url("../images/menu-icons/zoom-in.svg");
             background-size: contain;
             background-repeat: no-repeat;
             background-position: center;
@@ -532,39 +553,39 @@ scrollbox[orient=vertical] {
     }
 
     #appMenu-zoomReduce-button2 {
-        --menuitem-icon: url("../images/menu-icons/zoom-out.svg?inline") !important;
+        @include BackgroundIcon(url("../images/menu-icons/zoom-out.svg"));
     }
 
     #appMenu-zoomEnlarge-button2 {
-        --menuitem-icon: url("../images/menu-icons/plus.svg?inline") !important;
+        @include BackgroundIcon(url("../images/menu-icons/plus.svg"));
     }
 
     #appMenu-fullscreen-button2 {
-        --menuitem-icon: url("../images/menu-icons/fullscreen.svg?inline") !important;
+        @include BackgroundIcon(url("../images/menu-icons/fullscreen.svg"));
     }
 
     :root[inFullscreen] #appMenu-fullscreen-button2 {
-        --menuitem-icon: url("../images/menu-icons/fullscreen-exit.svg?inline") !important;
+        @include BackgroundIcon(url("../images/menu-icons/fullscreen-exit.svg"));
     }
 
     #context-video-fullscreen,
     #context-leave-dom-fullscreen,
     #context_fullscreenAutohide,
     #context_fullscreenExit {
-        --menuitem-icon: #{FluentIcon('expand')} !important;
+        @include BackgroundIcon(FluentIcon('expand'));
     }
 
     #appMenu-settings-button,
     #toolbar-context-customize {
-        --menuitem-icon: #{FluentIcon('settings')} !important;
+        @include BackgroundIcon(FluentIcon('settings'));
     }
 
     #appMenu-more-button2 {
-        --menuitem-icon: #{FluentIcon('more')} !important;
+        @include BackgroundIcon(FluentIcon('more'));
     }
 
     #appMenu-help-button2 {
-        --menuitem-icon: url("../images/menu-icons/help.svg?inline") !important;
+        @include BackgroundIcon(url("../images/menu-icons/help.svg"));
     }
 
     #context_reloadTab,
@@ -574,19 +595,19 @@ scrollbox[orient=vertical] {
     #toolbar-context-reloadSelectedTabs,
     #context-reloadimage,
     #context-reloadframe {
-        --menuitem-icon: #{FluentIcon('refresh')} !important;
+        @include BackgroundIcon(FluentIcon('refresh'));
     }
 
     #context-back {
-        --menuitem-icon: #{FluentIcon('back')} !important;
+        @include BackgroundIcon(FluentIcon('back'));
     }
 
     #context-forward {
-        --menuitem-icon: #{FluentIcon('forward')} !important;
+        @include BackgroundIcon(FluentIcon('forward'));
     }
 
     #appMenu-quit-button2 {
-        --menuitem-icon: #{FluentIcon('power')} !important;
+        @include BackgroundIcon(FluentIcon('power'));
     }
 
     #context-openlinkincurrent,
@@ -596,28 +617,31 @@ scrollbox[orient=vertical] {
     #context-openlinkinsplitview,
     #context-openframe,
     #context-openframeintab {
-        --menuitem-icon: #{FluentIcon('open-external')} !important;
+        @include BackgroundIcon(FluentIcon('open-external'));
+    }
+
+    #context-viewimage {
+        @include BackgroundIcon(url("../images/menu-icons/image.svg"));
     }
 
     #context-previewlink,
     #context-viewvideo,
-    #context-viewimage,
     #context-viewimageinfo,
     #context-viewimagedesc,
     #context-viewframesource,
     #context-viewframeinfo,
     #context-viewsource,
     #context-showonlythisframe {
-        --menuitem-icon: #{FluentIcon('view')} !important;
+        @include BackgroundIcon(FluentIcon('view'));
     }
 
     #context-media-mute,
     #context-media-unmute {
-        --menuitem-icon: #{FluentIcon('mute')} !important;
+        @include BackgroundIcon(FluentIcon('mute'));
     }
 
     #context-media-loop {
-        --menuitem-icon: #{FluentIcon('repeat')} !important;
+        @include BackgroundIcon(FluentIcon('repeat'));
     }
 
     #context-copy,
@@ -631,20 +655,20 @@ scrollbox[orient=vertical] {
     #placesContext_copy,
     #placesContext_copyTitle,
     #placesContext_copyLink {
-        --menuitem-icon: #{FluentIcon('copy')} !important;
+        @include BackgroundIcon(FluentIcon('copy'));
     }
 
     #context-cut,
     #context-pdfjs-cut,
     #placesContext_cut {
-        --menuitem-icon: #{FluentIcon('cut')} !important;
+        @include BackgroundIcon(FluentIcon('cut'));
     }
 
     #context-paste,
     #context-paste-no-formatting,
     #context-pdfjs-paste,
     #placesContext_paste {
-        --menuitem-icon: #{FluentIcon('paste')} !important;
+        @include BackgroundIcon(FluentIcon('paste'));
     }
 
     #context-delete,
@@ -655,23 +679,23 @@ scrollbox[orient=vertical] {
     #placesContext_delete_history,
     #toolbar-context-remove-extension,
     #pageActionContextMenuRemoveExtension {
-        --menuitem-icon: #{FluentIcon('delete')} !important;
+        @include BackgroundIcon(FluentIcon('delete'));
     }
 
     #context-selectall,
     #context-pdfjs-select-all,
     #context_selectAllTabs {
-        --menuitem-icon: #{FluentIcon('select-all')} !important;
+        @include BackgroundIcon(FluentIcon('select-all'));
     }
 
     #context-media-play,
     #context_playTab,
     #context_playSelectedTabs {
-        --menuitem-icon: #{FluentIcon('play')} !important;
+        @include BackgroundIcon(FluentIcon('play'));
     }
 
     #context-media-pause {
-        --menuitem-icon: #{FluentIcon('pause')} !important;
+        @include BackgroundIcon(FluentIcon('pause'));
     }
 
     #context-sendpagetodevice,
@@ -681,14 +705,14 @@ scrollbox[orient=vertical] {
     #context-sendaudio,
     #context_shareSelectedTabs,
     #context_sendTabToDevice {
-        --menuitem-icon: #{FluentIcon('share')} !important;
+        @include BackgroundIcon(url("../images/menu-icons/share.svg"));
     }
 
     #context_pinTab,
     #context_pinSelectedTabs,
     #context_unpinTab,
     #context_unpinSelectedTabs {
-        --menuitem-icon: #{FluentIcon('pin')} !important;
+        @include BackgroundIcon(url("../images/menu-icons/pin.svg"));
     }
 
     #context_moveTabToGroup,
@@ -697,12 +721,12 @@ scrollbox[orient=vertical] {
     #context_moveTabToNewGroup,
     #context_moveTabToSplitView,
     #context_separateSplitView {
-        --menuitem-icon: #{FluentIcon('font-size')} !important;
+        @include BackgroundIcon(url("../images/menu-icons/font-size.svg"));
     }
 
     #context_duplicateTab,
     #context_duplicateTabs {
-        --menuitem-icon: #{FluentIcon('document')} !important;
+        @include BackgroundIcon(url("../images/menu-icons/document.svg"));
     }
 
     #context_closeTab,
@@ -711,23 +735,21 @@ scrollbox[orient=vertical] {
     #context_closeTabsToTheEnd,
     #context_closeOtherTabs,
     #context_closeTabOptions {
-        --menuitem-icon: #{FluentIcon('close')} !important;
+        @include BackgroundIcon(url("../images/menu-icons/close.svg"));
     }
 
-    #context-take-screenshot,
     #context-inspect,
-    #context-inspect-a11y,
+    #context-inspect-a11y {
+        @include BackgroundIcon(url("../images/menu-icons/view.svg"));
+    }
+
+    #context-take-screenshot {
+        @include BackgroundIcon(url("../images/toolbar-icons/screenshot.svg"));
+    }
+
     #addMenu-inspect-page,
     #addMenu-viewinfo {
-        --menuitem-icon: #{FluentIcon('repair')} !important;
-    }
-
-    #appMenu-mainView .subviewbutton:not(.addMenu) > .toolbarbutton-icon {
-        list-style-image: var(--menuitem-icon) !important;
-    }
-
-    menupopup:not(.in-menulist) > :is(menu, menuitem)[id]:not(.menuitem-iconic):not([type="checkbox"], [type="radio"]):not([icon]):not([class*="addMenu"]) > .menu-icon {
-        content: var(--menuitem-icon) !important;
+        --menuitem-icon: url("../images/menu-icons/repair.svg?inline") !important;
     }
 
 }

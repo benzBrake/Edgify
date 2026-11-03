@@ -2,7 +2,7 @@
  * branding image so navigating to a site restores its favicon automatically.
  */
 .tabbrowser-tab .tab-icon-image[src="chrome://branding/content/icon32.png"] {
-    content: url("../images/menu-icons/new-tab.svg?inline") !important;
+    content: url("../images/menu-icons/new-tab.svg") !important;
     -moz-context-properties: fill, fill-opacity;
     fill: currentColor;
 }

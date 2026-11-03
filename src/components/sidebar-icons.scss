@@ -12,11 +12,11 @@
 
     @each $view, $icon in $sidebar-icons {
         moz-button[view="#{$view}"]:not([extension]) {
-            --button-icon-content: url("../images/#{$icon}.svg?inline") !important;
+            --button-icon-content: url("../images/#{$icon}.svg") !important;
         }
     }
 
     moz-button.more-tools-button {
-        --button-icon-content: url("../images/toolbar-icons/chevron.svg?inline") !important;
+        --button-icon-content: url("../images/toolbar-icons/chevron.svg") !important;
     }
 }
