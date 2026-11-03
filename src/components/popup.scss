@@ -1,7 +1,7 @@
 @use '../utils/pref' as *;
 
 @function FluentIcon($glyph) {
-    @return url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' xmlns='http://www.w3.org/2000/svg'%3E%3Ctext x='8' y='12.5' text-anchor='middle' font-family='Segoe%20Fluent%20Icons' font-size='14' fill='context-fill'%3E%26%23x#{$glyph};%3C/text%3E%3C/svg%3E");
+    @return url("../images/menu-icons/#{$glyph}.svg?inline");
 }
 
 /********************************************************************************/
@@ -190,7 +190,7 @@ panelview {
                 display: flex;
                 width: var(--menuitem-icon-size, 16px);
                 height: var(--menuitem-icon-size, 16px);
-                mask-image: var(--menuitem-image);
+                mask-image: var(--menuitem-icon, var(--menuitem-image));
                 mask-size: var(--menuitem-icon-size, 16px);
                 mask-repeat: no-repeat;
                 mask-position: center;
@@ -376,12 +376,12 @@ scrollbox[orient=vertical] {
     #placesContext_open\:newtab,
     #placesContext_new\:bookmark,
     #toolbar-context-openANewTab {
-        --menuitem-icon: #{FluentIcon(E710)};
+        --menuitem-icon: #{FluentIcon(E710)} !important;
     }
 
     #appMenu-new-window-button2,
     #placesContext_open\:newwindow {
-        --menuitem-icon: #{FluentIcon(E78B)};
+        --menuitem-icon: #{FluentIcon(E78B)} !important;
     }
 
     #appMenu-new-private-window-button2,
@@ -390,11 +390,13 @@ scrollbox[orient=vertical] {
     #openAllPrivate,
     #openAllLinksPrivate,
     #placesContext_open\:newprivatewindow {
-        --menuitem-icon: #{FluentIcon(E727)};
+        --menuitem-icon: #{FluentIcon(E727)} !important;
     }
 
     #appMenu-bookmarks-button,
     #context-bookmarklink,
+    #context-bookmarkpage,
+    #context-bookmarkframe,
     #context-bookmarkTab,
     #context_bookmarkSelectedTabs,
     #toolbar-context-bookmarkSelectedTab,
@@ -402,7 +404,7 @@ scrollbox[orient=vertical] {
     #placesContext_add\:bookmark,
     #menu_bookmarkThisPage,
     #menu_bookmarkAllTabs {
-        --menuitem-icon: #{FluentIcon(E8A4)};
+        --menuitem-icon: #{FluentIcon(E8A4)} !important;
     }
 
     #appMenu-history-button,
@@ -411,11 +413,11 @@ scrollbox[orient=vertical] {
     #historyUndoWindowMenu,
     #context_undoCloseTab,
     #toolbar-context-undoCloseTab {
-        --menuitem-icon: #{FluentIcon(E81C)};
+        --menuitem-icon: #{FluentIcon(E81C)} !important;
     }
 
     #appMenu-downloads-button {
-        --menuitem-icon: #{FluentIcon(E896)};
+        --menuitem-icon: #{FluentIcon(E896)} !important;
     }
 
     #appMenu-passwords-button,
@@ -423,19 +425,19 @@ scrollbox[orient=vertical] {
     #fill-login,
     #fill-login-generated-password,
     #context-reveal-password {
-        --menuitem-icon: #{FluentIcon(E72E)};
+        --menuitem-icon: #{FluentIcon(E72E)} !important;
     }
 
     #appMenu-extensions-themes-button,
     #toolbar-context-manage-extension,
     #pageActionContextMenuManageExtension {
-        --menuitem-icon: #{FluentIcon(EA86)};
+        --menuitem-icon: #{FluentIcon(EA86)} !important;
     }
 
     #appMenu-print-button2,
     #context-print-selection,
     #context-printframe {
-        --menuitem-icon: #{FluentIcon(E749)};
+        --menuitem-icon: #{FluentIcon(E749)} !important;
     }
 
     #appMenu-save-file-button2,
@@ -446,7 +448,7 @@ scrollbox[orient=vertical] {
     #context-savepage,
     #context-saveframe,
     #context-pdfjs-save-page {
-        --menuitem-icon: #{FluentIcon(E74E)};
+        --menuitem-icon: #{FluentIcon(E74E)} !important;
     }
 
     #appMenu-find-button2,
@@ -454,60 +456,72 @@ scrollbox[orient=vertical] {
     #context-searchselect-private,
     #menu_searchBookmarks,
     #menu_searchHistory {
-        --menuitem-icon: #{FluentIcon(E721)};
+        --menuitem-icon: #{FluentIcon(E721)} !important;
     }
 
     #appMenu-translate-button,
     #context-translate-selection {
-        --menuitem-icon: #{FluentIcon(E774)};
+        --menuitem-icon: #{FluentIcon(E774)} !important;
     }
 
     #context-zoom-out {
-        --menuitem-icon: #{FluentIcon(E921)};
+        --menuitem-icon: #{FluentIcon(E921)} !important;
     }
 
     #context-zoom-in {
-        --menuitem-icon: #{FluentIcon(E8A3)};
+        --menuitem-icon: #{FluentIcon(E8A3)} !important;
     }
 
     #context-video-fullscreen,
     #context-leave-dom-fullscreen,
     #context_fullscreenAutohide,
     #context_fullscreenExit {
-        --menuitem-icon: #{FluentIcon(E740)};
+        --menuitem-icon: #{FluentIcon(E740)} !important;
     }
 
     #appMenu-settings-button,
     #toolbar-context-customize {
-        --menuitem-icon: #{FluentIcon(E713)};
+        --menuitem-icon: #{FluentIcon(E713)} !important;
     }
 
     #appMenu-more-button2 {
-        --menuitem-icon: #{FluentIcon(E712)};
+        --menuitem-icon: #{FluentIcon(E712)} !important;
     }
 
     #appMenu-help-button2 {
-        --menuitem-icon: #{FluentIcon(E897)};
+        --menuitem-icon: #{FluentIcon(E897)} !important;
     }
 
     #context_reloadTab,
     #context_reloadSelectedTabs,
+    #context-reload,
     #toolbar-context-reloadSelectedTab,
     #toolbar-context-reloadSelectedTabs,
     #context-reloadimage,
     #context-reloadframe {
-        --menuitem-icon: #{FluentIcon(E72C)};
+        --menuitem-icon: #{FluentIcon(E72C)} !important;
+    }
+
+    #context-back {
+        --menuitem-icon: #{FluentIcon(E72B)} !important;
+    }
+
+    #context-forward {
+        --menuitem-icon: #{FluentIcon(E72A)} !important;
     }
 
     #appMenu-quit-button2 {
-        --menuitem-icon: #{FluentIcon(E7E8)};
+        --menuitem-icon: #{FluentIcon(E7E8)} !important;
     }
 
     #context-openlinkincurrent,
     #context-openlink,
+    #context-openlinkintab,
+    #context-openlinkincontainertab,
+    #context-openlinkinsplitview,
     #context-openframe,
     #context-openframeintab {
-        --menuitem-icon: #{FluentIcon(E8A7)};
+        --menuitem-icon: #{FluentIcon(E8A7)} !important;
     }
 
     #context-previewlink,
@@ -519,16 +533,16 @@ scrollbox[orient=vertical] {
     #context-viewframeinfo,
     #context-viewsource,
     #context-showonlythisframe {
-        --menuitem-icon: #{FluentIcon(E890)};
+        --menuitem-icon: #{FluentIcon(E890)} !important;
     }
 
     #context-media-mute,
     #context-media-unmute {
-        --menuitem-icon: #{FluentIcon(E74F)};
+        --menuitem-icon: #{FluentIcon(E74F)} !important;
     }
 
     #context-media-loop {
-        --menuitem-icon: #{FluentIcon(E8EE)};
+        --menuitem-icon: #{FluentIcon(E8EE)} !important;
     }
 
     #context-copy,
@@ -542,20 +556,20 @@ scrollbox[orient=vertical] {
     #placesContext_copy,
     #placesContext_copyTitle,
     #placesContext_copyLink {
-        --menuitem-icon: #{FluentIcon(E8C8)};
+        --menuitem-icon: #{FluentIcon(E8C8)} !important;
     }
 
     #context-cut,
     #context-pdfjs-cut,
     #placesContext_cut {
-        --menuitem-icon: #{FluentIcon(E8C6)};
+        --menuitem-icon: #{FluentIcon(E8C6)} !important;
     }
 
     #context-paste,
     #context-paste-no-formatting,
     #context-pdfjs-paste,
     #placesContext_paste {
-        --menuitem-icon: #{FluentIcon(E77F)};
+        --menuitem-icon: #{FluentIcon(E77F)} !important;
     }
 
     #context-delete,
@@ -566,23 +580,23 @@ scrollbox[orient=vertical] {
     #placesContext_delete_history,
     #toolbar-context-remove-extension,
     #pageActionContextMenuRemoveExtension {
-        --menuitem-icon: #{FluentIcon(E74D)};
+        --menuitem-icon: #{FluentIcon(E74D)} !important;
     }
 
     #context-selectall,
     #context-pdfjs-select-all,
     #context_selectAllTabs {
-        --menuitem-icon: #{FluentIcon(E8B3)};
+        --menuitem-icon: #{FluentIcon(E8B3)} !important;
     }
 
     #context-media-play,
     #context_playTab,
     #context_playSelectedTabs {
-        --menuitem-icon: #{FluentIcon(E768)};
+        --menuitem-icon: #{FluentIcon(E768)} !important;
     }
 
     #context-media-pause {
-        --menuitem-icon: #{FluentIcon(E769)};
+        --menuitem-icon: #{FluentIcon(E769)} !important;
     }
 
     #context-sendpagetodevice,
@@ -592,14 +606,14 @@ scrollbox[orient=vertical] {
     #context-sendaudio,
     #context_shareSelectedTabs,
     #context_sendTabToDevice {
-        --menuitem-icon: #{FluentIcon(E72D)};
+        --menuitem-icon: #{FluentIcon(E72D)} !important;
     }
 
     #context_pinTab,
     #context_pinSelectedTabs,
     #context_unpinTab,
     #context_unpinSelectedTabs {
-        --menuitem-icon: #{FluentIcon(E718)};
+        --menuitem-icon: #{FluentIcon(E718)} !important;
     }
 
     #context_moveTabToGroup,
@@ -608,12 +622,12 @@ scrollbox[orient=vertical] {
     #context_moveTabToNewGroup,
     #context_moveTabToSplitView,
     #context_separateSplitView {
-        --menuitem-icon: #{FluentIcon(E8D2)};
+        --menuitem-icon: #{FluentIcon(E8D2)} !important;
     }
 
     #context_duplicateTab,
     #context_duplicateTabs {
-        --menuitem-icon: #{FluentIcon(E89A)};
+        --menuitem-icon: #{FluentIcon(E89A)} !important;
     }
 
     #context_closeTab,
@@ -622,7 +636,7 @@ scrollbox[orient=vertical] {
     #context_closeTabsToTheEnd,
     #context_closeOtherTabs,
     #context_closeTabOptions {
-        --menuitem-icon: #{FluentIcon(E711)};
+        --menuitem-icon: #{FluentIcon(E711)} !important;
     }
 
     #context-take-screenshot,
@@ -630,14 +644,15 @@ scrollbox[orient=vertical] {
     #context-inspect-a11y,
     #addMenu-inspect-page,
     #addMenu-viewinfo {
-        --menuitem-icon: #{FluentIcon(E7B3)};
+        --menuitem-icon: #{FluentIcon(E7B3)} !important;
     }
 
     #appMenu-mainView .subviewbutton:not(.addMenu) > .toolbarbutton-icon {
         list-style-image: var(--menuitem-icon) !important;
     }
 
-    menupopup:not(.in-menulist) > :is(menu, menuitem)[id]:not(.menuitem-iconic):not([class*="addMenu"]) > .menu-icon {
+    menupopup:not(.in-menulist) > :is(menu, menuitem)[id]:not(.menuitem-iconic):not([type="checkbox"], [type="radio"]):not([icon]):not([class*="addMenu"]) > .menu-icon {
         content: var(--menuitem-icon) !important;
     }
+
 }

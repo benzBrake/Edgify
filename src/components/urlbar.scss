@@ -68,6 +68,32 @@
     }
   }
 
+  /* Use the same inset as the input and keep rows inside the results view. */
+  #urlbar[breakout] {
+    --urlbarView-results-padding: var(--urlbar-input-container-padding);
+
+    .urlbarView-body-inner {
+      width: 100% !important;
+      margin-inline: 0 !important;
+    }
+  }
+
+  /* Align result icons with the leading site-info or remote-control icon. */
+  #urlbar[breakout]:where(
+    :not(:has(> .urlbar-input-container > .searchmode-switcher:not([offscreen])))
+  ) {
+    --urlbarView-favicon-margin-start: calc(
+      (max(24px, var(--urlbar-basic-component-size)) - var(--urlbarView-favicon-width)) / 2
+    );
+  }
+
+  :root[remotecontrol] #urlbar[breakout] {
+    --urlbarView-favicon-margin-start: calc(
+      1px +
+        (max(24px, var(--urlbar-basic-component-size)) - var(--urlbarView-favicon-width)) / 2
+    );
+  }
+
   /* Match result spacing to the toolbar density without fixing row heights. */
   :root {
     --edgify-urlbar-result-padding: 4px;
@@ -180,7 +206,6 @@
   --button-border-radius: calc(var(--megabar_border_roundness) / 1.5);
 }
 
-#urlbar[breakout] #urlbar-results .urlbarView-body-outer,
 #urlbar[breakout] #urlbar-results .urlbarView-row,
 #urlbar[breakout] #urlbar-results .urlbarView-row-inner {
   margin-inline-start: 0 !important;
