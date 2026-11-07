@@ -16,6 +16,24 @@
         }
     }
 
+    #sidebar-switcher-bookmarks,
+    #sidebar-switcher-history,
+    #sidebar-switcher-tabs {
+        -moz-context-properties: fill, fill-opacity;
+    }
+
+    #sidebar-switcher-bookmarks {
+        list-style-image: url("../images/toolbar-icons/bookmark-star-on-tray.svg") !important;
+    }
+
+    #sidebar-switcher-history {
+        list-style-image: url("../images/toolbar-icons/history.svg") !important;
+    }
+
+    #sidebar-switcher-tabs {
+        list-style-image: url("../images/toolbar-icons/send-to-device.svg") !important;
+    }
+
     moz-button.more-tools-button {
         --button-icon-content: url("../images/toolbar-icons/chevron.svg") !important;
     }

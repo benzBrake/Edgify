@@ -14,6 +14,8 @@
 
 `image.svg` 为主题绘制的图片轮廓图标，用于“新建标签页打开图像”；“截图”菜单项复用 `toolbar-icons/screenshot.svg`。
 
+撤销和重做使用主题绘制的 `undo.svg`、`redo.svg`。Edgify 对照 edge-frfox 的菜单映射补入专用资源：无跟踪复制、媒体静音、标签移动、容器标签、图片复制/保存、画中画、播放速度、权限、Pocket、工具栏自定义、源码、粘贴并搜索、拼写词典和报告损坏网站图标。`#context_bookmarkTab` 使用工具栏空心书签图标；AI 聊天复用 `toolbar-icons/chat.svg`；`#context_unloadTab` 使用暂停图标表示卸载/挂起（edge-frfox 当前未覆盖该 ID）。这些上游 SVG 沿用 edge-frfox MIT 授权。`addMenuPlus` 的 `#identity-box-contextmenu` 是动态菜单，单项图标由各项配置提供。
+
 ## 字体图标命名对照
 
 下表记录原码点与当前文件名。重命名保留原 SVG 内容及菜单映射；`zoom-in-font.svg` 用于右键缩放，与主菜单缩放行的 `zoom-in.svg` 区分。

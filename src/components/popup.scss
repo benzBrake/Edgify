@@ -27,7 +27,12 @@
 
 /*!
  * new-tab.svg, new-window.svg, new-private-window.svg, help.svg,
- * search-page.svg, zoom-out.svg, plus.svg, fullscreen.svg and fullscreen-exit.svg:
+ * search-page.svg, zoom-out.svg, plus.svg, fullscreen.svg, fullscreen-exit.svg,
+ * edit-copy-without-tracking.svg, media-mute.svg, media-unmute.svg,
+ * move-tab.svg, container-tab.svg, image-copy.svg, image-save.svg,
+ * media-pip.svg, media-speed.svg, permissions.svg, pocket-outline.svg,
+ * customize.svg, source-code.svg, paste-and-go.svg, add-to-dictionary.svg,
+ * and report.svg:
  * Derived from https://github.com/bmFtZQ/edge-frfox, MIT License.
  * Copyright (c) 2021 bmFtZQ
  *
@@ -246,10 +251,15 @@ panelview {
         }
     }
 
+    // Keep the default visibility weaker than BackgroundIcon's replacement rules.
+    :where(menupopup:not(.in-menulist)>:is(menu, menuitem):not([id^="firefoxbeta_tampermonkey_net"]),
+        #firefoxbeta_tampermonkey_net-menuitem-_root)>:is(.menu-icon, .menu-iconic-left) {
+        display: inline-flex !important;
+    }
+
     menupopup:not(.in-menulist)>:is(menu, menuitem):not([id^="firefoxbeta_tampermonkey_net"]),
     #firefoxbeta_tampermonkey_net-menuitem-_root {
         &>:is(.menu-icon, .menu-iconic-left) {
-            display: inline-flex !important;
             width: var(--menuitem-icon-size, 16px) !important;
             height: var(--menuitem-icon-size, 16px) !important;
             margin-inline-end: var(--menuitem-icon-gap, 8px) !important;
@@ -428,6 +438,11 @@ scrollbox[orient=vertical] {
         @include BackgroundIcon(FluentIcon('add'));
     }
 
+    menuitem[id="placesContext_new:folder"],
+    menuitem[id="placesContext_new:separator"] {
+        @include BackgroundIcon(FluentIcon('add'));
+    }
+
     #appMenu-new-window-button2,
     #placesContext_open\:newwindow {
         @include BackgroundIcon(url("../images/menu-icons/new-window.svg"));
@@ -442,20 +457,75 @@ scrollbox[orient=vertical] {
         @include BackgroundIcon(url("../images/menu-icons/new-private-window.svg"));
     }
 
+    menu[id="placesContext_open:newcontainertab"],
+    menu[id="placesContext_openContainer:tabs"],
+    menu[id="placesContext_openBookmarkContainer:tabs"] {
+        @include BackgroundIcon(url("../images/menu-icons/container-tab.svg"));
+    }
+
+    menu[id="placesContext_openBookmarkLinks:tabs"],
+    menu[id="placesContext_openLinks:tabs"] {
+        @include BackgroundIcon(FluentIcon('open-external'));
+    }
+
     #appMenu-bookmarks-button {
         @include BackgroundIcon(FluentIcon('favorites-list'));
     }
 
-    #context-bookmarklink,
+    #BMB_bookmarksShowAllTop,
+    #BMB_bookmarksShowAll,
+    menuitem[id="placesContext_showAllBookmarks"] {
+        @include BackgroundIcon(FluentIcon('favorites-list'));
+    }
+
+    menuitem[id="placesContext_show_bookmark:info"],
+    menuitem[id="placesContext_show_folder:info"],
+    menuitem[id="placesContext_show:info"] {
+        @include BackgroundIcon(FluentIcon('repair'));
+    }
+
+    .customize-context-manageExtension,
+    .unified-extensions-context-menu-manage-extension {
+        @include BackgroundIcon(FluentIcon('extensions'));
+    }
+
+    .customize-context-removeExtension,
+    .unified-extensions-context-menu-remove-extension,
+    menuitem[id="placesContext_deleteHost"] {
+        @include BackgroundIcon(FluentIcon('delete'));
+    }
+
+    .customize-context-reportExtension,
+    .unified-extensions-context-menu-report-extension {
+        @include BackgroundIcon(url("../images/menu-icons/help.svg"));
+    }
+
+    .customize-context-moveToPanel {
+        @include BackgroundIcon(url("../images/menu-icons/pin.svg"));
+    }
+
+    .share-tab-url-item {
+        @include BackgroundIcon(url("../images/menu-icons/share.svg"));
+    }
+
+    .viewCustomizeToolbar {
+        @include BackgroundIcon(url("../images/menu-icons/customize.svg"));
+    }
+
     #context-bookmarkframe,
-    #context-bookmarkTab,
-    #context_bookmarkSelectedTabs,
-    #toolbar-context-bookmarkSelectedTab,
-    #toolbar-context-bookmarkSelectedTabs,
     #placesContext_add\:bookmark,
     #menu_bookmarkThisPage,
     #menu_bookmarkAllTabs {
         @include BackgroundIcon(FluentIcon('list'));
+    }
+
+    #context-bookmarklink,
+    #context_bookmarkTab,
+    #context_bookmarkSelectedTabs,
+    #toggle_PersonalToolbar,
+    #toolbar-context-bookmarkSelectedTab,
+    #toolbar-context-bookmarkSelectedTabs {
+        @include BackgroundIcon(url("../images/toolbar-icons/bookmark-hollow.svg"));
     }
 
     #contentAreaContextMenu #context-bookmarkpage {
@@ -501,13 +571,17 @@ scrollbox[orient=vertical] {
 
     #appMenu-save-file-button2,
     #context-savelink,
-    #context-saveimage,
     #context-savevideo,
     #context-saveaudio,
     #context-savepage,
     #context-saveframe,
     #context-pdfjs-save-page {
         @include BackgroundIcon(FluentIcon('save'));
+    }
+
+    #context-saveimage,
+    #context-video-saveimage {
+        @include BackgroundIcon(url("../images/menu-icons/image-save.svg"));
     }
 
     #appMenu-find-button2 {
@@ -519,6 +593,16 @@ scrollbox[orient=vertical] {
     #menu_searchBookmarks,
     #menu_searchHistory {
         @include BackgroundIcon(FluentIcon('search'));
+    }
+
+    #context-ask-chat,
+    #context-ask-chat-selection,
+    #context_askChat {
+        @include BackgroundIcon(url("../images/toolbar-icons/chat.svg"));
+    }
+
+    #context-stop {
+        @include BackgroundIcon(FluentIcon('close'));
     }
 
     #appMenu-translate-button,
@@ -588,6 +672,10 @@ scrollbox[orient=vertical] {
         @include BackgroundIcon(url("../images/menu-icons/help.svg"));
     }
 
+    #appMenu-report-broken-site-button {
+        @include BackgroundIcon(url("../images/menu-icons/report.svg"));
+    }
+
     #context_reloadTab,
     #context_reloadSelectedTabs,
     #context-reload,
@@ -620,6 +708,11 @@ scrollbox[orient=vertical] {
         @include BackgroundIcon(FluentIcon('open-external'));
     }
 
+    #context-openlinkinusercontext-menu,
+    #context_reopenInContainer {
+        @include BackgroundIcon(url("../images/menu-icons/container-tab.svg"));
+    }
+
     #context-viewimage {
         @include BackgroundIcon(url("../images/menu-icons/image.svg"));
     }
@@ -635,9 +728,50 @@ scrollbox[orient=vertical] {
         @include BackgroundIcon(FluentIcon('view'));
     }
 
+    #context-viewpartialsource-selection {
+        @include BackgroundIcon(url("../images/menu-icons/source-code.svg"));
+    }
+
+    #context-media-hidecontrols,
+    #context-media-showcontrols {
+        @include BackgroundIcon(url("../images/menu-icons/permissions.svg"));
+    }
+
+    #context-media-playbackrate {
+        @include BackgroundIcon(url("../images/menu-icons/media-speed.svg"));
+    }
+
+    #context-video-pictureinpicture:not([checked="true"]) {
+        @include BackgroundIcon(url("../images/menu-icons/media-pip.svg"));
+    }
+
+    #context-copyimage-contents {
+        @include BackgroundIcon(url("../images/menu-icons/image-copy.svg"));
+    }
+
+    #context-savelinktopocket,
+    #context-pocket {
+        @include BackgroundIcon(url("../images/menu-icons/pocket-outline.svg"));
+    }
+
+    #context-setDesktopBackground {
+        @include BackgroundIcon(url("../images/menu-icons/customize.svg"));
+    }
+
+    #spell-add-to-dictionary {
+        @include BackgroundIcon(url("../images/menu-icons/add-to-dictionary.svg"));
+    }
+
     #context-media-mute,
-    #context-media-unmute {
-        @include BackgroundIcon(FluentIcon('mute'));
+    #context_toggleMuteTab,
+    #context_toggleMuteSelectedTabs {
+        @include BackgroundIcon(url("../images/menu-icons/media-mute.svg"));
+    }
+
+    #context-media-unmute,
+    #context_toggleMuteTab[muted],
+    #context_toggleMuteSelectedTabs[muted] {
+        @include BackgroundIcon(url("../images/menu-icons/media-unmute.svg"));
     }
 
     #context-media-loop {
@@ -658,6 +792,23 @@ scrollbox[orient=vertical] {
         @include BackgroundIcon(FluentIcon('copy'));
     }
 
+    #context-copy-clean-link,
+    #context-copylink-clean,
+    #context-stripOnShareLink,
+    #strip-on-share {
+        @include BackgroundIcon(url("../images/menu-icons/edit-copy-without-tracking.svg"));
+    }
+
+    #context-undo,
+    #menu_undo {
+        @include BackgroundIcon(url("../images/menu-icons/undo.svg"));
+    }
+
+    #context-redo,
+    #menu_redo {
+        @include BackgroundIcon(url("../images/menu-icons/redo.svg"));
+    }
+
     #context-cut,
     #context-pdfjs-cut,
     #placesContext_cut {
@@ -667,8 +818,14 @@ scrollbox[orient=vertical] {
     #context-paste,
     #context-paste-no-formatting,
     #context-pdfjs-paste,
-    #placesContext_paste {
+    #placesContext_paste,
+    #placesContext_paste_group {
         @include BackgroundIcon(FluentIcon('paste'));
+    }
+
+    #paste-and-go,
+    .searchbar-paste-and-search {
+        @include BackgroundIcon(url("../images/menu-icons/paste-and-go.svg"));
     }
 
     #context-delete,
@@ -677,6 +834,7 @@ scrollbox[orient=vertical] {
     #placesContext_deleteBookmark,
     #placesContext_deleteFolder,
     #placesContext_delete_history,
+    #placesContext_deleteHost,
     #toolbar-context-remove-extension,
     #pageActionContextMenuRemoveExtension {
         @include BackgroundIcon(FluentIcon('delete'));
@@ -684,7 +842,8 @@ scrollbox[orient=vertical] {
 
     #context-selectall,
     #context-pdfjs-select-all,
-    #context_selectAllTabs {
+    #context_selectAllTabs,
+    #toolbar-context-selectAllTabs {
         @include BackgroundIcon(FluentIcon('select-all'));
     }
 
@@ -695,6 +854,10 @@ scrollbox[orient=vertical] {
     }
 
     #context-media-pause {
+        @include BackgroundIcon(FluentIcon('pause'));
+    }
+
+    #context_unloadTab {
         @include BackgroundIcon(FluentIcon('pause'));
     }
 
@@ -722,6 +885,10 @@ scrollbox[orient=vertical] {
     #context_moveTabToSplitView,
     #context_separateSplitView {
         @include BackgroundIcon(url("../images/menu-icons/font-size.svg"));
+    }
+
+    #context_moveTabOptions {
+        @include BackgroundIcon(url("../images/menu-icons/move-tab.svg"));
     }
 
     #context_duplicateTab,
