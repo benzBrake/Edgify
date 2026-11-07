@@ -778,6 +778,7 @@ scrollbox[orient=vertical] {
         @include BackgroundIcon(FluentIcon('repeat'));
     }
 
+    .textbox-contextmenu > menuitem[data-l10n-id="text-action-copy"],
     #context-copy,
     #context-copylink,
     #context-copyemail,
@@ -799,22 +800,26 @@ scrollbox[orient=vertical] {
         @include BackgroundIcon(url("../images/menu-icons/edit-copy-without-tracking.svg"));
     }
 
+    .textbox-contextmenu > menuitem[data-l10n-id="text-action-undo"],
     #context-undo,
     #menu_undo {
         @include BackgroundIcon(url("../images/menu-icons/undo.svg"));
     }
 
+    .textbox-contextmenu > menuitem[data-l10n-id="text-action-redo"],
     #context-redo,
     #menu_redo {
         @include BackgroundIcon(url("../images/menu-icons/redo.svg"));
     }
 
+    .textbox-contextmenu > menuitem[data-l10n-id="text-action-cut"],
     #context-cut,
     #context-pdfjs-cut,
     #placesContext_cut {
         @include BackgroundIcon(FluentIcon('cut'));
     }
 
+    .textbox-contextmenu > menuitem[data-l10n-id="text-action-paste"],
     #context-paste,
     #context-paste-no-formatting,
     #context-pdfjs-paste,
@@ -828,6 +833,8 @@ scrollbox[orient=vertical] {
         @include BackgroundIcon(url("../images/menu-icons/paste-and-go.svg"));
     }
 
+    .textbox-contextmenu > menuitem[data-l10n-id="text-action-delete"],
+    .textbox-contextmenu > menuitem[anonid="ucjs_clearfield_menu"],
     #context-delete,
     #context-pdfjs-delete,
     #placesContext_delete,
@@ -840,6 +847,7 @@ scrollbox[orient=vertical] {
         @include BackgroundIcon(FluentIcon('delete'));
     }
 
+    .textbox-contextmenu > menuitem[data-l10n-id="text-action-select-all"],
     #context-selectall,
     #context-pdfjs-select-all,
     #context_selectAllTabs,

@@ -3461,6 +3461,7 @@ scrollbox[orient=vertical] {
     -moz-context-properties: fill, fill-opacity !important;
     fill: currentColor !important;
   }
+  .textbox-contextmenu > menuitem[data-l10n-id=text-action-copy] > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   #context-copy > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   #context-copylink > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   #context-copyemail > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
@@ -3474,6 +3475,7 @@ scrollbox[orient=vertical] {
   #placesContext_copyLink > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon) {
     display: none !important;
   }
+  .textbox-contextmenu > menuitem[data-l10n-id=text-action-copy]::before,
   #context-copy::before,
   #context-copylink::before,
   #context-copyemail::before,
@@ -3521,10 +3523,12 @@ scrollbox[orient=vertical] {
     -moz-context-properties: fill, fill-opacity !important;
     fill: currentColor !important;
   }
+  .textbox-contextmenu > menuitem[data-l10n-id=text-action-undo] > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   #context-undo > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   #menu_undo > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon) {
     display: none !important;
   }
+  .textbox-contextmenu > menuitem[data-l10n-id=text-action-undo]::before,
   #context-undo::before,
   #menu_undo::before {
     content: "" !important;
@@ -3540,10 +3544,12 @@ scrollbox[orient=vertical] {
     -moz-context-properties: fill, fill-opacity !important;
     fill: currentColor !important;
   }
+  .textbox-contextmenu > menuitem[data-l10n-id=text-action-redo] > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   #context-redo > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   #menu_redo > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon) {
     display: none !important;
   }
+  .textbox-contextmenu > menuitem[data-l10n-id=text-action-redo]::before,
   #context-redo::before,
   #menu_redo::before {
     content: "" !important;
@@ -3559,11 +3565,13 @@ scrollbox[orient=vertical] {
     -moz-context-properties: fill, fill-opacity !important;
     fill: currentColor !important;
   }
+  .textbox-contextmenu > menuitem[data-l10n-id=text-action-cut] > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   #context-cut > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   #context-pdfjs-cut > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   #placesContext_cut > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon) {
     display: none !important;
   }
+  .textbox-contextmenu > menuitem[data-l10n-id=text-action-cut]::before,
   #context-cut::before,
   #context-pdfjs-cut::before,
   #placesContext_cut::before {
@@ -3580,6 +3588,7 @@ scrollbox[orient=vertical] {
     -moz-context-properties: fill, fill-opacity !important;
     fill: currentColor !important;
   }
+  .textbox-contextmenu > menuitem[data-l10n-id=text-action-paste] > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   #context-paste > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   #context-paste-no-formatting > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   #context-pdfjs-paste > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
@@ -3587,6 +3596,7 @@ scrollbox[orient=vertical] {
   #placesContext_paste_group > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon) {
     display: none !important;
   }
+  .textbox-contextmenu > menuitem[data-l10n-id=text-action-paste]::before,
   #context-paste::before,
   #context-paste-no-formatting::before,
   #context-pdfjs-paste::before,
@@ -3624,6 +3634,8 @@ scrollbox[orient=vertical] {
     -moz-context-properties: fill, fill-opacity !important;
     fill: currentColor !important;
   }
+  .textbox-contextmenu > menuitem[data-l10n-id=text-action-delete] > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  .textbox-contextmenu > menuitem[anonid=ucjs_clearfield_menu] > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   #context-delete > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   #context-pdfjs-delete > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   #placesContext_delete > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
@@ -3635,6 +3647,8 @@ scrollbox[orient=vertical] {
   #pageActionContextMenuRemoveExtension > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon) {
     display: none !important;
   }
+  .textbox-contextmenu > menuitem[data-l10n-id=text-action-delete]::before,
+  .textbox-contextmenu > menuitem[anonid=ucjs_clearfield_menu]::before,
   #context-delete::before,
   #context-pdfjs-delete::before,
   #placesContext_delete::before,
@@ -3657,12 +3671,14 @@ scrollbox[orient=vertical] {
     -moz-context-properties: fill, fill-opacity !important;
     fill: currentColor !important;
   }
+  .textbox-contextmenu > menuitem[data-l10n-id=text-action-select-all] > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   #context-selectall > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   #context-pdfjs-select-all > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   #context_selectAllTabs > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   #toolbar-context-selectAllTabs > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon) {
     display: none !important;
   }
+  .textbox-contextmenu > menuitem[data-l10n-id=text-action-select-all]::before,
   #context-selectall::before,
   #context-pdfjs-select-all::before,
   #context_selectAllTabs::before,
