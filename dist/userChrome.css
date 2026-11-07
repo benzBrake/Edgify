@@ -574,19 +574,29 @@
  */
 @-moz-document url("chrome://browser/content/browser.xhtml") {
   moz-button[view=viewGenaiChatSidebar]:not([extension]) {
-    --button-icon-content: url("images/toolbar-icons/chat.svg") !important;
+    /* The native moz-button shadow stylesheet resolves inherited URL tokens
+     * against its own chrome://global/content/elements/ base URI. */
+    --button-icon-content: url("chrome://userchromejs/content/UserThemes/Edgify/dist/images/toolbar-icons/chat.svg") !important;
   }
   moz-button[view=viewTabsSidebar]:not([extension]) {
-    --button-icon-content: url("images/toolbar-icons/send-to-device.svg") !important;
+    /* The native moz-button shadow stylesheet resolves inherited URL tokens
+     * against its own chrome://global/content/elements/ base URI. */
+    --button-icon-content: url("chrome://userchromejs/content/UserThemes/Edgify/dist/images/toolbar-icons/send-to-device.svg") !important;
   }
   moz-button[view=viewHistorySidebar]:not([extension]) {
-    --button-icon-content: url("images/toolbar-icons/history.svg") !important;
+    /* The native moz-button shadow stylesheet resolves inherited URL tokens
+     * against its own chrome://global/content/elements/ base URI. */
+    --button-icon-content: url("chrome://userchromejs/content/UserThemes/Edgify/dist/images/toolbar-icons/history.svg") !important;
   }
   moz-button[view=viewBookmarksSidebar]:not([extension]) {
-    --button-icon-content: url("images/toolbar-icons/bookmark-hollow.svg") !important;
+    /* The native moz-button shadow stylesheet resolves inherited URL tokens
+     * against its own chrome://global/content/elements/ base URI. */
+    --button-icon-content: url("chrome://userchromejs/content/UserThemes/Edgify/dist/images/toolbar-icons/bookmark-hollow.svg") !important;
   }
   moz-button[view=viewCustomizeSidebar]:not([extension]) {
-    --button-icon-content: url("images/toolbar-icons/settings.svg") !important;
+    /* The native moz-button shadow stylesheet resolves inherited URL tokens
+     * against its own chrome://global/content/elements/ base URI. */
+    --button-icon-content: url("chrome://userchromejs/content/UserThemes/Edgify/dist/images/toolbar-icons/settings.svg") !important;
   }
   #sidebar-switcher-bookmarks,
   #sidebar-switcher-history,
@@ -603,7 +613,7 @@
     list-style-image: url("images/toolbar-icons/send-to-device.svg") !important;
   }
   moz-button.more-tools-button {
-    --button-icon-content: url("images/toolbar-icons/chevron.svg") !important;
+    --button-icon-content: url("chrome://userchromejs/content/UserThemes/Edgify/dist/images/toolbar-icons/chevron.svg") !important;
   }
 }
 /********************************************************************************/
