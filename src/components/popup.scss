@@ -781,6 +781,7 @@ scrollbox[orient=vertical] {
     .textbox-contextmenu > menuitem[data-l10n-id="text-action-copy"],
     #context-copy,
     #context-copylink,
+    #context-copy-link-to-highlight,
     #context-copyemail,
     #context-copyphone,
     #context-copyimage,
@@ -795,6 +796,7 @@ scrollbox[orient=vertical] {
 
     #context-copy-clean-link,
     #context-copylink-clean,
+    #context-copy-clean-link-to-highlight,
     #context-stripOnShareLink,
     #strip-on-share {
         @include BackgroundIcon(url("../images/menu-icons/edit-copy-without-tracking.svg"));

@@ -1,0 +1,18 @@
+/* Optional rules for menu items added by userChromeJS scripts or extensions. */
+#contentAreaContextMenu #openLinkInPrivateTab::before {
+  content: "" !important;
+  display: flex !important;
+  width: var(--menuitem-icon-size, 16px) !important;
+  height: var(--menuitem-icon-size, 16px) !important;
+  margin-inline-end: var(--menuitem-icon-gap, 8px) !important;
+  background-image: url("images/menu-icons/new-private-window.svg") !important;
+  background-size: contain !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+  -moz-context-properties: fill, fill-opacity !important;
+  fill: currentColor !important;
+}
+
+#contentAreaContextMenu #openLinkInPrivateTab > :is(.menu-icon, .menu-iconic-left) {
+  display: none !important;
+}

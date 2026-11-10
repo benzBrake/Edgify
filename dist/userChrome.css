@@ -3464,6 +3464,7 @@ scrollbox[orient=vertical] {
   .textbox-contextmenu > menuitem[data-l10n-id=text-action-copy] > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   #context-copy > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   #context-copylink > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  #context-copy-link-to-highlight > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   #context-copyemail > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   #context-copyphone > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   #context-copyimage > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
@@ -3478,6 +3479,7 @@ scrollbox[orient=vertical] {
   .textbox-contextmenu > menuitem[data-l10n-id=text-action-copy]::before,
   #context-copy::before,
   #context-copylink::before,
+  #context-copy-link-to-highlight::before,
   #context-copyemail::before,
   #context-copyphone::before,
   #context-copyimage::before,
@@ -3502,12 +3504,14 @@ scrollbox[orient=vertical] {
   }
   #context-copy-clean-link > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   #context-copylink-clean > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  #context-copy-clean-link-to-highlight > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   #context-stripOnShareLink > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   #strip-on-share > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon) {
     display: none !important;
   }
   #context-copy-clean-link::before,
   #context-copylink-clean::before,
+  #context-copy-clean-link-to-highlight::before,
   #context-stripOnShareLink::before,
   #strip-on-share::before {
     content: "" !important;
