@@ -2224,6 +2224,7 @@ scrollbox[orient=vertical] {
   #appMenu-new-tab-button2 > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   #context_openANewTab > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   #context_openlinkintab > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  #sidebar-history-context-open-in-tab > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   #placesContext_open\:newtab > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   #toolbar-context-openANewTab > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon) {
     display: none !important;
@@ -2231,6 +2232,7 @@ scrollbox[orient=vertical] {
   #appMenu-new-tab-button2::before,
   #context_openANewTab::before,
   #context_openlinkintab::before,
+  #sidebar-history-context-open-in-tab::before,
   #placesContext_open\:newtab::before,
   #toolbar-context-openANewTab::before {
     content: "" !important;
@@ -2283,10 +2285,12 @@ scrollbox[orient=vertical] {
     fill: currentColor !important;
   }
   #appMenu-new-window-button2 > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  #sidebar-history-context-open-in-window > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   #placesContext_open\:newwindow > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon) {
     display: none !important;
   }
   #appMenu-new-window-button2::before,
+  #sidebar-history-context-open-in-window::before,
   #placesContext_open\:newwindow::before {
     content: "" !important;
     display: flex !important;
@@ -2306,6 +2310,7 @@ scrollbox[orient=vertical] {
   #openPrivate > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   #openAllPrivate > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   #openAllLinksPrivate > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  #sidebar-history-context-open-in-private-window > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   #placesContext_open\:newprivatewindow > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon) {
     display: none !important;
   }
@@ -2314,6 +2319,7 @@ scrollbox[orient=vertical] {
   #openPrivate::before,
   #openAllPrivate::before,
   #openAllLinksPrivate::before,
+  #sidebar-history-context-open-in-private-window::before,
   #placesContext_open\:newprivatewindow::before {
     content: "" !important;
     display: flex !important;
@@ -2331,6 +2337,7 @@ scrollbox[orient=vertical] {
   menu[id="placesContext_open:newcontainertab"] > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   menu[id="placesContext_openContainer:tabs"] > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   menu[id="placesContext_openBookmarkContainer:tabs"] > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  #sidebar-history-context-menu-container-tab > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   .new-tab-popup menuitem[command="Browser:NewUserContextTab"][data-usercontextid="0"] > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   menuitem[data-l10n-id=user-context-new-tab][data-usercontextid="0"] > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon) {
     display: none !important;
@@ -2338,6 +2345,7 @@ scrollbox[orient=vertical] {
   menu[id="placesContext_open:newcontainertab"]::before,
   menu[id="placesContext_openContainer:tabs"]::before,
   menu[id="placesContext_openBookmarkContainer:tabs"]::before,
+  #sidebar-history-context-menu-container-tab::before,
   .new-tab-popup menuitem[command="Browser:NewUserContextTab"][data-usercontextid="0"]::before,
   menuitem[data-l10n-id=user-context-new-tab][data-usercontextid="0"]::before {
     content: "" !important;
@@ -2426,10 +2434,12 @@ scrollbox[orient=vertical] {
     fill: currentColor !important;
   }
   menu[id="placesContext_openBookmarkLinks:tabs"] > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  #sidebar-history-context-open-all-in-tabs > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   menu[id="placesContext_openLinks:tabs"] > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon) {
     display: none !important;
   }
   menu[id="placesContext_openBookmarkLinks:tabs"]::before,
+  #sidebar-history-context-open-all-in-tabs::before,
   menu[id="placesContext_openLinks:tabs"]::before {
     content: "" !important;
     display: flex !important;
@@ -2645,6 +2655,7 @@ scrollbox[orient=vertical] {
     fill: currentColor !important;
   }
   #context-bookmarklink > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  #sidebar-history-context-bookmark-page > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   #context_bookmarkTab > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   #context_bookmarkSelectedTabs > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   #toggle_PersonalToolbar > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
@@ -2653,6 +2664,7 @@ scrollbox[orient=vertical] {
     display: none !important;
   }
   #context-bookmarklink::before,
+  #sidebar-history-context-bookmark-page::before,
   #context_bookmarkTab::before,
   #context_bookmarkSelectedTabs::before,
   #toggle_PersonalToolbar::before,
@@ -3557,6 +3569,7 @@ scrollbox[orient=vertical] {
   #context-pdfjs-copy > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   #placesContext_copy > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   #placesContext_copyTitle > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  #sidebar-history-context-copy-link > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   #placesContext_copyLink > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon) {
     display: none !important;
   }
@@ -3572,6 +3585,7 @@ scrollbox[orient=vertical] {
   #context-pdfjs-copy::before,
   #placesContext_copy::before,
   #placesContext_copyTitle::before,
+  #sidebar-history-context-copy-link::before,
   #placesContext_copyLink::before {
     content: "" !important;
     display: flex !important;
@@ -3730,6 +3744,9 @@ scrollbox[orient=vertical] {
   #placesContext_deleteBookmark > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   #placesContext_deleteFolder > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   #placesContext_delete_history > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  #sidebar-history-context-delete-page > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  #sidebar-history-context-delete-pages > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  #sidebar-history-context-forget-site > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   #placesContext_deleteHost > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   #toolbar-context-remove-extension > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   #pageActionContextMenuRemoveExtension > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon) {
@@ -3743,6 +3760,9 @@ scrollbox[orient=vertical] {
   #placesContext_deleteBookmark::before,
   #placesContext_deleteFolder::before,
   #placesContext_delete_history::before,
+  #sidebar-history-context-delete-page::before,
+  #sidebar-history-context-delete-pages::before,
+  #sidebar-history-context-forget-site::before,
   #placesContext_deleteHost::before,
   #toolbar-context-remove-extension::before,
   #pageActionContextMenuRemoveExtension::before {

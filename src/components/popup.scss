@@ -429,6 +429,7 @@ scrollbox[orient=vertical] {
     #appMenu-new-tab-button2,
     #context_openANewTab,
     #context_openlinkintab,
+    #sidebar-history-context-open-in-tab,
     #placesContext_open\:newtab,
     #toolbar-context-openANewTab {
         @include BackgroundIcon(url("../images/menu-icons/new-tab.svg"));
@@ -444,6 +445,7 @@ scrollbox[orient=vertical] {
     }
 
     #appMenu-new-window-button2,
+    #sidebar-history-context-open-in-window,
     #placesContext_open\:newwindow {
         @include BackgroundIcon(url("../images/menu-icons/new-window.svg"));
     }
@@ -453,6 +455,7 @@ scrollbox[orient=vertical] {
     #openPrivate,
     #openAllPrivate,
     #openAllLinksPrivate,
+    #sidebar-history-context-open-in-private-window,
     #placesContext_open\:newprivatewindow {
         @include BackgroundIcon(url("../images/menu-icons/new-private-window.svg"));
     }
@@ -460,6 +463,7 @@ scrollbox[orient=vertical] {
     menu[id="placesContext_open:newcontainertab"],
     menu[id="placesContext_openContainer:tabs"],
     menu[id="placesContext_openBookmarkContainer:tabs"],
+    #sidebar-history-context-menu-container-tab,
     .new-tab-popup menuitem[command="Browser:NewUserContextTab"][data-usercontextid="0"],
     menuitem[data-l10n-id="user-context-new-tab"][data-usercontextid="0"] {
         @include BackgroundIcon(url("../images/menu-icons/container-tab.svg"));
@@ -484,6 +488,7 @@ scrollbox[orient=vertical] {
     }
 
     menu[id="placesContext_openBookmarkLinks:tabs"],
+    #sidebar-history-context-open-all-in-tabs,
     menu[id="placesContext_openLinks:tabs"] {
         @include BackgroundIcon(FluentIcon('open-external'));
     }
@@ -544,6 +549,7 @@ scrollbox[orient=vertical] {
     }
 
     #context-bookmarklink,
+    #sidebar-history-context-bookmark-page,
     #context_bookmarkTab,
     #context_bookmarkSelectedTabs,
     #toggle_PersonalToolbar,
@@ -814,6 +820,7 @@ scrollbox[orient=vertical] {
     #context-pdfjs-copy,
     #placesContext_copy,
     #placesContext_copyTitle,
+    #sidebar-history-context-copy-link,
     #placesContext_copyLink {
         @include BackgroundIcon(FluentIcon('copy'));
     }
@@ -867,6 +874,9 @@ scrollbox[orient=vertical] {
     #placesContext_deleteBookmark,
     #placesContext_deleteFolder,
     #placesContext_delete_history,
+    #sidebar-history-context-delete-page,
+    #sidebar-history-context-delete-pages,
+    #sidebar-history-context-forget-site,
     #placesContext_deleteHost,
     #toolbar-context-remove-extension,
     #pageActionContextMenuRemoveExtension {
