@@ -2114,7 +2114,7 @@ menupopup,
 .popup-internal-box,
 #PopupAutoComplete > *,
 .menupopup-arrowscrollbox {
-  background: var(--panel-background) !important;
+  background: var(--panel-background, Menu) !important;
   border-radius: var(--panel-border-radius) !important;
   border: 1px solid transparent !important;
   padding: 4px !important;
