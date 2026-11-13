@@ -3895,22 +3895,54 @@ scrollbox[orient=vertical] {
   #context_moveTabToGroupNewGroup > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   #context_moveTabToSavedGroup > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   #context_moveTabToNewGroup > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
-  #context_moveTabToSplitView > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
-  #context_separateSplitView > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon) {
+  #context_moveSplitViewToNewGroup > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon) {
     display: none !important;
   }
   #context_moveTabToGroup::before,
   #context_moveTabToGroupNewGroup::before,
   #context_moveTabToSavedGroup::before,
   #context_moveTabToNewGroup::before,
-  #context_moveTabToSplitView::before,
+  #context_moveSplitViewToNewGroup::before {
+    content: "" !important;
+    display: flex !important;
+    width: var(--menuitem-icon-size, 16px) !important;
+    height: var(--menuitem-icon-size, 16px) !important;
+    margin-inline-end: var(--menuitem-icon-gap, 8px) !important;
+    background-image: url("images/menu-icons/tab-group.svg") !important;
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+    mask-image: none !important;
+    -moz-context-properties: fill, fill-opacity !important;
+    fill: currentColor !important;
+  }
+  #context_moveTabToSplitView > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon) {
+    display: none !important;
+  }
+  #context_moveTabToSplitView::before {
+    content: "" !important;
+    display: flex !important;
+    width: var(--menuitem-icon-size, 16px) !important;
+    height: var(--menuitem-icon-size, 16px) !important;
+    margin-inline-end: var(--menuitem-icon-gap, 8px) !important;
+    background-image: url("images/menu-icons/split-view.svg") !important;
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+    mask-image: none !important;
+    -moz-context-properties: fill, fill-opacity !important;
+    fill: currentColor !important;
+  }
+  #context_separateSplitView > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon) {
+    display: none !important;
+  }
   #context_separateSplitView::before {
     content: "" !important;
     display: flex !important;
     width: var(--menuitem-icon-size, 16px) !important;
     height: var(--menuitem-icon-size, 16px) !important;
     margin-inline-end: var(--menuitem-icon-gap, 8px) !important;
-    background-image: url("images/menu-icons/font-size.svg") !important;
+    background-image: url("images/menu-icons/separate-split-view.svg") !important;
     background-size: contain !important;
     background-repeat: no-repeat !important;
     background-position: center !important;

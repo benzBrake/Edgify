@@ -14,6 +14,8 @@
 
 `image.svg` 为主题绘制的图片轮廓图标，用于“新建标签页打开图像”；“截图”菜单项复用 `toolbar-icons/screenshot.svg`。
 
+标签页右键菜单的群组操作使用主题绘制的 `tab-group.svg`（外框内的叠放标签）；添加分屏使用 `split-view.svg`（窗口内竖向分栏），拆分分屏使用 `separate-split-view.svg`（分离的两个窗格）。这些菜单不再复用表示字体大小的 `font-size.svg`；将分屏加入新群组的 `#context_moveSplitViewToNewGroup` 同样使用群组图标。
+
 撤销和重做使用主题绘制的 `undo.svg`、`redo.svg`。Edgify 对照 edge-frfox 的菜单映射补入专用资源：无跟踪复制、媒体静音、标签移动、容器标签、图片复制/保存、画中画、播放速度、权限、Pocket、工具栏自定义、源码、粘贴并搜索、拼写词典和报告损坏网站图标。`#context_bookmarkTab` 使用工具栏空心书签图标；AI 聊天复用 `toolbar-icons/chat.svg`；`#context_unloadTab` 使用暂停图标表示卸载/挂起（edge-frfox 当前未覆盖该 ID）。这些上游 SVG 沿用 edge-frfox MIT 授权。`addMenuPlus` 的 `#identity-box-contextmenu` 是动态菜单，单项图标由各项配置提供。
 
 地址栏、搜索栏等浏览器输入框使用 `.textbox-contextmenu`，其原生编辑项没有 `#context-copy` 等网页菜单 ID。主题通过 `data-l10n-id="text-action-*"` 匹配撤销、重做、剪切、复制、粘贴、删除和全选，避免依赖不同 Firefox 版本的 `cmd` / `command` 属性差异。脚本插入的 `[anonid="ucjs_clearfield_menu"]` 清除项复用删除图标。

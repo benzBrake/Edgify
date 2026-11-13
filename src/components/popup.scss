@@ -916,9 +916,16 @@ scrollbox[orient=vertical] {
     #context_moveTabToGroupNewGroup,
     #context_moveTabToSavedGroup,
     #context_moveTabToNewGroup,
-    #context_moveTabToSplitView,
+    #context_moveSplitViewToNewGroup {
+        @include BackgroundIcon(FluentIcon('tab-group'));
+    }
+
+    #context_moveTabToSplitView {
+        @include BackgroundIcon(FluentIcon('split-view'));
+    }
+
     #context_separateSplitView {
-        @include BackgroundIcon(url("../images/menu-icons/font-size.svg"));
+        @include BackgroundIcon(FluentIcon('separate-split-view'));
     }
 
     #context_moveTabOptions {
