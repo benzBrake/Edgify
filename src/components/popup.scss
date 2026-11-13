@@ -503,6 +503,10 @@ scrollbox[orient=vertical] {
         @include BackgroundIcon(FluentIcon('favorites-list'));
     }
 
+    menuitem[id="placesContext_sortBy:name"] {
+        @include BackgroundIcon(FluentIcon('sort'));
+    }
+
     menuitem[id="placesContext_show_bookmark:info"],
     menuitem[id="placesContext_show_folder:info"],
     menuitem[id="placesContext_show:info"] {

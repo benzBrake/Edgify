@@ -2492,6 +2492,23 @@ scrollbox[orient=vertical] {
     -moz-context-properties: fill, fill-opacity !important;
     fill: currentColor !important;
   }
+  menuitem[id="placesContext_sortBy:name"] > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon) {
+    display: none !important;
+  }
+  menuitem[id="placesContext_sortBy:name"]::before {
+    content: "" !important;
+    display: flex !important;
+    width: var(--menuitem-icon-size, 16px) !important;
+    height: var(--menuitem-icon-size, 16px) !important;
+    margin-inline-end: var(--menuitem-icon-gap, 8px) !important;
+    background-image: url("images/menu-icons/sort.svg") !important;
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+    mask-image: none !important;
+    -moz-context-properties: fill, fill-opacity !important;
+    fill: currentColor !important;
+  }
   menuitem[id="placesContext_show_bookmark:info"] > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   menuitem[id="placesContext_show_folder:info"] > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   menuitem[id="placesContext_show:info"] > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon) {

@@ -20,6 +20,8 @@
 
 地址栏、搜索栏等浏览器输入框使用 `.textbox-contextmenu`，其原生编辑项没有 `#context-copy` 等网页菜单 ID。主题通过 `data-l10n-id="text-action-*"` 匹配撤销、重做、剪切、复制、粘贴、删除和全选，避免依赖不同 Firefox 版本的 `cmd` / `command` 属性差异。脚本插入的 `[anonid="ucjs_clearfield_menu"]` 清除项复用删除图标。
 
+书签菜单的“按名称排序”（`#placesContext_sortBy\:name`）使用主题绘制的 `sort.svg`，以向下箭头和依次缩短的横线表示排序。
+
 ## 字体图标命名对照
 
 下表记录原码点与当前文件名。重命名保留原 SVG 内容及菜单映射；`zoom-in-font.svg` 用于右键缩放，与主菜单缩放行的 `zoom-in.svg` 区分。
