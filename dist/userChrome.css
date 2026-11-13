@@ -2330,18 +2330,94 @@ scrollbox[orient=vertical] {
   }
   menu[id="placesContext_open:newcontainertab"] > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   menu[id="placesContext_openContainer:tabs"] > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
-  menu[id="placesContext_openBookmarkContainer:tabs"] > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon) {
+  menu[id="placesContext_openBookmarkContainer:tabs"] > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  .new-tab-popup menuitem[command="Browser:NewUserContextTab"][data-usercontextid="0"] > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  menuitem[data-l10n-id=user-context-new-tab][data-usercontextid="0"] > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon) {
     display: none !important;
   }
   menu[id="placesContext_open:newcontainertab"]::before,
   menu[id="placesContext_openContainer:tabs"]::before,
-  menu[id="placesContext_openBookmarkContainer:tabs"]::before {
+  menu[id="placesContext_openBookmarkContainer:tabs"]::before,
+  .new-tab-popup menuitem[command="Browser:NewUserContextTab"][data-usercontextid="0"]::before,
+  menuitem[data-l10n-id=user-context-new-tab][data-usercontextid="0"]::before {
     content: "" !important;
     display: flex !important;
     width: var(--menuitem-icon-size, 16px) !important;
     height: var(--menuitem-icon-size, 16px) !important;
     margin-inline-end: var(--menuitem-icon-gap, 8px) !important;
     background-image: url("images/menu-icons/container-tab.svg") !important;
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+    mask-image: none !important;
+    -moz-context-properties: fill, fill-opacity !important;
+    fill: currentColor !important;
+  }
+  menuitem[command="Browser:OpenAboutContainers"] > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon) {
+    display: none !important;
+  }
+  menuitem[command="Browser:OpenAboutContainers"]::before {
+    content: "" !important;
+    display: flex !important;
+    width: var(--menuitem-icon-size, 16px) !important;
+    height: var(--menuitem-icon-size, 16px) !important;
+    margin-inline-end: var(--menuitem-icon-gap, 8px) !important;
+    background-image: url("images/menu-icons/settings.svg") !important;
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+    mask-image: none !important;
+    -moz-context-properties: fill, fill-opacity !important;
+    fill: currentColor !important;
+  }
+  #sidebar-context-menu-hide-sidebar > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon) {
+    display: none !important;
+  }
+  #sidebar-context-menu-hide-sidebar::before {
+    content: "" !important;
+    display: flex !important;
+    width: var(--menuitem-icon-size, 16px) !important;
+    height: var(--menuitem-icon-size, 16px) !important;
+    margin-inline-end: var(--menuitem-icon-gap, 8px) !important;
+    background-image: url("images/menu-icons/close.svg") !important;
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+    mask-image: none !important;
+    -moz-context-properties: fill, fill-opacity !important;
+    fill: currentColor !important;
+  }
+  #sidebar-context-menu-customize-sidebar > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  #toolbar-context-customize-sidebar > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon) {
+    display: none !important;
+  }
+  #sidebar-context-menu-customize-sidebar::before,
+  #toolbar-context-customize-sidebar::before {
+    content: "" !important;
+    display: flex !important;
+    width: var(--menuitem-icon-size, 16px) !important;
+    height: var(--menuitem-icon-size, 16px) !important;
+    margin-inline-end: var(--menuitem-icon-gap, 8px) !important;
+    background-image: url("images/menu-icons/customize.svg") !important;
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+    mask-image: none !important;
+    -moz-context-properties: fill, fill-opacity !important;
+    fill: currentColor !important;
+  }
+  #sidebar-context-menu-enable-vertical-tabs > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  #toolbar-context-toggle-vertical-tabs > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon) {
+    display: none !important;
+  }
+  #sidebar-context-menu-enable-vertical-tabs::before,
+  #toolbar-context-toggle-vertical-tabs::before {
+    content: "" !important;
+    display: flex !important;
+    width: var(--menuitem-icon-size, 16px) !important;
+    height: var(--menuitem-icon-size, 16px) !important;
+    margin-inline-end: var(--menuitem-icon-gap, 8px) !important;
+    background-image: url("images/toolbar-icons/sidebars.svg") !important;
     background-size: contain !important;
     background-repeat: no-repeat !important;
     background-position: center !important;
@@ -2428,11 +2504,13 @@ scrollbox[orient=vertical] {
     fill: currentColor !important;
   }
   .customize-context-manageExtension > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
-  .unified-extensions-context-menu-manage-extension > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon) {
+  .unified-extensions-context-menu-manage-extension > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  #sidebar-context-menu-manage-extension > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon) {
     display: none !important;
   }
   .customize-context-manageExtension::before,
-  .unified-extensions-context-menu-manage-extension::before {
+  .unified-extensions-context-menu-manage-extension::before,
+  #sidebar-context-menu-manage-extension::before {
     content: "" !important;
     display: flex !important;
     width: var(--menuitem-icon-size, 16px) !important;
@@ -2448,11 +2526,13 @@ scrollbox[orient=vertical] {
   }
   .customize-context-removeExtension > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   .unified-extensions-context-menu-remove-extension > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  #sidebar-context-menu-remove-extension > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   menuitem[id=placesContext_deleteHost] > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon) {
     display: none !important;
   }
   .customize-context-removeExtension::before,
   .unified-extensions-context-menu-remove-extension::before,
+  #sidebar-context-menu-remove-extension::before,
   menuitem[id=placesContext_deleteHost]::before {
     content: "" !important;
     display: flex !important;
@@ -2468,11 +2548,13 @@ scrollbox[orient=vertical] {
     fill: currentColor !important;
   }
   .customize-context-reportExtension > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
-  .unified-extensions-context-menu-report-extension > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon) {
+  .unified-extensions-context-menu-report-extension > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  #sidebar-context-menu-report-extension > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon) {
     display: none !important;
   }
   .customize-context-reportExtension::before,
-  .unified-extensions-context-menu-report-extension::before {
+  .unified-extensions-context-menu-report-extension::before,
+  #sidebar-context-menu-report-extension::before {
     content: "" !important;
     display: flex !important;
     width: var(--menuitem-icon-size, 16px) !important;
@@ -2486,10 +2568,12 @@ scrollbox[orient=vertical] {
     -moz-context-properties: fill, fill-opacity !important;
     fill: currentColor !important;
   }
-  .customize-context-moveToPanel > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon) {
+  .customize-context-moveToPanel > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  #sidebar-context-menu-unpin-extension > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon) {
     display: none !important;
   }
-  .customize-context-moveToPanel::before {
+  .customize-context-moveToPanel::before,
+  #sidebar-context-menu-unpin-extension::before {
     content: "" !important;
     display: flex !important;
     width: var(--menuitem-icon-size, 16px) !important;

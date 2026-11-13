@@ -459,8 +459,28 @@ scrollbox[orient=vertical] {
 
     menu[id="placesContext_open:newcontainertab"],
     menu[id="placesContext_openContainer:tabs"],
-    menu[id="placesContext_openBookmarkContainer:tabs"] {
+    menu[id="placesContext_openBookmarkContainer:tabs"],
+    .new-tab-popup menuitem[command="Browser:NewUserContextTab"][data-usercontextid="0"],
+    menuitem[data-l10n-id="user-context-new-tab"][data-usercontextid="0"] {
         @include BackgroundIcon(url("../images/menu-icons/container-tab.svg"));
+    }
+
+    menuitem[command="Browser:OpenAboutContainers"] {
+        @include BackgroundIcon(FluentIcon('settings'));
+    }
+
+    #sidebar-context-menu-hide-sidebar {
+        @include BackgroundIcon(FluentIcon('close'));
+    }
+
+    #sidebar-context-menu-customize-sidebar,
+    #toolbar-context-customize-sidebar {
+        @include BackgroundIcon(FluentIcon('customize'));
+    }
+
+    #sidebar-context-menu-enable-vertical-tabs,
+    #toolbar-context-toggle-vertical-tabs {
+        @include BackgroundIcon(url("../images/toolbar-icons/sidebars.svg"));
     }
 
     menu[id="placesContext_openBookmarkLinks:tabs"],
@@ -485,22 +505,26 @@ scrollbox[orient=vertical] {
     }
 
     .customize-context-manageExtension,
-    .unified-extensions-context-menu-manage-extension {
+    .unified-extensions-context-menu-manage-extension,
+    #sidebar-context-menu-manage-extension {
         @include BackgroundIcon(FluentIcon('extensions'));
     }
 
     .customize-context-removeExtension,
     .unified-extensions-context-menu-remove-extension,
+    #sidebar-context-menu-remove-extension,
     menuitem[id="placesContext_deleteHost"] {
         @include BackgroundIcon(FluentIcon('delete'));
     }
 
     .customize-context-reportExtension,
-    .unified-extensions-context-menu-report-extension {
+    .unified-extensions-context-menu-report-extension,
+    #sidebar-context-menu-report-extension {
         @include BackgroundIcon(url("../images/menu-icons/help.svg"));
     }
 
-    .customize-context-moveToPanel {
+    .customize-context-moveToPanel,
+    #sidebar-context-menu-unpin-extension {
         @include BackgroundIcon(url("../images/menu-icons/pin.svg"));
     }
 
