@@ -16,3 +16,14 @@
 #contentAreaContextMenu #openLinkInPrivateTab > :is(.menu-icon, .menu-iconic-left) {
   display: none !important;
 }
+
+.addMenu.copy,
+menuitem.addMenu[text]:not([url]):not([keyword]):not([exec]),
+.addMenu-icon.copy {
+  --menuitem-icon: url("images/menu-icons/copy.svg") !important;
+}
+
+/* Resolve the URL here rather than in Firefox's built-in var() consumer. */
+:is(.addMenu.copy, menuitem.addMenu[text]:not([url]):not([keyword]):not([exec]), .addMenu-icon.copy) > .menu-icon {
+  content: url("images/menu-icons/copy.svg") !important;
+}
