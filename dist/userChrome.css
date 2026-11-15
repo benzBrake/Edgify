@@ -1103,6 +1103,7 @@
     background-color: color-mix(in srgb, currentColor 28%, transparent) !important;
   }
   #alltabs-button > .toolbarbutton-badge-stack > .toolbarbutton-icon {
+    place-self: center;
     opacity: 1 !important;
     list-style-image: url("chrome://global/skin/icons/arrow-down.svg") !important;
   }
@@ -2011,7 +2012,7 @@ panelview .panel-subview-footer-button {
   margin-bottom: 0 !important;
 }
 
-/* Keep every trust-panel section 4px inside the view's left and right edges. */
+/* Share the view's outer spacing and inset the host and graphic card like menu items. */
 #trustpanel-popup-mainView {
   padding-inline: 4px !important;
 }
@@ -2019,12 +2020,17 @@ panelview .panel-subview-footer-button {
   padding-block-start: 0 !important;
   padding-inline: 0 !important;
 }
-#trustpanel-popup-mainView #trustpanel-graphic-section,
+#trustpanel-popup-mainView #trustpanel-graphic-section {
+  margin-inline: var(--panel-menuitem-padding-inline) !important;
+}
 #trustpanel-popup-mainView #trustpanel-toggle-section {
   margin-inline: 0 !important;
 }
 #trustpanel-popup-mainView #trustpanel-header-section {
   padding-block-end: 0 !important;
+}
+#trustpanel-popup-mainView #trustpanel-popup-host-wrapper {
+  padding-inline: var(--panel-menuitem-padding-inline) !important;
 }
 #trustpanel-popup-mainView #trustpanel-clear-cookies-button::after {
   margin-inline-start: auto;
@@ -2033,6 +2039,7 @@ panelview .panel-subview-footer-button {
 panelview .panel-header {
   --panel-menuitem-margin-inline:0px;
   --panel-header-min-height: 0px;
+  margin-bottom: 4px;
 }
 
 /* 调整缩进 */
@@ -2068,16 +2075,20 @@ panelview .panel-header {
   --panel-menuitem-margin-inline: 0px;
 }
 
-/* Keep the tab-list close action square without menu-label spacing. */
+/* Align section headings with the tab and group icons. */
+.subview-subheader:is([data-l10n-id=all-tabs-menu-recent-tab-groups-header],
+[data-l10n-id=all-tabs-menu-current-window-header]) {
+  margin-inline: 0 !important;
+}
+
+/* Let the close action follow the row's native sizing without menu-icon spacing. */
 .all-tabs-close-button {
-  width: 24px !important;
-  height: 24px !important;
-  padding: 4px !important;
+  --panel-menuitem-padding: var(--panel-menuitem-padding-block);
   justify-content: center !important;
 }
 .all-tabs-close-button > .toolbarbutton-icon {
-  width: 16px !important;
-  height: 16px !important;
+  width: var(--menuitem-icon-size) !important;
+  height: var(--menuitem-icon-size) !important;
   margin: 0 !important;
 }
 

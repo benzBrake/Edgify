@@ -112,7 +112,7 @@ panelview {
     }
 }
 
-/* Keep every trust-panel section 4px inside the view's left and right edges. */
+/* Share the view's outer spacing and inset the host and graphic card like menu items. */
 #trustpanel-popup-mainView {
     padding-inline: 4px !important;
 
@@ -121,13 +121,20 @@ panelview {
         padding-inline: 0 !important;
     }
 
-    #trustpanel-graphic-section,
+    #trustpanel-graphic-section {
+        margin-inline: var(--panel-menuitem-padding-inline) !important;
+    }
+
     #trustpanel-toggle-section {
         margin-inline: 0 !important;
     }
 
     #trustpanel-header-section {
         padding-block-end: 0 !important;
+    }
+
+    #trustpanel-popup-host-wrapper {
+        padding-inline: var(--panel-menuitem-padding-inline) !important;
     }
 
     #trustpanel-clear-cookies-button::after {
@@ -182,16 +189,22 @@ panelview .panel-header {
     --panel-menuitem-margin-inline: 0px;
 }
 
-/* Keep the tab-list close action square without menu-label spacing. */
+/* Align section headings with the tab and group icons. */
+.subview-subheader:is(
+    [data-l10n-id="all-tabs-menu-recent-tab-groups-header"],
+    [data-l10n-id="all-tabs-menu-current-window-header"]
+) {
+    margin-inline: 0 !important;
+}
+
+/* Let the close action follow the row's native sizing without menu-icon spacing. */
 .all-tabs-close-button {
-    width: 24px !important;
-    height: 24px !important;
-    padding: 4px !important;
+    --panel-menuitem-padding: var(--panel-menuitem-padding-block);
     justify-content: center !important;
 
     > .toolbarbutton-icon {
-        width: 16px !important;
-        height: 16px !important;
+        width: var(--menuitem-icon-size) !important;
+        height: var(--menuitem-icon-size) !important;
         margin: 0 !important;
     }
 }

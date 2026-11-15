@@ -707,6 +707,7 @@
     }
 
     > .toolbarbutton-badge-stack > .toolbarbutton-icon {
+      place-self: center;
       opacity: 1 !important;
       list-style-image: url("chrome://global/skin/icons/arrow-down.svg") !important;
     }
