@@ -2032,6 +2032,25 @@ panelview .panel-subview-footer-button {
   padding-inline-start: var(--menuitem-text-padding-start) !important;
 }
 
+/* The panelview already supplies the tab and recent-group lists' outer spacing. */
+#allTabsMenu-groupsView,
+#allTabsMenu-allTabsView-tabs {
+  --panel-menuitem-margin-inline: 0px;
+}
+
+/* Keep the tab-list close action square without menu-label spacing. */
+.all-tabs-close-button {
+  width: 24px !important;
+  height: 24px !important;
+  padding: 4px !important;
+  justify-content: center !important;
+}
+.all-tabs-close-button > .toolbarbutton-icon {
+  width: 16px !important;
+  height: 16px !important;
+  margin: 0 !important;
+}
+
 #unified-extensions-panel .unified-extensions-item .subviewbutton > .toolbarbutton-icon {
   --arrowpanel-menuitem-padding-inline: 4px;
   --arrowpanel-menuitem-padding-block: 4px;
@@ -2288,6 +2307,23 @@ scrollbox[orient=vertical] {
 }
 
 @media (-moz-platform: windows) {
+  #allTabsMenu-syncedTabs > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon) {
+    display: none !important;
+  }
+  #allTabsMenu-syncedTabs::before {
+    content: "" !important;
+    display: flex !important;
+    width: var(--menuitem-icon-size, 16px) !important;
+    height: var(--menuitem-icon-size, 16px) !important;
+    margin-inline-end: var(--menuitem-icon-gap, 8px) !important;
+    background-image: url("images/toolbar-icons/tab.svg") !important;
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+    mask-image: none !important;
+    -moz-context-properties: fill, fill-opacity !important;
+    fill: currentColor !important;
+  }
   #appMenu-new-tab-button2 > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   #context_openANewTab > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   #context_openlinkintab > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
@@ -2404,6 +2440,7 @@ scrollbox[orient=vertical] {
   menu[id="placesContext_open:newcontainertab"] > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   menu[id="placesContext_openContainer:tabs"] > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   #sidebar-history-context-menu-container-tab > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  #allTabsMenu-containerTabsButton > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   .new-tab-popup menuitem[command="Browser:NewUserContextTab"][data-usercontextid="0"] > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   menuitem[data-l10n-id=user-context-new-tab][data-usercontextid="0"] > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon) {
     display: none !important;
@@ -2411,6 +2448,7 @@ scrollbox[orient=vertical] {
   menu[id="placesContext_open:newcontainertab"]::before,
   menu[id="placesContext_openContainer:tabs"]::before,
   #sidebar-history-context-menu-container-tab::before,
+  #allTabsMenu-containerTabsButton::before,
   .new-tab-popup menuitem[command="Browser:NewUserContextTab"][data-usercontextid="0"]::before,
   menuitem[data-l10n-id=user-context-new-tab][data-usercontextid="0"]::before {
     content: "" !important;
@@ -2426,10 +2464,12 @@ scrollbox[orient=vertical] {
     -moz-context-properties: fill, fill-opacity !important;
     fill: currentColor !important;
   }
-  menuitem[command="Browser:OpenAboutContainers"] > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon) {
+  menuitem[command="Browser:OpenAboutContainers"] > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  .subviewbutton[data-l10n-id=user-context-manage-containers][command="Browser:OpenAboutContainers"] > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon) {
     display: none !important;
   }
-  menuitem[command="Browser:OpenAboutContainers"]::before {
+  menuitem[command="Browser:OpenAboutContainers"]::before,
+  .subviewbutton[data-l10n-id=user-context-manage-containers][command="Browser:OpenAboutContainers"]::before {
     content: "" !important;
     display: flex !important;
     width: var(--menuitem-icon-size, 16px) !important;
@@ -2977,12 +3017,14 @@ scrollbox[orient=vertical] {
   }
   #context-searchselect > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   #context-searchselect-private > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  #allTabsMenu-searchTabs > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   #menu_searchBookmarks > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   #menu_searchHistory > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon) {
     display: none !important;
   }
   #context-searchselect::before,
   #context-searchselect-private::before,
+  #allTabsMenu-searchTabs::before,
   #menu_searchBookmarks::before,
   #menu_searchHistory::before {
     content: "" !important;
@@ -4093,6 +4135,7 @@ scrollbox[orient=vertical] {
   #context_closeTabsToTheStart > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   #context_closeTabsToTheEnd > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   #context_closeOtherTabs > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  #allTabsMenu-closeDuplicateTabs > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   #context_closeTabOptions > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon) {
     display: none !important;
   }
@@ -4101,6 +4144,7 @@ scrollbox[orient=vertical] {
   #context_closeTabsToTheStart::before,
   #context_closeTabsToTheEnd::before,
   #context_closeOtherTabs::before,
+  #allTabsMenu-closeDuplicateTabs::before,
   #context_closeTabOptions::before {
     content: "" !important;
     display: flex !important;

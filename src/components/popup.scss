@@ -142,6 +142,26 @@ panelview {
     }
 }
 
+/* The panelview already supplies the tab and recent-group lists' outer spacing. */
+#allTabsMenu-groupsView,
+#allTabsMenu-allTabsView-tabs {
+    --panel-menuitem-margin-inline: 0px;
+}
+
+/* Keep the tab-list close action square without menu-label spacing. */
+.all-tabs-close-button {
+    width: 24px !important;
+    height: 24px !important;
+    padding: 4px !important;
+    justify-content: center !important;
+
+    > .toolbarbutton-icon {
+        width: 16px !important;
+        height: 16px !important;
+        margin: 0 !important;
+    }
+}
+
 #unified-extensions-panel {
     .unified-extensions-item .subviewbutton>.toolbarbutton-icon {
         --arrowpanel-menuitem-padding-inline: 4px;
@@ -426,6 +446,10 @@ scrollbox[orient=vertical] {
 }
 
 @media (-moz-platform: windows) {
+    #allTabsMenu-syncedTabs {
+        @include BackgroundIcon(url("../images/toolbar-icons/tab.svg"));
+    }
+
     #appMenu-new-tab-button2,
     #context_openANewTab,
     #context_openlinkintab,
@@ -463,12 +487,14 @@ scrollbox[orient=vertical] {
     menu[id="placesContext_open:newcontainertab"],
     menu[id="placesContext_openContainer:tabs"],
     #sidebar-history-context-menu-container-tab,
+    #allTabsMenu-containerTabsButton,
     .new-tab-popup menuitem[command="Browser:NewUserContextTab"][data-usercontextid="0"],
     menuitem[data-l10n-id="user-context-new-tab"][data-usercontextid="0"] {
         @include BackgroundIcon(url("../images/menu-icons/container-tab.svg"));
     }
 
-    menuitem[command="Browser:OpenAboutContainers"] {
+    menuitem[command="Browser:OpenAboutContainers"],
+    .subviewbutton[data-l10n-id="user-context-manage-containers"][command="Browser:OpenAboutContainers"] {
         @include BackgroundIcon(FluentIcon('settings'));
     }
 
@@ -623,6 +649,7 @@ scrollbox[orient=vertical] {
 
     #context-searchselect,
     #context-searchselect-private,
+    #allTabsMenu-searchTabs,
     #menu_searchBookmarks,
     #menu_searchHistory {
         @include BackgroundIcon(FluentIcon('search'));
@@ -955,6 +982,7 @@ scrollbox[orient=vertical] {
     #context_closeTabsToTheStart,
     #context_closeTabsToTheEnd,
     #context_closeOtherTabs,
+    #allTabsMenu-closeDuplicateTabs,
     #context_closeTabOptions {
         @include BackgroundIcon(url("../images/menu-icons/close.svg"));
     }
