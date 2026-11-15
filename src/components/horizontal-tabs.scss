@@ -126,7 +126,8 @@
     F-Option("extensions.activeThemeID", "firefox-compact-light@mozilla.org"),
     F-Option("extensions.activeThemeID", "firefox-compact-dark@mozilla.org")
   ) {
-    .tabbrowser-tab[visuallyselected] .tab-background {
+    .tabbrowser-tab[visuallyselected] .tab-background,
+    tab-split-view-wrapper[hasactivetab]::before {
       background-color: transparent !important;
       background-image: linear-gradient(
         to bottom,
@@ -177,23 +178,6 @@
     }
 
     .tab-background {
-      margin-inline: calc(-1 * var(--tab-min-height) / 2) !important;
-      margin-block: 0px !important;
-      border-radius: 0px !important;
-      outline: none !important;
-      pointer-events: none !important;
-      mask-image:
-        var(--left-svg), linear-gradient(to bottom, black, black),
-        var(--right-svg) !important;
-      mask-size: contain !important;
-      mask-position:
-        left center,
-        center center,
-        right center !important;
-      mask-repeat: no-repeat !important;
-      mask-composite: exclude !important;
-      mask-mode: alpha !important;
-
       .tab-context-line {
         margin: 0px !important;
       }
@@ -205,6 +189,86 @@
       .tab-group-line {
         inset-inline: 0px !important;
         inset-block: auto 0px !important;
+      }
+    }
+  }
+
+  .tabbrowser-tab .tab-background,
+  tab-split-view-wrapper::before {
+    margin-inline: calc(-1 * var(--tab-min-height) / 2) !important;
+    margin-block: 0px !important;
+    border-radius: 0px !important;
+    outline: none !important;
+    pointer-events: none !important;
+    mask-image:
+      var(--left-svg), linear-gradient(to bottom, black, black),
+      var(--right-svg) !important;
+    mask-size: contain !important;
+    mask-position:
+      left center,
+      center center,
+      right center !important;
+    mask-repeat: no-repeat !important;
+    mask-composite: exclude !important;
+    mask-mode: alpha !important;
+  }
+
+  /* A split view occupies one attached-tab shape; its tabs only lay out content. */
+  #tabbrowser-tabs tab-split-view-wrapper {
+    align-items: stretch !important;
+    margin-block: 0px !important;
+    padding: 0px !important;
+    border-radius: 0px !important;
+    background: none !important;
+    outline: none !important;
+    overflow-clip-margin: var(--tab-first-last-inline-margin) !important;
+    z-index: 0 !important;
+
+    tab-group[collapsed] > &:not([hasactivetab]) {
+      --tab-first-last-inline-margin: 0px;
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+    }
+
+    &:hover::before {
+      background-color: var(--tab-background-color-hover);
+    }
+
+    &[multiselected]:not([hasactivetab]) {
+      z-index: 1 !important;
+
+      &::before {
+        background-color: color-mix(in srgb, currentColor 30%, transparent);
+      }
+    }
+
+    &[hasactivetab] {
+      z-index: 2 !important;
+
+      &::before {
+        background-color: var(--tab-background-color-selected);
+      }
+
+      .tab-content {
+        color: var(--tab-selected-textcolor, var(--toolbar-text-color)) !important;
+      }
+    }
+
+    > .tabbrowser-tab {
+      margin: 0px !important;
+      padding-inline: 0px !important;
+      border-inline: 0px !important;
+      filter: none !important;
+
+      .tab-background {
+        min-height: var(--tab-min-height) !important;
+        margin-inline: 0px !important;
+        background: none !important;
+        mask-image: none !important;
       }
     }
   }
@@ -246,17 +310,20 @@
 
   /* ---------------------------------------- Indents ---------------------------------------- */
 
-  .tabbrowser-tab:nth-child(1 of .tabbrowser-tab:not([hidden], [dragtarget])) {
+  :is(.tabbrowser-tab, tab-split-view-wrapper):nth-child(
+    1 of :is(.tabbrowser-tab, tab-split-view-wrapper):not([hidden], [dragtarget])
+  ) {
     margin-inline-start: var(--tab-first-last-inline-margin) !important;
   }
 
-  .tabbrowser-tab:nth-last-child(
-    1 of .tabbrowser-tab:not([hidden], [dragtarget])
+  :is(.tabbrowser-tab, tab-split-view-wrapper):nth-last-child(
+    1 of :is(.tabbrowser-tab, tab-split-view-wrapper):not([hidden], [dragtarget])
   ) {
     margin-inline-end: var(--tab-first-last-inline-margin) !important;
   }
 
-  tab-group[collapsed] > .tabbrowser-tab[visuallyselected] {
+  tab-group[collapsed] > .tabbrowser-tab[visuallyselected],
+  tab-group[collapsed] > tab-split-view-wrapper[hasactivetab] {
     margin-inline: var(--tab-first-last-inline-margin) !important;
   }
 
@@ -268,31 +335,39 @@
     margin-inline-start: 4px !important;
   }
 
-  .tabbrowser-tab:not([hidden]) + tab-group > .tab-group-label-container,
-  .tabbrowser-tab:not([hidden])
+  :is(.tabbrowser-tab, tab-split-view-wrapper):not([hidden])
+    + tab-group > .tab-group-label-container,
+  :is(.tabbrowser-tab, tab-split-view-wrapper):not([hidden])
     + .tabbrowser-tab[hidden]
     + tab-group
     > .tab-group-label-container {
     margin-inline-start: var(--tab-first-last-inline-margin) !important;
   }
 
-  tab-group[collapsed]:not([hasactivetab]):has(+ .tabbrowser-tab:not([hidden]))
+  tab-group[collapsed]:not([hasactivetab]):has(
+      + :is(.tabbrowser-tab, tab-split-view-wrapper):not([hidden])
+    )
     > .tab-group-label-container,
   tab-group[collapsed]:not([hasactivetab]):has(
-      + .tabbrowser-tab[hidden] + .tabbrowser-tab:not([hidden])
+      + .tabbrowser-tab[hidden]
+        + :is(.tabbrowser-tab, tab-split-view-wrapper):not([hidden])
     )
     > .tab-group-label-container {
     margin-inline-end: var(--tab-first-last-inline-margin) !important;
   }
 
   tab-group[collapsed]:has(
-      + .tabbrowser-tab:nth-child(1 of .tabbrowser-tab:not([hidden]))
+      + :is(.tabbrowser-tab, tab-split-view-wrapper):nth-child(
+        1 of :is(.tabbrowser-tab, tab-split-view-wrapper):not([hidden])
+      )
     )
     > .tab-group-label-container {
     margin-inline-end: 0px !important;
   }
 
-  .tabbrowser-tab:nth-last-child(1 of .tabbrowser-tab:not([hidden]))
+  :is(.tabbrowser-tab, tab-split-view-wrapper):nth-last-child(
+    1 of :is(.tabbrowser-tab, tab-split-view-wrapper):not([hidden])
+  )
     + tab-group
     > .tab-group-label-container {
     margin-inline-start: 0px !important;
@@ -303,7 +378,9 @@
   #tabbrowser-tabs:not([movingtab]) {
     #pinned-tabs-container[overflowing],
     #tabbrowser-arrowscrollbox[overflowing] {
-      .tabbrowser-tab {
+      :is(.tabbrowser-tab, tab-split-view-wrapper):not(
+        tab-split-view-wrapper > .tabbrowser-tab
+      ) {
         pointer-events: none !important;
         box-sizing: content-box !important;
         padding-inline: var(--tab-first-last-inline-margin) !important;
@@ -312,11 +389,11 @@
         ) !important;
         overflow-clip-margin: 0px !important;
 
-        &:nth-child(1 of .tabbrowser-tab:not([hidden])) {
+        &:nth-child(1 of :is(.tabbrowser-tab, tab-split-view-wrapper):not([hidden])) {
           margin-inline-start: 0px !important;
         }
 
-        &:nth-last-child(1 of .tabbrowser-tab:not([hidden])) {
+        &:nth-last-child(1 of :is(.tabbrowser-tab, tab-split-view-wrapper):not([hidden])) {
           margin-inline-end: 0px !important;
         }
 
@@ -324,7 +401,7 @@
           pointer-events: auto !important;
         }
 
-        tab-group[collapsed] > &[visuallyselected] {
+        tab-group[collapsed] > &:is([visuallyselected], [hasactivetab]) {
           margin-inline: 0px !important;
         }
       }
@@ -690,10 +767,10 @@
     ) !important;
   }
 
-  .tabbrowser-tab:not([hidden])
+  :is(.tabbrowser-tab, tab-split-view-wrapper):not([hidden])
     + #tabbrowser-arrowscrollbox-periphery
     > #tabs-newtab-button,
-  .tabbrowser-tab:not([hidden])
+  :is(.tabbrowser-tab, tab-split-view-wrapper):not([hidden])
     + .tabbrowser-tab[hidden]
     + #tabbrowser-arrowscrollbox-periphery
     > #tabs-newtab-button {
@@ -707,7 +784,9 @@
     margin-inline-end: 1px !important;
   }
 
-  .tabbrowser-tab:nth-child(1 of .tabbrowser-tab:not([hidden]))
+  .tabbrowser-tab:nth-child(
+    1 of :is(.tabbrowser-tab, tab-split-view-wrapper):not([hidden])
+  )
     > .tab-stack::before,
   tab-group + .tabbrowser-tab > .tab-stack::before,
   tab-group + .tabbrowser-tab[hidden] + .tabbrowser-tab > .tab-stack::before,
@@ -730,6 +809,21 @@
 
   .tab-stack::after {
     inset-inline-start: calc(100% + var(--tab-overflow-clip-margin));
+  }
+
+  tab-split-view-wrapper:is([hasactivetab], :hover, [multiselected]) .tab-stack::before,
+  tab-split-view-wrapper:is([hasactivetab], :hover, [multiselected]) .tab-stack::after,
+  #tabbrowser-tabs:not([movingtab])
+    :is(.tabbrowser-tab, tab-split-view-wrapper):has(
+      + tab-split-view-wrapper:is([hasactivetab], :hover, [multiselected])
+    )
+    .tab-stack::after,
+  #tabbrowser-tabs:not([movingtab])
+    tab-split-view-wrapper:has(
+      + .tabbrowser-tab:is([selected], :hover, [multiselected]):not([hidden])
+    )
+    > .tabbrowser-tab:last-child .tab-stack::after {
+    opacity: 0 !important;
   }
 
   .tabbrowser-tab:not([hidden]):is(
@@ -760,6 +854,13 @@
     )
     .tab-stack::after {
     opacity: 0 !important;
+  }
+
+  /* Keep internal split-view dividers visible in selected and hovered states. */
+  #TabsToolbar #tabbrowser-tabs tab-split-view-wrapper
+    > .tabbrowser-tab:not([hidden]):has(~ .tabbrowser-tab:not([hidden]))
+    > .tab-stack::after {
+    opacity: var(--separators-color-saturation) !important;
   }
 
   :root {
@@ -853,7 +954,8 @@
       z-index: 2;
     }
 
-    .tabbrowser-tab[visuallyselected] {
+    .tabbrowser-tab[visuallyselected],
+    tab-split-view-wrapper[hasactivetab] {
       filter: var(--wavefox-selected-tab-filter) !important;
     }
   }
@@ -892,6 +994,7 @@
     }
 
     .tabbrowser-tab[visuallyselected] .tab-background,
+    tab-split-view-wrapper[hasactivetab]::before,
     #nav-bar,
     #nav-bar::before,
     #PersonalToolbar,
@@ -931,7 +1034,8 @@
 
   #TabsToolbar
     :is(
-      .tabbrowser-tab,
+      .tabbrowser-tab:not(tab-split-view-wrapper > .tabbrowser-tab),
+      tab-split-view-wrapper,
       .toolbarbutton-1,
       separator,
       #personal-bookmarks,

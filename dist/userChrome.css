@@ -633,6 +633,7 @@
   /* ---------------------------------------- Main Window ---------------------------------------- */
   /* ---------------------------------------- Nav Bar ---------------------------------------- */
   /* ---------------------------------------- Tabs ---------------------------------------- */
+  /* A split view occupies one attached-tab shape; its tabs only lay out content. */
   /* -------------------- Tab Icon Indicators -------------------- */
   /* ---------------------------------------- Tab Bar ---------------------------------------- */
   /* ---------------------------------------- Indents ---------------------------------------- */
@@ -672,6 +673,7 @@
   /* ---------------------------------------- Tab Bar ---------------------------------------- */
   /* ---------------------------------------- Indents ---------------------------------------- */
   /* ---------------------------------------- Separators ---------------------------------------- */
+  /* Keep internal split-view dividers visible in selected and hovered states. */
   /* ---------------------------------------- Shadows ---------------------------------------- */
   /* ---------- Opaque toolbar ---------- */
   /* ---------- DragSpace ---------- */
@@ -747,7 +749,8 @@
     padding-inline: var(--toolbar-padding-inline);
   }
   @media (-moz-pref("extensions.activeThemeID", "default-theme@mozilla.org")) or (-moz-pref("extensions.activeThemeID", "firefox-compact-light@mozilla.org")) or (-moz-pref("extensions.activeThemeID", "firefox-compact-dark@mozilla.org")) {
-    .tabbrowser-tab[visuallyselected] .tab-background {
+    .tabbrowser-tab[visuallyselected] .tab-background,
+    tab-split-view-wrapper[hasactivetab]::before {
       background-color: transparent !important;
       background-image: linear-gradient(to bottom, var(--tab-background-color-selected), var(--toolbar-background-color)) !important;
     }
@@ -777,7 +780,18 @@
   .tabbrowser-tab:not([visuallyselected])[multiselected] .tab-content {
     color: inherit !important;
   }
-  .tabbrowser-tab .tab-background {
+  .tabbrowser-tab .tab-background .tab-context-line {
+    margin: 0px !important;
+  }
+  .tabbrowser-tab .tab-background .tab-loading-burst::before {
+    margin-inline-start: 0px !important;
+  }
+  .tabbrowser-tab .tab-background .tab-group-line {
+    inset-inline: 0px !important;
+    inset-block: auto 0px !important;
+  }
+  .tabbrowser-tab .tab-background,
+  tab-split-view-wrapper::before {
     margin-inline: calc(-1 * var(--tab-min-height) / 2) !important;
     margin-block: 0px !important;
     border-radius: 0px !important;
@@ -790,15 +804,53 @@
     mask-composite: exclude !important;
     mask-mode: alpha !important;
   }
-  .tabbrowser-tab .tab-background .tab-context-line {
+  #tabbrowser-tabs tab-split-view-wrapper {
+    align-items: stretch !important;
+    margin-block: 0px !important;
+    padding: 0px !important;
+    border-radius: 0px !important;
+    background: none !important;
+    outline: none !important;
+    overflow-clip-margin: var(--tab-first-last-inline-margin) !important;
+    z-index: 0 !important;
+  }
+  tab-group[collapsed] > #tabbrowser-tabs tab-split-view-wrapper:not([hasactivetab]) {
+    --tab-first-last-inline-margin: 0px;
+  }
+  #tabbrowser-tabs tab-split-view-wrapper::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+  }
+  #tabbrowser-tabs tab-split-view-wrapper:hover::before {
+    background-color: var(--tab-background-color-hover);
+  }
+  #tabbrowser-tabs tab-split-view-wrapper[multiselected]:not([hasactivetab]) {
+    z-index: 1 !important;
+  }
+  #tabbrowser-tabs tab-split-view-wrapper[multiselected]:not([hasactivetab])::before {
+    background-color: color-mix(in srgb, currentColor 30%, transparent);
+  }
+  #tabbrowser-tabs tab-split-view-wrapper[hasactivetab] {
+    z-index: 2 !important;
+  }
+  #tabbrowser-tabs tab-split-view-wrapper[hasactivetab]::before {
+    background-color: var(--tab-background-color-selected);
+  }
+  #tabbrowser-tabs tab-split-view-wrapper[hasactivetab] .tab-content {
+    color: var(--tab-selected-textcolor, var(--toolbar-text-color)) !important;
+  }
+  #tabbrowser-tabs tab-split-view-wrapper > .tabbrowser-tab {
     margin: 0px !important;
+    padding-inline: 0px !important;
+    border-inline: 0px !important;
+    filter: none !important;
   }
-  .tabbrowser-tab .tab-background .tab-loading-burst::before {
-    margin-inline-start: 0px !important;
-  }
-  .tabbrowser-tab .tab-background .tab-group-line {
-    inset-inline: 0px !important;
-    inset-block: auto 0px !important;
+  #tabbrowser-tabs tab-split-view-wrapper > .tabbrowser-tab .tab-background {
+    min-height: var(--tab-min-height) !important;
+    margin-inline: 0px !important;
+    background: none !important;
+    mask-image: none !important;
   }
   .tab-group-label-container {
     margin-inline: 0px !important;
@@ -824,55 +876,56 @@
   #TabsToolbar #search-container {
     padding-block: 0 !important;
   }
-  .tabbrowser-tab:nth-child(1 of .tabbrowser-tab:not([hidden], [dragtarget])) {
+  :is(.tabbrowser-tab, tab-split-view-wrapper):nth-child(1 of :is(.tabbrowser-tab, tab-split-view-wrapper):not([hidden], [dragtarget])) {
     margin-inline-start: var(--tab-first-last-inline-margin) !important;
   }
-  .tabbrowser-tab:nth-last-child(1 of .tabbrowser-tab:not([hidden], [dragtarget])) {
+  :is(.tabbrowser-tab, tab-split-view-wrapper):nth-last-child(1 of :is(.tabbrowser-tab, tab-split-view-wrapper):not([hidden], [dragtarget])) {
     margin-inline-end: var(--tab-first-last-inline-margin) !important;
   }
-  tab-group[collapsed] > .tabbrowser-tab[visuallyselected] {
+  tab-group[collapsed] > .tabbrowser-tab[visuallyselected],
+  tab-group[collapsed] > tab-split-view-wrapper[hasactivetab] {
     margin-inline: var(--tab-first-last-inline-margin) !important;
   }
   tab-group[collapsed] + tab-group > .tab-group-label-container,
   tab-group[collapsed] + .tabbrowser-tab[hidden] + tab-group > .tab-group-label-container {
     margin-inline-start: 4px !important;
   }
-  .tabbrowser-tab:not([hidden]) + tab-group > .tab-group-label-container,
-  .tabbrowser-tab:not([hidden]) + .tabbrowser-tab[hidden] + tab-group > .tab-group-label-container {
+  :is(.tabbrowser-tab, tab-split-view-wrapper):not([hidden]) + tab-group > .tab-group-label-container,
+  :is(.tabbrowser-tab, tab-split-view-wrapper):not([hidden]) + .tabbrowser-tab[hidden] + tab-group > .tab-group-label-container {
     margin-inline-start: var(--tab-first-last-inline-margin) !important;
   }
-  tab-group[collapsed]:not([hasactivetab]):has(+ .tabbrowser-tab:not([hidden])) > .tab-group-label-container,
-  tab-group[collapsed]:not([hasactivetab]):has(+ .tabbrowser-tab[hidden] + .tabbrowser-tab:not([hidden])) > .tab-group-label-container {
+  tab-group[collapsed]:not([hasactivetab]):has(+ :is(.tabbrowser-tab, tab-split-view-wrapper):not([hidden])) > .tab-group-label-container,
+  tab-group[collapsed]:not([hasactivetab]):has(+ .tabbrowser-tab[hidden] + :is(.tabbrowser-tab, tab-split-view-wrapper):not([hidden])) > .tab-group-label-container {
     margin-inline-end: var(--tab-first-last-inline-margin) !important;
   }
-  tab-group[collapsed]:has(+ .tabbrowser-tab:nth-child(1 of .tabbrowser-tab:not([hidden]))) > .tab-group-label-container {
+  tab-group[collapsed]:has(+ :is(.tabbrowser-tab, tab-split-view-wrapper):nth-child(1 of :is(.tabbrowser-tab, tab-split-view-wrapper):not([hidden]))) > .tab-group-label-container {
     margin-inline-end: 0px !important;
   }
-  .tabbrowser-tab:nth-last-child(1 of .tabbrowser-tab:not([hidden])) + tab-group > .tab-group-label-container {
+  :is(.tabbrowser-tab, tab-split-view-wrapper):nth-last-child(1 of :is(.tabbrowser-tab, tab-split-view-wrapper):not([hidden])) + tab-group > .tab-group-label-container {
     margin-inline-start: 0px !important;
   }
-  #tabbrowser-tabs:not([movingtab]) #pinned-tabs-container[overflowing] .tabbrowser-tab,
-  #tabbrowser-tabs:not([movingtab]) #tabbrowser-arrowscrollbox[overflowing] .tabbrowser-tab {
+  #tabbrowser-tabs:not([movingtab]) #pinned-tabs-container[overflowing] :is(.tabbrowser-tab, tab-split-view-wrapper):not(tab-split-view-wrapper > .tabbrowser-tab),
+  #tabbrowser-tabs:not([movingtab]) #tabbrowser-arrowscrollbox[overflowing] :is(.tabbrowser-tab, tab-split-view-wrapper):not(tab-split-view-wrapper > .tabbrowser-tab) {
     pointer-events: none !important;
     box-sizing: content-box !important;
     padding-inline: var(--tab-first-last-inline-margin) !important;
     margin-inline: calc(-1 * var(--tab-first-last-inline-margin)) !important;
     overflow-clip-margin: 0px !important;
   }
-  #tabbrowser-tabs:not([movingtab]) #pinned-tabs-container[overflowing] .tabbrowser-tab:nth-child(1 of .tabbrowser-tab:not([hidden])),
-  #tabbrowser-tabs:not([movingtab]) #tabbrowser-arrowscrollbox[overflowing] .tabbrowser-tab:nth-child(1 of .tabbrowser-tab:not([hidden])) {
+  #tabbrowser-tabs:not([movingtab]) #pinned-tabs-container[overflowing] :is(.tabbrowser-tab, tab-split-view-wrapper):not(tab-split-view-wrapper > .tabbrowser-tab):nth-child(1 of :is(.tabbrowser-tab, tab-split-view-wrapper):not([hidden])),
+  #tabbrowser-tabs:not([movingtab]) #tabbrowser-arrowscrollbox[overflowing] :is(.tabbrowser-tab, tab-split-view-wrapper):not(tab-split-view-wrapper > .tabbrowser-tab):nth-child(1 of :is(.tabbrowser-tab, tab-split-view-wrapper):not([hidden])) {
     margin-inline-start: 0px !important;
   }
-  #tabbrowser-tabs:not([movingtab]) #pinned-tabs-container[overflowing] .tabbrowser-tab:nth-last-child(1 of .tabbrowser-tab:not([hidden])),
-  #tabbrowser-tabs:not([movingtab]) #tabbrowser-arrowscrollbox[overflowing] .tabbrowser-tab:nth-last-child(1 of .tabbrowser-tab:not([hidden])) {
+  #tabbrowser-tabs:not([movingtab]) #pinned-tabs-container[overflowing] :is(.tabbrowser-tab, tab-split-view-wrapper):not(tab-split-view-wrapper > .tabbrowser-tab):nth-last-child(1 of :is(.tabbrowser-tab, tab-split-view-wrapper):not([hidden])),
+  #tabbrowser-tabs:not([movingtab]) #tabbrowser-arrowscrollbox[overflowing] :is(.tabbrowser-tab, tab-split-view-wrapper):not(tab-split-view-wrapper > .tabbrowser-tab):nth-last-child(1 of :is(.tabbrowser-tab, tab-split-view-wrapper):not([hidden])) {
     margin-inline-end: 0px !important;
   }
-  #tabbrowser-tabs:not([movingtab]) #pinned-tabs-container[overflowing] .tabbrowser-tab .tab-stack,
-  #tabbrowser-tabs:not([movingtab]) #tabbrowser-arrowscrollbox[overflowing] .tabbrowser-tab .tab-stack {
+  #tabbrowser-tabs:not([movingtab]) #pinned-tabs-container[overflowing] :is(.tabbrowser-tab, tab-split-view-wrapper):not(tab-split-view-wrapper > .tabbrowser-tab) .tab-stack,
+  #tabbrowser-tabs:not([movingtab]) #tabbrowser-arrowscrollbox[overflowing] :is(.tabbrowser-tab, tab-split-view-wrapper):not(tab-split-view-wrapper > .tabbrowser-tab) .tab-stack {
     pointer-events: auto !important;
   }
-  tab-group[collapsed] > #tabbrowser-tabs:not([movingtab]) #pinned-tabs-container[overflowing] .tabbrowser-tab[visuallyselected],
-  tab-group[collapsed] > #tabbrowser-tabs:not([movingtab]) #tabbrowser-arrowscrollbox[overflowing] .tabbrowser-tab[visuallyselected] {
+  tab-group[collapsed] > #tabbrowser-tabs:not([movingtab]) #pinned-tabs-container[overflowing] :is(.tabbrowser-tab, tab-split-view-wrapper):not(tab-split-view-wrapper > .tabbrowser-tab):is([visuallyselected], [hasactivetab]),
+  tab-group[collapsed] > #tabbrowser-tabs:not([movingtab]) #tabbrowser-arrowscrollbox[overflowing] :is(.tabbrowser-tab, tab-split-view-wrapper):not(tab-split-view-wrapper > .tabbrowser-tab):is([visuallyselected], [hasactivetab]) {
     margin-inline: 0px !important;
   }
   #tabbrowser-tabs[overflow] .tab-drop-indicator {
@@ -1089,14 +1142,14 @@
   #TabsToolbar-customization-target > toolbarpaletteitem:last-child > :is(toolbarbutton, toolbaritem) {
     margin-inline-end: calc(var(--toolbar-padding-inline) - var(--toolbarbutton-padding-outer)) !important;
   }
-  .tabbrowser-tab:not([hidden]) + #tabbrowser-arrowscrollbox-periphery > #tabs-newtab-button,
-  .tabbrowser-tab:not([hidden]) + .tabbrowser-tab[hidden] + #tabbrowser-arrowscrollbox-periphery > #tabs-newtab-button {
+  :is(.tabbrowser-tab, tab-split-view-wrapper):not([hidden]) + #tabbrowser-arrowscrollbox-periphery > #tabs-newtab-button,
+  :is(.tabbrowser-tab, tab-split-view-wrapper):not([hidden]) + .tabbrowser-tab[hidden] + #tabbrowser-arrowscrollbox-periphery > #tabs-newtab-button {
     margin-inline-start: calc(-1 * var(--tab-first-last-inline-margin, 0px) / 2) !important;
   }
   .tab-stack {
     margin-inline-end: 1px !important;
   }
-  .tabbrowser-tab:nth-child(1 of .tabbrowser-tab:not([hidden])) > .tab-stack::before,
+  .tabbrowser-tab:nth-child(1 of :is(.tabbrowser-tab, tab-split-view-wrapper):not([hidden])) > .tab-stack::before,
   tab-group + .tabbrowser-tab > .tab-stack::before,
   tab-group + .tabbrowser-tab[hidden] + .tabbrowser-tab > .tab-stack::before,
   .tab-stack::after {
@@ -1117,6 +1170,12 @@
   .tab-stack::after {
     inset-inline-start: calc(100% + var(--tab-overflow-clip-margin));
   }
+  tab-split-view-wrapper:is([hasactivetab], :hover, [multiselected]) .tab-stack::before,
+  tab-split-view-wrapper:is([hasactivetab], :hover, [multiselected]) .tab-stack::after,
+  #tabbrowser-tabs:not([movingtab]) :is(.tabbrowser-tab, tab-split-view-wrapper):has(+ tab-split-view-wrapper:is([hasactivetab], :hover, [multiselected])) .tab-stack::after,
+  #tabbrowser-tabs:not([movingtab]) tab-split-view-wrapper:has(+ .tabbrowser-tab:is([selected], :hover, [multiselected]):not([hidden])) > .tabbrowser-tab:last-child .tab-stack::after {
+    opacity: 0 !important;
+  }
   .tabbrowser-tab:not([hidden]):is([selected],
   :hover,
   [multiselected],
@@ -1129,6 +1188,9 @@
   #tabbrowser-tabs:not([movingtab]) .tabbrowser-tab:not([hidden]):has(+ .tabbrowser-tab:is([selected], :hover, [multiselected]):not([hidden])) .tab-stack::after,
   #tabbrowser-tabs:not([movingtab]) .tabbrowser-tab:not([hidden]):has(+ .tabbrowser-tab[hidden] + .tabbrowser-tab:is([selected], :hover, [multiselected]):not([hidden])) .tab-stack::after {
     opacity: 0 !important;
+  }
+  #TabsToolbar #tabbrowser-tabs tab-split-view-wrapper > .tabbrowser-tab:not([hidden]):has(~ .tabbrowser-tab:not([hidden])) > .tab-stack::after {
+    opacity: var(--separators-color-saturation) !important;
   }
   :root {
     --separators-color-saturation: 0.5;
@@ -1208,7 +1270,8 @@
       pointer-events: none;
       z-index: 2;
     }
-    .tabbrowser-tab[visuallyselected] {
+    .tabbrowser-tab[visuallyselected],
+    tab-split-view-wrapper[hasactivetab] {
       filter: var(--wavefox-selected-tab-filter) !important;
     }
   }
@@ -1234,6 +1297,7 @@
     --wavefox-inner-tabbar-shadow: none !important;
   }
   .tabbrowser-tab[visuallyselected] .tab-background,
+  tab-split-view-wrapper[hasactivetab]::before,
   #nav-bar,
   #nav-bar::before,
   #PersonalToolbar,
@@ -1268,7 +1332,8 @@
   }
 }
 @media (-moz-pref("sidebar.verticalTabs", false)) {
-  #TabsToolbar :is(.tabbrowser-tab,
+  #TabsToolbar :is(.tabbrowser-tab:not(tab-split-view-wrapper > .tabbrowser-tab),
+  tab-split-view-wrapper,
   .toolbarbutton-1,
   separator,
   #personal-bookmarks,
