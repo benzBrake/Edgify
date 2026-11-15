@@ -31,10 +31,10 @@
 菜单图标的来源、字体轮廓坐标转换及与 Edge 的差异见[菜单图标校对](docs/menu-icons.md)。
 工具栏图标覆盖范围、状态规则与资源来源见[工具栏图标](docs/toolbar-icons.md)。
 
-`dist/popup-external.css` 是可选的外部菜单图标规则，默认不由 `userChrome.css` 加载。使用 `privateTabs.uc.js` 时，将以下导入语句加入 `chrome/userChrome.css`，并确保 `popup-external.css` 与主题输出文件一同复制到 `chrome` 目录：
+`dist/external-menu-overrides.css` 是可选的外部菜单项样式覆盖，包含 userChromeJS 脚本和扩展添加的菜单项，默认不由 `userChrome.css` 加载。使用 `privateTabs.uc.js` 时，将以下导入语句加入 `chrome/userChrome.css`，并确保 `external-menu-overrides.css` 与主题输出文件一同复制到 `chrome` 目录：
 
 ```css
-@import url("popup-external.css");
+@import url("external-menu-overrides.css");
 ```
 
 该文件目前为 `#openLinkInPrivateTab`（`privateTabs.uc.js` 的“在新隐私标签页打开链接”）使用主题现有的 `new-private-window.svg` 图标。

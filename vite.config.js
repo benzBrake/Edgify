@@ -7,7 +7,7 @@ export default defineConfig({
       input: {
         userChrome: resolve(__dirname, 'src/userChrome.scss'),
         userContent: resolve(__dirname, 'src/userContent.scss'),
-        'popup-external': resolve(__dirname, 'src/popup-external.css')
+        'external-menu-overrides': resolve(__dirname, 'src/external-menu-overrides.css')
       },
       output: {
         assetFileNames: (assetInfo) => {
@@ -63,8 +63,8 @@ export default defineConfig({
           writeFileSync(cssPath, cssContent, 'utf-8');
         }
 
-        if (existsSync('dist/popup-external.css')) {
-          const cssPath = 'dist/popup-external.css';
+        if (existsSync('dist/external-menu-overrides.css')) {
+          const cssPath = 'dist/external-menu-overrides.css';
           let cssContent = readFileSync(cssPath, 'utf-8');
           cssContent = cssContent.replace(/url\("\/images\//g, 'url("images/');
           writeFileSync(cssPath, cssContent, 'utf-8');
