@@ -688,6 +688,26 @@ scrollbox[orient=vertical] {
         @include BackgroundIcon(url("../images/toolbar-icons/chat.svg"));
     }
 
+    #chatbot-menupopup [data-l10n-id="genai-options-reload-provider"] {
+        @include BackgroundIcon(FluentIcon('refresh'));
+    }
+
+    #chatbot-menupopup [data-l10n-id="genai-options-about-chatbot"] {
+        @include BackgroundIcon(url("../images/menu-icons/help.svg"));
+    }
+
+    #sidebar-context-menu > menuitem[customized-tool="true"]:has(+ [data-l10n-id="genai-menu-open-provider"]) {
+        @include BackgroundIcon(FluentIcon('list'));
+    }
+
+    #sidebar-context-menu [data-l10n-id="genai-menu-open-provider"] {
+        @include BackgroundIcon(FluentIcon('open-external'));
+    }
+
+    #sidebar-context-menu [data-l10n-id="genai-menu-remove-provider"] {
+        @include BackgroundIcon(FluentIcon('delete'));
+    }
+
     #context-stop {
         @include BackgroundIcon(FluentIcon('close'));
     }
@@ -934,6 +954,7 @@ scrollbox[orient=vertical] {
     #sidebar-history-context-delete-page,
     #sidebar-history-context-delete-pages,
     #sidebar-history-context-forget-site,
+    #sidebar-history-clear,
     #placesContext_deleteHost,
     #toolbar-context-remove-extension,
     #pageActionContextMenuRemoveExtension {

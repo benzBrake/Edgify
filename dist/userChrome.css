@@ -3170,6 +3170,91 @@ scrollbox[orient=vertical] {
     -moz-context-properties: fill, fill-opacity !important;
     fill: currentColor !important;
   }
+  #chatbot-menupopup [data-l10n-id=genai-options-reload-provider] > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon) {
+    display: none !important;
+  }
+  #chatbot-menupopup [data-l10n-id=genai-options-reload-provider]::before {
+    content: "" !important;
+    display: flex !important;
+    width: var(--menuitem-icon-size, 16px) !important;
+    height: var(--menuitem-icon-size, 16px) !important;
+    margin-inline-end: var(--menuitem-icon-gap, 8px) !important;
+    background-image: url("images/menu-icons/refresh.svg") !important;
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+    mask-image: none !important;
+    -moz-context-properties: fill, fill-opacity !important;
+    fill: currentColor !important;
+  }
+  #chatbot-menupopup [data-l10n-id=genai-options-about-chatbot] > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon) {
+    display: none !important;
+  }
+  #chatbot-menupopup [data-l10n-id=genai-options-about-chatbot]::before {
+    content: "" !important;
+    display: flex !important;
+    width: var(--menuitem-icon-size, 16px) !important;
+    height: var(--menuitem-icon-size, 16px) !important;
+    margin-inline-end: var(--menuitem-icon-gap, 8px) !important;
+    background-image: url("images/menu-icons/help.svg") !important;
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+    mask-image: none !important;
+    -moz-context-properties: fill, fill-opacity !important;
+    fill: currentColor !important;
+  }
+  #sidebar-context-menu > menuitem[customized-tool=true]:has(+ [data-l10n-id=genai-menu-open-provider]) > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon) {
+    display: none !important;
+  }
+  #sidebar-context-menu > menuitem[customized-tool=true]:has(+ [data-l10n-id=genai-menu-open-provider])::before {
+    content: "" !important;
+    display: flex !important;
+    width: var(--menuitem-icon-size, 16px) !important;
+    height: var(--menuitem-icon-size, 16px) !important;
+    margin-inline-end: var(--menuitem-icon-gap, 8px) !important;
+    background-image: url("images/menu-icons/list.svg") !important;
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+    mask-image: none !important;
+    -moz-context-properties: fill, fill-opacity !important;
+    fill: currentColor !important;
+  }
+  #sidebar-context-menu [data-l10n-id=genai-menu-open-provider] > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon) {
+    display: none !important;
+  }
+  #sidebar-context-menu [data-l10n-id=genai-menu-open-provider]::before {
+    content: "" !important;
+    display: flex !important;
+    width: var(--menuitem-icon-size, 16px) !important;
+    height: var(--menuitem-icon-size, 16px) !important;
+    margin-inline-end: var(--menuitem-icon-gap, 8px) !important;
+    background-image: url("images/menu-icons/open-external.svg") !important;
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+    mask-image: none !important;
+    -moz-context-properties: fill, fill-opacity !important;
+    fill: currentColor !important;
+  }
+  #sidebar-context-menu [data-l10n-id=genai-menu-remove-provider] > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon) {
+    display: none !important;
+  }
+  #sidebar-context-menu [data-l10n-id=genai-menu-remove-provider]::before {
+    content: "" !important;
+    display: flex !important;
+    width: var(--menuitem-icon-size, 16px) !important;
+    height: var(--menuitem-icon-size, 16px) !important;
+    margin-inline-end: var(--menuitem-icon-gap, 8px) !important;
+    background-image: url("images/menu-icons/delete.svg") !important;
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+    mask-image: none !important;
+    -moz-context-properties: fill, fill-opacity !important;
+    fill: currentColor !important;
+  }
   #context-stop > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon) {
     display: none !important;
   }
@@ -3980,6 +4065,7 @@ scrollbox[orient=vertical] {
   #sidebar-history-context-delete-page > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   #sidebar-history-context-delete-pages > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   #sidebar-history-context-forget-site > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  #sidebar-history-clear > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   #placesContext_deleteHost > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   #toolbar-context-remove-extension > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   #pageActionContextMenuRemoveExtension > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon) {
@@ -3996,6 +4082,7 @@ scrollbox[orient=vertical] {
   #sidebar-history-context-delete-page::before,
   #sidebar-history-context-delete-pages::before,
   #sidebar-history-context-forget-site::before,
+  #sidebar-history-clear::before,
   #placesContext_deleteHost::before,
   #toolbar-context-remove-extension::before,
   #pageActionContextMenuRemoveExtension::before {
