@@ -112,9 +112,33 @@ panelview {
     }
 }
 
+/* Keep every trust-panel section 4px inside the view's left and right edges. */
+#trustpanel-popup-mainView {
+    padding-inline: 4px !important;
+
+    #trustpanel-header-row {
+        padding-block-start: 0 !important;
+        padding-inline: 0 !important;
+    }
+
+    #trustpanel-graphic-section,
+    #trustpanel-toggle-section {
+        margin-inline: 0 !important;
+    }
+
+    #trustpanel-header-section {
+        padding-block-end: 0 !important;
+    }
+
+    #trustpanel-clear-cookies-button::after {
+        margin-inline-start: auto;
+    }
+}
+
 panelview .panel-header {
     --panel-menuitem-margin-inline:0px;
     --panel-header-min-height: 0px;
+    margin-bottom: 4px;
 }
 
 /* 调整缩进 */

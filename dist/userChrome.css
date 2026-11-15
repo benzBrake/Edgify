@@ -2011,6 +2011,25 @@ panelview .panel-subview-footer-button {
   margin-bottom: 0 !important;
 }
 
+/* Keep every trust-panel section 4px inside the view's left and right edges. */
+#trustpanel-popup-mainView {
+  padding-inline: 4px !important;
+}
+#trustpanel-popup-mainView #trustpanel-header-row {
+  padding-block-start: 0 !important;
+  padding-inline: 0 !important;
+}
+#trustpanel-popup-mainView #trustpanel-graphic-section,
+#trustpanel-popup-mainView #trustpanel-toggle-section {
+  margin-inline: 0 !important;
+}
+#trustpanel-popup-mainView #trustpanel-header-section {
+  padding-block-end: 0 !important;
+}
+#trustpanel-popup-mainView #trustpanel-clear-cookies-button::after {
+  margin-inline-start: auto;
+}
+
 panelview .panel-header {
   --panel-menuitem-margin-inline:0px;
   --panel-header-min-height: 0px;
