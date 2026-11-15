@@ -2579,10 +2579,12 @@ scrollbox[orient=vertical] {
     -moz-context-properties: fill, fill-opacity !important;
     fill: currentColor !important;
   }
-  #appMenu-bookmarks-button > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon) {
+  #appMenu-bookmarks-button > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  #appMenu-library-bookmarks-button > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon) {
     display: none !important;
   }
-  #appMenu-bookmarks-button::before {
+  #appMenu-bookmarks-button::before,
+  #appMenu-library-bookmarks-button::before {
     content: "" !important;
     display: flex !important;
     width: var(--menuitem-icon-size, 16px) !important;
@@ -2943,6 +2945,7 @@ scrollbox[orient=vertical] {
     fill: currentColor !important;
   }
   #appMenu-history-button > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  #appMenu-library-history-button > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   #menu_showAllHistory > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   #historyUndoMenu > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   #historyUndoWindowMenu > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
@@ -2951,6 +2954,7 @@ scrollbox[orient=vertical] {
     display: none !important;
   }
   #appMenu-history-button::before,
+  #appMenu-library-history-button::before,
   #menu_showAllHistory::before,
   #historyUndoMenu::before,
   #historyUndoWindowMenu::before,
@@ -2969,10 +2973,12 @@ scrollbox[orient=vertical] {
     -moz-context-properties: fill, fill-opacity !important;
     fill: currentColor !important;
   }
-  #appMenu-downloads-button > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon) {
+  #appMenu-downloads-button > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  #appMenu-library-downloads-button > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon) {
     display: none !important;
   }
-  #appMenu-downloads-button::before {
+  #appMenu-downloads-button::before,
+  #appMenu-library-downloads-button::before {
     content: "" !important;
     display: flex !important;
     width: var(--menuitem-icon-size, 16px) !important;

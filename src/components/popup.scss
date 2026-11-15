@@ -523,7 +523,8 @@ scrollbox[orient=vertical] {
         @include BackgroundIcon(FluentIcon('open-external'));
     }
 
-    #appMenu-bookmarks-button {
+    #appMenu-bookmarks-button,
+    #appMenu-library-bookmarks-button {
         @include BackgroundIcon(FluentIcon('favorites-list'));
     }
 
@@ -620,6 +621,7 @@ scrollbox[orient=vertical] {
     }
 
     #appMenu-history-button,
+    #appMenu-library-history-button,
     #menu_showAllHistory,
     #historyUndoMenu,
     #historyUndoWindowMenu,
@@ -628,7 +630,8 @@ scrollbox[orient=vertical] {
         @include BackgroundIcon(FluentIcon('history'));
     }
 
-    #appMenu-downloads-button {
+    #appMenu-downloads-button,
+    #appMenu-library-downloads-button {
         @include BackgroundIcon(FluentIcon('download'));
     }
 
