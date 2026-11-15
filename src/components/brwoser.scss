@@ -105,7 +105,8 @@
     }
 }
 
-/* 移除状态栏上方的分隔线 */
 #status-bar {
     border-top: 0 !important;
+    padding-inline: var(--toolbar-padding-inline) !important;
+    padding-bottom: 4px !important;
 }

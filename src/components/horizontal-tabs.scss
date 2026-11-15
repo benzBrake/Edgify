@@ -98,7 +98,8 @@
   @include Compact {
     #main-window {
       #nav-bar,
-      #PlacesToolbar {
+      #PlacesToolbar,
+      #status-bar {
         --toolbar-padding-inline: 0.25em;
       }
     }

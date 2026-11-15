@@ -99,9 +99,10 @@
   overflow: hidden !important;
 }
 
-/* 移除状态栏上方的分隔线 */
 #status-bar {
   border-top: 0 !important;
+  padding-inline: var(--toolbar-padding-inline) !important;
+  padding-bottom: 4px !important;
 }
 
 /*!
@@ -729,7 +730,8 @@
 }
 @media (-moz-pref("sidebar.verticalTabs", false)) and (-moz-pref("browser.uidensity", 1)) {
   #main-window #nav-bar,
-  #main-window #PlacesToolbar {
+  #main-window #PlacesToolbar,
+  #main-window #status-bar {
     --toolbar-padding-inline: 0.25em;
   }
 }
