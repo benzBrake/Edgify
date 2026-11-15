@@ -104,11 +104,17 @@
 
 panelview {
     --panel-subview-body-padding: 0px;
+    --panel-separator-padding: 4px 0;
     padding: 4px !important;
 
     & .panel-subview-footer-button {
         margin-bottom: 0 !important;
     }
+}
+
+panelview .panel-header {
+    --panel-menuitem-margin-inline:0px;
+    --panel-header-min-height: 0px;
 }
 
 /* 调整缩进 */
@@ -140,6 +146,10 @@ panelview {
             padding-inline-start: var(--menuitem-text-padding-start) !important;
         }
     }
+}
+
+.subviewbutton-back > .toolbarbutton-icon {
+    margin: 0 !important;
 }
 
 /* The panelview already supplies the tab and recent-group lists' outer spacing. */
