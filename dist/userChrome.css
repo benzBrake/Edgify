@@ -2826,10 +2826,10 @@ scrollbox[orient=vertical] {
     -moz-context-properties: fill, fill-opacity !important;
     fill: currentColor !important;
   }
-  .share-tab-url-item > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon) {
+  menupopup .share-tab-url-item > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon) {
     display: none !important;
   }
-  .share-tab-url-item::before {
+  menupopup .share-tab-url-item::before {
     content: "" !important;
     display: flex !important;
     width: var(--menuitem-icon-size, 16px) !important;

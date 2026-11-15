@@ -588,7 +588,7 @@ scrollbox[orient=vertical] {
         @include BackgroundIcon(url("../images/menu-icons/pin.svg"));
     }
 
-    .share-tab-url-item {
+    menupopup .share-tab-url-item {
         @include BackgroundIcon(url("../images/menu-icons/share.svg"));
     }
 
