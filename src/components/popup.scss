@@ -507,6 +507,10 @@ scrollbox[orient=vertical] {
         @include BackgroundIcon(FluentIcon('customize'));
     }
 
+    #toolbar-context-remove-from-toolbar {
+        @include BackgroundIcon(FluentIcon('close'));
+    }
+
     #sidebar-context-menu-enable-vertical-tabs,
     #toolbar-context-toggle-vertical-tabs {
         @include BackgroundIcon(url("../images/toolbar-icons/sidebars.svg"));
@@ -521,6 +525,26 @@ scrollbox[orient=vertical] {
 
     #appMenu-bookmarks-button {
         @include BackgroundIcon(FluentIcon('favorites-list'));
+    }
+
+    #BMB_viewBookmarksSidebar {
+        @include BackgroundIcon(url("../images/toolbar-icons/sidebars.svg"));
+    }
+
+    #BMB_searchBookmarks {
+        @include BackgroundIcon(FluentIcon('search'));
+    }
+
+    #BMB_viewBookmarksToolbar {
+        @include BackgroundIcon(url("../images/toolbar-icons/bookmark-star-on-tray.svg"));
+    }
+
+    .openintabs-menuitem {
+        @include BackgroundIcon(FluentIcon('open-external'));
+    }
+
+    .share-windows-item[data-l10n-id="menu-share-windows"] {
+        @include BackgroundIcon(url("../images/menu-icons/share.svg"));
     }
 
     #BMB_bookmarksShowAllTop,
@@ -964,8 +988,16 @@ scrollbox[orient=vertical] {
         @include BackgroundIcon(FluentIcon('split-view'));
     }
 
+    #context_reverseSplitView {
+        @include BackgroundIcon(FluentIcon('split-view'));
+    }
+
     #context_separateSplitView {
         @include BackgroundIcon(FluentIcon('separate-split-view'));
+    }
+
+    #context_ungroupTab {
+        @include BackgroundIcon(FluentIcon('tab-group'));
     }
 
     #context_moveTabOptions {

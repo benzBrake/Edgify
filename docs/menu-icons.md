@@ -12,9 +12,11 @@
 
 `help.svg`、`search-page.svg`、`zoom-out.svg`、`plus.svg`、`fullscreen.svg`、`fullscreen-exit.svg` 同样取自 edge-frfox，补充显式 `viewBox` 并沿用上述授权。`zoom-in.svg` 为按截图绘制的放大镜与加号，专用于缩放行。`#appMenu-zoom-controls::before` 使用 `background-image` 显示该 SVG，并关闭原有遮罩；通过 `-moz-context-properties: fill, fill-opacity` 将菜单文字颜色传入 SVG，适配深浅主题。减号、加号和全屏按钮分别设置图标变量，并移除图像节点的静态圆形底色，保留按钮的悬停、禁用及点击行为。
 
+书签菜单的侧栏入口、搜索书签和书签工具栏入口分别使用侧栏、搜索和书签工具栏图标；“在标签页中打开”使用外部打开图标，“分享窗口”使用分享图标。工具栏“从工具栏移除”使用关闭图标。
+
 `image.svg` 为主题绘制的图片轮廓图标，用于“新建标签页打开图像”；“截图”菜单项复用 `toolbar-icons/screenshot.svg`。
 
-标签页右键菜单的群组操作使用主题绘制的 `tab-group.svg`（外框内的叠放标签）；添加分屏使用 `split-view.svg`（窗口内竖向分栏），拆分分屏使用 `separate-split-view.svg`（分离的两个窗格）。这些菜单不再复用表示字体大小的 `font-size.svg`；将分屏加入新群组的 `#context_moveSplitViewToNewGroup` 同样使用群组图标。
+标签页右键菜单的群组操作使用主题绘制的 `tab-group.svg`（外框内的叠放标签）；添加分屏及反转分屏使用 `split-view.svg`（窗口内竖向分栏），拆分分屏使用 `separate-split-view.svg`（分离的两个窗格）。取消标签页群组使用群组图标。这些菜单不再复用表示字体大小的 `font-size.svg`；将分屏加入新群组的 `#context_moveSplitViewToNewGroup` 同样使用群组图标。
 
 撤销和重做使用主题绘制的 `undo.svg`、`redo.svg`。Edgify 对照 edge-frfox 的菜单映射补入专用资源：无跟踪复制、媒体静音、标签移动、容器标签、图片复制/保存、画中画、播放速度、权限、Pocket、工具栏自定义、源码、粘贴并搜索、拼写词典和报告损坏网站图标。`#context_bookmarkTab` 使用工具栏空心书签图标；AI 聊天复用 `toolbar-icons/chat.svg`；`#context_unloadTab` 使用暂停图标表示卸载/挂起（edge-frfox 当前未覆盖该 ID）。这些上游 SVG 沿用 edge-frfox MIT 授权。`addMenuPlus` 的 `#identity-box-contextmenu` 是动态菜单，单项图标由各项配置提供。
 
