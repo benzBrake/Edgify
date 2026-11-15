@@ -7,7 +7,7 @@ export default defineConfig({
       input: {
         userChrome: resolve(__dirname, 'src/userChrome.scss'),
         userContent: resolve(__dirname, 'src/userContent.scss'),
-        'external-menu-overrides': resolve(__dirname, 'src/external-menu-overrides.css')
+        'external-menu-overrides': resolve(__dirname, 'src/external-menu-overrides.scss')
       },
       output: {
         assetFileNames: (assetInfo) => {

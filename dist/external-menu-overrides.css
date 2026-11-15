@@ -1,15 +1,11 @@
 /* Optional rules for menu items added by userChromeJS scripts or extensions. */
-:is(
-  menuitem[id="placesContext_add:bookmark"],
-  menuitem[id="placesContext_update_bookmark:info"]
-) > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon) {
+:is(menuitem[id="placesContext_add:bookmark"],
+menuitem[id="placesContext_update_bookmark:info"]) > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon) {
   display: none !important;
 }
 
-:is(
-  menuitem[id="placesContext_add:bookmark"],
-  menuitem[id="placesContext_update_bookmark:info"]
-)::before {
+:is(menuitem[id="placesContext_add:bookmark"],
+menuitem[id="placesContext_update_bookmark:info"])::before {
   content: "" !important;
   display: flex !important;
   width: var(--menuitem-icon-size, 16px) !important;
@@ -82,21 +78,18 @@ menuitem.addMenu[text]:not([url]):not([keyword]):not([exec]),
 #unified-extensions-manage-extensions {
   list-style-image: url("images/menu-icons/extensions.svg") !important;
 }
-:is(
-  .unified-extensions-context-menu-copy-id,
-  #unified-extensions-context-menu-pin-to-toolbar,
-  #unified-extensions-context-menu-move-widget-up,
-  #unified-extensions-context-menu-move-widget-down
-)> :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon) {
+
+:is(.unified-extensions-context-menu-copy-id,
+#unified-extensions-context-menu-pin-to-toolbar,
+#unified-extensions-context-menu-move-widget-up,
+#unified-extensions-context-menu-move-widget-down) > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon) {
   display: none !important;
 }
 
-:is(
-  .unified-extensions-context-menu-copy-id,
-  #unified-extensions-context-menu-pin-to-toolbar,
-  #unified-extensions-context-menu-move-widget-up,
-  #unified-extensions-context-menu-move-widget-down
-)::before {
+:is(.unified-extensions-context-menu-copy-id,
+#unified-extensions-context-menu-pin-to-toolbar,
+#unified-extensions-context-menu-move-widget-up,
+#unified-extensions-context-menu-move-widget-down)::before {
   content: "" !important;
   display: flex !important;
   width: var(--menuitem-icon-size, 16px) !important;
