@@ -462,7 +462,6 @@ scrollbox[orient=vertical] {
 
     menu[id="placesContext_open:newcontainertab"],
     menu[id="placesContext_openContainer:tabs"],
-    menu[id="placesContext_openBookmarkContainer:tabs"],
     #sidebar-history-context-menu-container-tab,
     .new-tab-popup menuitem[command="Browser:NewUserContextTab"][data-usercontextid="0"],
     menuitem[data-l10n-id="user-context-new-tab"][data-usercontextid="0"] {
@@ -487,6 +486,7 @@ scrollbox[orient=vertical] {
         @include BackgroundIcon(url("../images/toolbar-icons/sidebars.svg"));
     }
 
+    #placesContext_openBookmarkContainer\:tabs,
     menu[id="placesContext_openBookmarkLinks:tabs"],
     #sidebar-history-context-open-all-in-tabs,
     menu[id="placesContext_openLinks:tabs"] {
@@ -546,7 +546,6 @@ scrollbox[orient=vertical] {
     }
 
     #context-bookmarkframe,
-    #placesContext_add\:bookmark,
     #menu_bookmarkThisPage,
     #menu_bookmarkAllTabs {
         @include BackgroundIcon(FluentIcon('list'));

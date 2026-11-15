@@ -2336,7 +2336,6 @@ scrollbox[orient=vertical] {
   }
   menu[id="placesContext_open:newcontainertab"] > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   menu[id="placesContext_openContainer:tabs"] > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
-  menu[id="placesContext_openBookmarkContainer:tabs"] > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   #sidebar-history-context-menu-container-tab > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   .new-tab-popup menuitem[command="Browser:NewUserContextTab"][data-usercontextid="0"] > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   menuitem[data-l10n-id=user-context-new-tab][data-usercontextid="0"] > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon) {
@@ -2344,7 +2343,6 @@ scrollbox[orient=vertical] {
   }
   menu[id="placesContext_open:newcontainertab"]::before,
   menu[id="placesContext_openContainer:tabs"]::before,
-  menu[id="placesContext_openBookmarkContainer:tabs"]::before,
   #sidebar-history-context-menu-container-tab::before,
   .new-tab-popup menuitem[command="Browser:NewUserContextTab"][data-usercontextid="0"]::before,
   menuitem[data-l10n-id=user-context-new-tab][data-usercontextid="0"]::before {
@@ -2433,11 +2431,13 @@ scrollbox[orient=vertical] {
     -moz-context-properties: fill, fill-opacity !important;
     fill: currentColor !important;
   }
+  #placesContext_openBookmarkContainer\:tabs > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   menu[id="placesContext_openBookmarkLinks:tabs"] > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   #sidebar-history-context-open-all-in-tabs > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   menu[id="placesContext_openLinks:tabs"] > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon) {
     display: none !important;
   }
+  #placesContext_openBookmarkContainer\:tabs::before,
   menu[id="placesContext_openBookmarkLinks:tabs"]::before,
   #sidebar-history-context-open-all-in-tabs::before,
   menu[id="placesContext_openLinks:tabs"]::before {
@@ -2649,13 +2649,11 @@ scrollbox[orient=vertical] {
     fill: currentColor !important;
   }
   #context-bookmarkframe > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
-  #placesContext_add\:bookmark > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   #menu_bookmarkThisPage > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   #menu_bookmarkAllTabs > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon) {
     display: none !important;
   }
   #context-bookmarkframe::before,
-  #placesContext_add\:bookmark::before,
   #menu_bookmarkThisPage::before,
   #menu_bookmarkAllTabs::before {
     content: "" !important;

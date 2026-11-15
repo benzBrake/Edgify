@@ -27,3 +27,27 @@ menuitem.addMenu[text]:not([url]):not([keyword]):not([exec]),
 :is(.addMenu.copy, menuitem.addMenu[text]:not([url]):not([keyword]):not([exec]), .addMenu-icon.copy) > .menu-icon {
   content: url("images/menu-icons/copy.svg") !important;
 }
+
+#appMenu-advanced-settings-button {
+  list-style-image: url("images/menu-icons/settings.svg") !important;
+}
+
+#appMenu-certificate-manager-button {
+  list-style-image: url("images/menu-icons/key.svg") !important;
+}
+
+#appMenu-restart-button2 {
+  list-style-image: url("images/menu-icons/power.svg") !important;
+}
+
+#unified-extensions-enable-all {
+  list-style-image: url("images/menu-icons/plus.svg") !important;
+}
+
+#unified-extensions-disable-all {
+  list-style-image: url("images/menu-icons/minus.svg") !important;
+}
+
+#unified-extensions-manage-extensions {
+  list-style-image: url("images/menu-icons/extensions.svg") !important;
+}
