@@ -1651,6 +1651,7 @@
 }
 
 #urlbar-container :is(#identity-box,
+.identity-box-button,
 #trust-icon-container,
 #tracking-protection-icon-container,
 .urlbar-page-action,
@@ -1663,7 +1664,7 @@
 }
 
 #urlbar-container #trust-icon-container {
-  min-width: 24px !important;
+  min-width: max(24px, var(--urlbar-basic-component-size)) !important;
   min-height: 24px !important;
   padding: 3px !important;
   justify-content: center !important;
