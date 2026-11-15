@@ -93,6 +93,72 @@
     }
 }
 
+/* Share density-aware spacing with the outer edge and sidebar splitter. */
+#browser:has(> #tabbrowser-tabbox > #tabbrowser-tabpanels > .split-view-panel) {
+    --uc-split-view-gutter-width: 8px;
+
+    @include Compact {
+        --uc-split-view-gutter-width: 4px;
+    }
+
+    @include Touch {
+        --uc-split-view-gutter-width: 12px;
+    }
+
+    > #sidebar-splitter {
+        width: var(--uc-split-view-gutter-width) !important;
+        border-inline-width: max(0px, calc((var(--uc-split-view-gutter-width) - var(--splitter-width)) / 2)) !important;
+    }
+}
+
+/* Keep the split-view gutter flush with the toolbar background. */
+#tabbrowser-tabpanels:has(.split-view-panel) .split-view-panel {
+    margin: 0 !important;
+    border: 0 !important;
+    background: var(--toolbar-background-color) !important;
+}
+
+#tabbrowser-tabpanels:has(.split-view-panel) > .split-view-splitter {
+    width: var(--uc-split-view-gutter-width) !important;
+    min-width: var(--uc-split-view-gutter-width) !important;
+    margin-inline: 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
+    background: var(--toolbar-background-color) !important;
+}
+
+/* Frame each split pane independently instead of framing the entire tabbox. */
+:root:not([inFullscreen]) #tabbrowser-tabbox:has(> #tabbrowser-tabpanels > .split-view-panel) {
+    border: 0 !important;
+    border-radius: 0 !important;
+    margin-right: var(--uc-split-view-gutter-width) !important;
+
+    @include NotOption('sidebar.position_start') {
+        margin-right: 0 !important;
+        margin-left: var(--uc-split-view-gutter-width) !important;
+    }
+
+    > #tabbrowser-tabpanels {
+        border-radius: 0 !important;
+
+        > .split-view-panel {
+            border: 1px solid var(--chrome-content-separator-color) !important;
+            border-radius: 8px !important;
+            overflow: hidden !important;
+
+            /* Keep Firefox's selected-pane focus ring inside the clipped frame. */
+            &.deck-selected {
+                outline: var(--focus-outline) !important;
+                outline-offset: calc(-1 * var(--focus-outline-width)) !important;
+
+                > .browserContainer {
+                    outline: none !important;
+                }
+            }
+        }
+    }
+}
+
 /* 侧边栏面板外框和底部留白 */
 :root:not([inFullscreen]) #sidebar-box {
     margin-bottom: 4px !important;

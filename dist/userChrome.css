@@ -88,6 +88,70 @@
   }
 }
 
+/* Share density-aware spacing with the outer edge and sidebar splitter. */
+#browser:has(> #tabbrowser-tabbox > #tabbrowser-tabpanels > .split-view-panel) {
+  --uc-split-view-gutter-width: 8px;
+}
+@media (-moz-pref("browser.uidensity", 1)) {
+  #browser:has(> #tabbrowser-tabbox > #tabbrowser-tabpanels > .split-view-panel) {
+    --uc-split-view-gutter-width: 4px;
+  }
+}
+@media (-moz-pref("browser.uidensity", 2)) {
+  #browser:has(> #tabbrowser-tabbox > #tabbrowser-tabpanels > .split-view-panel) {
+    --uc-split-view-gutter-width: 12px;
+  }
+}
+#browser:has(> #tabbrowser-tabbox > #tabbrowser-tabpanels > .split-view-panel) > #sidebar-splitter {
+  width: var(--uc-split-view-gutter-width) !important;
+  border-inline-width: max(0px, (var(--uc-split-view-gutter-width) - var(--splitter-width)) / 2) !important;
+}
+
+/* Keep the split-view gutter flush with the toolbar background. */
+#tabbrowser-tabpanels:has(.split-view-panel) .split-view-panel {
+  margin: 0 !important;
+  border: 0 !important;
+  background: var(--toolbar-background-color) !important;
+}
+
+#tabbrowser-tabpanels:has(.split-view-panel) > .split-view-splitter {
+  width: var(--uc-split-view-gutter-width) !important;
+  min-width: var(--uc-split-view-gutter-width) !important;
+  margin-inline: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  background: var(--toolbar-background-color) !important;
+}
+
+/* Frame each split pane independently instead of framing the entire tabbox. */
+:root:not([inFullscreen]) #tabbrowser-tabbox:has(> #tabbrowser-tabpanels > .split-view-panel) {
+  border: 0 !important;
+  border-radius: 0 !important;
+  margin-right: var(--uc-split-view-gutter-width) !important;
+}
+@media not -moz-pref("sidebar.position_start") {
+  :root:not([inFullscreen]) #tabbrowser-tabbox:has(> #tabbrowser-tabpanels > .split-view-panel) {
+    margin-right: 0 !important;
+    margin-left: var(--uc-split-view-gutter-width) !important;
+  }
+}
+:root:not([inFullscreen]) #tabbrowser-tabbox:has(> #tabbrowser-tabpanels > .split-view-panel) > #tabbrowser-tabpanels {
+  border-radius: 0 !important;
+}
+:root:not([inFullscreen]) #tabbrowser-tabbox:has(> #tabbrowser-tabpanels > .split-view-panel) > #tabbrowser-tabpanels > .split-view-panel {
+  border: 1px solid var(--chrome-content-separator-color) !important;
+  border-radius: 8px !important;
+  overflow: hidden !important;
+  /* Keep Firefox's selected-pane focus ring inside the clipped frame. */
+}
+:root:not([inFullscreen]) #tabbrowser-tabbox:has(> #tabbrowser-tabpanels > .split-view-panel) > #tabbrowser-tabpanels > .split-view-panel.deck-selected {
+  outline: var(--focus-outline) !important;
+  outline-offset: calc(-1 * var(--focus-outline-width)) !important;
+}
+:root:not([inFullscreen]) #tabbrowser-tabbox:has(> #tabbrowser-tabpanels > .split-view-panel) > #tabbrowser-tabpanels > .split-view-panel.deck-selected > .browserContainer {
+  outline: none !important;
+}
+
 /* 侧边栏面板外框和底部留白 */
 :root:not([inFullscreen]) #sidebar-box {
   margin-bottom: 4px !important;
