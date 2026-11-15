@@ -558,10 +558,13 @@ scrollbox[orient=vertical] {
         @include BackgroundIcon(FluentIcon('sort'));
     }
 
-    menuitem[id="placesContext_show_bookmark:info"],
     menuitem[id="placesContext_show_folder:info"],
     menuitem[id="placesContext_show:info"] {
         @include BackgroundIcon(FluentIcon('repair'));
+    }
+
+    menuitem[id="placesContext_show_bookmark:info"] {
+        @include BackgroundIcon(FluentIcon('edit'));
     }
 
     .customize-context-manageExtension,
