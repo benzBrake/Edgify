@@ -51,3 +51,16 @@ menuitem.addMenu[text]:not([url]):not([keyword]):not([exec]),
 #unified-extensions-manage-extensions {
   list-style-image: url("images/menu-icons/extensions.svg") !important;
 }
+.unified-extensions-context-menu-copy-id::before {
+  content: "" !important;
+  display: flex !important;
+  width: var(--menuitem-icon-size, 16px) !important;
+  height: var(--menuitem-icon-size, 16px) !important;
+  margin-inline-end: var(--menuitem-icon-gap, 8px) !important;
+  background-image: url("images/menu-icons/copy.svg") !important;
+  background-size: contain !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+  -moz-context-properties: fill, fill-opacity !important;
+  fill: currentColor !important;
+}
