@@ -170,6 +170,24 @@
         border-radius: 8px !important;
         overflow: hidden !important;
     }
+
+    @include And(F-Option('browser.nova.enabled'), F-Option('sidebar.revamp')) {
+        // Nova paints the header and content on the same surface. Frame that
+        // surface once, including its bottom edge, and clip both to its corners.
+        border: 1px solid var(--chrome-content-separator-color) !important;
+        border-radius: 8px !important;
+        overflow: hidden !important;
+
+        > #sidebar-panel-header {
+            --sidebar-panel-header-heading-margin-block: 0px !important;
+            padding: 8px !important;
+        }
+
+        > .sidebar-browser-stack > #sidebar {
+            border: 0 !important;
+            border-radius: 0 !important;
+        }
+    }
 }
 
 #status-bar {

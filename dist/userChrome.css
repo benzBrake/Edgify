@@ -162,6 +162,21 @@
   border-radius: 8px !important;
   overflow: hidden !important;
 }
+@media (-moz-pref("browser.nova.enabled")) and (-moz-pref("sidebar.revamp")) {
+  :root:not([inFullscreen]) #sidebar-box {
+    border: 1px solid var(--chrome-content-separator-color) !important;
+    border-radius: 8px !important;
+    overflow: hidden !important;
+  }
+  :root:not([inFullscreen]) #sidebar-box > #sidebar-panel-header {
+    --sidebar-panel-header-heading-margin-block: 0px !important;
+    padding: 8px !important;
+  }
+  :root:not([inFullscreen]) #sidebar-box > .sidebar-browser-stack > #sidebar {
+    border: 0 !important;
+    border-radius: 0 !important;
+  }
+}
 
 #status-bar {
   border-top: 0 !important;
