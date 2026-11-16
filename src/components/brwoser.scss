@@ -73,10 +73,11 @@
     #tabbrowser-tabpanels,
     #tabbrowser-tabpanels browser {
         overflow: hidden !important;
-        border-radius: var(--border-radius-medium) 0 0 var(--border-radius-medium) !important;
+        // Match the 8px content frame; Nova increases --border-radius-medium to 12px.
+        border-radius: 8px 0 0 8px !important;
 
         @include NotOption('sidebar.position_start') {
-            border-radius: 0 var(--border-radius-medium) var(--border-radius-medium) 0 !important;
+            border-radius: 0 8px 8px 0 !important;
         }
     }
 }

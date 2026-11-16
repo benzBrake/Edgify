@@ -65,14 +65,14 @@
   #tabbrowser-tabpanels,
   #tabbrowser-tabpanels browser {
     overflow: hidden !important;
-    border-radius: var(--border-radius-medium) 0 0 var(--border-radius-medium) !important;
+    border-radius: 8px 0 0 8px !important;
   }
 }
 @media (-moz-pref("sidebar.revamp")) and (not -moz-pref("sidebar.position_start")) {
   #tabbrowser-tabbox,
   #tabbrowser-tabpanels,
   #tabbrowser-tabpanels browser {
-    border-radius: 0 var(--border-radius-medium) var(--border-radius-medium) 0 !important;
+    border-radius: 0 8px 8px 0 !important;
   }
 }
 /* 网页区域外框 */
@@ -2340,6 +2340,21 @@ menulist > menupopup > menucaption {
   }
 }
 /* 圆角 */
+@media (-moz-pref("browser.nova.enabled")) {
+  :root :is(menupopup, panel) {
+    --panel-border-radius: 6px !important;
+    --panel-menuitem-border-radius: 4px !important;
+  }
+  menupopup {
+    --menuitem-border-radius: 2px !important;
+  }
+  panel {
+    --menuitem-border-radius: var(--panel-menuitem-border-radius) !important;
+  }
+  menulist:not([native]) {
+    --select-border-radius: 8px !important;
+  }
+}
 menupopup,
 .menupopup-arrowscrollbox {
   border-radius: var(--panel-border-radius) !important;

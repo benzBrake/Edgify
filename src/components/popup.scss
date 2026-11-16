@@ -372,6 +372,27 @@ menulist>menupopup>menucaption {
 }
 
 /* 圆角 */
+@include Option("browser.nova.enabled") {
+    // Nova's popup and menu-item tokens otherwise introduce 24px / pill corners.
+    // Set the panel token on the popup itself, including autocomplete panels.
+    :root :is(menupopup, panel) {
+        --panel-border-radius: 6px !important;
+        --panel-menuitem-border-radius: 4px !important;
+    }
+
+    menupopup {
+        --menuitem-border-radius: 2px !important;
+    }
+
+    panel {
+        --menuitem-border-radius: var(--panel-menuitem-border-radius) !important;
+    }
+
+    menulist:not([native]) {
+        --select-border-radius: 8px !important;
+    }
+}
+
 menupopup,
 .menupopup-arrowscrollbox {
     border-radius: var(--panel-border-radius) !important;
