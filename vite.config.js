@@ -7,7 +7,7 @@ export default defineConfig({
       input: {
         userChrome: resolve(__dirname, 'src/userChrome.scss'),
         userContent: resolve(__dirname, 'src/userContent.scss'),
-        'external-menu-overrides': resolve(__dirname, 'src/external-menu-overrides.scss')
+        'external-overrides': resolve(__dirname, 'src/external-overrides.scss')
       },
       output: {
         assetFileNames: (assetInfo) => {
@@ -71,8 +71,8 @@ export default defineConfig({
           writeFileSync(cssPath, cssContent, 'utf-8');
         }
 
-        if (existsSync('dist/external-menu-overrides.css')) {
-          const cssPath = 'dist/external-menu-overrides.css';
+        if (existsSync('dist/external-overrides.css')) {
+          const cssPath = 'dist/external-overrides.css';
           let cssContent = readFileSync(cssPath, 'utf-8');
           cssContent = cssContent.replace(/url\("\/images\//g, 'url("images/');
           writeFileSync(cssPath, cssContent, 'utf-8');

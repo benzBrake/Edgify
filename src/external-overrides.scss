@@ -1,4 +1,8 @@
 /* Optional rules for menu items added by userChromeJS scripts or extensions. */
+#search-by-image-page-action > .urlbar-icon {
+  list-style-image: url("images/toolbar-icons/search-by-image.svg") !important;
+}
+
 :is(
   menuitem[id="placesContext_add:bookmark"],
   menuitem[id="placesContext_update_bookmark:info"]
