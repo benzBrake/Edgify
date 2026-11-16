@@ -1982,7 +1982,7 @@ toolbarbutton.bookmark-item:not(.subviewbutton) {
 
 /* Left and Right padding of bookmarks bar */
 #PersonalToolbar {
-  padding-inline: calc(var(--toolbar-padding-inline) - 2px) calc(var(--toolbar-padding-inline) + 4px) !important;
+  padding-inline: calc(var(--toolbar-padding-inline) - 2px) !important;
 }
 
 /********************************************************************************/
