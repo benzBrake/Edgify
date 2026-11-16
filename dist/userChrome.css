@@ -1836,6 +1836,32 @@
   border-radius: 999px !important;
 }
 
+.urlbarView-result-menuitem:is([data-l10n-id=urlbar-result-menu-remove-from-history],
+[data-l10n-id=urlbar-result-menu-learn-more]) > :is(.menu-icon, .menu-iconic-left) {
+  display: none !important;
+}
+.urlbarView-result-menuitem:is([data-l10n-id=urlbar-result-menu-remove-from-history],
+[data-l10n-id=urlbar-result-menu-learn-more])::before {
+  content: "" !important;
+  display: flex !important;
+  width: var(--menuitem-icon-size, 16px) !important;
+  height: var(--menuitem-icon-size, 16px) !important;
+  margin-inline-end: var(--menuitem-icon-gap, 8px) !important;
+  background-size: contain !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+  -moz-context-properties: fill, fill-opacity !important;
+  fill: currentColor !important;
+}
+
+.urlbarView-result-menuitem[data-l10n-id=urlbar-result-menu-remove-from-history]::before {
+  background-image: url("images/menu-icons/delete.svg") !important;
+}
+
+.urlbarView-result-menuitem[data-l10n-id=urlbar-result-menu-learn-more]::before {
+  background-image: url("images/menu-icons/help.svg") !important;
+}
+
 .urlbarView-row[data-l10n-id=urlbar-group-search-suggestions] {
   margin-block-start: calc(var(--urlbarView-labeled-row-margin-top) - 4px) !important;
 }
