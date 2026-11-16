@@ -20,6 +20,18 @@
     box-shadow: 0 -3px 5px 3px light-dark(rgb(0 0 0 / .3), rgb(0 0 0 / .6)) !important;
 }
 
+/* Keep Nova's content frame opaque while preserving the Windows titlebar colors. */
+@include And(F-Option('browser.nova.enabled'),
+    F-Media('-moz-windows-mica'),
+    F-Media('forced-colors', $negate: true),
+    F-Option('extensions.activeThemeID', 'default-theme@mozilla.org')) {
+    :root[customtitlebar]:not([lwtheme], [builtintheme]) {
+        // Set this on the shared ancestor, not just individual toolbars: the
+        // content frame and sidebar gutter also consume this background token.
+        --toolbar-background-color: light-dark(#f9f9fb, rgb(43, 42, 51)) !important;
+    }
+}
+
 /* Since Firefox 120, when the bookmarks bar is set to only open on new tabs,
    * the bookmarks bar overlaps the #browser element. */
 

@@ -129,6 +129,9 @@
     .tabbrowser-tab[visuallyselected] .tab-background,
     tab-split-view-wrapper[hasactivetab]::before {
       background-color: transparent !important;
+      // Nova clips its first background layer to the gradient border only.
+      // Our attached-tab gradient must fill the entire masked tab instead.
+      background-clip: border-box !important;
       background-image: linear-gradient(
         to bottom,
         var(--tab-background-color-selected),
@@ -670,7 +673,7 @@
   }
 
   #TabsToolbar #firefox-view-button[open] > .toolbarbutton-icon {
-    background-color: var(--toolbarbutton-active-background) !important;
+    background-color: var(--edgify-tab-button-background-active) !important;
     color: inherit !important;
     box-shadow: none !important;
     outline: none !important;
@@ -686,26 +689,6 @@
   }
 
   #alltabs-button {
-    > .toolbarbutton-badge-stack {
-      background-color: light-dark(
-        #f3f3f3,
-        color-mix(in srgb, currentColor 12%, transparent)
-      ) !important;
-      border-radius: 8px !important;
-    }
-
-    &:hover > .toolbarbutton-badge-stack {
-      background-color: var(--toolbarbutton-background-color-hover) !important;
-    }
-
-    &:is([open], [checked], :active) > .toolbarbutton-badge-stack {
-      background-color: color-mix(
-        in srgb,
-        currentColor 28%,
-        transparent
-      ) !important;
-    }
-
     > .toolbarbutton-badge-stack > .toolbarbutton-icon {
       place-self: center;
       opacity: 1 !important;
@@ -723,6 +706,33 @@
 
   #TabsToolbar {
     --toolbarbutton-inner-padding: inherit !important;
+    // Blend with the Windows titlebar while keeping the glyphs legible.
+    --edgify-tab-button-background: color-mix(in srgb, var(--toolbar-background-color) 65%, transparent);
+    --edgify-tab-button-background-hover: color-mix(in srgb, var(--toolbar-background-color) 80%, transparent);
+    --edgify-tab-button-background-active: var(--toolbar-background-color);
+
+    .toolbarbutton-1:not(#tabs-newtab-button, #new-tab-button) {
+      --toolbarbutton-icon-fill: var(--toolbar-text-color);
+      color: var(--toolbar-text-color) !important;
+
+      > :is(.toolbarbutton-icon, .toolbarbutton-badge-stack) {
+        background-color: var(--edgify-tab-button-background) !important;
+        border-radius: 8px !important;
+      }
+
+      > .toolbarbutton-icon,
+      > .toolbarbutton-badge-stack > .toolbarbutton-icon {
+        fill: currentColor !important;
+      }
+
+      &:hover:not([disabled]) > :is(.toolbarbutton-icon, .toolbarbutton-badge-stack) {
+        background-color: var(--edgify-tab-button-background-hover) !important;
+      }
+
+      &:is([open], [checked="true"], :hover:active):not([disabled]) > :is(.toolbarbutton-icon, .toolbarbutton-badge-stack) {
+        background-color: var(--edgify-tab-button-background-active) !important;
+      }
+    }
 
     .toolbarbutton-1 {
       margin-block-end: 4px !important;
