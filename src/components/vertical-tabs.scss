@@ -6,6 +6,8 @@
     /* Edge 开启了垂直标签标题栏就没有 Mica 效果了 */
     .browser-toolbox-background,
     #sidebar-main,
+    #navigator-toolbox,
+    #sidebar-container,
     #status-bar {
         --toolbar-text-color: light-dark(rgb(21, 20, 26), rgb(251, 251, 254));
         --toolbar-background-color: light-dark(#f9f9fb, rgb(43, 42, 51));
@@ -20,17 +22,23 @@
     /* Expand On Hover */
     @include Option("sidebar.visibility", 'expand-on-hover') {
         :root[sidebar-expand-on-hover] {
-            .browser-toolbox-background:not(#navigator-toolbox) {
+            // Keep older Firefox wrappers alongside the current sidebar container.
+            .browser-toolbox-background:not(#navigator-toolbox),
+            #sidebar-container {
                 will-change: background-color, backdrop-filter !important;
+            }
 
-                #sidebar-main[sidebar-launcher-expanded],
-                #sidebar-main[sidebar-ongoing-animations]:not([sidebar-launcher-expanded]) {
-                    background-color: color-mix(in srgb, var(--sidebar-background-color) 75%, transparent) !important;
-                    background-image: none !important;
-                    color: var(--sidebar-text-color) !important;
-                    backdrop-filter: blur(8px) !important;
-                    box-shadow: var(--content-area-shadow) !important;
-                }
+            // ESR keeps the expanded surface during its closing animation.
+            // Current Firefox captures it for the native View Transition instead.
+            .browser-toolbox-background:not(#navigator-toolbox) #sidebar-main[sidebar-launcher-expanded],
+            .browser-toolbox-background:not(#navigator-toolbox) #sidebar-main[sidebar-ongoing-animations]:not([sidebar-launcher-expanded]),
+            #sidebar-container[sidebar-launcher-expanded],
+            #sidebar-container[sidebar-ongoing-animations]:not([sidebar-launcher-expanded]) {
+                background-color: color-mix(in srgb, var(--sidebar-background-color) 75%, transparent) !important;
+                background-image: none !important;
+                color: var(--sidebar-text-color) !important;
+                backdrop-filter: blur(8px) !important;
+                box-shadow: var(--content-area-shadow) !important;
             }
         }
     }

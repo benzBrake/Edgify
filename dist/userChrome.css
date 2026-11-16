@@ -1434,6 +1434,8 @@
   /* Edge 开启了垂直标签标题栏就没有 Mica 效果了 */
   .browser-toolbox-background,
   #sidebar-main,
+  #navigator-toolbox,
+  #sidebar-container,
   #status-bar {
     --toolbar-text-color: light-dark(rgb(21, 20, 26), rgb(251, 251, 254));
     --toolbar-background-color: light-dark(#f9f9fb, rgb(43, 42, 51));
@@ -1454,11 +1456,14 @@
   /* -------------------- Tab Text -------------------- */
 }
 @media (-moz-pref("sidebar.verticalTabs", true)) and (-moz-pref("sidebar.visibility", "expand-on-hover")) {
-  :root[sidebar-expand-on-hover] .browser-toolbox-background:not(#navigator-toolbox) {
+  :root[sidebar-expand-on-hover] .browser-toolbox-background:not(#navigator-toolbox),
+  :root[sidebar-expand-on-hover] #sidebar-container {
     will-change: background-color, backdrop-filter !important;
   }
   :root[sidebar-expand-on-hover] .browser-toolbox-background:not(#navigator-toolbox) #sidebar-main[sidebar-launcher-expanded],
-  :root[sidebar-expand-on-hover] .browser-toolbox-background:not(#navigator-toolbox) #sidebar-main[sidebar-ongoing-animations]:not([sidebar-launcher-expanded]) {
+  :root[sidebar-expand-on-hover] .browser-toolbox-background:not(#navigator-toolbox) #sidebar-main[sidebar-ongoing-animations]:not([sidebar-launcher-expanded]),
+  :root[sidebar-expand-on-hover] #sidebar-container[sidebar-launcher-expanded],
+  :root[sidebar-expand-on-hover] #sidebar-container[sidebar-ongoing-animations]:not([sidebar-launcher-expanded]) {
     background-color: color-mix(in srgb, var(--sidebar-background-color) 75%, transparent) !important;
     background-image: none !important;
     color: var(--sidebar-text-color) !important;
