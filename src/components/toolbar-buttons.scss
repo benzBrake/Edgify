@@ -60,6 +60,12 @@ $toolbar-icons: (
     }
 }
 
+/* The split view action is a urlbar hbox with its own child image. */
+#split-view-button,
+#split-view-button-icon {
+    list-style-image: url("../images/menu-icons/edge-split-view.svg") !important;
+}
+
 /* Mirror only the icon when Firefox places the sidebar at the end. */
 :is(#nav-bar, #widget-overflow-fixed-list) #sidebar-button {
     > .toolbarbutton-icon,
