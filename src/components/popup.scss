@@ -851,6 +851,12 @@ scrollbox[orient=vertical] {
         @include BackgroundIcon(FluentIcon('forward'));
     }
 
+    /* These navigation buttons are already centered flex items; the standard
+       menu-row icon gap shifts each replacement icon off center. */
+    #contentAreaContextMenu #context-navigation > menuitem::before {
+        margin-inline-end: 0 !important;
+    }
+
     #appMenu-quit-button2 {
         @include BackgroundIcon(FluentIcon('power'));
     }

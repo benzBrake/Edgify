@@ -3727,6 +3727,11 @@ scrollbox[orient=vertical] {
     -moz-context-properties: fill, fill-opacity !important;
     fill: currentColor !important;
   }
+  /* These navigation buttons are already centered flex items; the standard
+     menu-row icon gap shifts each replacement icon off center. */
+  #contentAreaContextMenu #context-navigation > menuitem::before {
+    margin-inline-end: 0 !important;
+  }
   #appMenu-quit-button2 > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon) {
     display: none !important;
   }
