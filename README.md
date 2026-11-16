@@ -37,6 +37,14 @@
 @import url("external-overrides.css");
 ```
 
+`dist/extension-overrides.css` 是独立构建的扩展内容页覆盖，目前包含 Search by Image 弹窗样式。它应由 `chrome/userContent.css` 加载：
+
+```css
+@import url("extension-overrides.css");
+```
+
+这些样式依赖 `extensionStylesheetLoader.sys.mjs` 在扩展页面根元素添加的 `uc-extension-id` 属性；仅添加属性不会自动加载样式表。规则同时限定扩展 ID 和弹窗专有的搜索模式控件结构，不影响扩展选项页或普通网页。
+
 ## 感谢
  - [edge-frfox](https://github.com/bmFtZQ/edge-frfox)
  - [WaveFox](https://github.com/QNetITQ/WaveFox)

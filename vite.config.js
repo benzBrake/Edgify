@@ -7,7 +7,8 @@ export default defineConfig({
       input: {
         userChrome: resolve(__dirname, 'src/userChrome.scss'),
         userContent: resolve(__dirname, 'src/userContent.scss'),
-        'external-overrides': resolve(__dirname, 'src/external-overrides.scss')
+        'external-overrides': resolve(__dirname, 'src/external-overrides.scss'),
+        'extension-overrides': resolve(__dirname, 'src/extension-overrides.scss')
       },
       output: {
         assetFileNames: (assetInfo) => {

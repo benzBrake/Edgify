@@ -1,0 +1,176 @@
+/* WebExtension content overrides; load the compiled CSS from userContent.css. */
+/* Search by Image: match Edgify's panel spacing without affecting its other pages. */
+:root[uc-extension-id="{2e5ff8c8-32fe-46d0-9fc8-6b8986621f3c}"]:has(body > .vn-app .header .search-mode-menu) {
+  --edgify-panel-background: light-dark(#fff, #353d49);
+  --edgify-panel-color: light-dark(#1c1c1c, #fff);
+  --edgify-panel-hover: color-mix(in srgb, var(--edgify-panel-color) 17%, transparent);
+  --edgify-panel-active: color-mix(in srgb, var(--edgify-panel-color) 30%, transparent);
+  --edgify-panel-border: light-dark(rgb(0 0 0 / .2), rgb(255 255 255 / .2));
+  font: menu !important;
+  background: var(--edgify-panel-background) !important;
+  color: var(--edgify-panel-color) !important;
+
+  body {
+    min-width: 280px !important;
+    width: 280px !important;
+    font: inherit !important;
+    border-radius: 6px !important;
+  }
+
+  :is(.v-application, .v-list, .v-overlay__content) {
+    background: var(--edgify-panel-background) !important;
+    color: var(--edgify-panel-color) !important;
+    font: inherit !important;
+  }
+
+  :is(.v-list-item, .v-list-item-title, .v-field, .v-field__input, .v-select__selection-text) {
+    font: inherit !important;
+    line-height: 16px !important;
+    letter-spacing: normal !important;
+    color: inherit !important;
+  }
+
+  .header {
+    padding: 4px !important;
+    column-gap: 4px !important;
+  }
+
+  .header-content {
+    height: 28px !important;
+  }
+
+  :is(.header-buttons, .header-pinned-buttons) {
+    column-gap: 4px !important;
+  }
+
+  .search-mode-menu {
+    --v-input-control-height: 28px !important;
+    --v-input-padding-top: 0px !important;
+    font: inherit !important;
+    border-radius: 4px !important;
+
+    .v-field {
+      padding-inline-end: 4px !important;
+    }
+
+    .v-field__input {
+      min-height: 28px !important;
+      padding: 6px 0 6px 8px !important;
+    }
+
+    .v-select__selection {
+      margin: 0 !important;
+    }
+
+    :is(.v-field__overlay, .v-field__outline) {
+      display: none !important;
+    }
+
+    .v-field__append-inner {
+      align-items: center !important;
+      padding: 0 !important;
+    }
+
+    .v-select__menu-icon {
+      width: 16px !important;
+      height: 16px !important;
+      font-size: 16px !important;
+    }
+  }
+
+  .vn-icon-button {
+    width: 28px !important;
+    height: 28px !important;
+    min-width: 28px !important;
+    min-height: 28px !important;
+    border-radius: 4px !important;
+    color: inherit !important;
+  }
+
+  :is(.vn-icon, .list-item-icon) {
+    width: 16px !important;
+    height: 16px !important;
+    flex-shrink: 0 !important;
+  }
+
+  .v-list {
+    padding: 4px !important;
+  }
+
+  .v-list-item {
+    min-height: 28px !important;
+    padding: 4px 8px !important;
+    border-radius: 4px !important;
+
+    .v-list-item__prepend {
+      margin: 0 !important;
+      margin-inline-end: 8px !important;
+    }
+
+    .v-list-item-title {
+      padding: 0 !important;
+    }
+
+    .v-list-item__append {
+      margin: 0 !important;
+      margin-inline-start: 8px !important;
+    }
+
+    .vn-icon-button {
+      width: 24px !important;
+      height: 24px !important;
+      min-width: 24px !important;
+      min-height: 24px !important;
+    }
+  }
+
+  /* Replace Material state layers/ripples with Edgify's menu highlight. */
+  :is(.v-list-item__overlay, .v-list-item__underlay, .vn-icon-button__state, .v-ripple__container) {
+    display: none !important;
+  }
+
+  :is(.v-list-item, .vn-icon-button, .search-mode-menu):not([disabled], [aria-disabled="true"]):hover,
+  .v-list-item--active {
+    background-color: var(--edgify-panel-hover) !important;
+  }
+
+  :is(.v-list-item, .vn-icon-button, .search-mode-menu):not([disabled], [aria-disabled="true"]):active {
+    background-color: var(--edgify-panel-active) !important;
+  }
+
+  :is(.v-list-item, .vn-icon-button, .search-mode-menu input):focus-visible {
+    outline: 2px solid AccentColor !important;
+    outline-offset: -2px !important;
+  }
+
+  .vn-divider {
+    border-color: var(--edgify-panel-border) !important;
+    opacity: 1 !important;
+  }
+
+  .header-separator:not(.visible) {
+    opacity: 0 !important;
+  }
+
+  .list-separator {
+    margin: 4px 0 !important;
+  }
+
+  :is(.search-mode-menu__content, .action-menu__content) {
+    top: 36px !important;
+    border: 1px solid var(--edgify-panel-border) !important;
+    border-radius: 6px !important;
+    box-shadow: 0 1px 2px 1px rgb(0 0 0 / .1),
+      0 1px 5px -3px rgb(0 0 0 / .1),
+      0 6px 10px 1px rgb(0 0 0 / .1),
+      0 4px 12px 2px rgb(0 0 0 / .1) !important;
+  }
+
+  .search-mode-menu__content {
+    left: 4px !important;
+  }
+
+  .action-menu__content {
+    right: 4px !important;
+  }
+}
