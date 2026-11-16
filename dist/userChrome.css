@@ -1660,6 +1660,7 @@
 .identity-box-button,
 #trust-icon-container,
 #tracking-protection-icon-container,
+#urlbar-revert-button-container,
 .urlbar-page-action,
 #star-button-box) {
   border-radius: var(--megabar_border_roundness) !important;
@@ -1728,6 +1729,9 @@
 @media (not -moz-pref("browser.nova.enabled")) and (-moz-pref("browser.uidensity", 2)) {
   :root {
     --edgify-urlbar-result-padding: 8px;
+  }
+  :root[uidensity=touch] #urlbar .urlbarView-row:not([type=tip], [type=dynamic], [rich-suggestion]) {
+    padding-block: 0 !important;
   }
 }
 @media (not -moz-pref("browser.nova.enabled")) and (-moz-pref("browser.uidensity", 1)) {
@@ -1826,6 +1830,14 @@
   margin-inline-end: 0 !important;
   padding-inline-end: 0 !important;
   border-radius: 999px !important;
+}
+
+.urlbarView-action-btn {
+  border-radius: 999px !important;
+}
+
+.urlbarView-row[data-l10n-id=urlbar-group-search-suggestions] {
+  margin-block-start: calc(var(--urlbarView-labeled-row-margin-top) - 4px) !important;
 }
 
 .urlbarView-row-inner,

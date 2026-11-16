@@ -23,6 +23,7 @@
     .identity-box-button,
     #trust-icon-container,
     #tracking-protection-icon-container,
+    #urlbar-revert-button-container,
     .urlbar-page-action,
     #star-button-box
   ) {
@@ -103,6 +104,13 @@
   @include Touch {
     :root {
       --edgify-urlbar-result-padding: 8px;
+    }
+
+    // Native touch rows add outer padding on top of the inner spacing below.
+    :root[uidensity="touch"]
+      #urlbar
+      .urlbarView-row:not([type="tip"], [type="dynamic"], [rich-suggestion]) {
+      padding-block: 0 !important;
     }
   }
 
@@ -214,6 +222,15 @@
   margin-inline-end: 0 !important;
   padding-inline-end: 0 !important;
   border-radius: 999px !important;
+}
+
+.urlbarView-action-btn {
+  border-radius: 999px !important;
+}
+
+// Tighten the gap before the search-suggestions group.
+.urlbarView-row[data-l10n-id="urlbar-group-search-suggestions"] {
+  margin-block-start: calc(var(--urlbarView-labeled-row-margin-top) - 4px) !important;
 }
 
 .urlbarView-row-inner,
