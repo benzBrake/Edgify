@@ -13,7 +13,8 @@
 }
 
 // Keep navigation bar controls consistent with the Edge-style address bar.
-#url-bar {
+#url-bar,
+#urlbar {
   --toolbarbutton-border-radius: var(--megabar_border_roundness);
 }
 
@@ -115,6 +116,42 @@
       1px +
         (max(24px, var(--urlbar-basic-component-size)) - var(--urlbarView-favicon-width)) / 2
     );
+  }
+
+  // Current Firefox removed breakout and the results' body-inner wrapper,
+  // and renamed the view tokens. Match the new structure: ESR can temporarily
+  // remove breakout too, so its absence alone is not a version boundary.
+  #urlbar:has(> .urlbarView > .urlbarView-results) {
+    --urlbarview-results-padding: var(--urlbar-input-container-padding);
+
+    > .urlbarView > .urlbarView-results {
+      width: 100% !important;
+      margin-inline: 0 !important;
+    }
+  }
+
+  #urlbar:has(> .urlbarView > .urlbarView-results):where(
+    :not(:has(> .urlbar-input-container > .searchmode-switcher:not([offscreen])))
+  ) {
+    --urlbarview-favicon-margin-start: calc(
+      (max(24px, var(--urlbar-basic-component-size)) - var(--urlbarview-favicon-size)) / 2
+    );
+  }
+
+  :root[remotecontrol] #urlbar:has(> .urlbarView > .urlbarView-results) {
+    --urlbarview-favicon-margin-start: calc(
+      1px +
+        (max(24px, var(--urlbar-basic-component-size)) - var(--urlbarview-favicon-size)) / 2
+    );
+  }
+
+  #urlbar > .urlbarView > .urlbarView-results .urlbarView-row,
+  #urlbar > .urlbarView > .urlbarView-results .urlbarView-row-inner {
+    margin-inline-start: 0 !important;
+    padding-inline-start: 0 !important;
+    margin-inline-end: 0 !important;
+    padding-inline-end: 0 !important;
+    border-radius: 999px !important;
   }
 
   /* Match result spacing to the toolbar density without fixing row heights. */
@@ -282,6 +319,11 @@
 // Tighten the gap before the search-suggestions group.
 .urlbarView-row[data-l10n-id="urlbar-group-search-suggestions"] {
   margin-block-start: calc(var(--urlbarView-labeled-row-margin-top) - 4px) !important;
+}
+
+// The lowercase token is used by both Proton and Nova in current Firefox.
+#urlbar > .urlbarView > .urlbarView-results > .urlbarView-row[data-l10n-id="urlbar-group-search-suggestions"] {
+  margin-block-start: calc(var(--urlbarview-labeled-row-margin-top) - 4px) !important;
 }
 
 .urlbarView-row-inner,

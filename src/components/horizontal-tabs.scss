@@ -1001,6 +1001,7 @@
     #PersonalToolbar,
     #notifications-toolbar,
     #sidebar-main,
+    #sidebar-container,
     #status-bar {
       --toolbar-background-color: light-dark(#f9f9fb, rgb(43, 42, 51));
       background-color: var(--toolbar-background-color) !important;

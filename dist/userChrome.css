@@ -1390,6 +1390,7 @@
   #PersonalToolbar,
   #notifications-toolbar,
   #sidebar-main,
+  #sidebar-container,
   #status-bar {
     --toolbar-background-color: light-dark(#f9f9fb, rgb(43, 42, 51));
     background-color: var(--toolbar-background-color) !important;
@@ -1672,7 +1673,8 @@
   --urlbar_border_color: rgba(0, 0, 0, 0.3);
 }
 
-#url-bar {
+#url-bar,
+#urlbar {
   --toolbarbutton-border-radius: var(--megabar_border_roundness);
 }
 
@@ -1753,6 +1755,32 @@
       1px +
         (max(24px, var(--urlbar-basic-component-size)) - var(--urlbarView-favicon-width)) / 2
     );
+  }
+  #urlbar:has(> .urlbarView > .urlbarView-results) {
+    --urlbarview-results-padding: var(--urlbar-input-container-padding);
+  }
+  #urlbar:has(> .urlbarView > .urlbarView-results) > .urlbarView > .urlbarView-results {
+    width: 100% !important;
+    margin-inline: 0 !important;
+  }
+  #urlbar:has(> .urlbarView > .urlbarView-results):where(:not(:has(> .urlbar-input-container > .searchmode-switcher:not([offscreen])))) {
+    --urlbarview-favicon-margin-start: calc(
+      (max(24px, var(--urlbar-basic-component-size)) - var(--urlbarview-favicon-size)) / 2
+    );
+  }
+  :root[remotecontrol] #urlbar:has(> .urlbarView > .urlbarView-results) {
+    --urlbarview-favicon-margin-start: calc(
+      1px +
+        (max(24px, var(--urlbar-basic-component-size)) - var(--urlbarview-favicon-size)) / 2
+    );
+  }
+  #urlbar > .urlbarView > .urlbarView-results .urlbarView-row,
+  #urlbar > .urlbarView > .urlbarView-results .urlbarView-row-inner {
+    margin-inline-start: 0 !important;
+    padding-inline-start: 0 !important;
+    margin-inline-end: 0 !important;
+    padding-inline-end: 0 !important;
+    border-radius: 999px !important;
   }
   /* Match result spacing to the toolbar density without fixing row heights. */
   :root {
@@ -1897,6 +1925,10 @@
 
 .urlbarView-row[data-l10n-id=urlbar-group-search-suggestions] {
   margin-block-start: calc(var(--urlbarView-labeled-row-margin-top) - 4px) !important;
+}
+
+#urlbar > .urlbarView > .urlbarView-results > .urlbarView-row[data-l10n-id=urlbar-group-search-suggestions] {
+  margin-block-start: calc(var(--urlbarview-labeled-row-margin-top) - 4px) !important;
 }
 
 .urlbarView-row-inner,
