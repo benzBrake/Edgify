@@ -144,7 +144,7 @@ panelview {
 
 panelview .panel-header {
     --panel-menuitem-margin-inline:0px;
-    --panel-header-min-height: 0px;
+    --panel-header-min-height: var(--panel-header-back-icon-full-width);
     margin-bottom: 4px;
 }
 
