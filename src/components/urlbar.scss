@@ -56,6 +56,27 @@
 
 /* Keep the address bar and its buttons stable when expanded. */
 @include NotOption("browser.nova.enabled") {
+  // Newer Firefox keeps the input in the toolbar and grows it with negative
+  // margins while the results popover is open. Keep its normal dimensions.
+  #urlbar {
+    --urlbar-input-growth-open-inline: 0px !important;
+    --urlbar-input-growth-open-block: 0px !important;
+  }
+
+  // Firefox 157 removed the breakout attributes and JS-measured width in
+  // favor of a popover anchored to the container. Retain the legacy rule below
+  // for older Firefox, including 153.
+  #urlbar:popover-open {
+    margin-inline: 0 !important;
+    margin-block-start: var(--urlbar-container-padding-block) !important;
+    width: 100% !important;
+
+    > .urlbar-input-container {
+      height: var(--urlbar-height) !important;
+      padding: var(--urlbar-input-container-padding) !important;
+    }
+  }
+
   .urlbar[breakout][breakout-extend] {
     margin-left: 0 !important;
     margin-block-start: calc(

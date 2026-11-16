@@ -1692,6 +1692,19 @@
 
 /* Keep the address bar and its buttons stable when expanded. */
 @media not -moz-pref("browser.nova.enabled") {
+  #urlbar {
+    --urlbar-input-growth-open-inline: 0px !important;
+    --urlbar-input-growth-open-block: 0px !important;
+  }
+  #urlbar:popover-open {
+    margin-inline: 0 !important;
+    margin-block-start: var(--urlbar-container-padding-block) !important;
+    width: 100% !important;
+  }
+  #urlbar:popover-open > .urlbar-input-container {
+    height: var(--urlbar-height) !important;
+    padding: var(--urlbar-input-container-padding) !important;
+  }
   .urlbar[breakout][breakout-extend] {
     margin-left: 0 !important;
     margin-block-start: calc(var(--urlbar-margin-block-start-breakout) + (var(--urlbar-container-height) - var(--urlbar-height)) / 2) !important;
