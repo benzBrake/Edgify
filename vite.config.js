@@ -1,5 +1,5 @@
 import { defineConfig } from 'vite';
-import { resolve } from 'path';
+import { dirname, resolve } from 'path';
 
 export default defineConfig({
   build: {
@@ -42,10 +42,18 @@ export default defineConfig({
       name: 'post-build-copy',
       // 在构建完成后执行
       closeBundle() {
-        const { copyFileSync, existsSync, readFileSync, writeFileSync } = require('fs');
+        const { copyFileSync, existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } = require('fs');
         
         // 确保 dist 目录存在
         if (!existsSync('dist')) return;
+
+        // 独立图标许可证随构建产物一起分发。
+        for (const file of readdirSync('src/images', { recursive: true })) {
+          if (!/(^|[\\/])LICENSE[^\\/]*\.txt$/i.test(file)) continue;
+          const target = resolve('dist/images', file);
+          mkdirSync(dirname(target), { recursive: true });
+          copyFileSync(resolve('src/images', file), target);
+        }
 
         // 修复 userChrome.css 中的路径
         if (existsSync('dist/userChrome.css')) {

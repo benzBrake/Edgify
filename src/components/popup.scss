@@ -859,10 +859,13 @@ scrollbox[orient=vertical] {
     #context-openlink,
     #context-openlinkintab,
     #context-openlinkincontainertab,
-    #context-openlinkinsplitview,
     #context-openframe,
     #context-openframeintab {
         @include BackgroundIcon(FluentIcon('open-external'));
+    }
+
+    #context-openlinkinsplitview {
+        @include BackgroundIcon(FluentIcon('edge-split-view'));
     }
 
     #context-openlinkinusercontext-menu,
@@ -1062,11 +1065,13 @@ scrollbox[orient=vertical] {
         @include BackgroundIcon(FluentIcon('split-view'));
     }
 
-    #context_reverseSplitView {
+    #context_reverseSplitView,
+    #split-view-menu > menuitem[command="splitViewCmd_reverseTabs"] {
         @include BackgroundIcon(FluentIcon('split-view'));
     }
 
-    #context_separateSplitView {
+    #context_separateSplitView,
+    #split-view-menu > menuitem[command="splitViewCmd_separateTabs"] {
         @include BackgroundIcon(FluentIcon('separate-split-view'));
     }
 
@@ -1089,6 +1094,7 @@ scrollbox[orient=vertical] {
     #context_closeTabsToTheEnd,
     #context_closeOtherTabs,
     #allTabsMenu-closeDuplicateTabs,
+    #split-view-menu > menuitem[command="splitViewCmd_closeTabs"],
     #context_closeTabOptions {
         @include BackgroundIcon(url("../images/menu-icons/close.svg"));
     }
