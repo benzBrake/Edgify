@@ -1,4 +1,30 @@
 /* Optional rules for menu items added by userChromeJS scripts or extensions. */
+#location-bar {
+  --toolbarbutton-border-radius: 50% !important;
+  --button-border-radius: 50% !important;
+}
+
+#location-bar :is(toolbarbutton, button, .toolbarbutton-1) {
+  border-radius: 50% !important;
+}
+
+#location-bar :is(toolbarbutton, button, .toolbarbutton-1) > :is(.toolbarbutton-icon, .toolbarbutton-badge-stack, .button-box) {
+  border-radius: 50% !important;
+}
+
+/* Outrank the general toolbar rule that gives toolbar button icons a 6px radius. */
+#main-window toolbar:not(#TabsToolbar):not(#PersonalToolbar) #location-bar {
+  --toolbarbutton-border-radius: 50% !important;
+}
+
+#main-window toolbar:not(#TabsToolbar):not(#PersonalToolbar) #location-bar toolbarbutton.toolbarbutton-1:not(#urlbar-container, #urlbar-container *) {
+  border-radius: 50% !important;
+}
+
+#main-window toolbar:not(#TabsToolbar):not(#PersonalToolbar) #location-bar toolbarbutton.toolbarbutton-1:not(#urlbar-container, #urlbar-container *) > :is(.toolbarbutton-icon, .toolbarbutton-badge-stack) {
+  border-radius: 50% !important;
+}
+
 #search-by-image-page-action > .urlbar-icon {
   list-style-image: url("images/toolbar-icons/search-by-image.svg") !important;
 }
