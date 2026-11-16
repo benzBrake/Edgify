@@ -1736,7 +1736,7 @@
 }
 @media (not -moz-pref("browser.nova.enabled")) and (-moz-pref("browser.uidensity", 1)) {
   :root {
-    --edgify-urlbar-result-padding: 2px;
+    --edgify-urlbar-result-padding: 3px;
   }
 }
 @media not -moz-pref("browser.nova.enabled") {
