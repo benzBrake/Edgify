@@ -8,7 +8,7 @@
 */
 :root {
     --bookmark-block-padding: 6px !important;
-    --bookmark-inline-padding: 6px !important;
+    --bookmark-inline-padding: var(--bookmark-block-padding) !important;
     --bookmark-block-margin: 2px !important;
     --bookmark-inline-margin: 2px !important;
     --uc-bookmark-toolbar-padding-bottom: 2px;
@@ -17,8 +17,8 @@
 
 @include Compact {
     :root {
-        --bookmark-block-padding: 3px !important;
-        --bookmark-inline-padding: 3px !important;
+        --bookmark-block-padding: 5px !important;
+        --bookmark-inline-padding: var(--bookmark-block-padding) !important;
     }
 }
 
@@ -37,6 +37,8 @@ toolbarbutton.bookmark-item:not(.subviewbutton) {
     padding-block: var(--bookmark-block-padding) !important;
     padding-inline: var(--bookmark-inline-padding) !important;
     font-size: 12px !important;
+    --toolbarbutton-border-radius: 6px !important;
+    border-radius: 6px !important;
 
     /* Adjust vertical label position on Windows */
     @media (-moz-platform: windows) {
