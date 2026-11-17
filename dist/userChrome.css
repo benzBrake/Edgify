@@ -1730,9 +1730,10 @@
   outline: unset !important;
 }
 
-/* Keep the address bar and its buttons stable when expanded. */
+/* Keep the address and search bars stable when expanded. */
 @media not -moz-pref("browser.nova.enabled") {
-  #urlbar {
+  #urlbar,
+  #searchbar-new {
     --urlbar-input-growth-open-inline: 0px !important;
     --urlbar-input-growth-open-block: 0px !important;
   }

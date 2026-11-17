@@ -55,11 +55,12 @@
   outline: unset !important;
 }
 
-/* Keep the address bar and its buttons stable when expanded. */
+/* Keep the address and search bars stable when expanded. */
 @include NotOption("browser.nova.enabled") {
   // Newer Firefox keeps the input in the toolbar and grows it with negative
   // margins while the results popover is open. Keep its normal dimensions.
-  #urlbar {
+  #urlbar,
+  #searchbar-new {
     --urlbar-input-growth-open-inline: 0px !important;
     --urlbar-input-growth-open-block: 0px !important;
   }
