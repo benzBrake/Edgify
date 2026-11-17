@@ -2720,17 +2720,49 @@ scrollbox[orient=vertical] {
     fill: currentColor !important;
   }
   #placesContext_new\:bookmark > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
-  #sidebar-bookmarks-context-add-bookmark > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
-  #sidebar-bookmarks-context-add-folder > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  #sidebar-bookmarks-context-add-bookmark > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon) {
+    display: none !important;
+  }
+  #placesContext_new\:bookmark::before,
+  #sidebar-bookmarks-context-add-bookmark::before {
+    content: "" !important;
+    display: flex !important;
+    width: var(--menuitem-icon-size, 16px) !important;
+    height: var(--menuitem-icon-size, 16px) !important;
+    margin-inline-end: var(--menuitem-icon-gap, 8px) !important;
+    background-image: url("images/menu-icons/star-add.svg") !important;
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+    mask-image: none !important;
+    -moz-context-properties: fill, fill-opacity !important;
+    fill: currentColor !important;
+  }
+  menuitem[id="placesContext_new:folder"] > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  #sidebar-bookmarks-context-add-folder > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon) {
+    display: none !important;
+  }
+  menuitem[id="placesContext_new:folder"]::before,
+  #sidebar-bookmarks-context-add-folder::before {
+    content: "" !important;
+    display: flex !important;
+    width: var(--menuitem-icon-size, 16px) !important;
+    height: var(--menuitem-icon-size, 16px) !important;
+    margin-inline-end: var(--menuitem-icon-gap, 8px) !important;
+    background-image: url("images/menu-icons/folder-add.svg") !important;
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+    mask-image: none !important;
+    -moz-context-properties: fill, fill-opacity !important;
+    fill: currentColor !important;
+  }
   #sidebar-bookmarks-context-add-separator > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   #context-add-engine > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   .customize-context-addToPanel > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   menuitem[data-l10n-id=user-context-add-container2] > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon) {
     display: none !important;
   }
-  #placesContext_new\:bookmark::before,
-  #sidebar-bookmarks-context-add-bookmark::before,
-  #sidebar-bookmarks-context-add-folder::before,
   #sidebar-bookmarks-context-add-separator::before,
   #context-add-engine::before,
   .customize-context-addToPanel::before,
@@ -2748,11 +2780,9 @@ scrollbox[orient=vertical] {
     -moz-context-properties: fill, fill-opacity !important;
     fill: currentColor !important;
   }
-  menuitem[id="placesContext_new:folder"] > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   menuitem[id="placesContext_new:separator"] > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon) {
     display: none !important;
   }
-  menuitem[id="placesContext_new:folder"]::before,
   menuitem[id="placesContext_new:separator"]::before {
     content: "" !important;
     display: flex !important;

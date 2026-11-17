@@ -538,8 +538,15 @@ scrollbox[orient=vertical] {
     }
 
     #placesContext_new\:bookmark,
-    #sidebar-bookmarks-context-add-bookmark,
-    #sidebar-bookmarks-context-add-folder,
+    #sidebar-bookmarks-context-add-bookmark {
+        @include BackgroundIcon(url("../images/menu-icons/star-add.svg"));
+    }
+
+    menuitem[id="placesContext_new:folder"],
+    #sidebar-bookmarks-context-add-folder {
+        @include BackgroundIcon(url("../images/menu-icons/folder-add.svg"));
+    }
+
     #sidebar-bookmarks-context-add-separator,
     #context-add-engine,
     .customize-context-addToPanel,
@@ -547,7 +554,6 @@ scrollbox[orient=vertical] {
         @include BackgroundIcon(FluentIcon('add'));
     }
 
-    menuitem[id="placesContext_new:folder"],
     menuitem[id="placesContext_new:separator"] {
         @include BackgroundIcon(FluentIcon('add'));
     }

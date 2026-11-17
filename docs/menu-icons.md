@@ -26,6 +26,8 @@
 
 ## 字体图标命名对照
 
+“添加书签”和“添加文件夹”分别使用微软 Fluent UI System Icons 的 `Star Add` 和 `Folder Add`（20 Regular），资源为 `star-add.svg`、`folder-add.svg`，适配 Firefox 上下文颜色。原生书签菜单及侧栏菜单在 `popup.scss` 中映射，脚本新增的 `placesContext_add:bookmark` 在 `external-overrides.scss` 中映射。来源保留在 SVG 注释中，完整 MIT 许可见同目录 `LICENSE.fluentui-system-icons.txt`，构建时随图标分发。
+
 下表记录原码点与当前文件名。重命名保留原 SVG 内容及菜单映射；`zoom-in-font.svg` 用于右键缩放，与主菜单缩放行的 `zoom-in.svg` 区分。
 
 | 原码点 | 当前文件名 |

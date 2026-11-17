@@ -3,6 +3,8 @@ Source: https://github.com/microsoft/fluentui-system-icons
 
 Applies to the following icons derived from this project:
 - edge-split-view.svg (Split Vertical; sizing and appearance adapted)
+- star-add.svg (Star Add, 20 Regular; context color adapted)
+- folder-add.svg (Folder Add, 20 Regular; context color adapted)
 
 MIT License
 
