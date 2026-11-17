@@ -720,6 +720,75 @@
     --button-icon-content: url("chrome://userchromejs/content/UserThemes/Edgify/dist/images/toolbar-icons/chevron.svg") !important;
   }
 }
+/* The classic bookmarks sidebar paints rows through XUL tree pseudo-elements.
+ * Keep these rules out of the Library, bookmark menus, and HTML sidebars.
+ */
+@-moz-document url("chrome://browser/content/places/bookmarksSidebar.xhtml") {
+  #bookmarks-view {
+    --uc-sidebar-row-height: 32px;
+    font-size: 13px !important;
+  }
+  @media (-moz-pref("browser.uidensity", 2)) {
+    #bookmarks-view {
+      --uc-sidebar-row-height: 40px;
+    }
+  }
+  #bookmarks-view > treechildren {
+    /* Use Firefox's context-painted outline folder for all folder roots. */
+    /* Keep the favicon column empty for bookmark separators. */
+  }
+  #bookmarks-view > treechildren::-moz-tree-row {
+    min-height: var(--uc-sidebar-row-height) !important;
+    height: var(--uc-sidebar-row-height) !important;
+    margin-inline: 8px !important;
+    border: 2px solid transparent !important;
+    border-radius: 6px !important;
+  }
+  #bookmarks-view > treechildren::-moz-tree-cell {
+    padding-inline: 4px !important;
+  }
+  #bookmarks-view > treechildren::-moz-tree-indentation {
+    width: 24px !important;
+  }
+  #bookmarks-view > treechildren::-moz-tree-twisty {
+    width: 12px !important;
+    padding-inline: 4px !important;
+  }
+  #bookmarks-view > treechildren::-moz-tree-image(title) {
+    width: 20px !important;
+    height: 20px !important;
+    margin-inline: 2px 8px !important;
+    padding: 0 !important;
+  }
+  #bookmarks-view > treechildren::-moz-tree-image(title, container) {
+    list-style-image: url("chrome://global/skin/icons/folder.svg") !important;
+  }
+  #bookmarks-view > treechildren::-moz-tree-image(container, queryFolder_toolbar_____) {
+    list-style-image: url("images/toolbar-icons/bookmark-hollow.svg") !important;
+  }
+  #bookmarks-view > treechildren::-moz-tree-image(title, separator) {
+    width: 0 !important;
+    height: 0 !important;
+    margin: 0 !important;
+  }
+  @media not (forced-colors: active) {
+    #bookmarks-view > treechildren::-moz-tree-row(hover) {
+      background-color: light-dark(rgba(0, 0, 0, 0.06), rgba(255, 255, 255, 0.08)) !important;
+    }
+    #bookmarks-view > treechildren::-moz-tree-row(selected) {
+      background-color: light-dark(rgba(0, 0, 0, 0.12), rgba(255, 255, 255, 0.14)) !important;
+    }
+    #bookmarks-view > treechildren::-moz-tree-row(current, focus) {
+      border-color: var(--focus-outline-color, AccentColor) !important;
+      outline: none !important;
+    }
+    #bookmarks-view > treechildren::-moz-tree-image, #bookmarks-view > treechildren::-moz-tree-twisty, #bookmarks-view > treechildren::-moz-tree-cell-text {
+      color: inherit !important;
+      fill: currentColor !important;
+      fill-opacity: 1 !important;
+    }
+  }
+}
 /********************************************************************************/
 /* 参考:                                                                         */
 /* https://github.com/QNetITQ/WaveFox                                           */
