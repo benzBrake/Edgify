@@ -720,6 +720,16 @@
     --button-icon-content: url("chrome://userchromejs/content/UserThemes/Edgify/dist/images/toolbar-icons/chevron.svg") !important;
   }
 }
+/* These cards also use the shared design-system radii when Nova is disabled.
+ * Set the card token so its header, hover surface, and content corners agree.
+ */
+@-moz-document url("chrome://browser/content/sidebar/sidebar-history.html"),
+               url("chrome://browser/content/sidebar/sidebar-syncedtabs.html") {
+  moz-card {
+    --card-border-radius: 8px !important;
+    --card-border-radius-compact: 8px !important;
+  }
+}
 /* The classic bookmarks sidebar paints rows through XUL tree pseudo-elements.
  * Keep these rules out of the Library, bookmark menus, and HTML sidebars.
  */
