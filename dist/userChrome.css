@@ -16,8 +16,8 @@
   box-shadow: 0 -3px 5px 3px light-dark(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.6)) !important;
 }
 
-/* Keep Nova's content frame opaque while preserving the Windows titlebar colors. */
-@media (-moz-pref("browser.nova.enabled")) and (-moz-windows-mica) and (not (forced-colors)) and (-moz-pref("extensions.activeThemeID", "default-theme@mozilla.org")) {
+/* Keep the content frame opaque with or without Nova, preserving Windows titlebar colors. */
+@media (-moz-windows-mica) and (not (forced-colors)) and (-moz-pref("extensions.activeThemeID", "default-theme@mozilla.org")) {
   :root[customtitlebar]:not([lwtheme], [builtintheme]) {
     --toolbar-background-color: light-dark(#f9f9fb, rgb(43, 42, 51)) !important;
   }

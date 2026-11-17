@@ -20,9 +20,8 @@
     box-shadow: 0 -3px 5px 3px light-dark(rgb(0 0 0 / .3), rgb(0 0 0 / .6)) !important;
 }
 
-/* Keep Nova's content frame opaque while preserving the Windows titlebar colors. */
-@include And(F-Option('browser.nova.enabled'),
-    F-Media('-moz-windows-mica'),
+/* Keep the content frame opaque with or without Nova, preserving Windows titlebar colors. */
+@include And(F-Media('-moz-windows-mica'),
     F-Media('forced-colors', $negate: true),
     F-Option('extensions.activeThemeID', 'default-theme@mozilla.org')) {
     :root[customtitlebar]:not([lwtheme], [builtintheme]) {
