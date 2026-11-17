@@ -2585,10 +2585,14 @@ scrollbox[orient=vertical] {
 }
 
 @media (-moz-platform: windows) {
-  #allTabsMenu-syncedTabs > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon) {
+  #allTabsMenu-syncedTabs > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  #allTabsMenu-viewAllTabs > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  #menu_showAllTabs > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon) {
     display: none !important;
   }
-  #allTabsMenu-syncedTabs::before {
+  #allTabsMenu-syncedTabs::before,
+  #allTabsMenu-viewAllTabs::before,
+  #menu_showAllTabs::before {
     content: "" !important;
     display: flex !important;
     width: var(--menuitem-icon-size, 16px) !important;
@@ -2606,6 +2610,9 @@ scrollbox[orient=vertical] {
   #context_openANewTab > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   #context_openlinkintab > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   #sidebar-history-context-open-in-tab > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  #sidebar-synced-tabs-context-open-in-tab > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  #sidebar-bookmarks-context-open-in-tab > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  #menu_newNavigatorTab > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   #placesContext_open\:newtab > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   #toolbar-context-openANewTab > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon) {
     display: none !important;
@@ -2614,6 +2621,9 @@ scrollbox[orient=vertical] {
   #context_openANewTab::before,
   #context_openlinkintab::before,
   #sidebar-history-context-open-in-tab::before,
+  #sidebar-synced-tabs-context-open-in-tab::before,
+  #sidebar-bookmarks-context-open-in-tab::before,
+  #menu_newNavigatorTab::before,
   #placesContext_open\:newtab::before,
   #toolbar-context-openANewTab::before {
     content: "" !important;
@@ -2629,10 +2639,22 @@ scrollbox[orient=vertical] {
     -moz-context-properties: fill, fill-opacity !important;
     fill: currentColor !important;
   }
-  #placesContext_new\:bookmark > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon) {
+  #placesContext_new\:bookmark > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  #sidebar-bookmarks-context-add-bookmark > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  #sidebar-bookmarks-context-add-folder > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  #sidebar-bookmarks-context-add-separator > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  #context-add-engine > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  .customize-context-addToPanel > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  menuitem[data-l10n-id=user-context-add-container2] > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon) {
     display: none !important;
   }
-  #placesContext_new\:bookmark::before {
+  #placesContext_new\:bookmark::before,
+  #sidebar-bookmarks-context-add-bookmark::before,
+  #sidebar-bookmarks-context-add-folder::before,
+  #sidebar-bookmarks-context-add-separator::before,
+  #context-add-engine::before,
+  .customize-context-addToPanel::before,
+  menuitem[data-l10n-id=user-context-add-container2]::before {
     content: "" !important;
     display: flex !important;
     width: var(--menuitem-icon-size, 16px) !important;
@@ -2667,11 +2689,27 @@ scrollbox[orient=vertical] {
   }
   #appMenu-new-window-button2 > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   #sidebar-history-context-open-in-window > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  #sidebar-synced-tabs-context-open-in-window > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  #sidebar-bookmarks-context-open-in-window > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  #sidebar-opentabs-context-open-in-window > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  #context_openTabInWindow > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  #open-tab-group-context-menu_moveToNewWindow > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  #saved-tab-group-context-menu_openInNewWindow > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  #menu_newNavigator > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  #menu_newClassicWindow > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   #placesContext_open\:newwindow > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon) {
     display: none !important;
   }
   #appMenu-new-window-button2::before,
   #sidebar-history-context-open-in-window::before,
+  #sidebar-synced-tabs-context-open-in-window::before,
+  #sidebar-bookmarks-context-open-in-window::before,
+  #sidebar-opentabs-context-open-in-window::before,
+  #context_openTabInWindow::before,
+  #open-tab-group-context-menu_moveToNewWindow::before,
+  #saved-tab-group-context-menu_openInNewWindow::before,
+  #menu_newNavigator::before,
+  #menu_newClassicWindow::before,
   #placesContext_open\:newwindow::before {
     content: "" !important;
     display: flex !important;
@@ -2692,6 +2730,10 @@ scrollbox[orient=vertical] {
   #openAllPrivate > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   #openAllLinksPrivate > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   #sidebar-history-context-open-in-private-window > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  #sidebar-synced-tabs-context-open-in-private-window > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  #sidebar-bookmarks-context-open-in-private-window > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  #sidebar-opentabs-context-open-in-private-window > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  #menu_newPrivateWindow > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   #placesContext_open\:newprivatewindow > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon) {
     display: none !important;
   }
@@ -2701,6 +2743,10 @@ scrollbox[orient=vertical] {
   #openAllPrivate::before,
   #openAllLinksPrivate::before,
   #sidebar-history-context-open-in-private-window::before,
+  #sidebar-synced-tabs-context-open-in-private-window::before,
+  #sidebar-bookmarks-context-open-in-private-window::before,
+  #sidebar-opentabs-context-open-in-private-window::before,
+  #menu_newPrivateWindow::before,
   #placesContext_open\:newprivatewindow::before {
     content: "" !important;
     display: flex !important;
@@ -2718,6 +2764,9 @@ scrollbox[orient=vertical] {
   menu[id="placesContext_open:newcontainertab"] > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   menu[id="placesContext_openContainer:tabs"] > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   #sidebar-history-context-menu-container-tab > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  #sidebar-synced-tabs-context-menu-container-tab > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  #sidebar-bookmarks-context-open-in-container-tab > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  #menu_newUserContext > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   #allTabsMenu-containerTabsButton > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   .new-tab-popup menuitem[command="Browser:NewUserContextTab"][data-usercontextid="0"] > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   menuitem[data-l10n-id=user-context-new-tab][data-usercontextid="0"] > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon) {
@@ -2726,6 +2775,9 @@ scrollbox[orient=vertical] {
   menu[id="placesContext_open:newcontainertab"]::before,
   menu[id="placesContext_openContainer:tabs"]::before,
   #sidebar-history-context-menu-container-tab::before,
+  #sidebar-synced-tabs-context-menu-container-tab::before,
+  #sidebar-bookmarks-context-open-in-container-tab::before,
+  #menu_newUserContext::before,
   #allTabsMenu-containerTabsButton::before,
   .new-tab-popup menuitem[command="Browser:NewUserContextTab"][data-usercontextid="0"]::before,
   menuitem[data-l10n-id=user-context-new-tab][data-usercontextid="0"]::before {
@@ -2743,10 +2795,20 @@ scrollbox[orient=vertical] {
     fill: currentColor !important;
   }
   menuitem[command="Browser:OpenAboutContainers"] > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  menuitem[data-l10n-id=user-context-manage-containers2] > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  #sidebar-synced-tabs-context-manage-this-device > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  #menu_preferences > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  #menu_manageProfiles > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  #blockedPopupEdit > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   .subviewbutton[data-l10n-id=user-context-manage-containers][command="Browser:OpenAboutContainers"] > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon) {
     display: none !important;
   }
   menuitem[command="Browser:OpenAboutContainers"]::before,
+  menuitem[data-l10n-id=user-context-manage-containers2]::before,
+  #sidebar-synced-tabs-context-manage-this-device::before,
+  #menu_preferences::before,
+  #menu_manageProfiles::before,
+  #blockedPopupEdit::before,
   .subviewbutton[data-l10n-id=user-context-manage-containers][command="Browser:OpenAboutContainers"]::before {
     content: "" !important;
     display: flex !important;
@@ -2761,10 +2823,12 @@ scrollbox[orient=vertical] {
     -moz-context-properties: fill, fill-opacity !important;
     fill: currentColor !important;
   }
-  #sidebar-context-menu-hide-sidebar > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon) {
+  #sidebar-context-menu-hide-sidebar > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  #sidebar-menu-close > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon) {
     display: none !important;
   }
-  #sidebar-context-menu-hide-sidebar::before {
+  #sidebar-context-menu-hide-sidebar::before,
+  #sidebar-menu-close::before {
     content: "" !important;
     display: flex !important;
     width: var(--menuitem-icon-size, 16px) !important;
@@ -2779,10 +2843,14 @@ scrollbox[orient=vertical] {
     fill: currentColor !important;
   }
   #sidebar-context-menu-customize-sidebar > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  #overflowMenu-customize-button > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  #appmenu-moreTools-button > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   #toolbar-context-customize-sidebar > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon) {
     display: none !important;
   }
   #sidebar-context-menu-customize-sidebar::before,
+  #overflowMenu-customize-button::before,
+  #appmenu-moreTools-button::before,
   #toolbar-context-customize-sidebar::before {
     content: "" !important;
     display: flex !important;
@@ -2815,10 +2883,14 @@ scrollbox[orient=vertical] {
     fill: currentColor !important;
   }
   #sidebar-context-menu-enable-vertical-tabs > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  #sidebar-reverse-position > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  #viewSidebarMenuMenu > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   #toolbar-context-toggle-vertical-tabs > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon) {
     display: none !important;
   }
   #sidebar-context-menu-enable-vertical-tabs::before,
+  #sidebar-reverse-position::before,
+  #viewSidebarMenuMenu::before,
   #toolbar-context-toggle-vertical-tabs::before {
     content: "" !important;
     display: flex !important;
@@ -2836,12 +2908,22 @@ scrollbox[orient=vertical] {
   #placesContext_openBookmarkContainer\:tabs > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   menu[id="placesContext_openBookmarkLinks:tabs"] > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   #sidebar-history-context-open-all-in-tabs > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  #sidebar-synced-tabs-context-open-all-in-tabs > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  #sidebar-bookmarks-context-open-all-bookmarks > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  #saved-tab-group-context-menu_openInThisWindow > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  menuitem.downloadUseSystemDefaultMenuItem > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  menuitem.downloadOpenReferrerMenuItem > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   menu[id="placesContext_openLinks:tabs"] > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon) {
     display: none !important;
   }
   #placesContext_openBookmarkContainer\:tabs::before,
   menu[id="placesContext_openBookmarkLinks:tabs"]::before,
   #sidebar-history-context-open-all-in-tabs::before,
+  #sidebar-synced-tabs-context-open-all-in-tabs::before,
+  #sidebar-bookmarks-context-open-all-bookmarks::before,
+  #saved-tab-group-context-menu_openInThisWindow::before,
+  menuitem.downloadUseSystemDefaultMenuItem::before,
+  menuitem.downloadOpenReferrerMenuItem::before,
   menu[id="placesContext_openLinks:tabs"]::before {
     content: "" !important;
     display: flex !important;
@@ -2857,10 +2939,14 @@ scrollbox[orient=vertical] {
     fill: currentColor !important;
   }
   #appMenu-bookmarks-button > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  #bookmarksShowAll > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  #panelMenu_showAllBookmarks > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   #appMenu-library-bookmarks-button > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon) {
     display: none !important;
   }
   #appMenu-bookmarks-button::before,
+  #bookmarksShowAll::before,
+  #panelMenu_showAllBookmarks::before,
   #appMenu-library-bookmarks-button::before {
     content: "" !important;
     display: flex !important;
@@ -2892,10 +2978,12 @@ scrollbox[orient=vertical] {
     -moz-context-properties: fill, fill-opacity !important;
     fill: currentColor !important;
   }
-  #BMB_searchBookmarks > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon) {
+  #BMB_searchBookmarks > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  #panelMenu_searchBookmarks > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon) {
     display: none !important;
   }
-  #BMB_searchBookmarks::before {
+  #BMB_searchBookmarks::before,
+  #panelMenu_searchBookmarks::before {
     content: "" !important;
     display: flex !important;
     width: var(--menuitem-icon-size, 16px) !important;
@@ -2909,10 +2997,12 @@ scrollbox[orient=vertical] {
     -moz-context-properties: fill, fill-opacity !important;
     fill: currentColor !important;
   }
-  #BMB_viewBookmarksToolbar > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon) {
+  #BMB_viewBookmarksToolbar > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  #panelMenu_viewBookmarksToolbar > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon) {
     display: none !important;
   }
-  #BMB_viewBookmarksToolbar::before {
+  #BMB_viewBookmarksToolbar::before,
+  #panelMenu_viewBookmarksToolbar::before {
     content: "" !important;
     display: flex !important;
     width: var(--menuitem-icon-size, 16px) !important;
@@ -2981,10 +3071,12 @@ scrollbox[orient=vertical] {
     -moz-context-properties: fill, fill-opacity !important;
     fill: currentColor !important;
   }
-  menuitem[id="placesContext_sortBy:name"] > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon) {
+  menuitem[id="placesContext_sortBy:name"] > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  #sidebar-bookmarks-context-sort-by-name > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon) {
     display: none !important;
   }
-  menuitem[id="placesContext_sortBy:name"]::before {
+  menuitem[id="placesContext_sortBy:name"]::before,
+  #sidebar-bookmarks-context-sort-by-name::before {
     content: "" !important;
     display: flex !important;
     width: var(--menuitem-icon-size, 16px) !important;
@@ -3017,10 +3109,18 @@ scrollbox[orient=vertical] {
     -moz-context-properties: fill, fill-opacity !important;
     fill: currentColor !important;
   }
-  menuitem[id="placesContext_show_bookmark:info"] > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon) {
+  menuitem[id="placesContext_show_bookmark:info"] > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  #sidebar-bookmarks-context-edit-bookmark > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  #context_addNote > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  #context_editNote > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  #context-pdfjs-comment-selection > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon) {
     display: none !important;
   }
-  menuitem[id="placesContext_show_bookmark:info"]::before {
+  menuitem[id="placesContext_show_bookmark:info"]::before,
+  #sidebar-bookmarks-context-edit-bookmark::before,
+  #context_addNote::before,
+  #context_editNote::before,
+  #context-pdfjs-comment-selection::before {
     content: "" !important;
     display: flex !important;
     width: var(--menuitem-icon-size, 16px) !important;
@@ -3100,10 +3200,14 @@ scrollbox[orient=vertical] {
     fill: currentColor !important;
   }
   .customize-context-moveToPanel > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  .customize-context-moveToToolbar > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  .customize-context-addToToolbar > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   #sidebar-context-menu-unpin-extension > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon) {
     display: none !important;
   }
   .customize-context-moveToPanel::before,
+  .customize-context-moveToToolbar::before,
+  .customize-context-addToToolbar::before,
   #sidebar-context-menu-unpin-extension::before {
     content: "" !important;
     display: flex !important;
@@ -3174,7 +3278,10 @@ scrollbox[orient=vertical] {
     fill: currentColor !important;
   }
   #context-bookmarklink > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  #placesContext_createBookmark > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   #sidebar-history-context-bookmark-page > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  #sidebar-synced-tabs-context-bookmark-tab > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  #panelMenuBookmarkThisPage > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   #context_bookmarkTab > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   #context_bookmarkSelectedTabs > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   #toggle_PersonalToolbar > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
@@ -3183,7 +3290,10 @@ scrollbox[orient=vertical] {
     display: none !important;
   }
   #context-bookmarklink::before,
+  #placesContext_createBookmark::before,
   #sidebar-history-context-bookmark-page::before,
+  #sidebar-synced-tabs-context-bookmark-tab::before,
+  #panelMenuBookmarkThisPage::before,
   #context_bookmarkTab::before,
   #context_bookmarkSelectedTabs::before,
   #toggle_PersonalToolbar::before,
@@ -3238,6 +3348,9 @@ scrollbox[orient=vertical] {
   }
   #appMenu-history-button > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   #appMenu-library-history-button > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  #PanelUI-historyMore > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  #appMenu-restoreSession > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  #historyRestoreLastSession > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   #menu_showAllHistory > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   #historyUndoMenu > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   #historyUndoWindowMenu > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
@@ -3247,6 +3360,9 @@ scrollbox[orient=vertical] {
   }
   #appMenu-history-button::before,
   #appMenu-library-history-button::before,
+  #PanelUI-historyMore::before,
+  #appMenu-restoreSession::before,
+  #historyRestoreLastSession::before,
   #menu_showAllHistory::before,
   #historyUndoMenu::before,
   #historyUndoWindowMenu::before,
@@ -3266,10 +3382,12 @@ scrollbox[orient=vertical] {
     fill: currentColor !important;
   }
   #appMenu-downloads-button > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  #menu_openDownloads > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   #appMenu-library-downloads-button > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon) {
     display: none !important;
   }
   #appMenu-downloads-button::before,
+  #menu_openDownloads::before,
   #appMenu-library-downloads-button::before {
     content: "" !important;
     display: flex !important;
@@ -3310,11 +3428,13 @@ scrollbox[orient=vertical] {
     fill: currentColor !important;
   }
   #appMenu-extensions-themes-button > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  #menu_openAddons > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   #toolbar-context-manage-extension > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   #pageActionContextMenuManageExtension > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon) {
     display: none !important;
   }
   #appMenu-extensions-themes-button::before,
+  #menu_openAddons::before,
   #toolbar-context-manage-extension::before,
   #pageActionContextMenuManageExtension::before {
     content: "" !important;
@@ -3331,11 +3451,15 @@ scrollbox[orient=vertical] {
     fill: currentColor !important;
   }
   #appMenu-print-button2 > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  #menu_print > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  #menu_printSetup > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   #context-print-selection > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   #context-printframe > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon) {
     display: none !important;
   }
   #appMenu-print-button2::before,
+  #menu_print::before,
+  #menu_printSetup::before,
   #context-print-selection::before,
   #context-printframe::before {
     content: "" !important;
@@ -3352,6 +3476,7 @@ scrollbox[orient=vertical] {
     fill: currentColor !important;
   }
   #appMenu-save-file-button2 > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  #menu_savePage > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   #context-savelink > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   #context-savevideo > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   #context-saveaudio > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
@@ -3361,6 +3486,7 @@ scrollbox[orient=vertical] {
     display: none !important;
   }
   #appMenu-save-file-button2::before,
+  #menu_savePage::before,
   #context-savelink::before,
   #context-savevideo::before,
   #context-saveaudio::before,
@@ -3399,10 +3525,14 @@ scrollbox[orient=vertical] {
     -moz-context-properties: fill, fill-opacity !important;
     fill: currentColor !important;
   }
-  #appMenu-find-button2 > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon) {
+  #appMenu-find-button2 > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  #menu_find > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  #menu_findAgain > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon) {
     display: none !important;
   }
-  #appMenu-find-button2::before {
+  #appMenu-find-button2::before,
+  #menu_find::before,
+  #menu_findAgain::before {
     content: "" !important;
     display: flex !important;
     width: var(--menuitem-icon-size, 16px) !important;
@@ -3419,6 +3549,9 @@ scrollbox[orient=vertical] {
   #context-searchselect > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   #context-searchselect-private > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   #allTabsMenu-searchTabs > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  #menu_searchTabs > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  #menu_openLocation > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  #context-visual-search > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   #menu_searchBookmarks > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   #menu_searchHistory > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon) {
     display: none !important;
@@ -3426,6 +3559,9 @@ scrollbox[orient=vertical] {
   #context-searchselect::before,
   #context-searchselect-private::before,
   #allTabsMenu-searchTabs::before,
+  #menu_searchTabs::before,
+  #menu_openLocation::before,
+  #context-visual-search::before,
   #menu_searchBookmarks::before,
   #menu_searchHistory::before {
     content: "" !important;
@@ -3565,10 +3701,14 @@ scrollbox[orient=vertical] {
     fill: currentColor !important;
   }
   #appMenu-translate-button > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  #appmenu-abouttranslations-button > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  #spell-dictionaries > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   #context-translate-selection > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon) {
     display: none !important;
   }
   #appMenu-translate-button::before,
+  #appmenu-abouttranslations-button::before,
+  #spell-dictionaries::before,
   #context-translate-selection::before {
     content: "" !important;
     display: flex !important;
@@ -3583,10 +3723,12 @@ scrollbox[orient=vertical] {
     -moz-context-properties: fill, fill-opacity !important;
     fill: currentColor !important;
   }
-  #context-zoom-out > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon) {
+  #context-zoom-out > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  #menu_zoomReduce > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon) {
     display: none !important;
   }
-  #context-zoom-out::before {
+  #context-zoom-out::before,
+  #menu_zoomReduce::before {
     content: "" !important;
     display: flex !important;
     width: var(--menuitem-icon-size, 16px) !important;
@@ -3600,10 +3742,12 @@ scrollbox[orient=vertical] {
     -moz-context-properties: fill, fill-opacity !important;
     fill: currentColor !important;
   }
-  #context-zoom-in > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon) {
+  #context-zoom-in > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  #menu_zoomEnlarge > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon) {
     display: none !important;
   }
-  #context-zoom-in::before {
+  #context-zoom-in::before,
+  #menu_zoomEnlarge::before {
     content: "" !important;
     display: flex !important;
     width: var(--menuitem-icon-size, 16px) !important;
@@ -3702,12 +3846,14 @@ scrollbox[orient=vertical] {
   #context-video-fullscreen > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   #context-leave-dom-fullscreen > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   #context_fullscreenAutohide > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  #toolbar-context-full-screen-exit > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   #context_fullscreenExit > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon) {
     display: none !important;
   }
   #context-video-fullscreen::before,
   #context-leave-dom-fullscreen::before,
   #context_fullscreenAutohide::before,
+  #toolbar-context-full-screen-exit::before,
   #context_fullscreenExit::before {
     content: "" !important;
     display: flex !important;
@@ -3723,10 +3869,12 @@ scrollbox[orient=vertical] {
     fill: currentColor !important;
   }
   #appMenu-settings-button > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  #menu_customizeToolbars > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   #toolbar-context-customize > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon) {
     display: none !important;
   }
   #appMenu-settings-button::before,
+  #menu_customizeToolbars::before,
   #toolbar-context-customize::before {
     content: "" !important;
     display: flex !important;
@@ -3758,10 +3906,16 @@ scrollbox[orient=vertical] {
     -moz-context-properties: fill, fill-opacity !important;
     fill: currentColor !important;
   }
-  #appMenu-help-button2 > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon) {
+  #appMenu-help-button2 > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  #menu_openHelp > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  #aboutName > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  #context-media-eme-learnmore > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon) {
     display: none !important;
   }
-  #appMenu-help-button2::before {
+  #appMenu-help-button2::before,
+  #menu_openHelp::before,
+  #aboutName::before,
+  #context-media-eme-learnmore::before {
     content: "" !important;
     display: flex !important;
     width: var(--menuitem-icon-size, 16px) !important;
@@ -3775,10 +3929,16 @@ scrollbox[orient=vertical] {
     -moz-context-properties: fill, fill-opacity !important;
     fill: currentColor !important;
   }
-  #appMenu-report-broken-site-button > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon) {
+  #appMenu-report-broken-site-button > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  #help_reportBrokenSite > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  #menu_HelpPopup_reportPhishingtoolmenu > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  #menu_HelpPopup_reportPhishingErrortoolmenu > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon) {
     display: none !important;
   }
-  #appMenu-report-broken-site-button::before {
+  #appMenu-report-broken-site-button::before,
+  #help_reportBrokenSite::before,
+  #menu_HelpPopup_reportPhishingtoolmenu::before,
+  #menu_HelpPopup_reportPhishingErrortoolmenu::before {
     content: "" !important;
     display: flex !important;
     width: var(--menuitem-icon-size, 16px) !important;
@@ -3860,10 +4020,12 @@ scrollbox[orient=vertical] {
   #contentAreaContextMenu #context-navigation > menuitem::before {
     margin-inline-end: 0 !important;
   }
-  #appMenu-quit-button2 > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon) {
+  #appMenu-quit-button2 > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  #menu_FileQuitItem > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon) {
     display: none !important;
   }
-  #appMenu-quit-button2::before {
+  #appMenu-quit-button2::before,
+  #menu_FileQuitItem::before {
     content: "" !important;
     display: flex !important;
     width: var(--menuitem-icon-size, 16px) !important;
@@ -3878,6 +4040,7 @@ scrollbox[orient=vertical] {
     fill: currentColor !important;
   }
   #context-openlinkincurrent > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  #placesContext_open > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   #context-openlink > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   #context-openlinkintab > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   #context-openlinkincontainertab > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
@@ -3886,6 +4049,7 @@ scrollbox[orient=vertical] {
     display: none !important;
   }
   #context-openlinkincurrent::before,
+  #placesContext_open::before,
   #context-openlink::before,
   #context-openlinkintab::before,
   #context-openlinkincontainertab::before,
@@ -3964,6 +4128,8 @@ scrollbox[orient=vertical] {
   #context-viewframesource > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   #context-viewframeinfo > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   #context-viewsource > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  #menu_pageInfo > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  #context-viewsource-goToLine > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   #context-showonlythisframe > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon) {
     display: none !important;
   }
@@ -3974,6 +4140,8 @@ scrollbox[orient=vertical] {
   #context-viewframesource::before,
   #context-viewframeinfo::before,
   #context-viewsource::before,
+  #menu_pageInfo::before,
+  #context-viewsource-goToLine::before,
   #context-showonlythisframe::before {
     content: "" !important;
     display: flex !important;
@@ -3988,10 +4156,12 @@ scrollbox[orient=vertical] {
     -moz-context-properties: fill, fill-opacity !important;
     fill: currentColor !important;
   }
-  #context-viewpartialsource-selection > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon) {
+  #context-viewpartialsource-selection > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  #menu_pageSource > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon) {
     display: none !important;
   }
-  #context-viewpartialsource-selection::before {
+  #context-viewpartialsource-selection::before,
+  #menu_pageSource::before {
     content: "" !important;
     display: flex !important;
     width: var(--menuitem-icon-size, 16px) !important;
@@ -4041,10 +4211,29 @@ scrollbox[orient=vertical] {
     -moz-context-properties: fill, fill-opacity !important;
     fill: currentColor !important;
   }
-  #context-video-pictureinpicture:not([checked=true]) > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon) {
+  #context-video-pictureinpicture:not([checked=true]) > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  #context-use-mini-window > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon) {
     display: none !important;
   }
-  #context-video-pictureinpicture:not([checked=true])::before {
+  #context-video-pictureinpicture:not([checked=true])::before,
+  #context-use-mini-window::before {
+    content: "" !important;
+    display: flex !important;
+    width: var(--menuitem-icon-size, 16px) !important;
+    height: var(--menuitem-icon-size, 16px) !important;
+    margin-inline-end: var(--menuitem-icon-gap, 8px) !important;
+    background-image: url("images/menu-icons/media-pip.svg") !important;
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+    mask-image: none !important;
+    -moz-context-properties: fill, fill-opacity !important;
+    fill: currentColor !important;
+  }
+  #context_openTabInMiniWindow > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon) {
+    display: none !important;
+  }
+  #context_openTabInMiniWindow::before {
     content: "" !important;
     display: flex !important;
     width: var(--menuitem-icon-size, 16px) !important;
@@ -4111,16 +4300,168 @@ scrollbox[orient=vertical] {
     -moz-context-properties: fill, fill-opacity !important;
     fill: currentColor !important;
   }
-  #spell-add-to-dictionary > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon) {
+  #spell-add-to-dictionary > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  #spell-add-dictionaries-main > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  #spell-add-dictionaries > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon) {
     display: none !important;
   }
-  #spell-add-to-dictionary::before {
+  #spell-add-to-dictionary::before,
+  #spell-add-dictionaries-main::before,
+  #spell-add-dictionaries::before {
     content: "" !important;
     display: flex !important;
     width: var(--menuitem-icon-size, 16px) !important;
     height: var(--menuitem-icon-size, 16px) !important;
     margin-inline-end: var(--menuitem-icon-gap, 8px) !important;
     background-image: url("images/menu-icons/add-to-dictionary.svg") !important;
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+    mask-image: none !important;
+    -moz-context-properties: fill, fill-opacity !important;
+    fill: currentColor !important;
+  }
+  #placesContext_showInFolder > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  #sidebar-bookmarks-context-show-in-folder > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  #menu_openFile > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  menuitem.downloadShowMenuItem > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon) {
+    display: none !important;
+  }
+  #placesContext_showInFolder::before,
+  #sidebar-bookmarks-context-show-in-folder::before,
+  #menu_openFile::before,
+  menuitem.downloadShowMenuItem::before {
+    content: "" !important;
+    display: flex !important;
+    width: var(--menuitem-icon-size, 16px) !important;
+    height: var(--menuitem-icon-size, 16px) !important;
+    margin-inline-end: var(--menuitem-icon-gap, 8px) !important;
+    background-image: url("images/toolbar-icons/open.svg") !important;
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+    mask-image: none !important;
+    -moz-context-properties: fill, fill-opacity !important;
+    fill: currentColor !important;
+  }
+  #context_moveToStart > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon) {
+    display: none !important;
+  }
+  #context_moveToStart::before {
+    content: "" !important;
+    display: flex !important;
+    width: var(--menuitem-icon-size, 16px) !important;
+    height: var(--menuitem-icon-size, 16px) !important;
+    margin-inline-end: var(--menuitem-icon-gap, 8px) !important;
+    background-image: url("images/menu-icons/back.svg") !important;
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+    mask-image: none !important;
+    -moz-context-properties: fill, fill-opacity !important;
+    fill: currentColor !important;
+  }
+  #context_moveToEnd > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon) {
+    display: none !important;
+  }
+  #context_moveToEnd::before {
+    content: "" !important;
+    display: flex !important;
+    width: var(--menuitem-icon-size, 16px) !important;
+    height: var(--menuitem-icon-size, 16px) !important;
+    margin-inline-end: var(--menuitem-icon-gap, 8px) !important;
+    background-image: url("images/menu-icons/forward.svg") !important;
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+    mask-image: none !important;
+    -moz-context-properties: fill, fill-opacity !important;
+    fill: currentColor !important;
+  }
+  #context-bidi-text-direction-toggle > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  #context-bidi-page-direction-toggle > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  #textfieldDirection-swap > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  #documentDirection-swap > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon) {
+    display: none !important;
+  }
+  #context-bidi-text-direction-toggle::before,
+  #context-bidi-page-direction-toggle::before,
+  #textfieldDirection-swap::before,
+  #documentDirection-swap::before {
+    content: "" !important;
+    display: flex !important;
+    width: var(--menuitem-icon-size, 16px) !important;
+    height: var(--menuitem-icon-size, 16px) !important;
+    margin-inline-end: var(--menuitem-icon-gap, 8px) !important;
+    background-image: url("images/menu-icons/move-tab.svg") !important;
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+    mask-image: none !important;
+    -moz-context-properties: fill, fill-opacity !important;
+    fill: currentColor !important;
+  }
+  menuitem.downloadUnblockMenuItem > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon) {
+    display: none !important;
+  }
+  menuitem.downloadUnblockMenuItem::before {
+    content: "" !important;
+    display: flex !important;
+    width: var(--menuitem-icon-size, 16px) !important;
+    height: var(--menuitem-icon-size, 16px) !important;
+    margin-inline-end: var(--menuitem-icon-gap, 8px) !important;
+    background-image: url("images/menu-icons/permissions.svg") !important;
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+    mask-image: none !important;
+    -moz-context-properties: fill, fill-opacity !important;
+    fill: currentColor !important;
+  }
+  #menu_sendLink > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon) {
+    display: none !important;
+  }
+  #menu_sendLink::before {
+    content: "" !important;
+    display: flex !important;
+    width: var(--menuitem-icon-size, 16px) !important;
+    height: var(--menuitem-icon-size, 16px) !important;
+    margin-inline-end: var(--menuitem-icon-gap, 8px) !important;
+    background-image: url("images/toolbar-icons/mail.svg") !important;
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+    mask-image: none !important;
+    -moz-context-properties: fill, fill-opacity !important;
+    fill: currentColor !important;
+  }
+  #repair-text-encoding > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon) {
+    display: none !important;
+  }
+  #repair-text-encoding::before {
+    content: "" !important;
+    display: flex !important;
+    width: var(--menuitem-icon-size, 16px) !important;
+    height: var(--menuitem-icon-size, 16px) !important;
+    margin-inline-end: var(--menuitem-icon-gap, 8px) !important;
+    background-image: url("images/toolbar-icons/text-encoding.svg") !important;
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+    mask-image: none !important;
+    -moz-context-properties: fill, fill-opacity !important;
+    fill: currentColor !important;
+  }
+  #menu_openFirefoxView > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon) {
+    display: none !important;
+  }
+  #menu_openFirefoxView::before {
+    content: "" !important;
+    display: flex !important;
+    width: var(--menuitem-icon-size, 16px) !important;
+    height: var(--menuitem-icon-size, 16px) !important;
+    margin-inline-end: var(--menuitem-icon-gap, 8px) !important;
+    background-image: url("images/toolbar-icons/firefox-view.svg") !important;
     background-size: contain !important;
     background-repeat: no-repeat !important;
     background-position: center !important;
@@ -4194,12 +4535,20 @@ scrollbox[orient=vertical] {
   #context-copyemail > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   #context-copyphone > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   #context-copyimage > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  #context-imagetext > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  #context-pdfjs-copy-page > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  #sidebar-opentabs-context-copy-link > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  #sidebar-bookmarks-context-copy > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  #sidebar-bookmarks-context-copy-link > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  #menu_copy > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  menuitem.downloadCopyLocationMenuItem > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   #context-copyvideourl > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   #context-copyaudiourl > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   #context-pdfjs-copy > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   #placesContext_copy > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   #placesContext_copyTitle > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   #sidebar-history-context-copy-link > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  #sidebar-synced-tabs-context-copy-link > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   #placesContext_copyLink > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon) {
     display: none !important;
   }
@@ -4210,12 +4559,20 @@ scrollbox[orient=vertical] {
   #context-copyemail::before,
   #context-copyphone::before,
   #context-copyimage::before,
+  #context-imagetext::before,
+  #context-pdfjs-copy-page::before,
+  #sidebar-opentabs-context-copy-link::before,
+  #sidebar-bookmarks-context-copy::before,
+  #sidebar-bookmarks-context-copy-link::before,
+  #menu_copy::before,
+  menuitem.downloadCopyLocationMenuItem::before,
   #context-copyvideourl::before,
   #context-copyaudiourl::before,
   #context-pdfjs-copy::before,
   #placesContext_copy::before,
   #placesContext_copyTitle::before,
   #sidebar-history-context-copy-link::before,
+  #sidebar-synced-tabs-context-copy-link::before,
   #placesContext_copyLink::before {
     content: "" !important;
     display: flex !important;
@@ -4257,11 +4614,15 @@ scrollbox[orient=vertical] {
   }
   .textbox-contextmenu > menuitem[data-l10n-id=text-action-undo] > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   #context-undo > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  #context-pdfjs-undo > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  #spell-undo-add-to-dictionary > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   #menu_undo > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon) {
     display: none !important;
   }
   .textbox-contextmenu > menuitem[data-l10n-id=text-action-undo]::before,
   #context-undo::before,
+  #context-pdfjs-undo::before,
+  #spell-undo-add-to-dictionary::before,
   #menu_undo::before {
     content: "" !important;
     display: flex !important;
@@ -4278,11 +4639,13 @@ scrollbox[orient=vertical] {
   }
   .textbox-contextmenu > menuitem[data-l10n-id=text-action-redo] > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   #context-redo > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  #context-pdfjs-redo > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   #menu_redo > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon) {
     display: none !important;
   }
   .textbox-contextmenu > menuitem[data-l10n-id=text-action-redo]::before,
   #context-redo::before,
+  #context-pdfjs-redo::before,
   #menu_redo::before {
     content: "" !important;
     display: flex !important;
@@ -4300,12 +4663,18 @@ scrollbox[orient=vertical] {
   .textbox-contextmenu > menuitem[data-l10n-id=text-action-cut] > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   #context-cut > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   #context-pdfjs-cut > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  #context-pdfjs-cut-page > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  #sidebar-bookmarks-context-cut > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  #menu_cut > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   #placesContext_cut > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon) {
     display: none !important;
   }
   .textbox-contextmenu > menuitem[data-l10n-id=text-action-cut]::before,
   #context-cut::before,
   #context-pdfjs-cut::before,
+  #context-pdfjs-cut-page::before,
+  #sidebar-bookmarks-context-cut::before,
+  #menu_cut::before,
   #placesContext_cut::before {
     content: "" !important;
     display: flex !important;
@@ -4324,6 +4693,8 @@ scrollbox[orient=vertical] {
   #context-paste > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   #context-paste-no-formatting > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   #context-pdfjs-paste > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  #sidebar-bookmarks-context-paste > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  #menu_paste > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   #placesContext_paste > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   #placesContext_paste_group > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon) {
     display: none !important;
@@ -4332,6 +4703,8 @@ scrollbox[orient=vertical] {
   #context-paste::before,
   #context-paste-no-formatting::before,
   #context-pdfjs-paste::before,
+  #sidebar-bookmarks-context-paste::before,
+  #menu_paste::before,
   #placesContext_paste::before,
   #placesContext_paste_group::before {
     content: "" !important;
@@ -4368,8 +4741,22 @@ scrollbox[orient=vertical] {
   }
   .textbox-contextmenu > menuitem[data-l10n-id=text-action-delete] > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   .textbox-contextmenu > menuitem[anonid=ucjs_clearfield_menu] > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  menuitem[anonid=clear-search-history] > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   #context-delete > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   #context-pdfjs-delete > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  #context-pdfjs-delete-page > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  #placesContext_removeTag > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  #sidebar-bookmarks-context-delete-bookmark > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  #open-tab-group-context-menu_delete > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  #saved-tab-group-context-menu_delete > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  #menu_delete > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  #sanitizeItem > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  #appMenuClearRecentHistory > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  .customize-context-removeFromPanel > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  menuitem.downloadDeleteFileMenuItem > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  menuitem.downloadRemoveFromHistoryMenuItem > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  menuitem[command=downloadsCmd_clearList] > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  menuitem[command=downloadsCmd_clearDownloads] > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   #placesContext_delete > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   #placesContext_deleteBookmark > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   #placesContext_deleteFolder > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
@@ -4385,8 +4772,22 @@ scrollbox[orient=vertical] {
   }
   .textbox-contextmenu > menuitem[data-l10n-id=text-action-delete]::before,
   .textbox-contextmenu > menuitem[anonid=ucjs_clearfield_menu]::before,
+  menuitem[anonid=clear-search-history]::before,
   #context-delete::before,
   #context-pdfjs-delete::before,
+  #context-pdfjs-delete-page::before,
+  #placesContext_removeTag::before,
+  #sidebar-bookmarks-context-delete-bookmark::before,
+  #open-tab-group-context-menu_delete::before,
+  #saved-tab-group-context-menu_delete::before,
+  #menu_delete::before,
+  #sanitizeItem::before,
+  #appMenuClearRecentHistory::before,
+  .customize-context-removeFromPanel::before,
+  menuitem.downloadDeleteFileMenuItem::before,
+  menuitem.downloadRemoveFromHistoryMenuItem::before,
+  menuitem[command=downloadsCmd_clearList]::before,
+  menuitem[command=downloadsCmd_clearDownloads]::before,
   #placesContext_delete::before,
   #placesContext_deleteBookmark::before,
   #placesContext_deleteFolder::before,
@@ -4414,6 +4815,7 @@ scrollbox[orient=vertical] {
   .textbox-contextmenu > menuitem[data-l10n-id=text-action-select-all] > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   #context-selectall > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   #context-pdfjs-select-all > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  #menu_selectAll > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   #context_selectAllTabs > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   #toolbar-context-selectAllTabs > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon) {
     display: none !important;
@@ -4421,6 +4823,7 @@ scrollbox[orient=vertical] {
   .textbox-contextmenu > menuitem[data-l10n-id=text-action-select-all]::before,
   #context-selectall::before,
   #context-pdfjs-select-all::before,
+  #menu_selectAll::before,
   #context_selectAllTabs::before,
   #toolbar-context-selectAllTabs::before {
     content: "" !important;
@@ -4437,11 +4840,13 @@ scrollbox[orient=vertical] {
     fill: currentColor !important;
   }
   #context-media-play > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  menuitem.downloadResumeMenuItem > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   #context_playTab > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   #context_playSelectedTabs > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon) {
     display: none !important;
   }
   #context-media-play::before,
+  menuitem.downloadResumeMenuItem::before,
   #context_playTab::before,
   #context_playSelectedTabs::before {
     content: "" !important;
@@ -4457,10 +4862,12 @@ scrollbox[orient=vertical] {
     -moz-context-properties: fill, fill-opacity !important;
     fill: currentColor !important;
   }
-  #context-media-pause > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon) {
+  #context-media-pause > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  menuitem.downloadPauseMenuItem > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon) {
     display: none !important;
   }
-  #context-media-pause::before {
+  #context-media-pause::before,
+  menuitem.downloadPauseMenuItem::before {
     content: "" !important;
     display: flex !important;
     width: var(--menuitem-icon-size, 16px) !important;
@@ -4497,6 +4904,8 @@ scrollbox[orient=vertical] {
   #context-sendvideo > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   #context-sendaudio > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   #context_shareSelectedTabs > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  #open-tab-group-context-menu_share > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  #contentsharing_sharefolder > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   #context_sendTabToDevice > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon) {
     display: none !important;
   }
@@ -4506,6 +4915,8 @@ scrollbox[orient=vertical] {
   #context-sendvideo::before,
   #context-sendaudio::before,
   #context_shareSelectedTabs::before,
+  #open-tab-group-context-menu_share::before,
+  #contentsharing_sharefolder::before,
   #context_sendTabToDevice::before {
     content: "" !important;
     display: flex !important;
@@ -4513,6 +4924,25 @@ scrollbox[orient=vertical] {
     height: var(--menuitem-icon-size, 16px) !important;
     margin-inline-end: var(--menuitem-icon-gap, 8px) !important;
     background-image: url("images/menu-icons/share.svg") !important;
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+    mask-image: none !important;
+    -moz-context-properties: fill, fill-opacity !important;
+    fill: currentColor !important;
+  }
+  #sidebar-synced-tabs-context-connect-another-device > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  #sidebar-opentabs-connect-another-device > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon) {
+    display: none !important;
+  }
+  #sidebar-synced-tabs-context-connect-another-device::before,
+  #sidebar-opentabs-connect-another-device::before {
+    content: "" !important;
+    display: flex !important;
+    width: var(--menuitem-icon-size, 16px) !important;
+    height: var(--menuitem-icon-size, 16px) !important;
+    margin-inline-end: var(--menuitem-icon-gap, 8px) !important;
+    background-image: url("images/menu-icons/add.svg") !important;
     background-size: contain !important;
     background-repeat: no-repeat !important;
     background-position: center !important;
@@ -4623,10 +5053,12 @@ scrollbox[orient=vertical] {
     -moz-context-properties: fill, fill-opacity !important;
     fill: currentColor !important;
   }
-  #context_ungroupTab > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon) {
+  #context_ungroupTab > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  #context_ungroupSplitView > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon) {
     display: none !important;
   }
-  #context_ungroupTab::before {
+  #context_ungroupTab::before,
+  #context_ungroupSplitView::before {
     content: "" !important;
     display: flex !important;
     width: var(--menuitem-icon-size, 16px) !important;
@@ -4640,10 +5072,14 @@ scrollbox[orient=vertical] {
     -moz-context-properties: fill, fill-opacity !important;
     fill: currentColor !important;
   }
-  #context_moveTabOptions > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon) {
+  #context_moveTabOptions > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  #open-tab-group-context-menu_moveToThisWindow > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  #context_MovePictureInPictureToggle > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon) {
     display: none !important;
   }
-  #context_moveTabOptions::before {
+  #context_moveTabOptions::before,
+  #open-tab-group-context-menu_moveToThisWindow::before,
+  #context_MovePictureInPictureToggle::before {
     content: "" !important;
     display: flex !important;
     width: var(--menuitem-icon-size, 16px) !important;
@@ -4677,6 +5113,11 @@ scrollbox[orient=vertical] {
     fill: currentColor !important;
   }
   #context_closeTab > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  #sidebar-opentabs-context-close-tab > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  #menu_close > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  #menu_closeWindow > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  #context_HidePictureInPictureToggle > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  #sidebar-synced-tabs-context-menu #sidebar-context-menu-close-remote-tab > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   #context_closeDuplicateTabs > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   #context_closeTabsToTheStart > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   #context_closeTabsToTheEnd > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
@@ -4687,6 +5128,11 @@ scrollbox[orient=vertical] {
     display: none !important;
   }
   #context_closeTab::before,
+  #sidebar-opentabs-context-close-tab::before,
+  #menu_close::before,
+  #menu_closeWindow::before,
+  #context_HidePictureInPictureToggle::before,
+  #sidebar-synced-tabs-context-menu #sidebar-context-menu-close-remote-tab::before,
   #context_closeDuplicateTabs::before,
   #context_closeTabsToTheStart::before,
   #context_closeTabsToTheEnd::before,

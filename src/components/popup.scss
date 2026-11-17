@@ -519,7 +519,9 @@ scrollbox[orient=vertical] {
 }
 
 @media (-moz-platform: windows) {
-    #allTabsMenu-syncedTabs {
+    #allTabsMenu-syncedTabs,
+    #allTabsMenu-viewAllTabs,
+    #menu_showAllTabs {
         @include BackgroundIcon(url("../images/toolbar-icons/tab.svg"));
     }
 
@@ -527,12 +529,21 @@ scrollbox[orient=vertical] {
     #context_openANewTab,
     #context_openlinkintab,
     #sidebar-history-context-open-in-tab,
+    #sidebar-synced-tabs-context-open-in-tab,
+    #sidebar-bookmarks-context-open-in-tab,
+    #menu_newNavigatorTab,
     #placesContext_open\:newtab,
     #toolbar-context-openANewTab {
         @include BackgroundIcon(url("../images/menu-icons/new-tab.svg"));
     }
 
-    #placesContext_new\:bookmark {
+    #placesContext_new\:bookmark,
+    #sidebar-bookmarks-context-add-bookmark,
+    #sidebar-bookmarks-context-add-folder,
+    #sidebar-bookmarks-context-add-separator,
+    #context-add-engine,
+    .customize-context-addToPanel,
+    menuitem[data-l10n-id="user-context-add-container2"] {
         @include BackgroundIcon(FluentIcon('add'));
     }
 
@@ -543,6 +554,14 @@ scrollbox[orient=vertical] {
 
     #appMenu-new-window-button2,
     #sidebar-history-context-open-in-window,
+    #sidebar-synced-tabs-context-open-in-window,
+    #sidebar-bookmarks-context-open-in-window,
+    #sidebar-opentabs-context-open-in-window,
+    #context_openTabInWindow,
+    #open-tab-group-context-menu_moveToNewWindow,
+    #saved-tab-group-context-menu_openInNewWindow,
+    #menu_newNavigator,
+    #menu_newClassicWindow,
     #placesContext_open\:newwindow {
         @include BackgroundIcon(url("../images/menu-icons/new-window.svg"));
     }
@@ -553,6 +572,10 @@ scrollbox[orient=vertical] {
     #openAllPrivate,
     #openAllLinksPrivate,
     #sidebar-history-context-open-in-private-window,
+    #sidebar-synced-tabs-context-open-in-private-window,
+    #sidebar-bookmarks-context-open-in-private-window,
+    #sidebar-opentabs-context-open-in-private-window,
+    #menu_newPrivateWindow,
     #placesContext_open\:newprivatewindow {
         @include BackgroundIcon(url("../images/menu-icons/new-private-window.svg"));
     }
@@ -560,6 +583,9 @@ scrollbox[orient=vertical] {
     menu[id="placesContext_open:newcontainertab"],
     menu[id="placesContext_openContainer:tabs"],
     #sidebar-history-context-menu-container-tab,
+    #sidebar-synced-tabs-context-menu-container-tab,
+    #sidebar-bookmarks-context-open-in-container-tab,
+    #menu_newUserContext,
     #allTabsMenu-containerTabsButton,
     .new-tab-popup menuitem[command="Browser:NewUserContextTab"][data-usercontextid="0"],
     menuitem[data-l10n-id="user-context-new-tab"][data-usercontextid="0"] {
@@ -567,15 +593,23 @@ scrollbox[orient=vertical] {
     }
 
     menuitem[command="Browser:OpenAboutContainers"],
+    menuitem[data-l10n-id="user-context-manage-containers2"],
+    #sidebar-synced-tabs-context-manage-this-device,
+    #menu_preferences,
+    #menu_manageProfiles,
+    #blockedPopupEdit,
     .subviewbutton[data-l10n-id="user-context-manage-containers"][command="Browser:OpenAboutContainers"] {
         @include BackgroundIcon(FluentIcon('settings'));
     }
 
-    #sidebar-context-menu-hide-sidebar {
+    #sidebar-context-menu-hide-sidebar,
+    #sidebar-menu-close {
         @include BackgroundIcon(FluentIcon('close'));
     }
 
     #sidebar-context-menu-customize-sidebar,
+    #overflowMenu-customize-button,
+    #appmenu-moreTools-button,
     #toolbar-context-customize-sidebar {
         @include BackgroundIcon(FluentIcon('customize'));
     }
@@ -585,6 +619,8 @@ scrollbox[orient=vertical] {
     }
 
     #sidebar-context-menu-enable-vertical-tabs,
+    #sidebar-reverse-position,
+    #viewSidebarMenuMenu,
     #toolbar-context-toggle-vertical-tabs {
         @include BackgroundIcon(url("../images/toolbar-icons/sidebars.svg"));
     }
@@ -592,11 +628,18 @@ scrollbox[orient=vertical] {
     #placesContext_openBookmarkContainer\:tabs,
     menu[id="placesContext_openBookmarkLinks:tabs"],
     #sidebar-history-context-open-all-in-tabs,
+    #sidebar-synced-tabs-context-open-all-in-tabs,
+    #sidebar-bookmarks-context-open-all-bookmarks,
+    #saved-tab-group-context-menu_openInThisWindow,
+    menuitem.downloadUseSystemDefaultMenuItem,
+    menuitem.downloadOpenReferrerMenuItem,
     menu[id="placesContext_openLinks:tabs"] {
         @include BackgroundIcon(FluentIcon('open-external'));
     }
 
     #appMenu-bookmarks-button,
+    #bookmarksShowAll,
+    #panelMenu_showAllBookmarks,
     #appMenu-library-bookmarks-button {
         @include BackgroundIcon(FluentIcon('favorites-list'));
     }
@@ -605,11 +648,13 @@ scrollbox[orient=vertical] {
         @include BackgroundIcon(url("../images/toolbar-icons/sidebars.svg"));
     }
 
-    #BMB_searchBookmarks {
+    #BMB_searchBookmarks,
+    #panelMenu_searchBookmarks {
         @include BackgroundIcon(FluentIcon('search'));
     }
 
-    #BMB_viewBookmarksToolbar {
+    #BMB_viewBookmarksToolbar,
+    #panelMenu_viewBookmarksToolbar {
         @include BackgroundIcon(url("../images/toolbar-icons/bookmark-star-on-tray.svg"));
     }
 
@@ -627,7 +672,8 @@ scrollbox[orient=vertical] {
         @include BackgroundIcon(FluentIcon('favorites-list'));
     }
 
-    menuitem[id="placesContext_sortBy:name"] {
+    menuitem[id="placesContext_sortBy:name"],
+    #sidebar-bookmarks-context-sort-by-name {
         @include BackgroundIcon(FluentIcon('sort'));
     }
 
@@ -636,7 +682,11 @@ scrollbox[orient=vertical] {
         @include BackgroundIcon(FluentIcon('repair'));
     }
 
-    menuitem[id="placesContext_show_bookmark:info"] {
+    menuitem[id="placesContext_show_bookmark:info"],
+    #sidebar-bookmarks-context-edit-bookmark,
+    #context_addNote,
+    #context_editNote,
+    #context-pdfjs-comment-selection {
         @include BackgroundIcon(FluentIcon('edit'));
     }
 
@@ -660,6 +710,8 @@ scrollbox[orient=vertical] {
     }
 
     .customize-context-moveToPanel,
+    .customize-context-moveToToolbar,
+    .customize-context-addToToolbar,
     #sidebar-context-menu-unpin-extension {
         @include BackgroundIcon(url("../images/menu-icons/pin.svg"));
     }
@@ -679,7 +731,10 @@ scrollbox[orient=vertical] {
     }
 
     #context-bookmarklink,
+    #placesContext_createBookmark,
     #sidebar-history-context-bookmark-page,
+    #sidebar-synced-tabs-context-bookmark-tab,
+    #panelMenuBookmarkThisPage,
     #context_bookmarkTab,
     #context_bookmarkSelectedTabs,
     #toggle_PersonalToolbar,
@@ -698,6 +753,9 @@ scrollbox[orient=vertical] {
 
     #appMenu-history-button,
     #appMenu-library-history-button,
+    #PanelUI-historyMore,
+    #appMenu-restoreSession,
+    #historyRestoreLastSession,
     #menu_showAllHistory,
     #historyUndoMenu,
     #historyUndoWindowMenu,
@@ -707,6 +765,7 @@ scrollbox[orient=vertical] {
     }
 
     #appMenu-downloads-button,
+    #menu_openDownloads,
     #appMenu-library-downloads-button {
         @include BackgroundIcon(FluentIcon('download'));
     }
@@ -720,18 +779,22 @@ scrollbox[orient=vertical] {
     }
 
     #appMenu-extensions-themes-button,
+    #menu_openAddons,
     #toolbar-context-manage-extension,
     #pageActionContextMenuManageExtension {
         @include BackgroundIcon(FluentIcon('extensions'));
     }
 
     #appMenu-print-button2,
+    #menu_print,
+    #menu_printSetup,
     #context-print-selection,
     #context-printframe {
         @include BackgroundIcon(FluentIcon('print'));
     }
 
     #appMenu-save-file-button2,
+    #menu_savePage,
     #context-savelink,
     #context-savevideo,
     #context-saveaudio,
@@ -746,13 +809,18 @@ scrollbox[orient=vertical] {
         @include BackgroundIcon(url("../images/menu-icons/image-save.svg"));
     }
 
-    #appMenu-find-button2 {
+    #appMenu-find-button2,
+    #menu_find,
+    #menu_findAgain {
         @include BackgroundIcon(url("../images/menu-icons/search-page.svg"));
     }
 
     #context-searchselect,
     #context-searchselect-private,
     #allTabsMenu-searchTabs,
+    #menu_searchTabs,
+    #menu_openLocation,
+    #context-visual-search,
     #menu_searchBookmarks,
     #menu_searchHistory {
         @include BackgroundIcon(FluentIcon('search'));
@@ -789,15 +857,19 @@ scrollbox[orient=vertical] {
     }
 
     #appMenu-translate-button,
+    #appmenu-abouttranslations-button,
+    #spell-dictionaries,
     #context-translate-selection {
         @include BackgroundIcon(FluentIcon('translate'));
     }
 
-    #context-zoom-out {
+    #context-zoom-out,
+    #menu_zoomReduce {
         @include BackgroundIcon(FluentIcon('minus'));
     }
 
-    #context-zoom-in {
+    #context-zoom-in,
+    #menu_zoomEnlarge {
         @include BackgroundIcon(FluentIcon('zoom-in-font'));
     }
 
@@ -838,11 +910,13 @@ scrollbox[orient=vertical] {
     #context-video-fullscreen,
     #context-leave-dom-fullscreen,
     #context_fullscreenAutohide,
+    #toolbar-context-full-screen-exit,
     #context_fullscreenExit {
         @include BackgroundIcon(FluentIcon('expand'));
     }
 
     #appMenu-settings-button,
+    #menu_customizeToolbars,
     #toolbar-context-customize {
         @include BackgroundIcon(FluentIcon('settings'));
     }
@@ -851,11 +925,17 @@ scrollbox[orient=vertical] {
         @include BackgroundIcon(FluentIcon('more'));
     }
 
-    #appMenu-help-button2 {
+    #appMenu-help-button2,
+    #menu_openHelp,
+    #aboutName,
+    #context-media-eme-learnmore {
         @include BackgroundIcon(url("../images/menu-icons/help.svg"));
     }
 
-    #appMenu-report-broken-site-button {
+    #appMenu-report-broken-site-button,
+    #help_reportBrokenSite,
+    #menu_HelpPopup_reportPhishingtoolmenu,
+    #menu_HelpPopup_reportPhishingErrortoolmenu {
         @include BackgroundIcon(url("../images/menu-icons/report.svg"));
     }
 
@@ -883,11 +963,13 @@ scrollbox[orient=vertical] {
         margin-inline-end: 0 !important;
     }
 
-    #appMenu-quit-button2 {
+    #appMenu-quit-button2,
+    #menu_FileQuitItem {
         @include BackgroundIcon(FluentIcon('power'));
     }
 
     #context-openlinkincurrent,
+    #placesContext_open,
     #context-openlink,
     #context-openlinkintab,
     #context-openlinkincontainertab,
@@ -916,11 +998,14 @@ scrollbox[orient=vertical] {
     #context-viewframesource,
     #context-viewframeinfo,
     #context-viewsource,
+    #menu_pageInfo,
+    #context-viewsource-goToLine,
     #context-showonlythisframe {
         @include BackgroundIcon(FluentIcon('view'));
     }
 
-    #context-viewpartialsource-selection {
+    #context-viewpartialsource-selection,
+    #menu_pageSource {
         @include BackgroundIcon(url("../images/menu-icons/source-code.svg"));
     }
 
@@ -933,7 +1018,12 @@ scrollbox[orient=vertical] {
         @include BackgroundIcon(url("../images/menu-icons/media-speed.svg"));
     }
 
-    #context-video-pictureinpicture:not([checked="true"]) {
+    #context-video-pictureinpicture:not([checked="true"]),
+    #context-use-mini-window {
+        @include BackgroundIcon(url("../images/menu-icons/media-pip.svg"));
+    }
+
+    #context_openTabInMiniWindow {
         @include BackgroundIcon(url("../images/menu-icons/media-pip.svg"));
     }
 
@@ -950,8 +1040,48 @@ scrollbox[orient=vertical] {
         @include BackgroundIcon(url("../images/menu-icons/customize.svg"));
     }
 
-    #spell-add-to-dictionary {
+    #spell-add-to-dictionary,
+    #spell-add-dictionaries-main,
+    #spell-add-dictionaries {
         @include BackgroundIcon(url("../images/menu-icons/add-to-dictionary.svg"));
+    }
+
+    #placesContext_showInFolder,
+    #sidebar-bookmarks-context-show-in-folder,
+    #menu_openFile,
+    menuitem.downloadShowMenuItem {
+        @include BackgroundIcon(url("../images/toolbar-icons/open.svg"));
+    }
+
+    #context_moveToStart {
+        @include BackgroundIcon(FluentIcon('back'));
+    }
+
+    #context_moveToEnd {
+        @include BackgroundIcon(FluentIcon('forward'));
+    }
+
+    #context-bidi-text-direction-toggle,
+    #context-bidi-page-direction-toggle,
+    #textfieldDirection-swap,
+    #documentDirection-swap {
+        @include BackgroundIcon(FluentIcon('move-tab'));
+    }
+
+    menuitem.downloadUnblockMenuItem {
+        @include BackgroundIcon(FluentIcon('permissions'));
+    }
+
+    #menu_sendLink {
+        @include BackgroundIcon(url("../images/toolbar-icons/mail.svg"));
+    }
+
+    #repair-text-encoding {
+        @include BackgroundIcon(url("../images/toolbar-icons/text-encoding.svg"));
+    }
+
+    #menu_openFirefoxView {
+        @include BackgroundIcon(url("../images/toolbar-icons/firefox-view.svg"));
     }
 
     #context-media-mute,
@@ -977,12 +1107,20 @@ scrollbox[orient=vertical] {
     #context-copyemail,
     #context-copyphone,
     #context-copyimage,
+    #context-imagetext,
+    #context-pdfjs-copy-page,
+    #sidebar-opentabs-context-copy-link,
+    #sidebar-bookmarks-context-copy,
+    #sidebar-bookmarks-context-copy-link,
+    #menu_copy,
+    menuitem.downloadCopyLocationMenuItem,
     #context-copyvideourl,
     #context-copyaudiourl,
     #context-pdfjs-copy,
     #placesContext_copy,
     #placesContext_copyTitle,
     #sidebar-history-context-copy-link,
+    #sidebar-synced-tabs-context-copy-link,
     #placesContext_copyLink {
         @include BackgroundIcon(FluentIcon('copy'));
     }
@@ -997,12 +1135,15 @@ scrollbox[orient=vertical] {
 
     .textbox-contextmenu > menuitem[data-l10n-id="text-action-undo"],
     #context-undo,
+    #context-pdfjs-undo,
+    #spell-undo-add-to-dictionary,
     #menu_undo {
         @include BackgroundIcon(url("../images/menu-icons/undo.svg"));
     }
 
     .textbox-contextmenu > menuitem[data-l10n-id="text-action-redo"],
     #context-redo,
+    #context-pdfjs-redo,
     #menu_redo {
         @include BackgroundIcon(url("../images/menu-icons/redo.svg"));
     }
@@ -1010,6 +1151,9 @@ scrollbox[orient=vertical] {
     .textbox-contextmenu > menuitem[data-l10n-id="text-action-cut"],
     #context-cut,
     #context-pdfjs-cut,
+    #context-pdfjs-cut-page,
+    #sidebar-bookmarks-context-cut,
+    #menu_cut,
     #placesContext_cut {
         @include BackgroundIcon(FluentIcon('cut'));
     }
@@ -1018,6 +1162,8 @@ scrollbox[orient=vertical] {
     #context-paste,
     #context-paste-no-formatting,
     #context-pdfjs-paste,
+    #sidebar-bookmarks-context-paste,
+    #menu_paste,
     #placesContext_paste,
     #placesContext_paste_group {
         @include BackgroundIcon(FluentIcon('paste'));
@@ -1030,8 +1176,22 @@ scrollbox[orient=vertical] {
 
     .textbox-contextmenu > menuitem[data-l10n-id="text-action-delete"],
     .textbox-contextmenu > menuitem[anonid="ucjs_clearfield_menu"],
+    menuitem[anonid="clear-search-history"],
     #context-delete,
     #context-pdfjs-delete,
+    #context-pdfjs-delete-page,
+    #placesContext_removeTag,
+    #sidebar-bookmarks-context-delete-bookmark,
+    #open-tab-group-context-menu_delete,
+    #saved-tab-group-context-menu_delete,
+    #menu_delete,
+    #sanitizeItem,
+    #appMenuClearRecentHistory,
+    .customize-context-removeFromPanel,
+    menuitem.downloadDeleteFileMenuItem,
+    menuitem.downloadRemoveFromHistoryMenuItem,
+    menuitem[command="downloadsCmd_clearList"],
+    menuitem[command="downloadsCmd_clearDownloads"],
     #placesContext_delete,
     #placesContext_deleteBookmark,
     #placesContext_deleteFolder,
@@ -1049,18 +1209,21 @@ scrollbox[orient=vertical] {
     .textbox-contextmenu > menuitem[data-l10n-id="text-action-select-all"],
     #context-selectall,
     #context-pdfjs-select-all,
+    #menu_selectAll,
     #context_selectAllTabs,
     #toolbar-context-selectAllTabs {
         @include BackgroundIcon(FluentIcon('select-all'));
     }
 
     #context-media-play,
+    menuitem.downloadResumeMenuItem,
     #context_playTab,
     #context_playSelectedTabs {
         @include BackgroundIcon(FluentIcon('play'));
     }
 
-    #context-media-pause {
+    #context-media-pause,
+    menuitem.downloadPauseMenuItem {
         @include BackgroundIcon(FluentIcon('pause'));
     }
 
@@ -1074,8 +1237,15 @@ scrollbox[orient=vertical] {
     #context-sendvideo,
     #context-sendaudio,
     #context_shareSelectedTabs,
+    #open-tab-group-context-menu_share,
+    #contentsharing_sharefolder,
     #context_sendTabToDevice {
         @include BackgroundIcon(url("../images/menu-icons/share.svg"));
+    }
+
+    #sidebar-synced-tabs-context-connect-another-device,
+    #sidebar-opentabs-connect-another-device {
+        @include BackgroundIcon(FluentIcon('add'));
     }
 
     #context_pinTab,
@@ -1107,11 +1277,14 @@ scrollbox[orient=vertical] {
         @include BackgroundIcon(FluentIcon('separate-split-view'));
     }
 
-    #context_ungroupTab {
+    #context_ungroupTab,
+    #context_ungroupSplitView {
         @include BackgroundIcon(FluentIcon('tab-group'));
     }
 
-    #context_moveTabOptions {
+    #context_moveTabOptions,
+    #open-tab-group-context-menu_moveToThisWindow,
+    #context_MovePictureInPictureToggle {
         @include BackgroundIcon(url("../images/menu-icons/move-tab.svg"));
     }
 
@@ -1121,6 +1294,11 @@ scrollbox[orient=vertical] {
     }
 
     #context_closeTab,
+    #sidebar-opentabs-context-close-tab,
+    #menu_close,
+    #menu_closeWindow,
+    #context_HidePictureInPictureToggle,
+    #sidebar-synced-tabs-context-menu #sidebar-context-menu-close-remote-tab,
     #context_closeDuplicateTabs,
     #context_closeTabsToTheStart,
     #context_closeTabsToTheEnd,
