@@ -210,6 +210,11 @@ panelview .panel-header {
 }
 
 #unified-extensions-panel {
+    // The panelview supplies outer spacing; extension rows also inherit native margins.
+    .unified-extensions-item {
+        margin-inline: var(--menuitem-margin-inline) !important;
+    }
+
     .unified-extensions-item .subviewbutton>.toolbarbutton-icon {
         --arrowpanel-menuitem-padding-inline: 4px;
         --arrowpanel-menuitem-padding-block: 4px;
