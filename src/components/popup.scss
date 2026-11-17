@@ -500,6 +500,14 @@ menupopup menu:hover:not([disabled=true]),
     background-color: var(--panel-dimmed, color-mix(in srgb, currentColor 17%, transparent)) !important;
 }
 
+@include Option("browser.nova.enabled") {
+    // Nova uses its button hover token for the purple hover surface in panels;
+    // use the same token for native menu popups instead of panel-dimmed gray.
+    menupopup :is(menu[_moz-menuactive=true], menuitem[_moz-menuactive=true], menuitem:hover:not([disabled=true]), menu:hover:not([disabled=true])) {
+        background-color: var(--button-background-color-hover, var(--panel-dimmed, color-mix(in srgb, currentColor 17%, transparent))) !important;
+    }
+}
+
 /* disable vertical menu scroll buttons and use a good ol' scrollbar */
 /* this is a shotgun approach, expect side effects */
 scrollbox[orient=vertical] {
