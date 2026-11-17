@@ -673,6 +673,17 @@
     --space-small: var(--space-xsmall);
   }
 }
+/* Paint the actual nav-bar button glyph surfaces with Nova's shared button
+ * hover tokens. The toolbarbutton hover variables alone don't reach this
+ * background layer, which otherwise stays gray while the sidebar turns lilac. */
+@media (-moz-pref("browser.nova.enabled")) and (-moz-pref("widget.windows.mica", false)) {
+  #nav-bar .toolbarbutton-1:not([disabled]):hover > :is(.toolbarbutton-icon, .toolbarbutton-badge-stack) {
+    background-color: var(--button-background-color-hover, light-dark(#ded3f7, #51466a)) !important;
+  }
+  #nav-bar .toolbarbutton-1:not([disabled]):is([open], [checked=true], :hover:active) > :is(.toolbarbutton-icon, .toolbarbutton-badge-stack) {
+    background-color: var(--button-background-color-active, light-dark(#c9b8ef, #695a87)) !important;
+  }
+}
 /* User-origin rules reach the sidebar's shadow tree. Ancestor selectors such
  * as #sidebar-container moz-button do not cross that boundary.
  */
