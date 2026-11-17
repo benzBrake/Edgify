@@ -730,6 +730,10 @@ scrollbox[orient=vertical] {
         @include BackgroundIcon(url("../images/menu-icons/share.svg"));
     }
 
+    menupopup .share-qrcode-item {
+        @include BackgroundIcon(url("chrome://browser/content/sharing/qr-code.svg"));
+    }
+
     .viewCustomizeToolbar {
         @include BackgroundIcon(url("../images/menu-icons/customize.svg"));
     }
@@ -1113,6 +1117,7 @@ scrollbox[orient=vertical] {
     .textbox-contextmenu > menuitem[data-l10n-id="text-action-copy"],
     #context-copy,
     #context-copylink,
+    menupopup .share-copy-link,
     #context-copy-link-to-highlight,
     #context-copyemail,
     #context-copyphone,

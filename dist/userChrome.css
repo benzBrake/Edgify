@@ -3379,6 +3379,23 @@ scrollbox[orient=vertical] {
     -moz-context-properties: fill, fill-opacity !important;
     fill: currentColor !important;
   }
+  menupopup .share-qrcode-item > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon) {
+    display: none !important;
+  }
+  menupopup .share-qrcode-item::before {
+    content: "" !important;
+    display: flex !important;
+    width: var(--menuitem-icon-size, 16px) !important;
+    height: var(--menuitem-icon-size, 16px) !important;
+    margin-inline-end: var(--menuitem-icon-gap, 8px) !important;
+    background-image: url("chrome://browser/content/sharing/qr-code.svg") !important;
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+    mask-image: none !important;
+    -moz-context-properties: fill, fill-opacity !important;
+    fill: currentColor !important;
+  }
   .viewCustomizeToolbar > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon) {
     display: none !important;
   }
@@ -4671,6 +4688,7 @@ scrollbox[orient=vertical] {
   .textbox-contextmenu > menuitem[data-l10n-id=text-action-copy] > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   #context-copy > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   #context-copylink > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
+  menupopup .share-copy-link > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   #context-copy-link-to-highlight > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   #context-copyemail > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
   #context-copyphone > :is(.menu-icon, .menu-iconic-left, .toolbarbutton-icon),
@@ -4695,6 +4713,7 @@ scrollbox[orient=vertical] {
   .textbox-contextmenu > menuitem[data-l10n-id=text-action-copy]::before,
   #context-copy::before,
   #context-copylink::before,
+  menupopup .share-copy-link::before,
   #context-copy-link-to-highlight::before,
   #context-copyemail::before,
   #context-copyphone::before,
