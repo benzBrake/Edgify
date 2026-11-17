@@ -93,9 +93,20 @@
     }
   }
 
-  /* Use the same inset as the input and keep rows inside the results view. */
+  /* Let result backgrounds reach the edges of both bar panels. */
+  :is(#urlbar, #searchbar-new) > .urlbarView {
+    margin-inline: 0 !important;
+    width: 100% !important;
+    padding-block-end: 8px !important;
+
+    // The separate background can retain an inherited 7px overhang.
+    > .urlbarView-background {
+      inset-inline: 0 !important;
+    }
+  }
+
   #urlbar[breakout] {
-    --urlbarView-results-padding: var(--urlbar-input-container-padding);
+    --urlbarView-results-padding: 0px;
 
     .urlbarView-body-inner {
       width: 100% !important;
@@ -122,8 +133,10 @@
   // Current Firefox removed breakout and the results' body-inner wrapper,
   // and renamed the view tokens. Match the new structure: ESR can temporarily
   // remove breakout too, so its absence alone is not a version boundary.
-  #urlbar:has(> .urlbarView > .urlbarView-results) {
-    --urlbarview-results-padding: var(--urlbar-input-container-padding);
+  :is(#urlbar, #searchbar-new):has(> .urlbarView > .urlbarView-results) {
+    --urlbarview-results-padding: 0px;
+    // The detached popover background also uses this token for its overhang.
+    --urlbarview-margin-inline: 0px;
 
     > .urlbarView > .urlbarView-results {
       width: 100% !important;
@@ -131,7 +144,7 @@
     }
   }
 
-  #urlbar:has(> .urlbarView > .urlbarView-results):where(
+  :is(#urlbar, #searchbar-new):has(> .urlbarView > .urlbarView-results):where(
     :not(:has(> .urlbar-input-container > .searchmode-switcher:not([offscreen])))
   ) {
     --urlbarview-favicon-margin-start: calc(
@@ -146,13 +159,11 @@
     );
   }
 
-  #urlbar > .urlbarView > .urlbarView-results .urlbarView-row,
-  #urlbar > .urlbarView > .urlbarView-results .urlbarView-row-inner {
+  :is(#urlbar, #searchbar-new) > .urlbarView > .urlbarView-results .urlbarView-row,
+  :is(#urlbar, #searchbar-new) > .urlbarView > .urlbarView-results .urlbarView-row-inner {
     margin-inline-start: 0 !important;
-    padding-inline-start: 0 !important;
     margin-inline-end: 0 !important;
-    padding-inline-end: 0 !important;
-    border-radius: 999px !important;
+    border-radius: 0 !important;
   }
 
   /* Match result spacing to the toolbar density without fixing row heights. */
@@ -167,7 +178,7 @@
 
     // Native touch rows add outer padding on top of the inner spacing below.
     :root[uidensity="touch"]
-      #urlbar
+      :is(#urlbar, #searchbar-new)
       .urlbarView-row:not([type="tip"], [type="dynamic"], [rich-suggestion]) {
       padding-block: 0 !important;
     }
@@ -179,7 +190,7 @@
     }
   }
 
-  #urlbar .urlbarView-row:not([type="dynamic"]) .urlbarView-row-inner {
+  :is(#urlbar, #searchbar-new) .urlbarView-row:not([type="dynamic"]) .urlbarView-row-inner {
     padding-block: var(--edgify-urlbar-result-padding) !important;
   }
 }
@@ -277,14 +288,33 @@
 #urlbar[breakout] #urlbar-results .urlbarView-row,
 #urlbar[breakout] #urlbar-results .urlbarView-row-inner {
   margin-inline-start: 0 !important;
-  padding-inline-start: 0 !important;
   margin-inline-end: 0 !important;
-  padding-inline-end: 0 !important;
-  border-radius: 999px !important;
+  border-radius: 0 !important;
 }
 
-.urlbarView-action-btn {
-  border-radius: 999px !important;
+/* Keep the full-width highlight separate from the content's inset. */
+:is(#urlbar, #searchbar-new) .urlbarView-results .urlbarView-row {
+  padding-inline: 0 !important;
+  border-inline-width: 0 !important;
+}
+
+:is(#urlbar, #searchbar-new) .urlbarView-results .urlbarView-row-inner {
+  padding-inline: 8px !important;
+}
+
+:is(#urlbar, #searchbar-new) .urlbarView-row:is([selected], [menu-trigger], [row-selectable]:hover)::after {
+  content: "";
+  position: absolute;
+  inset-block: 0;
+  inset-inline-start: 0;
+  width: 3px;
+  background-color: var(--toolbarbutton-icon-fill-attention, AccentColor);
+  pointer-events: none;
+}
+
+.urlbarView-action-btn,
+.urlbarView-button-result-menu {
+  border-radius: 4px !important;
 }
 
 .urlbarView-result-menuitem:is(
@@ -323,7 +353,7 @@
 }
 
 // The lowercase token is used by both Proton and Nova in current Firefox.
-#urlbar > .urlbarView > .urlbarView-results > .urlbarView-row[data-l10n-id="urlbar-group-search-suggestions"] {
+:is(#urlbar, #searchbar-new) > .urlbarView > .urlbarView-results > .urlbarView-row[data-l10n-id="urlbar-group-search-suggestions"] {
   margin-block-start: calc(var(--urlbarview-labeled-row-margin-top) - 4px) !important;
 }
 

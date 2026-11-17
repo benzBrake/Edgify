@@ -1755,9 +1755,17 @@
     height: var(--urlbar-height) !important;
     padding: var(--urlbar-input-container-padding) !important;
   }
-  /* Use the same inset as the input and keep rows inside the results view. */
+  /* Let result backgrounds reach the edges of both bar panels. */
+  :is(#urlbar, #searchbar-new) > .urlbarView {
+    margin-inline: 0 !important;
+    width: 100% !important;
+    padding-block-end: 8px !important;
+  }
+  :is(#urlbar, #searchbar-new) > .urlbarView > .urlbarView-background {
+    inset-inline: 0 !important;
+  }
   #urlbar[breakout] {
-    --urlbarView-results-padding: var(--urlbar-input-container-padding);
+    --urlbarView-results-padding: 0px;
   }
   #urlbar[breakout] .urlbarView-body-inner {
     width: 100% !important;
@@ -1775,14 +1783,15 @@
         (max(24px, var(--urlbar-basic-component-size)) - var(--urlbarView-favicon-width)) / 2
     );
   }
-  #urlbar:has(> .urlbarView > .urlbarView-results) {
-    --urlbarview-results-padding: var(--urlbar-input-container-padding);
+  :is(#urlbar, #searchbar-new):has(> .urlbarView > .urlbarView-results) {
+    --urlbarview-results-padding: 0px;
+    --urlbarview-margin-inline: 0px;
   }
-  #urlbar:has(> .urlbarView > .urlbarView-results) > .urlbarView > .urlbarView-results {
+  :is(#urlbar, #searchbar-new):has(> .urlbarView > .urlbarView-results) > .urlbarView > .urlbarView-results {
     width: 100% !important;
     margin-inline: 0 !important;
   }
-  #urlbar:has(> .urlbarView > .urlbarView-results):where(:not(:has(> .urlbar-input-container > .searchmode-switcher:not([offscreen])))) {
+  :is(#urlbar, #searchbar-new):has(> .urlbarView > .urlbarView-results):where(:not(:has(> .urlbar-input-container > .searchmode-switcher:not([offscreen])))) {
     --urlbarview-favicon-margin-start: calc(
       (max(24px, var(--urlbar-basic-component-size)) - var(--urlbarview-favicon-size)) / 2
     );
@@ -1793,13 +1802,11 @@
         (max(24px, var(--urlbar-basic-component-size)) - var(--urlbarview-favicon-size)) / 2
     );
   }
-  #urlbar > .urlbarView > .urlbarView-results .urlbarView-row,
-  #urlbar > .urlbarView > .urlbarView-results .urlbarView-row-inner {
+  :is(#urlbar, #searchbar-new) > .urlbarView > .urlbarView-results .urlbarView-row,
+  :is(#urlbar, #searchbar-new) > .urlbarView > .urlbarView-results .urlbarView-row-inner {
     margin-inline-start: 0 !important;
-    padding-inline-start: 0 !important;
     margin-inline-end: 0 !important;
-    padding-inline-end: 0 !important;
-    border-radius: 999px !important;
+    border-radius: 0 !important;
   }
   /* Match result spacing to the toolbar density without fixing row heights. */
   :root {
@@ -1810,7 +1817,7 @@
   :root {
     --edgify-urlbar-result-padding: 8px;
   }
-  :root[uidensity=touch] #urlbar .urlbarView-row:not([type=tip], [type=dynamic], [rich-suggestion]) {
+  :root[uidensity=touch] :is(#urlbar, #searchbar-new) .urlbarView-row:not([type=tip], [type=dynamic], [rich-suggestion]) {
     padding-block: 0 !important;
   }
 }
@@ -1820,7 +1827,7 @@
   }
 }
 @media not -moz-pref("browser.nova.enabled") {
-  #urlbar .urlbarView-row:not([type=dynamic]) .urlbarView-row-inner {
+  :is(#urlbar, #searchbar-new) .urlbarView-row:not([type=dynamic]) .urlbarView-row-inner {
     padding-block: var(--edgify-urlbar-result-padding) !important;
   }
 }
@@ -1906,14 +1913,33 @@
 #urlbar[breakout] #urlbar-results .urlbarView-row,
 #urlbar[breakout] #urlbar-results .urlbarView-row-inner {
   margin-inline-start: 0 !important;
-  padding-inline-start: 0 !important;
   margin-inline-end: 0 !important;
-  padding-inline-end: 0 !important;
-  border-radius: 999px !important;
+  border-radius: 0 !important;
 }
 
-.urlbarView-action-btn {
-  border-radius: 999px !important;
+/* Keep the full-width highlight separate from the content's inset. */
+:is(#urlbar, #searchbar-new) .urlbarView-results .urlbarView-row {
+  padding-inline: 0 !important;
+  border-inline-width: 0 !important;
+}
+
+:is(#urlbar, #searchbar-new) .urlbarView-results .urlbarView-row-inner {
+  padding-inline: 8px !important;
+}
+
+:is(#urlbar, #searchbar-new) .urlbarView-row:is([selected], [menu-trigger], [row-selectable]:hover)::after {
+  content: "";
+  position: absolute;
+  inset-block: 0;
+  inset-inline-start: 0;
+  width: 3px;
+  background-color: var(--toolbarbutton-icon-fill-attention, AccentColor);
+  pointer-events: none;
+}
+
+.urlbarView-action-btn,
+.urlbarView-button-result-menu {
+  border-radius: 4px !important;
 }
 
 .urlbarView-result-menuitem:is([data-l10n-id=urlbar-result-menu-remove-from-history],
@@ -1946,7 +1972,7 @@
   margin-block-start: calc(var(--urlbarView-labeled-row-margin-top) - 4px) !important;
 }
 
-#urlbar > .urlbarView > .urlbarView-results > .urlbarView-row[data-l10n-id=urlbar-group-search-suggestions] {
+:is(#urlbar, #searchbar-new) > .urlbarView > .urlbarView-results > .urlbarView-row[data-l10n-id=urlbar-group-search-suggestions] {
   margin-block-start: calc(var(--urlbarview-labeled-row-margin-top) - 4px) !important;
 }
 
