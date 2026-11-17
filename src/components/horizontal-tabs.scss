@@ -1017,6 +1017,25 @@
       background-color: var(--toolbar-background-color) !important;
     }
 
+    @include And(
+      F-OS("win"),
+      F-Option("browser.nova.enabled"),
+      F-Option("widget.windows.mica", false)
+    ) {
+      @include Light {
+        // Add contrast to Nova's pale tab strip without tinting tab content.
+        #TabsToolbar {
+          --edgify-tab-button-background: rgb(255 255 255 / 72%);
+          --edgify-tab-button-background-hover: rgb(255 255 255 / 86%);
+          --edgify-tab-button-background-active: #fff;
+          background-image: linear-gradient(
+            rgb(0 0 0 / 4%),
+            rgb(0 0 0 / 4%)
+          ) !important;
+        }
+      }
+    }
+
     #navigator-toolbox {
       position: relative;
 

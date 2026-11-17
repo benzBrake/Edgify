@@ -1503,6 +1503,16 @@
     --toolbar-background-color: light-dark(#f9f9fb, rgb(43, 42, 51));
     background-color: var(--toolbar-background-color) !important;
   }
+}
+@media (-moz-pref("sidebar.verticalTabs", false)) and (-moz-pref("extensions.activeThemeID", "default-theme@mozilla.org")) and (-moz-pref("browser.tabs.inTitlebar", 2)) and (-moz-platform: windows) and (-moz-pref("browser.nova.enabled")) and (-moz-pref("widget.windows.mica", false)) and (prefers-color-scheme: light) {
+  #TabsToolbar {
+    --edgify-tab-button-background: rgb(255 255 255 / 72%);
+    --edgify-tab-button-background-hover: rgb(255 255 255 / 86%);
+    --edgify-tab-button-background-active: #fff;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.04), rgba(0, 0, 0, 0.04)) !important;
+  }
+}
+@media (-moz-pref("sidebar.verticalTabs", false)) and (-moz-pref("extensions.activeThemeID", "default-theme@mozilla.org")) and (-moz-pref("browser.tabs.inTitlebar", 2)) {
   #navigator-toolbox {
     position: relative;
   }
