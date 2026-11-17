@@ -8,6 +8,9 @@
     #sidebar-main,
     #navigator-toolbox,
     #sidebar-container,
+    // Firefox only paints #browser with horizontal tabs; cover the content-frame
+    // margins too, so Mica/accent colors do not show through below the page.
+    #browser,
     #status-bar {
         --toolbar-text-color: light-dark(rgb(21, 20, 26), rgb(251, 251, 254));
         --toolbar-background-color: light-dark(#f9f9fb, rgb(43, 42, 51));
