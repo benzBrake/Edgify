@@ -184,6 +184,17 @@
   }
 }
 
+/* Firefox's compact sidebar cards give summary a minimum height without
+ * centering its heading. User-origin rules also reach the card's shadow tree.
+ */
+@-moz-document url("chrome://browser/content/sidebar/sidebar-history.html"),
+               url("chrome://browser/content/sidebar/sidebar-syncedtabs.html") {
+  summary[part=summary] {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+  }
+}
 #status-bar {
   border-top: 0 !important;
   padding-inline: var(--toolbar-padding-inline) !important;
