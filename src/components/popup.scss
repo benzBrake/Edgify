@@ -472,13 +472,17 @@ panel[type="autocomplete-richlistbox"]>.autocomplete-richlistbox {
     fill-opacity: initial !important;
 }
 
-menupopup :is(menu, menuitem) {
+menupopup :is(menu, menuitem),
+panel-item.urlbarView-result-menuitem {
+    --edgify-menuitem-height: 30px;
     height: 30px !important;
 }
 
 @include Compact {
     .autocomplete-richlistitem,
-    menupopup :is(menu, menuitem) {
+    menupopup :is(menu, menuitem),
+    panel-item.urlbarView-result-menuitem {
+        --edgify-menuitem-height: 26px;
         height: 26px !important;
     }
 }

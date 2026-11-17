@@ -317,7 +317,31 @@
   border-radius: 4px !important;
 }
 
-.urlbarView-result-menuitem:is(
+// Firefox 160 uses panel-item with a shadow button; keep the XUL rules for
+// older versions and use the component's icon token for the new menu.
+panel-item.urlbarView-result-menuitem {
+  --panel-item-fill: currentColor !important;
+  // User sheets cannot style this shadow button via ::part. Its native tokens
+  // keep the icon, checkbox mark and RTL layout working inside the shadow root.
+  --panel-menuitem-padding-inline: 12px !important;
+  --panel-item-button-padding: calc((var(--edgify-menuitem-height, 30px) - 20px) / 2) 12px !important;
+  --panel-item-button-padding-inline-start: calc(12px + 16px + 8px) !important;
+  --panel-item-button-padding-inline-start-offset: 0px !important;
+  --panel-item-button-margin: 0 !important;
+  line-height: 20px !important;
+
+  &[data-command="dismiss"] {
+    // The token is consumed by a chrome:// shadow stylesheet, so relative
+    // image URLs resolve against that stylesheet instead of userChrome.css.
+    --panel-item-icon: url("../images/menu-icons/delete.svg?inline");
+  }
+
+  &[data-command="help"] {
+    --panel-item-icon: url("../images/menu-icons/help.svg?inline");
+  }
+}
+
+.urlbarView-result-menuitem:not(panel-item):is(
   [data-l10n-id="urlbar-result-menu-remove-from-history"],
   [data-l10n-id="urlbar-result-menu-learn-more"]
 ) {

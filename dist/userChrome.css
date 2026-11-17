@@ -2032,11 +2032,27 @@
   border-radius: 4px !important;
 }
 
-.urlbarView-result-menuitem:is([data-l10n-id=urlbar-result-menu-remove-from-history],
+panel-item.urlbarView-result-menuitem {
+  --panel-item-fill: currentColor !important;
+  --panel-menuitem-padding-inline: 12px !important;
+  --panel-item-button-padding: calc((var(--edgify-menuitem-height, 30px) - 20px) / 2) 12px !important;
+  --panel-item-button-padding-inline-start: calc(12px + 16px + 8px) !important;
+  --panel-item-button-padding-inline-start-offset: 0px !important;
+  --panel-item-button-margin: 0 !important;
+  line-height: 20px !important;
+}
+panel-item.urlbarView-result-menuitem[data-command=dismiss] {
+  --panel-item-icon: url("data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20width='16'%20height='16'%20viewBox='0%200%202048%202048'%20fill='context-fill'%20fill-opacity='context-fill-opacity'%3e%3cpath%20transform='translate(0%202048)%20scale(1%20-1)'%20d='M1984%201728Q1984%201706%201975.5%201693.0Q1967%201680%201953.0%201673.5Q1939%201667%201922.0%201665.0Q1905%201663%201887%201663Q1877%201663%201867.0%201663.5Q1857%201664%201849%201664L1683%20227Q1677%20179%201655.0%20137.5Q1633%2096%201599.0%2065.5Q1565%2035%201521.0%2017.5Q1477%200%201429%200H619Q571%200%20527.0%2017.5Q483%2035%20449.0%2065.5Q415%2096%20393.0%20137.5Q371%20179%20365%20227L199%201664Q194%201664%20189%201664L169%201663Q164%201663%20159%201663Q142%201663%20125.0%201665.0Q108%201667%2094.5%201674.0Q81%201681%2072.5%201694.0Q64%201707%2064%201728Q64%201754%2083.0%201773.0Q102%201792%20128%201792H710Q720%201847%20749.5%201894.0Q779%201941%20821.5%201975.5Q864%202010%20916.0%202029.0Q968%202048%201024%202048Q1080%202048%201132.0%202029.0Q1184%202010%201226.5%201975.5Q1269%201941%201298.5%201894.0Q1328%201847%201338%201792H1920Q1946%201792%201965.0%201773.0Q1984%201754%201984%201728ZM843%201792H1205Q1195%201821%201177.0%201844.5Q1159%201868%201135.0%201885.0Q1111%201902%201083.0%201911.0Q1055%201920%201024%201920Q993%201920%20965.0%201911.0Q937%201902%20913.0%201885.0Q889%201868%20871.0%201844.5Q853%201821%20843%201792ZM1720%201664H328L492%20241Q498%20191%20533.5%20159.5Q569%20128%20619%20128H1429Q1453%20128%201475.0%20136.5Q1497%20145%201514.0%20160.0Q1531%20175%201542.0%20196.0Q1553%20217%201556%20241ZM768%20576V1216Q768%201242%20787.0%201261.0Q806%201280%20832%201280Q858%201280%20877.0%201261.0Q896%201242%20896%201216V576Q896%20550%20877.0%20531.0Q858%20512%20832%20512Q806%20512%20787.0%20531.0Q768%20550%20768%20576ZM1152%20576V1216Q1152%201242%201171.0%201261.0Q1190%201280%201216%201280Q1242%201280%201261.0%201261.0Q1280%201242%201280%201216V576Q1280%20550%201261.0%20531.0Q1242%20512%201216%20512Q1190%20512%201171.0%20531.0Q1152%20550%201152%20576Z'/%3e%3c/svg%3e");
+}
+panel-item.urlbarView-result-menuitem[data-command=help] {
+  --panel-item-icon: url("data:image/svg+xml,%3csvg%20width='16'%20height='16'%20viewBox='0%200%2016%2016'%20xmlns='http://www.w3.org/2000/svg'%20fill='context-fill'%20fill-opacity='context-fill-opacity'%3e%3cpath%20d='M8%200a8%208%200%201%200%200%2016A8%208%200%200%200%208%200zm0%201a7%207%200%201%201%200%2014A7%207%200%200%201%208%201zm0%202.5A2.5%202.5%200%200%200%205.5%206a.5.5%200%200%200%201%200%201.5%201.5%200%201%201%202.525%201.094l-.117.102-.248.183a3.094%203.094%200%200%200-.355.323C7.792%208.247%207.5%208.989%207.5%2010a.5.5%200%200%200%201%200c0-.758.197-1.253.535-1.613.05-.053.1-.103.156-.15l.086-.071.22-.164.153-.125A2.5%202.5%200%200%200%208%203.5zm0%208A.75.75%200%201%200%208%2013a.75.75%200%200%200%200-1.5z'/%3e%3c/svg%3e");
+}
+
+.urlbarView-result-menuitem:not(panel-item):is([data-l10n-id=urlbar-result-menu-remove-from-history],
 [data-l10n-id=urlbar-result-menu-learn-more]) > :is(.menu-icon, .menu-iconic-left) {
   display: none !important;
 }
-.urlbarView-result-menuitem:is([data-l10n-id=urlbar-result-menu-remove-from-history],
+.urlbarView-result-menuitem:not(panel-item):is([data-l10n-id=urlbar-result-menu-remove-from-history],
 [data-l10n-id=urlbar-result-menu-learn-more])::before {
   content: "" !important;
   display: flex !important;
@@ -2632,13 +2648,17 @@ panel[type=autocomplete-richlistbox] > .autocomplete-richlistbox {
   fill-opacity: initial !important;
 }
 
-menupopup :is(menu, menuitem) {
+menupopup :is(menu, menuitem),
+panel-item.urlbarView-result-menuitem {
+  --edgify-menuitem-height: 30px;
   height: 30px !important;
 }
 
 @media (-moz-pref("browser.uidensity", 1)) {
   .autocomplete-richlistitem,
-  menupopup :is(menu, menuitem) {
+  menupopup :is(menu, menuitem),
+  panel-item.urlbarView-result-menuitem {
+    --edgify-menuitem-height: 26px;
     height: 26px !important;
   }
 }
