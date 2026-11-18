@@ -745,6 +745,17 @@
         padding: 6px !important;
       }
     }
+
+    :is(#tabs-newtab-button, #new-tab-button) {
+      // Keep the new-tab control aligned with the tab centers and use the
+      // same rounded-square treatment as the other tab-strip buttons.
+      margin-block-end: 0 !important;
+      border-radius: 8px !important;
+
+      > :is(.toolbarbutton-icon, .toolbarbutton-badge-stack) {
+        border-radius: 8px !important;
+      }
+    }
   }
 
   /* ---------------------------------------- Indents ---------------------------------------- */

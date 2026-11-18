@@ -1331,6 +1331,13 @@
     min-height: 0 !important;
     padding: 6px !important;
   }
+  #TabsToolbar :is(#tabs-newtab-button, #new-tab-button) {
+    margin-block-end: 0 !important;
+    border-radius: 8px !important;
+  }
+  #TabsToolbar :is(#tabs-newtab-button, #new-tab-button) > :is(.toolbarbutton-icon, .toolbarbutton-badge-stack) {
+    border-radius: 8px !important;
+  }
 }
 @media (-moz-pref("sidebar.verticalTabs", false)) and (not -moz-pref("userChrome.edgify.alltabs-button.order-first", true)) {
   #TabsToolbar-customization-target > :is(toolbarbutton, toolbaritem):first-child,
