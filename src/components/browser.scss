@@ -79,12 +79,28 @@
     #sidebar-box {
         padding-bottom: 0 !important;
     }
+}
 
+// Nova can enable its new surface styling independently of sidebar.revamp.
+// Keep the web-content edge clipped to the same 8px outer frame in either mode.
+@include Any(F-Option('sidebar.revamp'), F-Option('browser.nova.enabled')) {
     #tabbrowser-tabbox,
     #tabbrowser-tabpanels,
     #tabbrowser-tabpanels browser {
         overflow: hidden !important;
         // Match the 8px content frame; Nova increases --border-radius-medium to 12px.
+        border-radius: 8px 0 0 8px !important;
+
+        @include NotOption('sidebar.position_start') {
+            border-radius: 0 8px 8px 0 !important;
+        }
+    }
+}
+
+// Nova clips the remote page at .browserContainer, whose built-in top corner
+// uses a 12px radius. Match that actual clipping surface to the 8px frame above.
+@include Option('browser.nova.enabled') {
+    #tabbrowser-tabpanels > .browserSidebarContainer > .browserContainer {
         border-radius: 8px 0 0 8px !important;
 
         @include NotOption('sidebar.position_start') {

@@ -67,17 +67,29 @@
   #sidebar-box {
     padding-bottom: 0 !important;
   }
+}
+@media (-moz-pref("sidebar.revamp")) or (-moz-pref("browser.nova.enabled")) {
   #tabbrowser-tabbox,
   #tabbrowser-tabpanels,
   #tabbrowser-tabpanels browser {
     overflow: hidden !important;
     border-radius: 8px 0 0 8px !important;
   }
+  @media not -moz-pref("sidebar.position_start") {
+    #tabbrowser-tabbox,
+    #tabbrowser-tabpanels,
+    #tabbrowser-tabpanels browser {
+      border-radius: 0 8px 8px 0 !important;
+    }
+  }
 }
-@media (-moz-pref("sidebar.revamp")) and (not -moz-pref("sidebar.position_start")) {
-  #tabbrowser-tabbox,
-  #tabbrowser-tabpanels,
-  #tabbrowser-tabpanels browser {
+@media (-moz-pref("browser.nova.enabled")) {
+  #tabbrowser-tabpanels > .browserSidebarContainer > .browserContainer {
+    border-radius: 8px 0 0 8px !important;
+  }
+}
+@media (-moz-pref("browser.nova.enabled")) and (not -moz-pref("sidebar.position_start")) {
+  #tabbrowser-tabpanels > .browserSidebarContainer > .browserContainer {
     border-radius: 0 8px 8px 0 !important;
   }
 }
