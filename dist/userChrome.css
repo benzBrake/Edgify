@@ -1862,6 +1862,10 @@
   :is(#urlbar, #searchbar-new)[focused]:not([suppress-focus-border]) {
     --urlbar-background-border-open: var(--urlbar-input-container-border-width-open) solid var(--toolbar-field-border-color-focus) !important;
   }
+  :is(#urlbar, #searchbar-new)[popover-open] {
+    --megabar_border_roundness: 12px;
+    --urlbarview-border-radius: var(--megabar_border_roundness) !important;
+  }
   :is(#urlbar, #searchbar-new) > .urlbarView {
     margin-inline: 0 !important;
     padding-inline: 0 !important;
