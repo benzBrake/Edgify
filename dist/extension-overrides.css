@@ -9,7 +9,6 @@
   font: menu !important;
   background: var(--edgify-panel-background) !important;
   color: var(--edgify-panel-color) !important;
-  /* Replace Material state layers/ripples with Edgify's menu highlight. */
 }
 :root[uc-extension-id="{2e5ff8c8-32fe-46d0-9fc8-6b8986621f3c}"]:has(body > .vn-app .header .search-mode-menu) body {
   min-width: 280px !important;
@@ -103,6 +102,9 @@
   height: 24px !important;
   min-width: 24px !important;
   min-height: 24px !important;
+}
+:root[uc-extension-id="{2e5ff8c8-32fe-46d0-9fc8-6b8986621f3c}"]:has(body > .vn-app .header .search-mode-menu) {
+  /* Replace Material state layers/ripples with Edgify's menu highlight. */
 }
 :root[uc-extension-id="{2e5ff8c8-32fe-46d0-9fc8-6b8986621f3c}"]:has(body > .vn-app .header .search-mode-menu) :is(.v-list-item__overlay, .v-list-item__underlay, .vn-icon-button__state, .v-ripple__container) {
   display: none !important;

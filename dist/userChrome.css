@@ -766,10 +766,6 @@
       --uc-sidebar-row-height: 40px;
     }
   }
-  #bookmarks-view > treechildren {
-    /* Use Firefox's context-painted outline folder for all folder roots. */
-    /* Keep the favicon column empty for bookmark separators. */
-  }
   #bookmarks-view > treechildren::-moz-tree-row {
     min-height: var(--uc-sidebar-row-height) !important;
     height: var(--uc-sidebar-row-height) !important;
@@ -793,11 +789,17 @@
     margin-inline: 2px 8px !important;
     padding: 0 !important;
   }
+  #bookmarks-view > treechildren {
+    /* Use Firefox's context-painted outline folder for all folder roots. */
+  }
   #bookmarks-view > treechildren::-moz-tree-image(title, container) {
     list-style-image: url("chrome://global/skin/icons/folder.svg") !important;
   }
   #bookmarks-view > treechildren::-moz-tree-image(container, queryFolder_toolbar_____) {
     list-style-image: url("images/toolbar-icons/bookmark-hollow.svg") !important;
+  }
+  #bookmarks-view > treechildren {
+    /* Keep the favicon column empty for bookmark separators. */
   }
   #bookmarks-view > treechildren::-moz-tree-image(title, separator) {
     width: 0 !important;
@@ -832,56 +834,6 @@
   :root {
     --tab-min-height: 36px !important;
   }
-  /* ---------------------------------------- Titlebar ---------------------------------------- */
-  /* ---------------------------------------- Tabs ---------------------------------------- */
-  /* ---------------------------------------- Attached tabs ---------------------------------------- */
-  /* ---------------------------------------- Main Window ---------------------------------------- */
-  /* ---------------------------------------- Nav Bar ---------------------------------------- */
-  /* ---------------------------------------- Tabs ---------------------------------------- */
-  /* A split view occupies one attached-tab shape; its tabs only lay out content. */
-  /* -------------------- Tab Icon Indicators -------------------- */
-  /* ---------------------------------------- Tab Bar ---------------------------------------- */
-  /* ---------------------------------------- Indents ---------------------------------------- */
-  /* ---------------------------------------- Tab Scroll Animation ---------------------------------------- */
-  /*
-    .tabbrowser-tab[dragtarget][pinned]
-    {
-        max-width: min-content !important;
-
-        ~ .tabbrowser-tab[pinned]
-        {
-            inset-inline: 40px 0px !important;
-
-        }
-    }
-
-    .tabbrowser-tab[dragtarget]:not([pinned])
-    {
-        max-width: min-content !important;
-
-        ~ .tabbrowser-tab:not([pinned])
-        {
-            inset-inline: 76px 0px !important;
-
-        }
-    }
-    */
-  /* chrome/modules/vertical_tabs/wavefox_tab_media_icons_and_text.css */
-  /* -------------------- Media Icons -------------------- */
-  /* Collapsed tabs / Expanded pinned tabs */
-  /* Expanded tabs */
-  /* ---------- Picture-In-Picture ---------- */
-  /* -------------------- Tab Text -------------------- */
-  /* chrome/modules/horizontal_tabs/wavefox_toolbar_buttons.css */
-  /* ---------------------------------------- Firefox View ---------------------------------------- */
-  /* -------------------- Tab Counter -------------------- */
-  /* ---------------------------------------- Tab Bar ---------------------------------------- */
-  /* ---------------------------------------- Indents ---------------------------------------- */
-  /* ---------------------------------------- Separators ---------------------------------------- */
-  /* Keep internal split-view dividers visible in selected and hovered states. */
-  /* ---------------------------------------- Shadows ---------------------------------------- */
-  /* ---------- Opaque toolbar ---------- */
-  /* ---------- DragSpace ---------- */
 }
 @media (-moz-pref("sidebar.verticalTabs", false)) and (-moz-pref("browser.uidensity", 2)) {
   :root {
@@ -894,10 +846,12 @@
   }
 }
 @media (-moz-pref("sidebar.verticalTabs", false)) {
+  /* ---------------------------------------- Titlebar ---------------------------------------- */
   :root[customtitlebar] .browser-titlebar {
     will-change: auto !important;
     transition: none !important;
   }
+  /* ---------------------------------------- Tabs ---------------------------------------- */
   @media (-moz-pref("extensions.activeThemeID", "default-theme@mozilla.org")) or (-moz-pref("extensions.activeThemeID", "firefox-compact-light@mozilla.org")) or (-moz-pref("extensions.activeThemeID", "firefox-compact-dark@mozilla.org")) {
     .tabbrowser-tab[visuallyselected] .tab-background {
       background-color: var(--toolbar-background-color) !important;
@@ -923,14 +877,17 @@
     padding: 2px !important;
     margin: 0px !important;
   }
+  /* ---------------------------------------- Attached tabs ---------------------------------------- */
   :root {
     --left-svg: url("images/tabs/left_corners.svg");
     --right-svg: url("images/tabs/right_corners.svg");
     --tab-first-last-inline-margin: calc(var(--tab-min-height) / 6);
   }
+  /* ---------------------------------------- Main Window ---------------------------------------- */
   :root {
     --tabstrip-min-height: auto !important;
   }
+  /* ---------------------------------------- Nav Bar ---------------------------------------- */
   #nav-bar {
     border: none !important;
   }
@@ -953,6 +910,9 @@
   #PlacesToolbar {
     padding-inline: var(--toolbar-padding-inline);
   }
+}
+@media (-moz-pref("sidebar.verticalTabs", false)) {
+  /* ---------------------------------------- Tabs ---------------------------------------- */
   @media (-moz-pref("extensions.activeThemeID", "default-theme@mozilla.org")) or (-moz-pref("extensions.activeThemeID", "firefox-compact-light@mozilla.org")) or (-moz-pref("extensions.activeThemeID", "firefox-compact-dark@mozilla.org")) {
     .tabbrowser-tab[visuallyselected] .tab-background,
     tab-split-view-wrapper[hasactivetab]::before {
@@ -1010,6 +970,7 @@
     mask-composite: exclude !important;
     mask-mode: alpha !important;
   }
+  /* A split view occupies one attached-tab shape; its tabs only lay out content. */
   #tabbrowser-tabs tab-split-view-wrapper {
     align-items: stretch !important;
     margin-block: 0px !important;
@@ -1075,13 +1036,16 @@
   .tab-group-overflow-count-container .tab-group-overflow-count {
     padding: 0px !important;
   }
+  /* -------------------- Tab Icon Indicators -------------------- */
   .tabbrowser-tab:is([image], [pinned]) .tab-content[attention]:not([selected]),
   .tab-content[pinned][titlechanged]:not([selected]) {
     background-position: 50% calc(50% + 12px) !important;
   }
+  /* ---------------------------------------- Tab Bar ---------------------------------------- */
   #TabsToolbar #search-container {
     padding-block: 0 !important;
   }
+  /* ---------------------------------------- Indents ---------------------------------------- */
   :is(.tabbrowser-tab, tab-split-view-wrapper):nth-child(1 of :is(.tabbrowser-tab, tab-split-view-wrapper):not([hidden], [dragtarget])) {
     margin-inline-start: var(--tab-first-last-inline-margin) !important;
   }
@@ -1110,6 +1074,7 @@
   :is(.tabbrowser-tab, tab-split-view-wrapper):nth-last-child(1 of :is(.tabbrowser-tab, tab-split-view-wrapper):not([hidden])) + tab-group > .tab-group-label-container {
     margin-inline-start: 0px !important;
   }
+  /* ---------------------------------------- Tab Scroll Animation ---------------------------------------- */
   #tabbrowser-tabs:not([movingtab]) #pinned-tabs-container[overflowing] :is(.tabbrowser-tab, tab-split-view-wrapper):not(tab-split-view-wrapper > .tabbrowser-tab),
   #tabbrowser-tabs:not([movingtab]) #tabbrowser-arrowscrollbox[overflowing] :is(.tabbrowser-tab, tab-split-view-wrapper):not(tab-split-view-wrapper > .tabbrowser-tab) {
     pointer-events: none !important;
@@ -1134,9 +1099,35 @@
   tab-group[collapsed] > #tabbrowser-tabs:not([movingtab]) #tabbrowser-arrowscrollbox[overflowing] :is(.tabbrowser-tab, tab-split-view-wrapper):not(tab-split-view-wrapper > .tabbrowser-tab):is([visuallyselected], [hasactivetab]) {
     margin-inline: 0px !important;
   }
+  /*
+    .tabbrowser-tab[dragtarget][pinned]
+    {
+        max-width: min-content !important;
+
+        ~ .tabbrowser-tab[pinned]
+        {
+            inset-inline: 40px 0px !important;
+
+        }
+    }
+
+    .tabbrowser-tab[dragtarget]:not([pinned])
+    {
+        max-width: min-content !important;
+
+        ~ .tabbrowser-tab:not([pinned])
+        {
+            inset-inline: 76px 0px !important;
+
+        }
+    }
+    */
   #tabbrowser-tabs[overflow] .tab-drop-indicator {
     inset-inline-start: var(--tab-first-last-inline-margin) !important;
   }
+  /* chrome/modules/vertical_tabs/wavefox_tab_media_icons_and_text.css */
+  /* -------------------- Media Icons -------------------- */
+  /* Collapsed tabs / Expanded pinned tabs */
   #tabbrowser-tabs:not([expanded]) .tabbrowser-tab:not([crashed]) .tab-icon-overlay,
   #tabbrowser-tabs[expanded] .tabbrowser-tab[pinned]:not([crashed]) .tab-icon-overlay {
     background-color: transparent !important;
@@ -1167,6 +1158,7 @@
   :root:-moz-locale-dir(rtl) #tabbrowser-tabs[expanded] .tabbrowser-tab[pinned]:not([crashed]):where([soundplaying], [muted], [activemedia-blocked]) .tab-icon-stack > :not(.tab-icon-overlay) {
     mask-image: linear-gradient(to bottom, black, black), radial-gradient(circle at left top, black 8px, transparent 9px) !important;
   }
+  /* Expanded tabs */
   #tabbrowser-tabs[expanded] .tabbrowser-tab:not([pinned], [crashed]) .tab-icon-overlay {
     background-color: currentColor !important;
     background-image: none !important;
@@ -1223,6 +1215,7 @@
   #tabbrowser-tabs[expanded] .tabbrowser-tab .tab-audio-button {
     display: none !important;
   }
+  /* ---------- Picture-In-Picture ---------- */
   #tabbrowser-tabs:is([expanded], :not([expanded])) .tabbrowser-tab[pictureinpicture]:not([crashed], [busy]) .tab-icon-stack::before {
     content: "";
     display: block;
@@ -1261,6 +1254,7 @@
     mask-repeat: no-repeat;
     mask-composite: exclude, add;
   }
+  /* -------------------- Tab Text -------------------- */
   .tab-label-container {
     height: auto !important;
     font-size: clamp(0px, 1em, 16px) !important;
@@ -1275,6 +1269,8 @@
     text-overflow: ellipsis !important;
     margin-block: 0px !important;
   }
+  /* chrome/modules/horizontal_tabs/wavefox_toolbar_buttons.css */
+  /* ---------------------------------------- Firefox View ---------------------------------------- */
   #tabbrowser-tabs[orient=horizontal]::before {
     display: none !important;
   }
@@ -1289,6 +1285,7 @@
     box-shadow: none !important;
     outline: none !important;
   }
+  /* -------------------- Tab Counter -------------------- */
 }
 @media (-moz-pref("sidebar.verticalTabs", false)) and (-moz-pref("userChrome.edgify.alltabs-button.order-first", true)) {
   #TabsToolbar-customization-target > #alltabs-button {
@@ -1302,6 +1299,9 @@
     opacity: 1 !important;
     list-style-image: url("chrome://global/skin/icons/arrow-down.svg") !important;
   }
+}
+@media (-moz-pref("sidebar.verticalTabs", false)) {
+  /* ---------------------------------------- Tab Bar ---------------------------------------- */
 }
 @media (-moz-pref("sidebar.verticalTabs", false)) and (-moz-pref("extensions.activeThemeID", "firefox-compact-light@mozilla.org")) {
   #TabsToolbar {
@@ -1351,6 +1351,9 @@
     border-radius: 8px !important;
   }
 }
+@media (-moz-pref("sidebar.verticalTabs", false)) {
+  /* ---------------------------------------- Indents ---------------------------------------- */
+}
 @media (-moz-pref("sidebar.verticalTabs", false)) and (not -moz-pref("userChrome.edgify.alltabs-button.order-first", true)) {
   #TabsToolbar-customization-target > :is(toolbarbutton, toolbaritem):first-child,
   #TabsToolbar-customization-target > toolbarpaletteitem:first-child > :is(toolbarbutton, toolbaritem) {
@@ -1371,6 +1374,9 @@
   :is(.tabbrowser-tab, tab-split-view-wrapper):not([hidden]) + .tabbrowser-tab[hidden] + #tabbrowser-arrowscrollbox-periphery > #tabs-newtab-button {
     margin-inline-start: calc(-1 * var(--tab-first-last-inline-margin, 0px) / 2) !important;
   }
+}
+@media (-moz-pref("sidebar.verticalTabs", false)) {
+  /* ---------------------------------------- Separators ---------------------------------------- */
   .tab-stack {
     margin-inline-end: 1px !important;
   }
@@ -1414,12 +1420,14 @@
   #tabbrowser-tabs:not([movingtab]) .tabbrowser-tab:not([hidden]):has(+ .tabbrowser-tab[hidden] + .tabbrowser-tab:is([selected], :hover, [multiselected]):not([hidden])) .tab-stack::after {
     opacity: 0 !important;
   }
+  /* Keep internal split-view dividers visible in selected and hovered states. */
   #TabsToolbar #tabbrowser-tabs tab-split-view-wrapper > .tabbrowser-tab:not([hidden]):has(~ .tabbrowser-tab:not([hidden])) > .tab-stack::after {
     opacity: var(--separators-color-saturation) !important;
   }
   :root {
     --separators-color-saturation: 0.5;
   }
+  /* ---------------------------------------- Shadows ---------------------------------------- */
   @media (-moz-pref("extensions.activeThemeID", "default-theme@mozilla.org")) or (-moz-pref("extensions.activeThemeID", "firefox-compact-light@mozilla.org")) or (-moz-pref("extensions.activeThemeID", "firefox-compact-dark@mozilla.org")) {
     :root {
       --wavefox-selected-tab-filter-offset-x: 0px;
@@ -1506,6 +1514,7 @@
   .titlebar-spacer[type=post-tabs] {
     width: 12px !important;
   }
+  /* ---------- Opaque toolbar ---------- */
 }
 @media (-moz-pref("sidebar.verticalTabs", false)) and (-moz-platform: windows) and (-moz-pref("widget.windows.mica")) and (-moz-pref("extensions.activeThemeID", "default-theme@mozilla.org")) and (-moz-pref("browser.tabs.inTitlebar", 1)) {
   :root {
@@ -1558,6 +1567,7 @@
   }
 }
 @media (-moz-pref("sidebar.verticalTabs", false)) {
+  /* ---------- DragSpace ---------- */
   :root[sizemode=normal] {
     --drag-space: 8px;
   }
@@ -1596,14 +1606,6 @@
 @media (-moz-pref("sidebar.verticalTabs", true)) {
   /* chrome/modules/vertical_tabs/wavefox_tabs.css */
   /* Expand On Hover */
-  /* Tabs */
-  /* chrome/modules/vertical_tabs/wavefox_toolbar_buttons.css */
-  /* chrome/modules/vertical_tabs/wavefox_tab_media_icons_and_text.css */
-  /* -------------------- Media Icons -------------------- */
-  /* Collapsed tabs / Expanded pinned tabs */
-  /* Expanded tabs */
-  /* ---------- Picture-In-Picture ---------- */
-  /* -------------------- Tab Text -------------------- */
 }
 @media (-moz-pref("sidebar.verticalTabs", true)) and (-moz-pref("sidebar.visibility", "expand-on-hover")) {
   :root[sidebar-expand-on-hover] .browser-toolbox-background:not(#navigator-toolbox),
@@ -1622,6 +1624,7 @@
   }
 }
 @media (-moz-pref("sidebar.verticalTabs", true)) {
+  /* Tabs */
   :root {
     --space-xsmall: 2px !important;
     --tab-min-height: 36px !important;
@@ -1669,9 +1672,15 @@
     top: -2px !important;
     inset-inline-start: calc(var(--tab-inner-inline-margin) - 2px) !important;
   }
+}
+@media (-moz-pref("sidebar.verticalTabs", true)) {
+  /* chrome/modules/vertical_tabs/wavefox_toolbar_buttons.css */
   :is(#tabs-newtab-button, #vertical-tabs-newtab-button) > .toolbarbutton-text {
     display: none !important;
   }
+  /* chrome/modules/vertical_tabs/wavefox_tab_media_icons_and_text.css */
+  /* -------------------- Media Icons -------------------- */
+  /* Collapsed tabs / Expanded pinned tabs */
   #tabbrowser-tabs:not([expanded]) .tabbrowser-tab:not([crashed]) .tab-icon-overlay,
   #tabbrowser-tabs[expanded] .tabbrowser-tab[pinned]:not([crashed]) .tab-icon-overlay {
     background-color: transparent !important;
@@ -1702,6 +1711,7 @@
   :root:-moz-locale-dir(rtl) #tabbrowser-tabs[expanded] .tabbrowser-tab[pinned]:not([crashed]):where([soundplaying], [muted], [activemedia-blocked]) .tab-icon-stack > :not(.tab-icon-overlay) {
     mask-image: linear-gradient(to bottom, black, black), radial-gradient(circle at left top, black 8px, transparent 9px) !important;
   }
+  /* Expanded tabs */
   #tabbrowser-tabs[expanded] .tabbrowser-tab:not([pinned], [crashed]) .tab-icon-overlay {
     background-color: currentColor !important;
     background-image: none !important;
@@ -1750,6 +1760,7 @@
   #tabbrowser-tabs[expanded] .tabbrowser-tab .tab-audio-button {
     display: none !important;
   }
+  /* ---------- Picture-In-Picture ---------- */
   #tabbrowser-tabs:is([expanded], :not([expanded])) .tabbrowser-tab[pictureinpicture]:not([crashed], [busy]) .tab-icon-stack::before {
     content: "";
     display: block;
@@ -1788,6 +1799,7 @@
     mask-repeat: no-repeat;
     mask-composite: exclude, add;
   }
+  /* -------------------- Tab Text -------------------- */
   .tab-label-container {
     height: auto !important;
     font-size: clamp(0px, 1em, 16px) !important;
@@ -1874,10 +1886,16 @@
     --urlbarview-row-border-radius: 0px !important;
     --urlbar-input-container-outline-open: none !important;
     --urlbar-input-container-outline-open-focused: none !important;
-    --urlbar-background-border-open: var(--urlbar-input-container-border-width-open) solid var(--panel-border-color) !important;
+    --urlbar-background-border-open: var(
+        --urlbar-input-container-border-width-open
+      )
+      solid var(--panel-border-color) !important;
   }
   :is(#urlbar, #searchbar-new)[focused]:not([suppress-focus-border]) {
-    --urlbar-background-border-open: var(--urlbar-input-container-border-width-open) solid var(--toolbar-field-border-color-focus) !important;
+    --urlbar-background-border-open: var(
+        --urlbar-input-container-border-width-open
+      )
+      solid var(--toolbar-field-border-color-focus) !important;
   }
   :is(#urlbar, #searchbar-new) > .urlbarView {
     margin-inline: 0 !important;
@@ -2163,7 +2181,10 @@
 panel-item.urlbarView-result-menuitem {
   --panel-item-fill: currentColor !important;
   --panel-menuitem-padding-inline: 12px !important;
-  --panel-item-button-padding: calc((var(--edgify-menuitem-height, 30px) - 20px) / 2) 12px !important;
+  --panel-item-button-padding: calc(
+      (var(--edgify-menuitem-height, 30px) - 20px) / 2
+    )
+    12px !important;
   --panel-item-button-padding-inline-start: calc(12px + 16px + 8px) !important;
   --panel-item-button-padding-inline-start-offset: 0px !important;
   --panel-item-button-margin: 0 !important;
@@ -2202,12 +2223,18 @@ panel-item.urlbarView-result-menuitem[data-command=help] {
   background-image: url("images/menu-icons/help.svg") !important;
 }
 
-.urlbarView-row[data-l10n-id=urlbar-group-search-suggestions] {
+.urlbarView-row:is([data-l10n-id=urlbar-group-search-suggestions],
+[data-l10n-id=urlbar-group-firefox-suggest]) {
   margin-block-start: calc(var(--urlbarView-labeled-row-margin-top) - 4px) !important;
 }
 
-:is(#urlbar, #searchbar-new) > .urlbarView > .urlbarView-results > .urlbarView-row[data-l10n-id=urlbar-group-search-suggestions] {
+:is(#urlbar, #searchbar-new) > .urlbarView > .urlbarView-results > .urlbarView-row:is([data-l10n-id=urlbar-group-search-suggestions],
+[data-l10n-id=urlbar-group-firefox-suggest]) {
   margin-block-start: calc(var(--urlbarview-labeled-row-margin-top) - 4px) !important;
+}
+:is(#urlbar, #searchbar-new) > .urlbarView > .urlbarView-results > .urlbarView-row:is([data-l10n-id=urlbar-group-search-suggestions],
+[data-l10n-id=urlbar-group-firefox-suggest]):before {
+  padding-inline-start: var(--edgify-urlbar-result-padding);
 }
 
 .urlbarView-row-inner,
@@ -2299,13 +2326,15 @@ toolbarbutton.bookmark-item:not(.subviewbutton) {
 #PlacesToolbarItems > toolbarseparator {
   padding-inline: calc(3px - var(--bookmark-inline-margin)) !important;
   align-items: center !important;
-  /* Fractional scaling adjustments (150%, 175%, etc.) */
 }
 #PlacesToolbarItems > toolbarseparator::before {
   content: "";
   border-inline-start: 1px solid var(--toolbarseparator-color) !important;
   height: 16px !important;
   border-image: none !important;
+}
+#PlacesToolbarItems > toolbarseparator {
+  /* Fractional scaling adjustments (150%, 175%, etc.) */
 }
 @media (1dppx < resolution < 2dppx) {
   #PlacesToolbarItems > toolbarseparator::before {
@@ -2427,6 +2456,17 @@ findbar[hidden] {
   --menuitem-text-padding-start: 0px;
   --menuitem-margin-inline: 0px;
   --menuitem-padding-start-without-icon: calc(var(--menuitem-padding-inline, 12px) + var(--menuitem-icon-size, 16px) + var(--menuitem-icon-gap, 8px) + var(--menuitem-text-padding-start, 0px));
+}
+@media not -moz-pref("widget.windows.mica.popups", 2) {
+  :root menupopup,
+  :root panel {
+    --panel-background: Field !important;
+    --panel-background: light-dark(#fff, #353d49) !important;
+    --panel-color: light-dark(#1c1c1c, #fff) !important;
+  }
+}
+:root menupopup,
+:root panel {
   --panel-dimmed: color-mix(in srgb, currentColor 17%, transparent) !important;
   --panel-dimmed-further: color-mix(in srgb, currentColor 30%, transparent) !important;
   --panel-border-radius: 6px;
@@ -2438,14 +2478,6 @@ findbar[hidden] {
   0 1px 5px -3px rgba(0, 0, 0, .1),
   0 6px 10px 1px rgba(0, 0, 0, .1),
   0 4px 12px 2px rgba(0, 0, 0, .1);
-}
-@media not -moz-pref("widget.windows.mica.popups", 2) {
-  :root menupopup,
-  :root panel {
-    --panel-background: Field !important;
-    --panel-background: light-dark(#fff, #353d49) !important;
-    --panel-color: light-dark(#1c1c1c, #fff) !important;
-  }
 }
 
 /** 显示 addMenu 菜单图标 */

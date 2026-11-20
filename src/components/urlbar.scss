@@ -71,10 +71,16 @@
     --urlbarview-row-border-radius: 0px !important;
     --urlbar-input-container-outline-open: none !important;
     --urlbar-input-container-outline-open-focused: none !important;
-    --urlbar-background-border-open: var(--urlbar-input-container-border-width-open) solid var(--panel-border-color) !important;
+    --urlbar-background-border-open: var(
+        --urlbar-input-container-border-width-open
+      )
+      solid var(--panel-border-color) !important;
 
     &[focused]:not([suppress-focus-border]) {
-      --urlbar-background-border-open: var(--urlbar-input-container-border-width-open) solid var(--toolbar-field-border-color-focus) !important;
+      --urlbar-background-border-open: var(
+          --urlbar-input-container-border-width-open
+        )
+        solid var(--toolbar-field-border-color-focus) !important;
     }
 
     > .urlbarView {
@@ -321,7 +327,9 @@
     }
   }
 
-  :is(#urlbar, #searchbar-new) .urlbarView-row:not([type="dynamic"]) .urlbarView-row-inner {
+  :is(#urlbar, #searchbar-new)
+    .urlbarView-row:not([type="dynamic"])
+    .urlbarView-row-inner {
     padding-block: var(--edgify-urlbar-result-padding) !important;
   }
 }
@@ -456,7 +464,10 @@ panel-item.urlbarView-result-menuitem {
   // User sheets cannot style this shadow button via ::part. Its native tokens
   // keep the icon, checkbox mark and RTL layout working inside the shadow root.
   --panel-menuitem-padding-inline: 12px !important;
-  --panel-item-button-padding: calc((var(--edgify-menuitem-height, 30px) - 20px) / 2) 12px !important;
+  --panel-item-button-padding: calc(
+      (var(--edgify-menuitem-height, 30px) - 20px) / 2
+    )
+    12px !important;
   --panel-item-button-padding-inline-start: calc(12px + 16px + 8px) !important;
   --panel-item-button-padding-inline-start-offset: 0px !important;
   --panel-item-button-margin: 0 !important;
@@ -474,9 +485,9 @@ panel-item.urlbarView-result-menuitem {
 }
 
 .urlbarView-result-menuitem:not(panel-item):is(
-  [data-l10n-id="urlbar-result-menu-remove-from-history"],
-  [data-l10n-id="urlbar-result-menu-learn-more"]
-) {
+    [data-l10n-id="urlbar-result-menu-remove-from-history"],
+    [data-l10n-id="urlbar-result-menu-learn-more"]
+  ) {
   > :is(.menu-icon, .menu-iconic-left) {
     display: none !important;
   }
@@ -504,13 +515,29 @@ panel-item.urlbarView-result-menuitem {
 }
 
 // Tighten the gap before the search-suggestions group.
-.urlbarView-row[data-l10n-id="urlbar-group-search-suggestions"] {
-  margin-block-start: calc(var(--urlbarView-labeled-row-margin-top) - 4px) !important;
+.urlbarView-row:is(
+  [data-l10n-id="urlbar-group-search-suggestions"],
+  [data-l10n-id="urlbar-group-firefox-suggest"]
+) {
+  margin-block-start: calc(
+    var(--urlbarView-labeled-row-margin-top) - 4px
+  ) !important;
 }
 
 // The lowercase token is used by both Proton and Nova in current Firefox.
-:is(#urlbar, #searchbar-new) > .urlbarView > .urlbarView-results > .urlbarView-row[data-l10n-id="urlbar-group-search-suggestions"] {
-  margin-block-start: calc(var(--urlbarview-labeled-row-margin-top) - 4px) !important;
+:is(#urlbar, #searchbar-new)
+  > .urlbarView
+  > .urlbarView-results
+  > .urlbarView-row:is(
+    [data-l10n-id="urlbar-group-search-suggestions"],
+    [data-l10n-id="urlbar-group-firefox-suggest"]
+  ) {
+  margin-block-start: calc(
+    var(--urlbarview-labeled-row-margin-top) - 4px
+  ) !important;
+  &:before {
+    padding-inline-start: var(--edgify-urlbar-result-padding);
+  }
 }
 
 .urlbarView-row-inner,

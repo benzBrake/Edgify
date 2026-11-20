@@ -159,10 +159,12 @@ url-prefix(about:addons) {
     /* Make the Firefox logo workmark follow text colour. */
     --newtab-wordmark-color: color-mix(in srgb, var(--newtab-text-primary-color) 60%, var(--newtab-background-color)) !important;
     /* If there is no secondary background, create one from other colours. */
-    /* Dark adjustments for themes. */
   }
   :root[style*="--newtab-background-color"]:not([style*="--newtab-background-color-secondary"]) {
     --newtab-background-color-secondary: color-mix(in srgb, var(--newtab-background-color) 15%, white) !important;
+  }
+  :root[style*="--newtab-background-color"] {
+    /* Dark adjustments for themes. */
   }
   :root[style*="--newtab-background-color"][lwt-newtab-brighttext] {
     /* Make the Firefox logo workmark follow text colour. */
