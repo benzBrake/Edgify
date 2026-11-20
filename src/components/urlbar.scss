@@ -149,6 +149,10 @@
     --edgify-urlbar-leading-icon-inset: var(--edgify-urlbar-button-icon-inset);
   }
 
+  #urlbar > .urlbarView .urlbarView-favicon {
+    margin-inline-end: 8px !important;
+  }
+
   #urlbar-container #trust-icon-container {
     padding-inline: var(--edgify-urlbar-button-icon-inset) !important;
   }
