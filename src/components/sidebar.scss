@@ -1,5 +1,27 @@
 @use '../utils/pref' as *;
 
+/* Share the Nova search and options button radius within sidebar documents,
+ * including controls inside the sidebar components' shadow trees. */
+@-moz-document url("chrome://browser/content/places/bookmarksSidebar.xhtml"),
+               url("chrome://browser/content/places/historySidebar.xhtml"),
+               url("chrome://browser/content/sidebar/sidebar-bookmarks.html"),
+               url("chrome://browser/content/sidebar/sidebar-history.html"),
+               url("chrome://browser/content/sidebar/sidebar-opentabs.html"),
+               url("chrome://browser/content/sidebar/sidebar-syncedtabs.html"),
+               url("chrome://browser/content/syncedtabs/sidebar.html"),
+               url("chrome://global/content/megalist/megalist.html") {
+    @include Option("browser.nova.enabled") {
+        :root {
+            --input-search-border-radius: 6px !important;
+        }
+
+        moz-button.menu-button[type~="icon"][type~="ghost"],
+        .no-logins-card-buttons > moz-button {
+            --button-border-radius: var(--input-search-border-radius) !important;
+        }
+    }
+}
+
 /* These cards also use the shared design-system radii when Nova is disabled.
  * Set the card token so its header, hover surface, and content corners agree.
  */
