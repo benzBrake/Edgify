@@ -2822,19 +2822,40 @@ panel-item.urlbarView-result-menuitem {
   height: 30px !important;
 }
 
-menupopup > menu::after {
+menupopup > menu::after,
+#protections-popup-mainView .subviewbutton-nav:not(.notFound)::after,
+.widget-overflow-list .subviewbutton-nav::after,
+.PanelUI-subView .subviewbutton-nav::after,
+.tab-preview-add-note.subviewbutton-nav::after {
   content: "▶" !important;
-  display: inline-flex;
-  align-items: center;
+  display: block !important;
+  box-sizing: border-box;
+  width: 16px !important;
+  height: 16px !important;
   font-size: 10px;
-  line-height: 1;
+  line-height: 16px;
+  text-align: end;
   align-self: center;
   margin-inline-start: auto;
-  margin-inline-end: var(--menuitem-padding-inline, 12px);
+  margin-inline-end: 0;
   background-image: unset !important;
 }
 
-menupopup:dir(rtl) > menu::after {
+#protections-popup-mainView .subviewbutton-nav:not(.notFound)::after,
+.widget-overflow-list .subviewbutton-nav::after,
+.PanelUI-subView .subviewbutton-nav::after,
+.tab-preview-add-note.subviewbutton-nav::after {
+  border: 0 !important;
+  transform: none !important;
+  background: none !important;
+  margin-inline-end: 0;
+}
+
+:dir(rtl) menupopup > menu::after,
+:dir(rtl) #protections-popup-mainView .subviewbutton-nav:not(.notFound)::after,
+:dir(rtl) .widget-overflow-list .subviewbutton-nav::after,
+:dir(rtl) .PanelUI-subView .subviewbutton-nav::after,
+:dir(rtl) .tab-preview-add-note.subviewbutton-nav::after {
   content: "◀" !important;
 }
 
