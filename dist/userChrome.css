@@ -2803,6 +2803,12 @@ panel[type=autocomplete-richlistbox] > .autocomplete-richlistbox {
   margin: 0 !important;
 }
 
+.autocomplete-richlistitem,
+menupopup :is(menu, menuitem, menuseparator),
+panel-item.urlbarView-result-menuitem {
+  --menuitem-padding-inline: 12px;
+}
+
 .autocomplete-richlistitem {
   height: 30px !important;
   border: 0 !important;
@@ -2816,7 +2822,32 @@ panel-item.urlbarView-result-menuitem {
   height: 30px !important;
 }
 
+menupopup > menu::after {
+  content: "▶" !important;
+  display: inline-flex;
+  align-items: center;
+  font-size: 10px;
+  line-height: 1;
+  align-self: center;
+  margin-inline-start: auto;
+  margin-inline-end: var(--menuitem-padding-inline, 12px);
+  background-image: unset !important;
+}
+
+menupopup:dir(rtl) > menu::after {
+  content: "◀" !important;
+}
+
+menupopup menuseparator {
+  padding-inline: var(--menuitem-padding-inline) !important;
+}
+
 @media (-moz-pref("browser.uidensity", 1)) {
+  .autocomplete-richlistitem,
+  menupopup :is(menu, menuitem, menuseparator),
+  panel-item.urlbarView-result-menuitem {
+    --menuitem-padding-inline: 8px;
+  }
   .autocomplete-richlistitem,
   menupopup :is(menu, menuitem),
   panel-item.urlbarView-result-menuitem {
