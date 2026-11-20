@@ -60,7 +60,7 @@
   outline: unset !important;
 }
 
-// Keep Nova's panel radii, but join the input and results into one surface.
+// Join Nova's input and results into one surface.
 @include Option("browser.nova.enabled") {
   :is(#urlbar, #searchbar-new) {
     // Nova's negative gutter margin expands the popover past the input, while
@@ -77,11 +77,6 @@
       --urlbar-background-border-open: var(--urlbar-input-container-border-width-open) solid var(--toolbar-field-border-color-focus) !important;
     }
 
-    &[popover-open] {
-      --megabar_border_roundness: 12px;
-      --urlbarview-border-radius: var(--megabar_border_roundness) !important;
-    }
-
     > .urlbarView {
       margin-inline: 0 !important;
       padding-inline: 0 !important;
@@ -94,17 +89,23 @@
     }
   }
 
-  :is(#urlbar, #searchbar-new)[popover-open] > .urlbar-background {
-    // The input and results paint clipped halves of one background.
-    border-start-start-radius: var(--urlbar-background-border-top-radius-open) !important;
-    border-start-end-radius: var(--urlbar-background-border-top-radius-open) !important;
-    border-end-start-radius: 0 !important;
-    border-end-end-radius: 0 !important;
-  }
+  :is(#urlbar, #searchbar-new)[popover-open] {
+    --edgify-urlbar-popover-border-radius: 12px;
 
-  :is(#urlbar, #searchbar-new) > .urlbarView > .urlbarView-background {
-    border-end-start-radius: var(--urlbarview-border-radius) !important;
-    border-end-end-radius: var(--urlbarview-border-radius) !important;
+    // Only round the outer corners of the two halves of the background.
+    > .urlbar-background {
+      border-start-start-radius: var(--edgify-urlbar-popover-border-radius) !important;
+      border-start-end-radius: var(--edgify-urlbar-popover-border-radius) !important;
+      border-end-start-radius: 0 !important;
+      border-end-end-radius: 0 !important;
+    }
+
+    > .urlbarView > .urlbarView-background {
+      border-start-start-radius: 0 !important;
+      border-start-end-radius: 0 !important;
+      border-end-start-radius: var(--edgify-urlbar-popover-border-radius) !important;
+      border-end-end-radius: var(--edgify-urlbar-popover-border-radius) !important;
+    }
   }
 
   :is(#urlbar, #searchbar-new) .urlbarView-row,
