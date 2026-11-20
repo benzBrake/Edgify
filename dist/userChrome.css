@@ -1900,6 +1900,8 @@
 
 @media (-moz-pref("browser.nova.enabled")) {
   :is(#urlbar, #searchbar-new) {
+    --urlbar-background-overhang-open: 0px !important;
+    --urlbarview-joint-background-outset-block: 0px !important;
     --urlbarview-margin-inline: 0px !important;
     --urlbarview-margin-block: 0px !important;
     --urlbarview-row-gutter: 0px !important;

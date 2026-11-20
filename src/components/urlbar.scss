@@ -63,8 +63,11 @@
 // Join Nova's input and results into one surface.
 @include Option("browser.nova.enabled") {
   :is(#urlbar, #searchbar-new) {
-    // Nova's negative gutter margin expands the popover past the input, while
-    // its view padding insets every result. Keep both surfaces on one edge.
+    // Keep both halves flush with the input in every density. Nova's open
+    // background otherwise overhangs in normal and touch density.
+    --urlbar-background-overhang-open: 0px !important;
+    // Firefox resolves this derived value on :root, before the bar's overrides.
+    --urlbarview-joint-background-outset-block: 0px !important;
     --urlbarview-margin-inline: 0px !important;
     --urlbarview-margin-block: 0px !important;
     --urlbarview-row-gutter: 0px !important;
