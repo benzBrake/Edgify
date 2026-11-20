@@ -1953,6 +1953,12 @@
   [rich-suggestion]) {
     min-height: var(--urlbar-height) !important;
   }
+  :root[uidensity=touch] :is(#urlbar, #searchbar-new) .urlbarView-row:not([type=tip],
+  [type=dynamic],
+  [type=rich-search],
+  [rich-suggestion]) {
+    --urlbarview-row-extra-padding-block: 0px !important;
+  }
   :is(#urlbar, #searchbar-new) .urlbarView-row:not([type=tip],
   [type=dynamic],
   [type=rich-search],

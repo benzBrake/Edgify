@@ -133,6 +133,11 @@
     ) {
     min-height: var(--urlbar-height) !important;
 
+    // Nova also applies touch padding to the button group, which appears on selection.
+    :root[uidensity="touch"] & {
+      --urlbarview-row-extra-padding-block: 0px !important;
+    }
+
     > .urlbarView-row-inner {
       box-sizing: border-box !important;
       min-height: var(--urlbar-height) !important;
