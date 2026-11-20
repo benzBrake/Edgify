@@ -1827,6 +1827,11 @@
   --toolbarbutton-border-radius: var(--megabar_border_roundness);
 }
 
+:is(#urlbar, #searchbar-new) {
+  --edgify-urlbar-button-size: max(24px, var(--urlbar-basic-component-size));
+  --edgify-urlbar-button-icon-inset: calc((var(--edgify-urlbar-button-size) - 16px) / 2);
+}
+
 #urlbar-container :is(#identity-box,
 .identity-box-button,
 #trust-icon-container,
@@ -1842,7 +1847,7 @@
 }
 
 #urlbar-container #trust-icon-container {
-  min-width: max(24px, var(--urlbar-basic-component-size)) !important;
+  min-width: var(--edgify-urlbar-button-size) !important;
   min-height: 24px !important;
   padding: 3px !important;
   justify-content: center !important;
@@ -1901,13 +1906,49 @@
   :is(#urlbar, #searchbar-new) .urlbarView-row-inner {
     border-radius: 0 !important;
   }
-  :is(#urlbar, #searchbar-new) .urlbarView-row:not([type=tip], [type=dynamic], [type=rich-search], [rich-suggestion]) {
+  :is(#urlbar, #searchbar-new) .urlbarView-row:not([type=tip],
+  [type=dynamic],
+  [type=rich-search],
+  [rich-suggestion]) {
     min-height: var(--urlbar-height) !important;
   }
-  :is(#urlbar, #searchbar-new) .urlbarView-row:not([type=tip], [type=dynamic], [type=rich-search], [rich-suggestion]) > .urlbarView-row-inner {
+  :is(#urlbar, #searchbar-new) .urlbarView-row:not([type=tip],
+  [type=dynamic],
+  [type=rich-search],
+  [rich-suggestion]) > .urlbarView-row-inner {
     box-sizing: border-box !important;
     min-height: var(--urlbar-height) !important;
     padding-block: 0 !important;
+  }
+  #urlbar {
+    --edgify-urlbar-leading-icon-inset: var(--edgify-urlbar-button-icon-inset);
+  }
+  #urlbar-container #trust-icon-container {
+    padding-inline: var(--edgify-urlbar-button-icon-inset) !important;
+  }
+  #urlbar :is(#tracking-protection-icon-container, #identity-icon-box) {
+    padding-inline-start: var(--edgify-urlbar-button-icon-inset) !important;
+  }
+  @media (-moz-pref("browser.urlbar.searchModeSwitcher.featureGate")) or (-moz-pref("browser.urlbar.scotchBonnet.enableOverride")) {
+    :root:not([remotecontrol]) #urlbar:has(> .urlbar-input-container > .searchmode-switcher:not([offscreen], [hidden])) {
+      --edgify-urlbar-leading-icon-inset: calc(
+        var(--space-small) + var(--urlbar-snapped-1px-border-width, var(--border-width))
+      );
+    }
+  }
+  #urlbar .urlbarView-row:not([type=tip],
+  [type=dynamic],
+  [type=rich-search],
+  [rich-suggestion],
+  [is-top-pick]) > .urlbarView-row-inner {
+    --edgify-urlbar-result-padding: max(
+      0px,
+      var(--urlbar-input-container-padding) +
+        var(--edgify-urlbar-leading-icon-inset) +
+        (16px -
+          var(--urlbarview-icon-size, var(--urlbarview-favicon-size))) / 2 -
+        var(--urlbarview-icon-margin-start, var(--urlbarview-favicon-margin-start))
+    );
   }
 }
 /* Keep the address and search bars stable when expanded. */
@@ -1954,13 +1995,12 @@
   /* Align result icons with the leading site-info or remote-control icon. */
   #urlbar[breakout]:where(:not(:has(> .urlbar-input-container > .searchmode-switcher:not([offscreen])))) {
     --urlbarView-favicon-margin-start: calc(
-      (max(24px, var(--urlbar-basic-component-size)) - var(--urlbarView-favicon-width)) / 2
+      (var(--edgify-urlbar-button-size) - var(--urlbarView-favicon-width)) / 2
     );
   }
   :root[remotecontrol] #urlbar[breakout] {
     --urlbarView-favicon-margin-start: calc(
-      1px +
-        (max(24px, var(--urlbar-basic-component-size)) - var(--urlbarView-favicon-width)) / 2
+      (var(--edgify-urlbar-button-size) - var(--urlbarView-favicon-width)) / 2
     );
   }
   :is(#urlbar, #searchbar-new):has(> .urlbarView > .urlbarView-results) {
@@ -1973,13 +2013,12 @@
   }
   :is(#urlbar, #searchbar-new):has(> .urlbarView > .urlbarView-results):where(:not(:has(> .urlbar-input-container > .searchmode-switcher:not([offscreen])))) {
     --urlbarview-favicon-margin-start: calc(
-      (max(24px, var(--urlbar-basic-component-size)) - var(--urlbarview-favicon-size)) / 2
+      (var(--edgify-urlbar-button-size) - var(--urlbarview-favicon-size)) / 2
     );
   }
   :root[remotecontrol] #urlbar:has(> .urlbarView > .urlbarView-results) {
     --urlbarview-favicon-margin-start: calc(
-      1px +
-        (max(24px, var(--urlbar-basic-component-size)) - var(--urlbarview-favicon-size)) / 2
+      (var(--edgify-urlbar-button-size) - var(--urlbarview-favicon-size)) / 2
     );
   }
   :is(#urlbar, #searchbar-new) > .urlbarView > .urlbarView-results .urlbarView-row,
@@ -2057,11 +2096,8 @@
 /* Keep the remote-control status in a compact, Edge-style address-bar badge. */
 :root[remotecontrol] #remote-control-box {
   align-self: center;
-  width: var(--urlbar-basic-component-size) !important;
-  height: var(--urlbar-basic-component-size) !important;
-  min-width: 24px !important;
-  min-height: 24px !important;
-  margin-inline: 1px;
+  width: var(--edgify-urlbar-button-size) !important;
+  height: var(--edgify-urlbar-button-size) !important;
   flex-shrink: 0 !important;
   display: flex;
   align-items: center;
@@ -2099,15 +2135,16 @@
 
 /* Keep the full-width highlight separate from the content's inset. */
 :is(#urlbar, #searchbar-new) .urlbarView-results .urlbarView-row {
-  padding-inline: 0 !important;
   border-inline-width: 0 !important;
 }
 
 :is(#urlbar, #searchbar-new) .urlbarView-results .urlbarView-row-inner {
-  padding-inline: 8px !important;
+  padding-inline: var(--edgify-urlbar-result-padding) !important;
 }
 
-:is(#urlbar, #searchbar-new) .urlbarView-row:is([selected], [menu-trigger], [row-selectable]:hover)::after {
+:is(#urlbar, #searchbar-new) .urlbarView-row:is([selected],
+[menu-trigger],
+[row-selectable]:hover)::after {
   content: "";
   position: absolute;
   inset-block: 0;

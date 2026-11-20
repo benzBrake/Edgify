@@ -18,6 +18,11 @@
   --toolbarbutton-border-radius: var(--megabar_border_roundness);
 }
 
+:is(#urlbar, #searchbar-new) {
+  --edgify-urlbar-button-size: max(24px, var(--urlbar-basic-component-size));
+  --edgify-urlbar-button-icon-inset: calc((var(--edgify-urlbar-button-size) - 16px) / 2);
+}
+
 #urlbar-container
   :is(
     #identity-box,
@@ -36,7 +41,7 @@
 }
 
 #urlbar-container #trust-icon-container {
-  min-width: max(24px, var(--urlbar-basic-component-size)) !important;
+  min-width: var(--edgify-urlbar-button-size) !important;
   min-height: 24px !important;
   padding: 3px !important;
   justify-content: center !important;
@@ -110,7 +115,12 @@
   // Match ordinary suggestions to the input at every toolbar density. Use a
   // minimum so wrapped text and larger result content can still grow.
   :is(#urlbar, #searchbar-new)
-    .urlbarView-row:not([type="tip"], [type="dynamic"], [type="rich-search"], [rich-suggestion]) {
+    .urlbarView-row:not(
+      [type="tip"],
+      [type="dynamic"],
+      [type="rich-search"],
+      [rich-suggestion]
+    ) {
     min-height: var(--urlbar-height) !important;
 
     > .urlbarView-row-inner {
@@ -118,6 +128,52 @@
       min-height: var(--urlbar-height) !important;
       padding-block: 0 !important;
     }
+  }
+
+  #urlbar {
+    --edgify-urlbar-leading-icon-inset: var(--edgify-urlbar-button-icon-inset);
+  }
+
+  #urlbar-container #trust-icon-container {
+    padding-inline: var(--edgify-urlbar-button-icon-inset) !important;
+  }
+
+  #urlbar :is(#tracking-protection-icon-container, #identity-icon-box) {
+    padding-inline-start: var(--edgify-urlbar-button-icon-inset) !important;
+  }
+
+  @include Any(
+    F-Option("browser.urlbar.searchModeSwitcher.featureGate"),
+    F-Option("browser.urlbar.scotchBonnet.enableOverride")
+  ) {
+    // The switcher leads when it is in the toolbar and no debug badge precedes it.
+    :root:not([remotecontrol]) #urlbar:has(
+      > .urlbar-input-container > .searchmode-switcher:not([offscreen], [hidden])
+    ) {
+      --edgify-urlbar-leading-icon-inset: calc(
+        var(--space-small) + var(--urlbar-snapped-1px-border-width, var(--border-width))
+      );
+    }
+  }
+
+  // Nova already indents result icons; add the remaining space to the first button.
+  #urlbar
+    .urlbarView-row:not(
+      [type="tip"],
+      [type="dynamic"],
+      [type="rich-search"],
+      [rich-suggestion],
+      [is-top-pick]
+    )
+    > .urlbarView-row-inner {
+    --edgify-urlbar-result-padding: max(
+      0px,
+      var(--urlbar-input-container-padding) +
+        var(--edgify-urlbar-leading-icon-inset) +
+        (16px -
+          var(--urlbarview-icon-size, var(--urlbarview-favicon-size))) / 2 -
+        var(--urlbarview-icon-margin-start, var(--urlbarview-favicon-margin-start))
+    );
   }
 }
 
@@ -182,17 +238,18 @@
 
   /* Align result icons with the leading site-info or remote-control icon. */
   #urlbar[breakout]:where(
-    :not(:has(> .urlbar-input-container > .searchmode-switcher:not([offscreen])))
-  ) {
+      :not(
+        :has(> .urlbar-input-container > .searchmode-switcher:not([offscreen]))
+      )
+    ) {
     --urlbarView-favicon-margin-start: calc(
-      (max(24px, var(--urlbar-basic-component-size)) - var(--urlbarView-favicon-width)) / 2
+      (var(--edgify-urlbar-button-size) - var(--urlbarView-favicon-width)) / 2
     );
   }
 
   :root[remotecontrol] #urlbar[breakout] {
     --urlbarView-favicon-margin-start: calc(
-      1px +
-        (max(24px, var(--urlbar-basic-component-size)) - var(--urlbarView-favicon-width)) / 2
+      (var(--edgify-urlbar-button-size) - var(--urlbarView-favicon-width)) / 2
     );
   }
 
@@ -211,22 +268,29 @@
   }
 
   :is(#urlbar, #searchbar-new):has(> .urlbarView > .urlbarView-results):where(
-    :not(:has(> .urlbar-input-container > .searchmode-switcher:not([offscreen])))
-  ) {
+      :not(
+        :has(> .urlbar-input-container > .searchmode-switcher:not([offscreen]))
+      )
+    ) {
     --urlbarview-favicon-margin-start: calc(
-      (max(24px, var(--urlbar-basic-component-size)) - var(--urlbarview-favicon-size)) / 2
+      (var(--edgify-urlbar-button-size) - var(--urlbarview-favicon-size)) / 2
     );
   }
 
   :root[remotecontrol] #urlbar:has(> .urlbarView > .urlbarView-results) {
     --urlbarview-favicon-margin-start: calc(
-      1px +
-        (max(24px, var(--urlbar-basic-component-size)) - var(--urlbarview-favicon-size)) / 2
+      (var(--edgify-urlbar-button-size) - var(--urlbarview-favicon-size)) / 2
     );
   }
 
-  :is(#urlbar, #searchbar-new) > .urlbarView > .urlbarView-results .urlbarView-row,
-  :is(#urlbar, #searchbar-new) > .urlbarView > .urlbarView-results .urlbarView-row-inner {
+  :is(#urlbar, #searchbar-new)
+    > .urlbarView
+    > .urlbarView-results
+    .urlbarView-row,
+  :is(#urlbar, #searchbar-new)
+    > .urlbarView
+    > .urlbarView-results
+    .urlbarView-row-inner {
     margin-inline-start: 0 !important;
     margin-inline-end: 0 !important;
     border-radius: 0 !important;
@@ -315,11 +379,8 @@
 :root[remotecontrol] {
   #remote-control-box {
     align-self: center;
-    width: var(--urlbar-basic-component-size) !important;
-    height: var(--urlbar-basic-component-size) !important;
-    min-width: 24px !important;
-    min-height: 24px !important;
-    margin-inline: 1px;
+    width: var(--edgify-urlbar-button-size) !important;
+    height: var(--edgify-urlbar-button-size) !important;
     flex-shrink: 0 !important;
     display: flex;
     align-items: center;
@@ -360,15 +421,19 @@
 
 /* Keep the full-width highlight separate from the content's inset. */
 :is(#urlbar, #searchbar-new) .urlbarView-results .urlbarView-row {
-  padding-inline: 0 !important;
   border-inline-width: 0 !important;
 }
 
 :is(#urlbar, #searchbar-new) .urlbarView-results .urlbarView-row-inner {
-  padding-inline: 8px !important;
+  padding-inline: var(--edgify-urlbar-result-padding) !important;
 }
 
-:is(#urlbar, #searchbar-new) .urlbarView-row:is([selected], [menu-trigger], [row-selectable]:hover)::after {
+:is(#urlbar, #searchbar-new)
+  .urlbarView-row:is(
+    [selected],
+    [menu-trigger],
+    [row-selectable]:hover
+  )::after {
   content: "";
   position: absolute;
   inset-block: 0;
